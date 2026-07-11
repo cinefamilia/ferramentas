@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cine Família – Minha Coleção</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ── TEMAS ── */
+  :root, [data-theme="dark"] {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a24;
+    --card-shadow: rgba(0,0,0,0.5);
+    --border: #2a2a38;
+    --accent: #e8b84b;
+    --text: #e8e8f0;
+    --muted: #7a7a9a;
+    --modal-bg: rgba(5,5,10,0.92);
+    --header-bg: rgba(10,10,15,0.88);
+    --toolbar-bg: transparent;
+    --radius: 10px;
+  }
+
+  [data-theme="light"] {
+    --bg: #f7f4ef;
+    --surface: #d9cbb5;
+    --card: #efeae2;
+    --card-shadow: rgba(92,64,51,0.12);
+    --border: #dcd3c4;
+    --accent: #5c4033;
+    --text: #1f1b16;
+    --muted: #6b6255;
+    --modal-bg: rgba(230,223,213,0.92);
+    --header-bg: rgba(230,223,213,0.75);
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: var(--bg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center top;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    transition: background-color 0.4s, color 0.3s;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--header-bg);
+    padding: 18px 24px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.4s;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .logo span {
+    color: var(--muted);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0;
+    display: block;
+    margin-top: 2px;
+    font-weight: 300;
+  }
+
+  /* ── BOTÃO TEMA ── */
+  .theme-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.25s, color 0.25s;
+    flex-shrink: 0;
+  }
+  .theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .theme-btn .icon { font-size: 16px; line-height: 1; transition: transform 0.4s; display: flex; }
+  .theme-btn .icon svg { width: 17px; height: 17px; }
+  .theme-btn:hover .icon { transform: rotate(20deg); }
+  [data-theme="light"] .theme-btn { color: var(--accent); }
+
+  /* ── TOGGLE GÊNEROS/COLEÇÕES (estilo claro/escuro) ── */
+  .mode-toggle {
+    display: flex;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 3px;
+    gap: 2px;
+  }
+  .mode-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.25s;
+    white-space: nowrap;
+  }
+  .mode-btn:hover { color: var(--accent); }
+  .mode-btn.active { background: var(--accent); color: #fff; }
+  [data-theme="dark"] .mode-btn.active { color: #000; }
+  #mode-tudo.active { background: #b8975a; color: #fff; }
+  [data-theme="dark"] #mode-tudo.active { color: #000; }
+  #mode-tudo:not(.active) { color: var(--accent); font-weight: 800; }
+
+  /* ── TABS ── */
+  .tabs-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .tabs-arrow {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    line-height: 1;
+    margin-bottom: 6px;
+    transition: all 0.2s;
+  }
+  .tabs-arrow:hover { border-color: var(--accent); color: var(--accent); }
+  .tabs-arrow:disabled { opacity: 0.25; cursor: default; }
+  .tabs-arrow:disabled:hover { border-color: var(--border); color: var(--muted); }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+
+  .tab {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    text-transform: uppercase;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { background: rgba(220,130,35,0.30); color: #f5a733; border-bottom-color: #f5a733; font-weight: 700; }
+
+  /* Tabs como pílulas no tema claro */
+  [data-theme="light"] .tab {
+    color: #4a4136;
+    font-weight: 600;
+    background: rgba(217,203,181,0.55);
+    border-radius: 20px;
+    margin-bottom: 6px;
+    border-bottom: 2px solid transparent;
+    backdrop-filter: blur(4px);
+  }
+  [data-theme="light"] .tab:hover {
+    background: rgba(217,203,181,0.75);
+    color: #2e2a22;
+  }
+  [data-theme="light"] .tab.active {
+    background: rgba(139,111,71,0.88);
+    color: #fff;
+    border-bottom-color: transparent;
+    font-weight: 700;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  }
+
+  .sort-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    backdrop-filter: blur(6px);
+  }
+  .sort-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .sort-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+  [data-theme="dark"] .sort-btn.active { color: #000; }
+  [data-theme="light"] .sort-btn {
+    background: rgba(217,203,181,0.55);
+    border-color: rgba(220,211,196,0.7);
+    color: #4a4136;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+  }
+  [data-theme="light"] .sort-btn:hover {
+    background: rgba(217,203,181,0.75);
+    border-color: #5c4033;
+    color: #5c4033;
+  }
+  [data-theme="light"] .sort-btn.active {
+    background: #5c4033;
+    border-color: #5c4033;
+    color: #fff;
+  }
+  .sort-btn.tudo-locked { opacity: 0.35; pointer-events: none; }
+
+  /* ── NAV DE GRUPO (Tudo: letras A-Z / décadas) ── */
+  .group-tab {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 11px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(184,151,90,0.16);
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .group-tab:hover { background: #b8975a; color: #fff; }
+  [data-theme="light"] .group-tab { background: rgba(184,151,90,0.22); color: #4a4136; }
+  [data-theme="light"] .group-tab:hover { background: #b8975a; color: #fff; }
+
+  /* ── RODAPÉ DA GRADE (contagem) ── */
+  .grid-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 24px 28px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  [data-theme="light"] .grid-footer { color: #6b6255; }
+  @media (max-width: 580px) { .grid-footer { padding: 0 12px 24px; font-size: 11px; } }
+
+  /* ── GRID ── */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+    padding: 16px 24px 40px;
+  }
+  @media (max-width: 1400px) { .grid { grid-template-columns: repeat(5, 1fr); } }
+  @media (max-width: 1100px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 860px)  { .grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 580px)  { .grid { grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 10px 8px 40px; } }
+  @media (max-width: 600px)  { .card-img-wrap img { object-position: top; } }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid var(--border);
+    position: relative;
+    box-shadow: 0 4px 14px var(--card-shadow);
+  }
+  .card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 32px var(--card-shadow), 0 0 0 1px var(--accent);
+  }
+
+  .card-img-wrap {
+    position: relative;
+    aspect-ratio: 2/3;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  .card-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s;
+  }
+  .card-img-wrap .no-img {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 8px;
+    color: var(--muted); font-size: 11px;
+  }
+  .card-img-wrap .no-img svg { opacity: 0.3; }
+
+  .card-hdr {
+    position: absolute; top: 0; left: 0; right: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, transparent 100%);
+    padding: 8px;
+    display: flex; gap: 4px; flex-wrap: wrap;
+  }
+
+  .badge {
+    font-size: 9px; font-weight: 600;
+    padding: 2px 6px; border-radius: 4px;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .badge-hdr  { background: rgba(200,150,0,0.55); color: #ffe066; border: 1px solid rgba(245,200,66,0.5); backdrop-filter: blur(4px); }
+  .badge-hdr2 { background: rgba(30,110,200,0.50); color: #a8ddff; border: 1px solid rgba(96,200,255,0.45); backdrop-filter: blur(4px); }
+  .badge-genero { background: rgba(120,120,130,0.55); color: #e8e8f0; border: 1px solid rgba(170,170,180,0.4); backdrop-filter: blur(4px); }
+
+  .card-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%);
+    height: 60%;
+    pointer-events: none;
+  }
+
+
+  .card-body { padding: 10px; }
+  .card-title {
+    font-size: 12px; font-weight: 500; color: var(--text);
+    line-height: 1.35;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden; min-height: 32px;
+  }
+  .card-title-original {
+    font-size: 10px; font-style: italic; color: var(--muted);
+    margin-top: 2px;
+    display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-title-artist {
+    font-size: 10px; font-weight: 700; color: var(--muted);
+    margin-top: 2px;
+    display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-year { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  @media (min-width: 601px) {
+    .card-title { font-size: 15px; }
+    .card-title-original { font-size: 13px; }
+    .card-year { font-size: 14px; }
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: var(--modal-bg);
+    z-index: 500;
+    align-items: center; justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(8px);
+  }
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    max-width: 720px; width: 100%;
+    max-height: 90vh; overflow-y: auto;
+    position: relative;
+    animation: modalIn 0.25s ease;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    backdrop-filter: blur(16px);
+  }
+  @keyframes modalIn { from { opacity:0; transform: scale(0.94) translateY(16px); } to { opacity:1; transform: scale(1) translateY(0); } }
+
+  .modal-close {
+    position: absolute; top: 14px; right: 14px;
+    background: rgba(128,128,128,0.15);
+    border: none; color: var(--text);
+    width: 30px; height: 30px; border-radius: 50%;
+    cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; z-index: 10;
+  }
+  .modal-close:hover { background: rgba(128,128,128,0.3); }
+
+  .modal-inner { display: flex; gap: 0; }
+
+  .modal-poster {
+    width: 200px; flex-shrink: 0;
+    aspect-ratio: 2/3; object-fit: cover;
+    border-radius: 14px 0 0 14px;
+  }
+  .modal-poster-placeholder {
+    width: 200px; flex-shrink: 0;
+    background: var(--card);
+    border-radius: 14px 0 0 14px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted);
+  }
+  .modal-info {
+    flex: 1; padding: 24px 24px 24px 22px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px; letter-spacing: 1px; line-height: 1.1;
+    color: var(--text); padding-right: 30px;
+  }
+  .modal-title-original {
+    font-size: 14px; font-style: italic; color: var(--muted);
+    margin-top: 2px;
+  }
+  .modal-title-artist {
+    font-size: 14px; font-weight: 700; color: var(--muted);
+    margin-top: 2px;
+  }
+  .modal-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+  .meta-chip {
+    font-size: 11px; padding: 4px 10px; border-radius: 20px;
+    background: var(--card); border: 1px solid var(--border); color: var(--muted);
+  }
+  .meta-chip strong { color: var(--text); }
+  .meta-chip.colecao { border-color: var(--accent); color: var(--accent); cursor: pointer; }
+  .meta-chip.colecao:hover { background: var(--accent); color: #fff; }
+  .modal-sinopse {
+    font-size: 13px; color: var(--muted); line-height: 1.65;
+    border-left: 2px solid var(--accent); padding-left: 12px;
+  }
+  .modal-tech { display: grid; grid-template-columns: 1fr; gap: 6px; }
+  .tech-row { font-size: 11px; display: flex; gap: 6px; align-items: baseline; text-align: left; }
+  .tech-row .k { color: var(--muted); min-width: 70px; }
+  .tech-row .v { color: var(--text); font-weight: 500; }
+
+  @media (max-width: 600px) {
+    .modal-inner { flex-direction: column; }
+    .modal-poster { width: 100%; aspect-ratio: 16/9; border-radius: 14px 14px 0 0; object-fit: cover; object-position: top; }
+    .modal-poster-placeholder { width: 100%; height: 140px; border-radius: 14px 14px 0 0; }
+    .modal-info { padding: 16px; }
+    .modal-title { font-size: 22px; }
+  }
+
+  /* ── BUSCA ── */
+  .search-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.25s, color 0.25s;
+    flex-shrink: 0;
+  }
+  .search-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .search-btn svg { width: 17px; height: 17px; }
+  [data-theme="light"] .search-btn { background: #ffffff; }
+
+  .search-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--modal-bg);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 300;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 8vh 20px 20px;
+  }
+  .search-overlay.open { display: flex; }
+
+  .search-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    width: 100%;
+    max-width: 560px;
+    max-height: 78vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 60px var(--card-shadow);
+  }
+
+  .search-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .search-type-select {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    min-width: 0;
+  }
+  .search-input::placeholder { color: var(--muted); }
+
+  .search-close {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+    flex-shrink: 0;
+    transition: color 0.2s;
+  }
+  .search-close:hover { color: var(--text); }
+
+  .search-results {
+    overflow-y: auto;
+    padding: 8px 0;
+  }
+
+  .search-group-label {
+    padding: 10px 16px 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .search-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 6px 16px;
+  }
+
+  .search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .search-result-item:hover { background: var(--card); }
+
+  .search-result-thumb {
+    width: 36px;
+    height: 52px;
+    border-radius: 5px;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--card);
+  }
+  .search-result-thumb-placeholder {
+    width: 36px;
+    height: 52px;
+    border-radius: 5px;
+    flex-shrink: 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+  }
+
+  .search-result-info { min-width: 0; }
+  .search-result-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .search-result-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .search-empty {
+    padding: 30px 16px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    .search-overlay { padding: 0; }
+    .search-box { max-width: 100%; max-height: 100%; height: 100%; border-radius: 0; }
+  }
+
+  /* ── HEADER MOBILE: força 3 linhas (título+toggle / ordenação+busca+tema / abas) ── */
+  @media (max-width: 600px) {
+    header { padding: 14px 12px 0; }
+
+    .header-top {
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .logo { font-size: 20px; }
+    .logo span { font-size: 10px; }
+    .mode-toggle { flex-shrink: 0; }
+    .mode-btn { padding: 5px 10px; font-size: 11px; }
+
+    .header-controls {
+      flex-wrap: nowrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .sort-btn { padding: 4px 8px; font-size: 11px; }
+    .header-icons { gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="logo">
+      Cine Família
+      <span>Minha Coleção de Filmes</span>
+    </div>
+    <div class="mode-toggle" id="mode-toggle"><button class="mode-btn active" id="mode-generos" onclick="switchMode('generos')">Gênero</button><button class="mode-btn" id="mode-franquia" onclick="switchMode('franquia')">Franquia</button><button class="mode-btn" id="mode-colecoes" onclick="switchMode('colecoes')">Coleções</button><button class="mode-btn" id="mode-tudo" onclick="switchMode('tudo')">TUDO</button></div>
+  </div>
+  <div class="header-controls">
+    <button class="sort-btn active" onclick="sortBy('nome-az')" id="btn-nome-az">A→Z</button>
+    <button class="sort-btn" onclick="sortBy('nome-za')" id="btn-nome-za">Z→A</button>
+    <button class="sort-btn" onclick="sortBy('ano-asc')" id="btn-ano-asc">Ano ↑</button>
+    <button class="sort-btn" onclick="sortBy('ano-desc')" id="btn-ano-desc">Ano ↓</button>
+    <div class="header-icons">
+      <button class="search-btn" id="search-btn" onclick="openSearchModal()" aria-label="Buscar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+      <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" aria-label="Tema" title="Tema Escuro">
+        <span class="icon" id="theme-icon"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 1020.354 15.354z"></path></svg></span>
+      </button>
+    </div>
+  </div>
+  <div class="tabs-wrap">
+    <button class="tabs-arrow" id="tabs-arrow-left" onclick="scrollTabs(-1)" aria-label="Voltar">‹</button>
+    <nav class="tabs" id="tabs"></nav>
+    <button class="tabs-arrow" id="tabs-arrow-right" onclick="scrollTabs(1)" aria-label="Avançar">›</button>
+  </div>
+</header>
+
+<main class="grid" id="grid"></main>
+<div class="grid-footer" id="grid-footer">
+  <span id="film-count"></span>
+  <span id="collection-total"></span>
+</div>
+
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal(null, true)">✕</button>
+    <div class="modal-inner" id="modal-inner"></div>
+  </div>
+</div>
+
+<div class="search-overlay" id="search-overlay" onclick="closeSearchModal(event)">
+  <div class="search-box" id="search-box">
+    <div class="search-header">
+      <select class="search-type-select" id="search-type-select" onchange="setSearchType(this.value)">
+        <option value="titulo">Título</option>
+        <option value="profissional">Profissional</option>
+      </select>
+      <input type="text" class="search-input" id="search-input" placeholder="Buscar..." oninput="onSearchInput(this.value)">
+      <button class="search-close" onclick="closeSearchModal(null, true)">✕</button>
+    </div>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<script src="filmes.js"></script>
+<script>
+
+// ── ESTADO ────────────────────────────────────────────────────────────────────
+const GENRE_SHEETS = ["Clássicos","Ação","Comédia","Drama","Romance","Musicais","Suspense","Policial","Cult-Favoritos","Filmes Família"];
+const CINE_ITALIA_TAB = "Cine Itália";
+const GENEROS_TABS = [...GENRE_SHEETS, CINE_ITALIA_TAB];
+let currentMode = "generos"; let currentTab = GENEROS_TABS[0]; let currentSort = "genero"; let isDark = false; let tudoGroup = "alpha";
+function getListForGenero(tab){ if(tab===CINE_ITALIA_TAB) return filmes.filter(f=>f.origem==="cine_italia"); return filmes.filter(f=>f.origem==="genero"&&f.genero===tab); }
+function buildFranquias(){ const map={}; filmes.forEach(f=>{ if(f.origem!=="genero") return; (f.tags||[]).forEach(t=>{ if(t.tipo!=="Franquia") return; if(!map[t.nome]) map[t.nome]=[]; map[t.nome].push(f); }); }); return map; }
+const FRANQUIAS = buildFranquias(); const FRANQUIA_NAMES = Object.keys(FRANQUIAS).sort((a,b)=>a.localeCompare(b,'pt'));
+function buildColecoes(){ const map={}; filmes.forEach(f=>{ (f.tags||[]).forEach(t=>{ if(t.tipo!=="Coleção") return; if(!map[t.raw]) map[t.raw]=[]; map[t.raw].push(f); }); }); return map; }
+const COLECOES = buildColecoes(); const COLECAO_KEYS = Object.keys(COLECOES).sort((a,b)=>displayColecaoName(a).localeCompare(displayColecaoName(b),'pt'));
+function displayColecaoName(raw){ return raw.replace(/^Coleção\s+/, ''); }
+function getList(){ if(currentMode==='tudo') return filmes; if(currentMode==='franquia') return FRANQUIAS[currentTab]||[]; if(currentMode==='colecoes') return COLECOES[currentTab]||[]; return getListForGenero(currentTab); }
+function getTabNames(){ if(currentMode==='tudo') return []; if(currentMode==='franquia') return FRANQUIA_NAMES; if(currentMode==='colecoes') return COLECAO_KEYS; return GENEROS_TABS; }
+function tabLabel(tab){ return currentMode==='colecoes' ? displayColecaoName(tab) : tab; }
+function letterOf(nome){ const c=stripAccents(nome).toUpperCase().trim().charAt(0); return /[A-Z]/.test(c)?c:'#'; }
+function decadeOf(ano){ const n=Number(ano); return isFinite(n)?Math.floor(n/10)*10:null; }
+const ICON_MOON = '<svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 1020.354 15.354z"></path></svg>';
+const ICON_SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4" y1="12" x2="2" y2="12"></line><line x1="22" y1="12" x2="20" y2="12"></line><line x1="19.07" y1="4.93" x2="17.66" y2="6.34"></line><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"></line><line x1="19.07" y1="19.07" x2="17.66" y2="17.66"></line><line x1="6.34" y1="6.34" x2="4.93" y2="4.93"></line></svg>';
+function toggleTheme(){ isDark=!isDark; document.documentElement.setAttribute('data-theme', isDark?'dark':'light'); document.getElementById('theme-icon').innerHTML = isDark?ICON_SUN:ICON_MOON; document.getElementById('theme-btn').title = isDark?'Tema Claro':'Tema Escuro'; }
+function switchMode(mode){ if(mode===currentMode) return; currentMode=mode; document.getElementById('mode-generos').classList.toggle('active', mode==='generos'); document.getElementById('mode-franquia').classList.toggle('active', mode==='franquia'); document.getElementById('mode-colecoes').classList.toggle('active', mode==='colecoes'); document.getElementById('mode-tudo').classList.toggle('active', mode==='tudo'); if(mode==='tudo'){ tudoGroup='alpha'; currentTab=''; currentSort='nome-az'; } else { const tabs=getTabNames(); currentTab=tabs[0]||''; currentSort = mode==='generos'?'genero':'ordem'; } document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active')); const activeBtn=document.getElementById('btn-'+currentSort); if(activeBtn) activeBtn.classList.add('active'); document.getElementById('btn-nome-az').classList.toggle('tudo-locked', mode==='tudo'); document.getElementById('btn-nome-za').classList.toggle('tudo-locked', mode==='tudo'); renderTabs(); renderGrid(); window.scrollTo(0,0); }
+function renderTabs(){ if(currentMode==='tudo'){ renderGroupNav(); return; } const tabs=getTabNames(); document.getElementById('tabs').innerHTML = tabs.map(t=>`<button class="tab${t===currentTab?' active':''}" onclick="switchTab('${t.replace(/'/g,"\\'")}')">${tabLabel(t)}</button>`).join(''); document.getElementById('tabs').scrollLeft=0; updateTabsArrows(); }
+function renderGroupNav(){ const tabsEl=document.getElementById('tabs'); if(tudoGroup==='decada'){ const decades=[]; for(let d=1930; d<=2020; d+=10) decades.push(d); tabsEl.innerHTML = decades.map(d=>`<button class="group-tab" onclick="jumpToDecade(${d})">${d}s</button>`).join(''); } else { const letters=Array.from(new Set(filmes.map(f=>letterOf(f.nome)))).sort((a,b)=>a.localeCompare(b,'pt')); tabsEl.innerHTML = letters.map(l=>`<button class="group-tab" onclick="jumpToLetter('${l}')">${l}</button>`).join(''); } tabsEl.scrollLeft=0; updateTabsArrows(); }
+function jumpToLetter(letter){ const grid=document.getElementById('grid'); const idx=[...grid.children].findIndex(card=>card.dataset.letter===letter); if(idx>=0) grid.children[idx].scrollIntoView({behavior:'instant', block:'start'}); }
+function jumpToDecade(decade){ const grid=document.getElementById('grid'); const idx=[...grid.children].findIndex(card=>Number(card.dataset.decade)===decade); if(idx>=0) grid.children[idx].scrollIntoView({behavior:'instant', block:'start'}); }
+function scrollTabs(dir){ const el=document.getElementById('tabs'); el.scrollBy({left:dir*260,behavior:'smooth'}); }
+function updateTabsArrows(){ const el=document.getElementById('tabs'); const left=document.getElementById('tabs-arrow-left'); const right=document.getElementById('tabs-arrow-right'); const maxScroll=el.scrollWidth-el.clientWidth; left.disabled=el.scrollLeft<=2; right.disabled=el.scrollLeft>=maxScroll-2; }
+function switchTab(tab){ currentTab=tab; updateActiveTab(); renderGrid(); window.scrollTo(0,0); }
+function updateActiveTab(){ const tabs=getTabNames(); const idx=tabs.indexOf(currentTab); const btns=document.querySelectorAll('#tabs .tab'); btns.forEach((btn,i)=>btn.classList.toggle('active', i===idx)); const activeBtn=btns[idx]; if(activeBtn && activeBtn.scrollIntoView) activeBtn.scrollIntoView({block:'nearest', inline:'nearest', behavior:'smooth'}); updateTabsArrows(); }
+function sortBy(key){ if(currentMode==='tudo' && (key==='nome-az'||key==='nome-za') && tudoGroup==='alpha') return; currentSort=key; document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active')); document.getElementById('btn-'+key).classList.add('active'); if(currentMode==='tudo'){ tudoGroup = (key==='ano-asc'||key==='ano-desc') ? 'decada' : 'alpha'; document.getElementById('btn-nome-az').classList.toggle('tudo-locked', tudoGroup==='alpha'); document.getElementById('btn-nome-za').classList.toggle('tudo-locked', tudoGroup==='alpha'); renderTabs(); renderGrid(); window.scrollTo(0,0); return; } renderGrid(); }
+function franquiaTagNome(f){ const tag=(f.tags||[]).find(t=>t.tipo==='Franquia'); return tag?tag.nome:null; }
+function isBelleCultTab(){ return currentMode==='colecoes' && (currentTab==='Coleção Belle Cult - Feminina' || currentTab==='Coleção Belle Cult - Masculina'); }
+function sortOrdemComFallback(data){ const belleCult=isBelleCultTab(); return [...data].sort((a,b)=>{ const oa=(a.ordem===undefined||a.ordem===null||a.ordem==='')?null:String(a.ordem); const ob=(b.ordem===undefined||b.ordem===null||b.ordem==='')?null:String(b.ordem); if(oa!==null&&ob!==null){ const c=oa.localeCompare(ob,'pt'); if(c!==0) return c; } else if(oa!==null){ return -1; } else if(ob!==null){ return 1; } if(belleCult&&a.artista&&b.artista){ const ac=String(a.artista).localeCompare(String(b.artista),'pt'); if(ac!==0) return ac; } return String(a.nome).localeCompare(String(b.nome),'pt'); }); }
+function sortGeneroAgrupado(data){ return [...data].sort((a,b)=>{ const fa=franquiaTagNome(a); const fb=franquiaTagNome(b); const ka=fa||a.nome; const kb=fb||b.nome; const cmp=String(ka).localeCompare(String(kb),'pt'); if(cmp!==0) return cmp; if(fa&&fb){ const oa=a.ordem||''; const ob=b.ordem||''; const ocmp=String(oa).localeCompare(String(ob),'pt'); if(ocmp!==0) return ocmp; } return String(a.nome).localeCompare(String(b.nome),'pt'); }); }
+function getSorted(data){ const d=[...data]; if(currentSort==='genero') return sortGeneroAgrupado(d); if(currentSort==='nome-az') return d.sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt')); if(currentSort==='nome-za') return d.sort((a,b)=>String(b.nome).localeCompare(String(a.nome),'pt')); if(currentSort==='ano-asc') return d.sort((a,b)=>a.ano-b.ano); if(currentSort==='ano-desc') return d.sort((a,b)=>b.ano-a.ano); if(currentSort==='ordem') return sortOrdemComFallback(d); return d; }
+function noImgHTML(){ return '<div class="no-img"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>Sem capa</div>'; }
+function renderGrid(){ const grid=document.getElementById('grid'); const films=getSorted(getList()); const groupLabel = currentMode==='tudo' ? 'Tudo' : tabLabel(currentTab); document.getElementById('film-count').textContent = films.length?`${films.length} filme${films.length>1?'s':''} em ${groupLabel}`:''; document.getElementById('collection-total').textContent = `${filmes.length} na coleção`; if(!films.length){ grid.innerHTML=`<div style="grid-column:1/-1;color:var(--muted);text-align:center;padding:60px 0;font-size:14px;">Nenhum filme nesta guia ainda.</div>`; return; } grid.innerHTML = films.map((f,i)=>{ const nome=String(f.nome); const perfilCor=(f.perfilCor||'').trim(); const hdr=perfilCor?`<span class="badge badge-hdr">${perfilCor}</span>`:''; const codec=f.codec?`<span class="badge badge-hdr2">${f.codec}</span>`:''; const generoBadge=(currentMode!=='generos'&&f.genero)?`<span class="badge badge-genero">${f.genero}</span>`:''; const nomeOriginal=f.nomeOriginal?`<div class="card-title-original">${f.nomeOriginal}</div>`:''; const nomeArtista=(isBelleCultTab()&&f.artista)?`<div class="card-title-artist">${f.artista}</div>`:''; const img=f.capa?`<img src="${f.capa}" alt="${nome}" loading="lazy" onerror="this.parentElement.innerHTML=noImgHTML()">`:noImgHTML(); const letraAttr=currentMode==='tudo'?` data-letter="${letterOf(f.nome)}"`:''; const decadaAttr=(currentMode==='tudo'&&decadeOf(f.ano)!==null)?` data-decade="${decadeOf(f.ano)}"`:''; return `<div class="card"${letraAttr}${decadaAttr} onclick="openModal(${i})"><div class="card-img-wrap">${img}<div class="card-hdr">${generoBadge}${hdr}${codec}</div><div class="card-overlay"></div></div><div class="card-body"><div class="card-title">${nome}</div>${nomeOriginal}${nomeArtista}<div class="card-year">${f.ano}</div></div></div>`; }).join(''); }
+function tagChips(f){ return (f.tags||[]).filter(t=>t.tipo==='Franquia'||t.tipo==='Coleção').map(t=>{ const label=t.tipo==='Coleção'?displayColecaoName(t.nome):t.nome; const action=t.tipo==='Franquia'?`abrirFranquia('${t.nome.replace(/'/g,"\\'")}')`:`abrirColecao('${t.raw.replace(/'/g,"\\'")}')`; return `<span class="meta-chip colecao" onclick="${action}">${label}</span>`; }).join(''); }
+function buildModalInner(f){ const poster=f.capa?`<img class="modal-poster" src="${f.capa}" alt="${f.nome}">`:`<div class="modal-poster-placeholder" style="aspect-ratio:2/3"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>`; const chips=[ f.ano?`<span class="meta-chip"><strong>${f.ano}</strong></span>`:'', f.duracao?`<span class="meta-chip">${f.duracao}</span>`:'', f.gb?`<span class="meta-chip"><strong>${f.gb} GB</strong></span>`:'', f.codec?`<span class="meta-chip">${f.codec}</span>`:'', f.perfilCor?`<span class="meta-chip">${f.perfilCor}</span>`:'', f.situacao?`<span class="meta-chip">${f.situacao}</span>`:'', (currentMode!=='generos'&&f.genero)?`<span class="meta-chip">${f.genero}</span>`:'', tagChips(f) ].join(''); const nomeOriginal=f.nomeOriginal?`<div class="modal-title-original">${f.nomeOriginal}</div>`:''; const nomeArtista=((isBelleCultTab()||(f.tags||[]).some(t=>t.raw&&t.raw.includes('Belle Cult')))&&f.artista)?`<div class="modal-title-artist">${f.artista}</div>`:''; const sinopse=f.sinopse?`<div class="modal-sinopse">${f.sinopse}</div>`:''; const tech=[['Local',f.local],['Preset',f.presetElmedia]].filter(r=>r[1]).map(r=>`<div class="tech-row"><span class="k">${r[0]}</span><span class="v">${r[1]}</span></div>`).join(''); return `${poster}<div class="modal-info"><div class="modal-title">${String(f.nome)}</div>${nomeOriginal}${nomeArtista}<div class="modal-meta">${chips}</div>${sinopse}${tech?`<div class="modal-tech">${tech}</div>`:''}</div>`; }
+function openModal(sortedIndex){ const films=getSorted(getList()); const f=films[sortedIndex]; if(!f) return; openModalByFilm(f); }
+function openModalByFilm(f){ if(!f) return; document.getElementById('modal-inner').innerHTML = buildModalInner(f); document.getElementById('modal-overlay').classList.add('open'); document.body.style.overflow='hidden'; }
+function abrirFranquia(nome){ closeModal(null,true); if(currentMode!=='franquia') switchMode('franquia'); switchTab(nome); }
+function abrirColecao(raw){ closeModal(null,true); if(currentMode!=='colecoes') switchMode('colecoes'); switchTab(raw); }
+function closeModal(e,force){ if(force||e.target===document.getElementById('modal-overlay')){ document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow=''; } }
+let searchType = 'titulo';
+function stripAccents(s){ return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+function normSearch(s){ return stripAccents(s).toLowerCase(); }
+function openSearchModal(){ document.getElementById('search-overlay').classList.add('open'); document.body.style.overflow='hidden'; const input=document.getElementById('search-input'); input.value=''; renderSearchResults(''); setTimeout(()=>input.focus(), 50); }
+function closeSearchModal(e,force){ if(force||e.target===document.getElementById('search-overlay')){ document.getElementById('search-overlay').classList.remove('open'); document.body.style.overflow=''; } }
+function setSearchType(type){ searchType=type; onSearchInput(document.getElementById('search-input').value); }
+function onSearchInput(value){ renderSearchResults(value); }
+function makeSearchResultRow(f){ const row=document.createElement('div'); row.className='search-result-item'; if(f.capa){ const img=document.createElement('img'); img.className='search-result-thumb'; img.src=f.capa; img.alt=f.nome; img.onerror=()=>{ img.replaceWith(Object.assign(document.createElement('div'),{className:'search-result-thumb-placeholder'})); }; row.appendChild(img); } else { const ph=document.createElement('div'); ph.className='search-result-thumb-placeholder'; row.appendChild(ph); } const info=document.createElement('div'); info.className='search-result-info'; const name=document.createElement('div'); name.className='search-result-name'; name.textContent=String(f.nome); const meta=document.createElement('div'); meta.className='search-result-meta'; meta.textContent=f.ano||''; info.appendChild(name); info.appendChild(meta); row.appendChild(info); row.addEventListener('click', ()=>{ closeSearchModal(null,true); openModalByFilm(f); }); return row; }
+function renderSearchResults(rawQuery){ const container=document.getElementById('search-results'); container.innerHTML=''; const q=normSearch(rawQuery.trim()); if(!q){ container.innerHTML='<div class="search-empty">Digite para buscar…</div>'; return; } if(searchType==='titulo'){ const matches=filmes.filter(f=>normSearch(f.nome).includes(q)||(f.nomeOriginal&&normSearch(f.nomeOriginal).includes(q))).sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt')); if(!matches.length){ container.innerHTML='<div class="search-empty">Nenhum filme encontrado.</div>'; return; } matches.forEach(f=>container.appendChild(makeSearchResultRow(f))); return; } const direcaoMatches=filmes.filter(f=>f.diretor&&normSearch(f.diretor).includes(q)).sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt')); const atuacaoMatches=filmes.filter(f=>['ator1','ator2','ator3','ator4','ator5','ator6'].some(k=>f[k]&&normSearch(f[k]).includes(q))).sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt')); if(!direcaoMatches.length&&!atuacaoMatches.length){ container.innerHTML='<div class="search-empty">Nenhum profissional encontrado.</div>'; return; } if(direcaoMatches.length){ const label=document.createElement('div'); label.className='search-group-label'; label.textContent='Direção'; container.appendChild(label); direcaoMatches.forEach(f=>container.appendChild(makeSearchResultRow(f))); } if(direcaoMatches.length&&atuacaoMatches.length){ const div=document.createElement('div'); div.className='search-divider'; container.appendChild(div); } if(atuacaoMatches.length){ const label=document.createElement('div'); label.className='search-group-label'; label.textContent='Atuação'; container.appendChild(label); atuacaoMatches.forEach(f=>container.appendChild(makeSearchResultRow(f))); } }
+document.addEventListener('keydown', e=>{ if(e.key!=='Escape') return; if(document.getElementById('search-overlay').classList.contains('open')){ closeSearchModal(null,true); return; } closeModal(null,true); });
+document.getElementById('tabs').addEventListener('scroll', updateTabsArrows);
+window.addEventListener('resize', updateTabsArrows);
+renderTabs();
+renderGrid();
+</script>
+</body>
+</html>
