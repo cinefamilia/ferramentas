@@ -4124,7 +4124,7 @@ const filmes = [
     "ator4": "Tom Everett Scott",
     "ator5": "Bailee Madison",
     "ator6": "Joshua Rush",
-    "nomeOriginal": "Little Fockers"
+    "nomeOriginal": "Parental Guidance"
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1sQEv07FFdXicGi8lr7JCRLWVA6nAiurw",
@@ -12253,7 +12253,7 @@ const filmes = [
     "ator4": "Patrick d'Assumçao",
     "ator5": "Galatéa Bellugi",
     "ator6": "Jan Hammenecker",
-    "nomeOriginal": "An"
+    "nomeOriginal": "La passion de Dodin Bouffant"
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1ZW05be7nGUhh4sQ6TrGYtOU9OFYbkz0D",
@@ -12285,7 +12285,7 @@ const filmes = [
     "ator4": "Stelios Mainas",
     "ator5": "Tamer Karadağli",
     "ator6": "Basak Köklükaya",
-    "nomeOriginal": "Polis"
+    "nomeOriginal": "Politiki kouzina"
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1dWIekFG4rd_Opx8oqqCNU3RLBzAUSD3Y",
