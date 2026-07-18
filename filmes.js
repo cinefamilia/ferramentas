@@ -7915,7 +7915,7 @@ const filmes = [
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1jgQ2dkhbeimBVkiWLzXpFMk1k2CMvI-4",
-    "nome": "O Mundo Perdido - Jurassic Park",
+    "nome": "Jurassic Park II - O Mundo Perdido",
     "ano": 1997,
     "duracao": "02:08:46",
     "gb": 7.55,
