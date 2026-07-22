@@ -10892,7 +10892,7 @@ const filmes = [
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1S7qcfUjc7pHBUpzJUqVnhjFl6YYRzSXp",
-    "nome": "Boccacio 70",
+    "nome": "Boccaccio 70",
     "ano": 1962,
     "duracao": "3h 25m",
     "gb": null,
