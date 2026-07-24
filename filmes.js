@@ -8583,13 +8583,13 @@ const filmes = [
     "sinopse": "Um policial de Nova York e sua esposa cabeleireira realizam uma viagem de férias pela Europa para renovar os votos de casamento. Eles acabam aceitando um convite improvisado para um iate luxuoso, onde são falsamente acusados pelo assassinato de um bilionário idoso.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Adam Sandler (Mistério)",
-    "ordem": "MI 01",
+    "colecaoTipo": "Franquia - Adam Sandler",
+    "ordem": "AS 01",
     "tags": [
       {
         "tipo": "Franquia",
-        "nome": "Adam Sandler (Mistério)",
-        "raw": "Franquia - Adam Sandler (Mistério)"
+        "nome": "Adam Sandler",
+        "raw": "Franquia - Adam Sandler"
       }
     ],
     "diretor": "Kyle Newacheck",
@@ -8615,13 +8615,13 @@ const filmes = [
     "sinopse": "Agora trabalhando como detetives particulares em tempo integral na própria agência, o casal viaja para o casamento de um amigo marajá em uma ilha particular. Quando o noivo é sequestrado em plena festa, eles embarcam em uma caótica investigação internacional em Paris.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Adam Sandler (Mistério)",
-    "ordem": "MI 02",
+    "colecaoTipo": "Franquia - Adam Sandler",
+    "ordem": "AS 02",
     "tags": [
       {
         "tipo": "Franquia",
-        "nome": "Adam Sandler (Mistério)",
-        "raw": "Franquia - Adam Sandler (Mistério)"
+        "nome": "Adam Sandler",
+        "raw": "Franquia - Adam Sandler"
       }
     ],
     "diretor": "Jeremy Garelick",
