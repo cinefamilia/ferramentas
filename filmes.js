@@ -3120,13 +3120,13 @@ const filmes = [
     "sinopse": "Após o falecimento do antigo técnico de basquete da infância, cinco grandes amigos de escola se reúnem com suas famílias para um fim de semana de feriado. Juntos, eles descobrem que envelhecer não significa necessariamente ter que crescer.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Gente Grande",
-    "ordem": "GG 01",
+    "colecaoTipo": "Franquia - Adam Sandler",
+    "ordem": "AS 06",
     "tags": [
       {
         "tipo": "Franquia",
-        "nome": "Gente Grande",
-        "raw": "Franquia - Gente Grande"
+        "nome": "Adam Sandler",
+        "raw": "Franquia - Adam Sandler"
       }
     ],
     "diretor": "Dennis Dugan",
@@ -3152,13 +3152,13 @@ const filmes = [
     "sinopse": "Lenny se muda com sua família de volta para a pequena cidade natal para ficar perto de seus amigos de infância. Entre velhos valentões, policiais malucos e motoristas de ônibus excêntricos, o grupo descobre que a loucura os persegue onde quer que vão.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Gente Grande",
-    "ordem": "GG 02",
+    "colecaoTipo": "Franquia - Adam Sandler",
+    "ordem": "AS 07",
     "tags": [
       {
         "tipo": "Franquia",
-        "nome": "Gente Grande",
-        "raw": "Franquia - Gente Grande"
+        "nome": "Adam Sandler",
+        "raw": "Franquia - Adam Sandler"
       }
     ],
     "diretor": "Dennis Dugan",

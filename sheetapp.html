@@ -565,6 +565,18 @@
   }
   .search-input::placeholder { color: var(--muted); }
 
+  .search-color-select {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    min-width: 0;
+    cursor: pointer;
+  }
+
   .search-close {
     background: transparent;
     border: none;
@@ -730,8 +742,14 @@
       <select class="search-type-select" id="search-type-select" onchange="setSearchType(this.value)">
         <option value="titulo">Título</option>
         <option value="profissional">Profissional</option>
+        <option value="perfilCor">Perfil de Cor</option>
+        <option value="imax">IMAX</option>
       </select>
       <input type="text" class="search-input" id="search-input" placeholder="Buscar..." oninput="onSearchInput(this.value)">
+      <select class="search-color-select" id="search-color-select" style="display:none" onchange="renderSearchResults('')">
+        <option value="HDR">HDR</option>
+        <option value="HDR 4K">HDR 4K</option>
+      </select>
       <button class="search-close" onclick="closeSearchModal(null, true)">✕</button>
     </div>
     <div class="search-results" id="search-results"></div>
@@ -788,12 +806,12 @@ function closeModal(e,force){ if(force||e.target===document.getElementById('moda
 let searchType = 'titulo';
 function stripAccents(s){ return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
 function normSearch(s){ return stripAccents(s).toLowerCase(); }
-function openSearchModal(){ document.getElementById('search-overlay').classList.add('open'); document.body.style.overflow='hidden'; const input=document.getElementById('search-input'); input.value=''; renderSearchResults(''); setTimeout(()=>input.focus(), 50); }
+function openSearchModal(){ document.getElementById('search-overlay').classList.add('open'); document.body.style.overflow='hidden'; searchType='titulo'; document.getElementById('search-type-select').value='titulo'; const input=document.getElementById('search-input'); input.style.display=''; input.value=''; document.getElementById('search-color-select').style.display='none'; renderSearchResults(''); setTimeout(()=>input.focus(), 50); }
 function closeSearchModal(e,force){ if(force||e.target===document.getElementById('search-overlay')){ document.getElementById('search-overlay').classList.remove('open'); document.body.style.overflow=''; } }
-function setSearchType(type){ searchType=type; onSearchInput(document.getElementById('search-input').value); }
+function setSearchType(type){ searchType=type; const input=document.getElementById('search-input'); const colorSelect=document.getElementById('search-color-select'); if(type==='perfilCor'){ input.style.display='none'; colorSelect.style.display=''; } else if(type==='imax'){ input.style.display='none'; colorSelect.style.display='none'; } else { input.style.display=''; colorSelect.style.display='none'; input.value=''; } renderSearchResults(input.value); }
 function onSearchInput(value){ renderSearchResults(value); }
 function makeSearchResultRow(f){ const row=document.createElement('div'); row.className='search-result-item'; if(f.capa){ const img=document.createElement('img'); img.className='search-result-thumb'; img.src=f.capa; img.alt=f.nome; img.onerror=()=>{ img.replaceWith(Object.assign(document.createElement('div'),{className:'search-result-thumb-placeholder'})); }; row.appendChild(img); } else { const ph=document.createElement('div'); ph.className='search-result-thumb-placeholder'; row.appendChild(ph); } const info=document.createElement('div'); info.className='search-result-info'; const name=document.createElement('div'); name.className='search-result-name'; name.textContent=String(f.nome); const meta=document.createElement('div'); meta.className='search-result-meta'; meta.textContent=f.ano||''; info.appendChild(name); info.appendChild(meta); row.appendChild(info); row.addEventListener('click', ()=>{ closeSearchModal(null,true); openModalByFilm(f); }); return row; }
-function renderSearchResults(rawQuery){ const container=document.getElementById('search-results'); container.innerHTML=''; const q=normSearch(rawQuery.trim()); if(!q){ container.innerHTML='<div class="search-empty">Digite para buscar…</div>'; return; } if(searchType==='titulo'){ const matches=filmes.filter(f=>normSearch(f.nome).includes(q)||(f.nomeOriginal&&normSearch(f.nomeOriginal).includes(q))).sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt')); if(!matches.length){ container.innerHTML='<div class="search-empty">Nenhum filme encontrado.</div>'; return; } matches.forEach(f=>container.appendChild(makeSearchResultRow(f))); return; } const direcaoMatches=filmes.filter(f=>f.diretor&&normSearch(f.diretor).includes(q)).sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt')); const atuacaoMatches=filmes.filter(f=>['ator1','ator2','ator3','ator4','ator5','ator6'].some(k=>f[k]&&normSearch(f[k]).includes(q))).sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt')); if(!direcaoMatches.length&&!atuacaoMatches.length){ container.innerHTML='<div class="search-empty">Nenhum profissional encontrado.</div>'; return; } if(direcaoMatches.length){ const label=document.createElement('div'); label.className='search-group-label'; label.textContent='Direção'; container.appendChild(label); direcaoMatches.forEach(f=>container.appendChild(makeSearchResultRow(f))); } if(direcaoMatches.length&&atuacaoMatches.length){ const div=document.createElement('div'); div.className='search-divider'; container.appendChild(div); } if(atuacaoMatches.length){ const label=document.createElement('div'); label.className='search-group-label'; label.textContent='Atuação'; container.appendChild(label); atuacaoMatches.forEach(f=>container.appendChild(makeSearchResultRow(f))); } }
+function renderSearchResults(rawQuery){ const container=document.getElementById('search-results'); container.innerHTML=''; if(searchType==='perfilCor'){ const color=document.getElementById('search-color-select').value; const matches=filmes.filter(f=>f.perfilCor===color).sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt')); if(!matches.length){ container.innerHTML='<div class="search-empty">Nenhum filme encontrado.</div>'; return; } matches.forEach(f=>container.appendChild(makeSearchResultRow(f))); return; } if(searchType==='imax'){ const matches=filmes.filter(f=>f.codec&&f.codec.includes('IMAX')).sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt')); if(!matches.length){ container.innerHTML='<div class="search-empty">Nenhum filme encontrado.</div>'; return; } matches.forEach(f=>container.appendChild(makeSearchResultRow(f))); return; } const q=normSearch(rawQuery.trim()); if(!q){ container.innerHTML='<div class="search-empty">Digite para buscar…</div>'; return; } if(searchType==='titulo'){ const matches=filmes.filter(f=>normSearch(f.nome).includes(q)||(f.nomeOriginal&&normSearch(f.nomeOriginal).includes(q))).sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt')); if(!matches.length){ container.innerHTML='<div class="search-empty">Nenhum filme encontrado.</div>'; return; } matches.forEach(f=>container.appendChild(makeSearchResultRow(f))); return; } const direcaoMatches=filmes.filter(f=>f.diretor&&normSearch(f.diretor).includes(q)).sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt')); const atuacaoMatches=filmes.filter(f=>['ator1','ator2','ator3','ator4','ator5','ator6'].some(k=>f[k]&&normSearch(f[k]).includes(q))).sort((a,b)=>String(a.nome).localeCompare(String(b.nome),'pt')); if(!direcaoMatches.length&&!atuacaoMatches.length){ container.innerHTML='<div class="search-empty">Nenhum profissional encontrado.</div>'; return; } if(direcaoMatches.length){ const label=document.createElement('div'); label.className='search-group-label'; label.textContent='Direção'; container.appendChild(label); direcaoMatches.forEach(f=>container.appendChild(makeSearchResultRow(f))); } if(direcaoMatches.length&&atuacaoMatches.length){ const div=document.createElement('div'); div.className='search-divider'; container.appendChild(div); } if(atuacaoMatches.length){ const label=document.createElement('div'); label.className='search-group-label'; label.textContent='Atuação'; container.appendChild(label); atuacaoMatches.forEach(f=>container.appendChild(makeSearchResultRow(f))); } }
 document.addEventListener('keydown', e=>{ if(e.key!=='Escape') return; if(document.getElementById('search-overlay').classList.contains('open')){ closeSearchModal(null,true); return; } closeModal(null,true); });
 document.getElementById('tabs').addEventListener('scroll', updateTabsArrows);
 window.addEventListener('resize', updateTabsArrows);
