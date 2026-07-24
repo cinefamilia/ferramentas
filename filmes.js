@@ -4587,6 +4587,102 @@ const filmes = [
     "nomeOriginal": "A Fish Called Wanda"
   },
   {
+    "capa": "https://lh3.googleusercontent.com/d/1_Of8qJGh1zbYEd9iGuHLyVNmERHI8Hdh",
+    "nome": "Click",
+    "ano": 2006,
+    "duracao": "01h 47m",
+    "gb": 4.8,
+    "local": "TF",
+    "codec": "HEVC",
+    "perfilCor": null,
+    "presetElmedia": "B1 | S4 | C6 | G5 | H1 | Sh1.25",
+    "situacao": null,
+    "sinopse": "Um arquiteto estressado e focado no trabalho encontra um controle remoto universal mágico que o permite acelerar e pular os momentos mais chatos de sua vida. Uma comédia emocionante sobre a importância de valorizar o presente e a família.",
+    "genero": "Comédia",
+    "origem": "genero",
+    "colecaoTipo": "Franquia - Adam Sandler",
+    "ordem": "AS 03",
+    "diretor": "Frank Coraci",
+    "ator1": "Adam Sandler",
+    "ator2": "Kate Beckinsale",
+    "ator3": "Christopher Walken",
+    "ator4": "David Hasselhoff",
+    "ator5": "Henry Winkler",
+    "ator6": "Julie Kavner",
+    "nomeOriginal": "Click",
+    "tags": [
+      {
+        "tipo": "Franquia",
+        "nome": "Adam Sandler",
+        "raw": "Franquia - Adam Sandler"
+      }
+    ]
+  },
+  {
+    "capa": "https://lh3.googleusercontent.com/d/1BpmgmclcFaVzHq4IK_62g5E2ttBNMSEB",
+    "nome": "Esposa de Mentirinha",
+    "ano": 2011,
+    "duracao": "01h 57m",
+    "gb": 1.7,
+    "local": "TF",
+    "codec": "x265",
+    "perfilCor": null,
+    "presetElmedia": "B2 | S5 | C8 | G6 | H-1 | Sh1.5",
+    "situacao": null,
+    "sinopse": "Um cirurgião plástico bem-sucedido pede que sua leal assistente se passe por sua futura ex-esposa para sustentar uma mentira contada à sua namorada bem mais jovem. Uma comédia romântica leve, divertida e repleta de confusões em uma viagem ao Havaí.",
+    "genero": "Comédia",
+    "origem": "genero",
+    "colecaoTipo": "Franquia - Adam Sandler",
+    "ordem": "AS 04",
+    "diretor": "Dennis Dugan",
+    "ator1": "Adam Sandler",
+    "ator2": "Jennifer Aniston",
+    "ator3": "Nick Swardson",
+    "ator4": "Brooklyn Decker",
+    "ator5": "Bailee Madison",
+    "ator6": "Griffin Gluck",
+    "nomeOriginal": "Just Go with It",
+    "tags": [
+      {
+        "tipo": "Franquia",
+        "nome": "Adam Sandler",
+        "raw": "Franquia - Adam Sandler"
+      }
+    ]
+  },
+  {
+    "capa": "https://lh3.googleusercontent.com/d/1pYHByC9vqzZifqbaYrGtD2pcnQHP6sRe",
+    "nome": "Tratamento de Choque",
+    "ano": 2003,
+    "duracao": "01h 46m",
+    "gb": 2.4,
+    "local": "TF",
+    "codec": "x265",
+    "perfilCor": null,
+    "presetElmedia": "B4 | S6 | C7 | G5 | H-1 | Sh1.2",
+    "situacao": null,
+    "sinopse": "Um homem pacato é condenado injustamente a passar por uma terapia de controle de agressividade liderada por um instrutor excêntrico e completamente imprevisível que invade sua vida. Uma comédia hilária sobre superação de limites e paciência.",
+    "genero": "Comédia",
+    "origem": "genero",
+    "colecaoTipo": "Franquia - Adam Sandler",
+    "ordem": "AS 05",
+    "diretor": "Peter Segal",
+    "ator1": "Adam Sandler",
+    "ator2": "Jack Nicholson",
+    "ator3": "Marisa Tomei",
+    "ator4": "Luis Guzmán",
+    "ator5": "Allen Covert",
+    "ator6": "Lynne Thigpen",
+    "nomeOriginal": "Anger Management",
+    "tags": [
+      {
+        "tipo": "Franquia",
+        "nome": "Adam Sandler",
+        "raw": "Franquia - Adam Sandler"
+      }
+    ]
+  },
+  {
     "capa": "https://lh3.googleusercontent.com/d/1sQEv07FFdXicGi8lr7JCRLWVA6nAiurw",
     "nome": "Os Embalos de Sábado",
     "ano": 1977,
