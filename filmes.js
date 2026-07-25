@@ -254,7 +254,7 @@ const filmes = [
     "ator4": "Geraldine Hughes",
     "ator5": "Milo Ventimiglia",
     "ator6": "Tony Burton",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/13p9W0-B6Y6LjbrrjjVzpoOWbN7R2YJZI",
@@ -462,7 +462,7 @@ const filmes = [
     "ator4": "Simon Callow",
     "ator5": "Roy Dotrice",
     "ator6": "Christine Ebersole",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1fYtbC6-0DOpeI-taCM5cs1jK0yUYaA8a",
@@ -488,7 +488,7 @@ const filmes = [
     "ator4": "Matthew McConaughey",
     "ator5": "Djimon Hounsou",
     "ator6": "David Paymer",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1iGRmleE55_4Z7jjjWPKE0Y5Bvq-icyZw",
@@ -514,7 +514,7 @@ const filmes = [
     "ator4": "Mia Kirshner",
     "ator5": "James Fox",
     "ator6": "Fiona Shaw",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1d3ZlFu1oG9I_Y_uZit2g1zPoK41Sb_bu",
@@ -592,7 +592,7 @@ const filmes = [
     "ator4": "Stephen Boyd",
     "ator5": "Hugh Griffith",
     "ator6": "Martha Scott",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1S9-GiwL2Lr660D_49XY11NTBpwquObPP",
@@ -644,7 +644,7 @@ const filmes = [
     "ator4": "Claude Rains",
     "ator5": "Conrad Veidt",
     "ator6": "Gladys George",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1qQKEkKORUTTsgIBvfNPpC2_OnHs4o-HJ",
@@ -696,7 +696,7 @@ const filmes = [
     "ator4": "Pamela Brown",
     "ator5": "George Cole",
     "ator6": "Hume Cronyn",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1MNPD4EIFoWn1SOvnVKm4rLuBHs2L_Kc0",
@@ -800,7 +800,7 @@ const filmes = [
     "ator4": "Cherie Lunghi",
     "ator5": "Paul Geoffrey",
     "ator6": "Nicol Williamson",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1fXqZWso6jh-0Ppbt2XqvE7hYOQkOL26T",
@@ -826,7 +826,7 @@ const filmes = [
     "ator4": "Topol",
     "ator5": "Ornella Muti",
     "ator6": "Timothy Dalton",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1MfGIF2a6bQD2fqr8pFH87cJ26HkgrGev",
@@ -852,7 +852,7 @@ const filmes = [
     "ator4": "Joseph Calleia",
     "ator5": "Steven Geray",
     "ator6": "Joe Sawyer",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1bMZ3ZTjpH2IQ_H1NhhEcwem5Xyzx2KFu",
@@ -878,7 +878,7 @@ const filmes = [
     "ator4": "Johnny Carson",
     "ator5": "Marilyn Chambers",
     "ator6": "Sammy Davis Jr.",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1p3Xa5Xxs6FHj-rjsV8HEWOO2Sp9d7c2I",
@@ -956,7 +956,7 @@ const filmes = [
     "ator4": "Graham Greene",
     "ator5": "Alfred Molina",
     "ator6": "James Brolin",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1tXbRZQeLx3Nlw_nMUuig35sWyX5ZMIqU",
@@ -1294,7 +1294,7 @@ const filmes = [
     "ator4": "Mel Ferrer",
     "ator5": "Henry Wilcoxon",
     "ator6": "Nina Foch",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1E3wqdwq9I1gQVG3jb5rOz1skgbmx_hOA",
@@ -2086,7 +2086,7 @@ const filmes = [
     "ator4": "Brian Dennehy",
     "ator5": "Jack Gilford",
     "ator6": "Steve Guttenberg",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/15YjXIDavYHiWFdat1qVLq94VWg0urBfF",
@@ -2164,7 +2164,7 @@ const filmes = [
     "ator4": "Albert Brooks",
     "ator5": "Oscar Isaac",
     "ator6": "Christina Hendricks",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1Fn2CEt8quya-YccBkf0LhYTPjM7n8K-w",
@@ -2346,7 +2346,7 @@ const filmes = [
     "ator4": "Willem Dafoe",
     "ator5": "Dean Winters",
     "ator6": "Adrianne Palicki",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1FZ8SF8hl_ACEhbZC5qmxuBJbInYBY7-M",
@@ -2580,7 +2580,7 @@ const filmes = [
     "ator4": "Wendell Pierce",
     "ator5": "Clifton Collins Jr.",
     "ator6": "Bobby Cannavale",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1jTYP3MMwEzpJK8kU46DAbch7GfD38Q4j",
@@ -2606,7 +2606,7 @@ const filmes = [
     "ator4": "Matt Lucas",
     "ator5": "Ruby O. Fee",
     "ator6": "Robert Maillet",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1Vtj00qwlwbqOVycKzT11LQtIRCwnhq8p",
@@ -2710,7 +2710,7 @@ const filmes = [
     "ator4": "Bill Paxton",
     "ator5": "Tia Carrere",
     "ator6": "Art Malik",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1BGQNfkCHhwPufEWMGHvm72D1cZ8YeufZ",
@@ -2814,7 +2814,7 @@ const filmes = [
     "ator4": "Andrea Riseborough",
     "ator5": "Nikolaj Coster-Waldau",
     "ator6": "Melissa Leo",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1oagNzU6jC5x9RAlC8ia38bgM8z0HVVcV",
@@ -3488,7 +3488,7 @@ const filmes = [
     "ator4": "Mariel Hemingway",
     "ator5": "Meryl Streep",
     "ator6": "Anne Byrne",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1qnXB6x6R0tnKLOyGYAuUa_67AGC97xR2",
@@ -4506,7 +4506,7 @@ const filmes = [
     "ator4": "Lima Duarte",
     "ator5": "Marco Nanini",
     "ator6": "Fernanda Montenegro",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1e7PwUWKqjSxtZfIa-k6BpB1fQOr1UpPB",
@@ -5114,7 +5114,7 @@ const filmes = [
     "ator4": "Maria Ribeiro",
     "ator5": "Milhem Cortaz",
     "ator6": "Fernanda Machado",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1MKGkDKgrF_tMsFBnKTB6ZtN_iz1fcy3q",
@@ -5490,7 +5490,7 @@ const filmes = [
     "ator4": "Nancy Marchand",
     "ator5": "John Wood",
     "ator6": "Richard Crenna",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1gW1BjzorBMpOdTFwn7o6kU2aWsiuepNG",
@@ -5594,7 +5594,7 @@ const filmes = [
     "ator4": "Géraldine Pailhas",
     "ator5": "Bob Dishy",
     "ator6": "Rachel Ticotin",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1Pe8-nVU5OnFn55GKQEtztkrODzodarAs",
@@ -5646,7 +5646,7 @@ const filmes = [
     "ator4": "Cynthia Rhodes",
     "ator5": "Jack Weston",
     "ator6": "Jane Brucker",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/14My63UOXXwxzOGBu7iDv0rxrYv3y4Cpt",
@@ -5672,7 +5672,7 @@ const filmes = [
     "ator4": "Sunny Johnson",
     "ator5": "Kyle T. Heffner",
     "ator6": "Lee Ving",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1l6zZMIC2_sz_EcIY8xWcunFjZ9opVUua",
@@ -5698,7 +5698,7 @@ const filmes = [
     "ator4": "Andie MacDowell",
     "ator5": "Miles Teller",
     "ator6": "Ser'Darius Blain",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1AcGo5jEmxrMjzvW3oS-o928Mc3Y--fWH",
@@ -5750,7 +5750,7 @@ const filmes = [
     "ator4": "Jeff Conaway",
     "ator5": "Barry Pearl",
     "ator6": "Didi Conn",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/15fFBENC1p5eCs6YkwY6VMyc95l2e8WHa",
@@ -5776,7 +5776,7 @@ const filmes = [
     "ator4": "Stellan Skarsgård",
     "ator5": "Julie Walters",
     "ator6": "Christine Baranski",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1xLY9RAFBzzy9ZEgrAMWb4VvzCN5TbQBR",
@@ -5802,7 +5802,7 @@ const filmes = [
     "ator4": "Jim Broadbent",
     "ator5": "Richard Roxburgh",
     "ator6": "Garry McDonald",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1r5gz4oJKGnQthy1RbFsW1G7J9OiF25Ag",
@@ -5854,7 +5854,7 @@ const filmes = [
     "ator4": "James Sloyan",
     "ator5": "Dimitri Logothetis",
     "ator6": null,
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1aNYfpx6FYX9VLh4wByKfLqkFvvRPihEJ",
@@ -5880,7 +5880,7 @@ const filmes = [
     "ator4": "Nia Long",
     "ator5": "Miles Teller",
     "ator6": "KeiLyn Durrel Jones",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1NA2GvewZTx_nWbybUFfpkZUXbQT7qY8y",
@@ -6077,7 +6077,7 @@ const filmes = [
     "ator4": "Idris Elba",
     "ator5": "Logan Marshall-Green",
     "ator6": "Charlize Theron",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/13h6HhJJNz2_lUVuB8j5LcIkGzcZpiJRe",
@@ -6719,7 +6719,7 @@ const filmes = [
     "ator4": "John Goodman",
     "ator5": "Victor Garber",
     "ator6": "Tate Donovan",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1X0zyxQt3nqB991_Y3-DkYOJxvZECG2Xp",
@@ -7583,7 +7583,7 @@ const filmes = [
     "ator4": "Morris Birdyellowhead",
     "ator5": "Carlos Emilio Báez",
     "ator6": "Amílcar Ramírez",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1kWJ-jM8ZGkkPqUAaM8slgxFv7Na6_t9Q",
@@ -8507,7 +8507,7 @@ const filmes = [
     "ator4": "Abbie Cornish",
     "ator5": "Jackie Earle Haley",
     "ator6": "Samuel L. Jackson",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1dBj0EqY6nok1Lm8q2RbYuSnnyhsNtoD_",
@@ -8855,7 +8855,7 @@ const filmes = [
     "ator4": "Richard Attenborough",
     "ator5": "Bob Peck",
     "ator6": "Martin Ferrero",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1jgQ2dkhbeimBVkiWLzXpFMk1k2CMvI-4",
@@ -8919,7 +8919,7 @@ const filmes = [
     "ator4": "Alessandro Nivola",
     "ator5": "Trevor Morgan",
     "ator6": "Michael Jeter",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/19XLvE4mSA_VmG6oDIBACBgfj4DNT1p-N",
@@ -10241,7 +10241,7 @@ const filmes = [
     "ator4": "Fred Willard",
     "ator5": "John Ratzenberger",
     "ator6": "Kathy Najimy",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/143qkUogYWvi3aUIhlrTNoMAHDVW81XL4",
@@ -10555,7 +10555,7 @@ const filmes = [
     "ator4": "Vladimir Khrulev",
     "ator5": "V. Lastochkin",
     "ator6": "Stanislav Marin",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1IZL6Yy3TlG3bEzxwZnWN0SCI2lI17EsZ",
@@ -10587,7 +10587,7 @@ const filmes = [
     "ator4": "Jinpachi Nezu",
     "ator5": "Hideji Otaki",
     "ator6": "Daisuke Ryu",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1JzJPaGezVnvgGCxmqDNEpRX7VPgqDvP9",
@@ -10651,7 +10651,7 @@ const filmes = [
     "ator4": "Daisuke Ryu",
     "ator5": "Mieko Harada",
     "ator6": "Yoshiko Miyazaki",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/16BIMrZ20kkaw8fNIYA25kXV0TFYxdnpD",
@@ -10747,7 +10747,7 @@ const filmes = [
     "ator4": "Tasanawalai Ogura",
     "ator5": "Ammara Siripong",
     "ator6": "Dechawut Chuntakaro",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1KiPfigrQRsoFHGwWvefmtuApZQtssG-D",
@@ -10779,7 +10779,7 @@ const filmes = [
     "ator4": "Tom Hollander",
     "ator5": "Olivia Williams",
     "ator6": "Jason Flemyng",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1dSVhXZx5vh-IUvhQxhAkIqOyJOaY_qYk",
@@ -10811,7 +10811,7 @@ const filmes = [
     "ator4": "Jeanne Moreau",
     "ator5": "Jean Reno",
     "ator6": "Jean Bouise",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1mXTf2PlezvHxc2H9Pr398bNCRuTeHIvk",
@@ -11439,7 +11439,7 @@ const filmes = [
     "ator4": "Jami Gertz",
     "ator5": "Philip Seymour Hoffman",
     "ator6": "Lois Smith",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1oTAFU5tLJCM9oW6QtUrcnMAeq7GnCAxP",
@@ -11503,7 +11503,7 @@ const filmes = [
     "ator4": "Corey Johnson",
     "ator5": "Trish Gates",
     "ator6": null,
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1G6H7SftPbyhmrJ7k-QY3GkG3UcpJrhCJ",
@@ -11631,7 +11631,7 @@ const filmes = [
     "ator4": "Valerie Mahaffey",
     "ator5": "Mike O'Malley",
     "ator6": "Jamey Sheridan",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/14o3Yf6ZYooU7Tc2OIFbqkQYkKGAdaBAp",
@@ -12111,7 +12111,7 @@ const filmes = [
     "ator4": "Tobias Menzies",
     "ator5": "Javier Bardem",
     "ator6": "Lewis Hamilton",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1PuskAOwW8-aRLmgOLwU9REsHeUK6111-",
@@ -12623,7 +12623,7 @@ const filmes = [
     "ator4": "Angie Dickinson",
     "ator5": "Walter Brennan",
     "ator6": "Ward Bond",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1KpQemeukSyUnP82E9Hmhj22apzNlWeW3",
@@ -12852,7 +12852,7 @@ const filmes = [
     "ator4": "Gino Pernice",
     "ator5": "Simón Arriaga",
     "ator6": null,
-    "nomeOriginal": null,
+    "nomeOriginal": " ",
     "artista": "Franco Nero"
   },
   {
@@ -13627,7 +13627,7 @@ const filmes = [
     "ator4": "Margot Kidder",
     "ator5": "Ned Beatty",
     "ator6": "Jackie Cooper",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1mmQdprG5JGkT8LqEiDXqRHl6_vv-TaVZ",
@@ -13659,7 +13659,7 @@ const filmes = [
     "ator4": "Patrick Wilson",
     "ator5": "Dolph Lundgren",
     "ator6": "Yahya Abdul-Mateen II",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1sOM9YAAPUG4NclxLKX9CIipXlkFGKIwi",
@@ -14465,7 +14465,7 @@ const filmes = [
     "ator4": "Will Sasso",
     "ator5": "Neda Margrethe Labba",
     "ator6": "Sergio Pablos",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1_Ag46KqBZHHNxRftNBBdGvYjhmLY1Zih",
@@ -14913,7 +14913,7 @@ const filmes = [
     "ator4": "Oleg Tabakov",
     "ator5": "Stella Zázvorková",
     "ator6": "Ladislav Smoljak",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1T-bevx7XmrbLO1X1v7fVs2NnBiWZv1I_",
@@ -14945,7 +14945,7 @@ const filmes = [
     "ator4": "Mare Winningham",
     "ator5": "Peter Hermann",
     "ator6": "Sean Mahon",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1lAID98si76Idg7reCsFCx73synsa9NCS",
@@ -15265,7 +15265,7 @@ const filmes = [
     "ator4": "Julie Christie",
     "ator5": "Richard Briers",
     "ator6": "Michael Maloney",
-    "nomeOriginal": null
+    "nomeOriginal": " "
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1u_lA1NZd6xp1ZnGycbCOZFR7ZpvPdP1D",
