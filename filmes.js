@@ -452,9 +452,15 @@ const filmes = [
     "sinopse": "Em Viena, o compositor da corte Antonio Salieri é consumido por uma inveja doentia ao testemunhar o talento divino de Wolfgang Amadeus Mozart, um gênio excêntrico e infantil. Determinado a destruir seu rival, Salieri inicia uma perigosa conspiração contra o próprio Deus que o ignorou.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Special Soundtrack",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
+      }
+    ],
     "diretor": "Milos Forman",
     "ator1": "F. Murray Abraham",
     "ator2": "Tom Hulce",
@@ -790,9 +796,15 @@ const filmes = [
     "sinopse": "A lenda definitiva do Rei Arthur renasce em uma atmosfera visual sombria, mística e violenta. Da retirada da espada mágica da pedra até a busca obsessiva pelo Santo Graal, o filme acompanha a ascensão e a trágica queda de Camelot sob o peso das paixões humanas.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Special Soundtrack",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
+      }
+    ],
     "diretor": "John Boorman",
     "ator1": "Nigel Terry",
     "ator2": "Helen Mirren",
@@ -868,9 +880,15 @@ const filmes = [
     "sinopse": "Uma experiência visual e musical hipnotizante, sem diálogos, que contrasta a beleza intocada da natureza com o ritmo caótico e acelerado da civilização moderna. Um documentário profético que provoca uma profunda reflexão sobre a vida em desequilíbrio.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Special Soundtrack",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
+      }
+    ],
     "diretor": "Godfrey Reggio",
     "ator1": "Edward Asner",
     "ator2": "Pat Benatar",
@@ -4574,9 +4592,15 @@ const filmes = [
     "sinopse": "Uma vigarista sedutora se une a três criminosos excêntricos para realizar um grande roubo de diamantes em Londres, desencadeando uma rede caótica de traições mútuas e situações absurdas. Uma das comédias de erro mais brilhantes e aclamadas do cinema.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Special Soundtrack",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
+      }
+    ],
     "diretor": "Charles Crichton",
     "ator1": "John Cleese",
     "ator2": "Jamie Lee Curtis",
@@ -7742,6 +7766,75 @@ const filmes = [
     "nomeOriginal": "Manchurian Candidate"
   },
   {
+    "capa": "https://lh3.googleusercontent.com/d/1HvjVfrDh_eq7jeid1QhPH25rbFaBmfPA",
+    "nome": "Era Uma Vez na América",
+    "ano": 1984,
+    "duracao": "3h 49m",
+    "gb": 7.5,
+    "local": "TR-600 Z+18",
+    "codec": "HEVC",
+    "perfilCor": null,
+    "presetElmedia": "B1 | S5 | C6 | G7 | H0 | Sh1.25.",
+    "situacao": null,
+    "sinopse": "Um ex-gângster judeu retorna a Nova York após décadas escondido e relembra sua juventude, a ascensão no crime organizado e as traições que destruíram seus amigos de infância. Um épico monumental e melancólico sobre o tempo e a perda.",
+    "genero": "Suspense",
+    "origem": "genero",
+    "colecaoTipo": "Coleção Special Soundtrack; Coleção X-Cinema Cult",
+    "ordem": null,
+    "diretor": "Sergio Leone",
+    "ator1": "Robert De Niro",
+    "ator2": "James Woods",
+    "ator3": "Elizabeth McGovern",
+    "ator4": "Joe Pesci",
+    "ator5": "Burt Young",
+    "ator6": "Tuesday Weld",
+    "nomeOriginal": "Once Upon a Time in America",
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção X-Cinema Cult",
+        "raw": "Coleção X-Cinema Cult"
+      }
+    ]
+  },
+  {
+    "capa": "https://lh3.googleusercontent.com/d/1E0m1iHhxepDU4j9F78tKWzOOU5EU9uMd",
+    "nome": "Laranja Mecânica",
+    "ano": 1971,
+    "duracao": "2h 16m",
+    "gb": 5.7,
+    "local": "TR-600 Z+18",
+    "codec": "HEVC",
+    "perfilCor": "HDR",
+    "presetElmedia": "B0 | S1 | C7 | G6 | H0 | Sh1",
+    "situacao": null,
+    "sinopse": "Em uma Grã-Bretanha futurista, o jovem líder de uma gangue de delinquentes ultra-violentos é capturado pela polícia e submetido a um controverso tratamento estatal de recondicionamento psicológico para erradicar seus impulsos criminosos. Uma obra-prima perturbadora.",
+    "genero": "Suspense",
+    "origem": "genero",
+    "colecaoTipo": "Coleção X-Cinema Cult",
+    "ordem": null,
+    "diretor": "Stanley Kubrick",
+    "ator1": "Malcolm McDowell",
+    "ator2": "Patrick Magee",
+    "ator3": "Michael Bates",
+    "ator4": "Warren Clarke",
+    "ator5": "John Clive",
+    "ator6": "Adrienne Corri",
+    "nomeOriginal": "A Clockwork Orange",
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção X-Cinema Cult",
+        "raw": "Coleção X-Cinema Cult"
+      }
+    ]
+  },
+  {
     "capa": "https://lh3.googleusercontent.com/d/1X48o7_4sziK5bSqHjJUOJQ0saU9BPhvY",
     "nome": "Thomas Crown - A Arte do Crime",
     "ano": 1999,
@@ -8211,9 +8304,15 @@ const filmes = [
     "sinopse": "Um detetive de polícia investiga o brutal assassinato de um astro do rock e se envolve com a principal suspeita, uma sedutora escritora de romances policiais. Ele entra em uma espiral de obsessão enquanto os crimes reais imitam os livros dela.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção X-Cinema Cult",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção X-Cinema Cult",
+        "raw": "Coleção X-Cinema Cult"
+      }
+    ],
     "diretor": "Paul Verhoeven",
     "ator1": "Michael Douglas",
     "ator2": "Sharon Stone",
@@ -8445,9 +8544,15 @@ const filmes = [
     "sinopse": "Durante a era da Lei Seca em Chicago, um obstinado agente federal monta uma equipe de policiais incorruptíveis para derrubar o império do crime do gângster Al Capone. Um clássico policial épico sobre justiça, sacrifício e determinação.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Special Soundtrack",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
+      }
+    ],
     "diretor": "Brian De Palma",
     "ator1": "Kevin Costner",
     "ator2": "Sean Connery",
@@ -9247,10 +9352,10 @@ const filmes = [
     "ano": 1990,
     "duracao": "02:50:15",
     "gb": 5.52,
-    "local": "HD -Tmac",
+    "local": null,
     "codec": "HEVC",
-    "perfilCor": "HDR 4K",
-    "presetElmedia": "B2 | S6 | C8 | G9 | H-1 | Sh1.5",
+    "perfilCor": null,
+    "presetElmedia": null,
     "situacao": null,
     "sinopse": "Envelhecido e consumido pela culpa de seus crimes passados, o Don Michael Corleone tenta desesperadamente legitimar os negócios da família e libertá-la do submundo do crime. Ele enfrenta a corrupção no Vaticano e precisa escolher um jovem e impetuoso sucessor para proteger seu legado.",
     "genero": "Cult-Favoritos",
@@ -9278,11 +9383,11 @@ const filmes = [
     "nome": "Coda - O Poderoso Chefão III - A Morte de Michael Corleone - Versão do Diretor",
     "ano": 2020,
     "duracao": "02:37:55",
-    "gb": 8.21,
+    "gb": null,
     "local": "HD-TR",
     "codec": "HEVC",
-    "perfilCor": null,
-    "presetElmedia": "B2 | S7 | C8 | G7 | H-3 | Sh1.5",
+    "perfilCor": "HDR 4K",
+    "presetElmedia": "B2 | S6 | C8 | G9 | H-1 | Sh1.5",
     "situacao": null,
     "sinopse": "Envelhecido e consumido pela culpa de seus crimes passados, o Don Michael Corleone tenta desesperadamente legitimar os negócios da família e libertá-la do submundo do crime. Ele enfrenta a corrupção no Vaticano e precisa escolher um jovem e impetuoso sucessor para proteger seu legado.",
     "genero": "Cult-Favoritos",
@@ -12671,13 +12776,18 @@ const filmes = [
     "sinopse": "Três pistoleiros sem escrúpulos cruzam caminhos no deserto durante a Guerra Civil Americana em busca de um carregamento de ouro roubado. Este é o auge do Westeen Spaguethi, famoso por sua tensão extrema e trilha sonora lendária.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Faroeste",
+    "colecaoTipo": "Coleção Faroeste; Coleção Special Soundtrack",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Faroeste",
         "raw": "Coleção Faroeste"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
       }
     ],
     "diretor": "Sergio Leone",
@@ -16759,9 +16869,14 @@ const filmes = [
     "sinopse": "Um casal à beira do divórcio decide passar um último fim de semana juntos, convidando seus respectivos amantes para jantar. Um jogo psicológico refinado, repleto de ciúmes, ironias ácidas e planos de reconquista regados a alta gastronomia.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Coleção X-Cinema Cult",
+    "colecaoTipo": "Coleção Special Soundtrack; Coleção X-Cinema Cult",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção X-Cinema Cult",
