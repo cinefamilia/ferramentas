@@ -16759,9 +16759,15 @@ const filmes = [
     "sinopse": "Um casal à beira do divórcio decide passar um último fim de semana juntos, convidando seus respectivos amantes para jantar. Um jogo psicológico refinado, repleto de ciúmes, ironias ácidas e planos de reconquista regados a alta gastronomia.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção X-Cinema Cult",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção X-Cinema Cult",
+        "raw": "Coleção X-Cinema Cult"
+      }
+    ],
     "diretor": "Luciano Salce",
     "ator1": "Ugo Tognazzi",
     "ator2": "Monica Vitti",
