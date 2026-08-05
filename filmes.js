@@ -6079,7 +6079,7 @@ const filmes = [
     "gb": 5.62,
     "local": "HD",
     "codec": "AV1",
-    "perfilCor": "HDR 4K",
+    "perfilCor": "HDR",
     "presetElmedia": "B0 | S-5 | C7 | G7 | H-3 | Sh1.2",
     "situacao": null,
     "sinopse": "Uma equipe de cientistas viaja aos confins do universo seguindo pistas sobre a origem da humanidade na Terra. Ao chegarem ao destino, eles encontram uma civilização avançada com planos aterrorizantes que colocam em risco o futuro de nossa espécie.",
