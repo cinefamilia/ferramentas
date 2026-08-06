@@ -2016,9 +2016,15 @@ const filmes = [
     "sinopse": "Um oficial da Marinha americana descobre que possui uma semelhança física idêntica à do terrorista mais procurado do planeta, conhecido como Carlos, o Chacal. Ele é recrutado para uma missão clandestina extrema: assumir o lugar do criminoso e destruí-lo por dentro.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Espionagem",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Espionagem",
+        "raw": "Coleção Espionagem"
+      }
+    ],
     "diretor": "John Woo",
     "ator1": "Nicolas Cage",
     "ator2": "John Travolta",
@@ -2068,9 +2074,15 @@ const filmes = [
     "sinopse": "Dois policiais de Nova York escoltam um perigoso assassino da Yakuza de volta ao Japão, mas o criminoso consegue escapar logo no desembarque. Eles entram em uma caçada implacável pelo submundo de Osaka, enfrentando um choque cultural violento e o crime organizado local.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Máfia",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Máfia",
+        "raw": "Coleção Máfia"
+      }
+    ],
     "diretor": "Ridley Scott",
     "ator1": "Michael Douglas",
     "ator2": "Andy García",
@@ -2172,9 +2184,15 @@ const filmes = [
     "sinopse": "Um dublê de Hollywood e piloto de fuga profissional vive no anonimato até se apaixonar por sua vizinha. Para proteger a moça e o filho dela de criminosos violentos, ele aceita um assalto perigoso que dá terrivelmente errado, liberando sua fúria oculta.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Submundo",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Submundo",
+        "raw": "Coleção Submundo"
+      }
+    ],
     "diretor": "Nicolas Winding Refn",
     "ator1": "Ryan Gosling",
     "ator2": "Carey Mulligan",
@@ -2328,9 +2346,15 @@ const filmes = [
     "sinopse": "Um homem é resgatado do mar baleado e sem memória, carregando apenas o número de uma conta bancária suíça implantado no quadril. Ele inicia uma busca desesperada por sua identidade enquanto foge de assassinos profissionais enviados por sua antiga agência.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Espionagem",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Espionagem",
+        "raw": "Coleção Espionagem"
+      }
+    ],
     "diretor": "Roger Young",
     "ator1": "Richard Chamberlain",
     "ator2": "Jaclyn Smith",
@@ -2458,9 +2482,15 @@ const filmes = [
     "sinopse": "Um assassino de elite solitário e analfabeto torna-se o protetor inesperado de uma garota de doze anos após a família dela ser chacinada por policiais corruptos. Enquanto ele a ensina os segredos de seu ofício, ela planeja uma vingança sangrenta contra o líder da gangue.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Submundo",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Submundo",
+        "raw": "Coleção Submundo"
+      }
+    ],
     "diretor": "Luc Besson",
     "ator1": "Jean Reno",
     "ator2": "Gary Oldman",
@@ -2484,9 +2514,15 @@ const filmes = [
     "sinopse": "Após ser traído por sua esposa e por seu parceiro em um assalto, um criminoso durão sobrevive aos tiros e retorna dos mortos para recuperar sua parte exata do dinheiro. Uma jornada violenta e sarcástica pelo submundo onde ele enfrenta mafiosos e policiais corruptos sem recuar um milímetro.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Submundo",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Submundo",
+        "raw": "Coleção Submundo"
+      }
+    ],
     "diretor": "Brian Helgeland",
     "ator1": "Mel Gibson",
     "ator2": "Gregg Henry",
@@ -6077,7 +6113,7 @@ const filmes = [
     "ano": 2012,
     "duracao": "02:03:46",
     "gb": 5.62,
-    "local": "HD",
+    "local": "HD-TR",
     "codec": "AV1",
     "perfilCor": "HDR",
     "presetElmedia": "B0 | S-5 | C7 | G7 | H-3 | Sh1.2",
@@ -6405,13 +6441,18 @@ const filmes = [
     "sinopse": "Após deixar a CIA para viver com a família, o analista Jack Ryan viaja a Londres e salva a realeza britânica de um violento atentado terrorista. O ato de bravura o transforma no alvo principal de uma facção extremista em uma caçada implacável que ameaça o seu próprio lar.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Jack Ryan",
+    "colecaoTipo": "Franquia - Jack Ryan; Coleção Espionagem",
     "ordem": "JR 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Jack Ryan",
         "raw": "Franquia - Jack Ryan"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Espionagem",
+        "raw": "Coleção Espionagem"
       }
     ],
     "diretor": "Phillip Noyce",
@@ -6437,13 +6478,18 @@ const filmes = [
     "sinopse": "Promovido a diretor da CIA, Jack Ryan investiga o assassinato de um empresário ligado ao presidente e descobre uma rede de corrupção envolvendo cartéis colombianos. Isolado nos bastidores políticos de Washington, ele precisa arriscar a vida em solo inimigo para resgatar uma equipe abandonada.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Jack Ryan",
+    "colecaoTipo": "Franquia - Jack Ryan; Coleção Espionagem",
     "ordem": "JR 02",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Jack Ryan",
         "raw": "Franquia - Jack Ryan"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Espionagem",
+        "raw": "Coleção Espionagem"
       }
     ],
     "diretor": "Phillip Noyce",
@@ -6733,9 +6779,15 @@ const filmes = [
     "sinopse": "Um especialista da CIA lidera uma missão perigosa disfarçado de produtor de Hollywood para resgatar seis diplomatas americanos escondidos no Irã durante a crise dos reféns em 1979. Um suspense político tenso baseado em uma inacreditável história real.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Espionagem",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Espionagem",
+        "raw": "Coleção Espionagem"
+      }
+    ],
     "diretor": "Ben Affleck",
     "ator1": "Ben Affleck",
     "ator2": "Bryan Cranston",
@@ -6837,9 +6889,15 @@ const filmes = [
     "sinopse": "Um taxista comum de Los Angeles vive uma noite de pesadelo ao ser feito refém por um assassino de aluguel frio e calculista. Ele é forçado a dirigir pela cidade servindo de motorista para uma série de execuções planejadas antes do amanhecer.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Submundo",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Submundo",
+        "raw": "Coleção Submundo"
+      }
+    ],
     "diretor": "Michael Mann",
     "ator1": "Tom Cruise",
     "ator2": "Jamie Foxx",
@@ -6993,9 +7051,15 @@ const filmes = [
     "sinopse": "Um homem misterioso e frio consegue emprego em uma empresa de carros-fortes em Los Angeles que foi alvo recente de um assalto mortal. Suas habilidades letais vêm à tona durante uma tentativa de roubo, revelando um plano implacável de vingança pessoal.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Submundo",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Submundo",
+        "raw": "Coleção Submundo"
+      }
+    ],
     "diretor": "Guy Ritchie",
     "ator1": "Jason Statham",
     "ator2": "Holt McCallany",
@@ -7123,9 +7187,15 @@ const filmes = [
     "sinopse": "Um mafioso de baixo escalão é encarregado de se livrar da arma que matou policiais corruptos, mas o item é roubado pelo melhor amigo de seu filho. O jovem atira no padrasto abusivo, desencadeando uma noite frenética de caçada urbana pela sobrevivência.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Submundo",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Submundo",
+        "raw": "Coleção Submundo"
+      }
+    ],
     "diretor": "Wayne Kramer",
     "ator1": "Paul Walker",
     "ator2": "Cameron Bright",
@@ -7149,9 +7219,15 @@ const filmes = [
     "sinopse": "Uma bailarina russa é forçada a entrar para uma escola governamental secreta de espiões que usam a sedução como arma mortal. Sua primeira missão envolve um agente da CIA e testa os limites de sua lealdade em um perigoso jogo de traição.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Espionagem",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Espionagem",
+        "raw": "Coleção Espionagem"
+      }
+    ],
     "diretor": "Francis Lawrence",
     "ator1": "Jennifer Lawrence",
     "ator2": "Joel Edgerton",
@@ -7383,9 +7459,15 @@ const filmes = [
     "sinopse": "Um oficial da marinha americana aceita um cargo de confiança no Pentágono e se envolve romanticamente com uma mulher misteriosa que mantém um caso com o Secretário de Defesa. Quando ela é assassinada, ele é encarregado de liderar a investigação do próprio crime.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Espionagem",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Espionagem",
+        "raw": "Coleção Espionagem"
+      }
+    ],
     "diretor": "Roger Donaldson",
     "ator1": "Kevin Costner",
     "ator2": "Gene Hackman",
@@ -7779,7 +7861,7 @@ const filmes = [
     "sinopse": "Um ex-gângster judeu retorna a Nova York após décadas escondido e relembra sua juventude, a ascensão no crime organizado e as traições que destruíram seus amigos de infância. Um épico monumental e melancólico sobre o tempo e a perda.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Special Soundtrack; Coleção X-Cinema Cult",
+    "colecaoTipo": "Coleção Special Soundtrack; Coleção X-Cinema Cult; Coleção Máfia",
     "ordem": null,
     "diretor": "Sergio Leone",
     "ator1": "Robert De Niro",
@@ -7799,6 +7881,11 @@ const filmes = [
         "tipo": "Coleção",
         "nome": "Coleção X-Cinema Cult",
         "raw": "Coleção X-Cinema Cult"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Máfia",
+        "raw": "Coleção Máfia"
       }
     ]
   },
@@ -8544,13 +8631,18 @@ const filmes = [
     "sinopse": "Durante a era da Lei Seca em Chicago, um obstinado agente federal monta uma equipe de policiais incorruptíveis para derrubar o império do crime do gângster Al Capone. Um clássico policial épico sobre justiça, sacrifício e determinação.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": "Coleção Special Soundtrack",
+    "colecaoTipo": "Coleção Special Soundtrack; Coleção Máfia",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Special Soundtrack",
         "raw": "Coleção Special Soundtrack"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Máfia",
+        "raw": "Coleção Máfia"
       }
     ],
     "diretor": "Brian De Palma",
@@ -9296,13 +9388,18 @@ const filmes = [
     "sinopse": "O patriarca de uma poderosa dinastia do crime organizado sobrevive a um atentado, desencadeando uma violenta guerra pelo poder em Nova York. Seu filho caçula, um herói de guerra idealista, é forçado a assumir os negócios da família e inicia sua transformação em um chefe implacável.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - O Poderoso Chefão",
+    "colecaoTipo": "Franquia - O Poderoso Chefão; Coleção Máfia",
     "ordem": "PC 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "O Poderoso Chefão",
         "raw": "Franquia - O Poderoso Chefão"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Máfia",
+        "raw": "Coleção Máfia"
       }
     ],
     "diretor": "Francis Ford Coppola",
@@ -9328,13 +9425,18 @@ const filmes = [
     "sinopse": "A saga se divide entre a juventude do jovem Vito Corleone construindo seu império criminoso na Nova York dos anos 1920 e a consolidação de seu filho Michael como o novo Don na década de 1950. Uma obra-prima épica sobre o preço do poder e a destruição dos laços familiares.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - O Poderoso Chefão",
+    "colecaoTipo": "Franquia - O Poderoso Chefão; Coleção Máfia",
     "ordem": "PC 02",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "O Poderoso Chefão",
         "raw": "Franquia - O Poderoso Chefão"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Máfia",
+        "raw": "Coleção Máfia"
       }
     ],
     "diretor": "Francis Ford Coppola",
@@ -9360,13 +9462,18 @@ const filmes = [
     "sinopse": "Envelhecido e consumido pela culpa de seus crimes passados, o Don Michael Corleone tenta desesperadamente legitimar os negócios da família e libertá-la do submundo do crime. Ele enfrenta a corrupção no Vaticano e precisa escolher um jovem e impetuoso sucessor para proteger seu legado.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - O Poderoso Chefão",
+    "colecaoTipo": "Franquia - O Poderoso Chefão; Coleção Máfia",
     "ordem": "PC 03",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "O Poderoso Chefão",
         "raw": "Franquia - O Poderoso Chefão"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Máfia",
+        "raw": "Coleção Máfia"
       }
     ],
     "diretor": "Francis Ford Coppola",
@@ -9392,13 +9499,18 @@ const filmes = [
     "sinopse": "Envelhecido e consumido pela culpa de seus crimes passados, o Don Michael Corleone tenta desesperadamente legitimar os negócios da família e libertá-la do submundo do crime. Ele enfrenta a corrupção no Vaticano e precisa escolher um jovem e impetuoso sucessor para proteger seu legado.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - O Poderoso Chefão",
+    "colecaoTipo": "Franquia - O Poderoso Chefão; Coleção Máfia",
     "ordem": "PC 04",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "O Poderoso Chefão",
         "raw": "Franquia - O Poderoso Chefão"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Máfia",
+        "raw": "Coleção Máfia"
       }
     ],
     "diretor": "Francis Ford Coppola",
