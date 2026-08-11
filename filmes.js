@@ -1427,7 +1427,7 @@ const filmes = [
     "local": "HD",
     "codec": "HEVC",
     "perfilCor": "HDR 4K",
-    "presetElmedia": "B0 | S11 | C11 | G8 | H0 | Sh1.5",
+    "presetElmedia": "B1 | S7 | C10 | G10 | H0 | Sh1.5",
     "situacao": "F",
     "sinopse": "O destemido arqueólogo Indiana Jones é contratado pelo governo americano para encontrar a lendária Arca da Aliança antes dos nazistas. Uma corrida contra o tempo repleta de armadilhas mortais, cobras e confrontos explosivos que definiu o cinema de aventura.",
     "genero": "Ação",
@@ -7898,8 +7898,8 @@ const filmes = [
     "local": "TR-600 Z+18",
     "codec": "HEVC",
     "perfilCor": "HDR",
-    "presetElmedia": "B0 | S1 | C7 | G6 | H0 | Sh1",
-    "situacao": null,
+    "presetElmedia": "B1 | S1 | C7 | G8 | H0 | Sh1.5",
+    "situacao": "F",
     "sinopse": "Em uma Grã-Bretanha futurista, o jovem líder de uma gangue de delinquentes ultra-violentos é capturado pela polícia e submetido a um controverso tratamento estatal de recondicionamento psicológico para erradicar seus impulsos criminosos. Uma obra-prima perturbadora.",
     "genero": "Suspense",
     "origem": "genero",
@@ -10428,9 +10428,15 @@ const filmes = [
     "sinopse": "Um ex-traficante tenta se manter na legalidade, mas é pressionado por um antigo parceiro a realizar um último grande carregamento de drogas. A situação se complica quando seu melhor amigo de infância, agora um policial dedicado, é encarregado de prendê-lo.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Special Soundtrack",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
+      }
+    ],
     "diretor": "Robert Towne",
     "ator1": "Mel Gibson",
     "ator2": "Michelle Pfeiffer",
