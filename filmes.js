@@ -16023,13 +16023,18 @@ const filmes = [
     "sinopse": "Quatro amigos inseparáveis em Florença enfrentam a crise da meia-idade pregando trotes cruéis e hilários em suas famílias e na vizinhança. Uma comédia italiana clássica sobre amizade, nostalgia e a recusa absoluta em amadurecer.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Franquia - Caros Amigos",
+    "colecaoTipo": "Franquia - Caros Amigos; Coleção I-CM",
     "ordem": "CA 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Caros Amigos",
         "raw": "Franquia - Caros Amigos"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
       }
     ],
     "diretor": "Mario Monicelli",
@@ -16055,13 +16060,18 @@ const filmes = [
     "sinopse": "Após a morte de um dos membros do grupo, os amigos restantes se reúnem no cemitério para relembrar o passado. O luto logo se transforma em combustível para uma nova rodada de pegadinhas inesquecíveis e confusões repletas de humor negro.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Franquia - Caros Amigos",
+    "colecaoTipo": "Franquia - Caros Amigos; Coleção I-CM",
     "ordem": "CA 02",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Caros Amigos",
         "raw": "Franquia - Caros Amigos"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
       }
     ],
     "diretor": "Mario Monicelli",
@@ -16087,13 +16097,18 @@ const filmes = [
     "sinopse": "Mesmo mais velhos e com um dos integrantes internado em uma clínica geriátrica, o infatigável grupo de amigos não perde a irreverência. Eles transformam o asilo no palco principal para seus trotes mais ambiciosos, ousados e politicamente incorretos.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Franquia - Caros Amigos",
+    "colecaoTipo": "Franquia - Caros Amigos; Coleção I-CM",
     "ordem": "CA 03",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Caros Amigos",
         "raw": "Franquia - Caros Amigos"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
       }
     ],
     "diretor": "Nanni Loy",
@@ -16119,13 +16134,18 @@ const filmes = [
     "sinopse": "A icônica e genial história de criminosos amadores que se unem para realizar o assalto perfeito, mas falham comicamente em cada detalhe. O marco definitivo da \"Comédia à Italiana\" que equilibra perfeitamente a sátira social com risadas garantidas.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Franquia - Eternos Desconhecidos",
+    "colecaoTipo": "Franquia - Eternos Desconhecidos; Coleção I-CM",
     "ordem": "ED 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Eternos Desconhecidos",
         "raw": "Franquia - Eternos Desconhecidos"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
       }
     ],
     "diretor": "Mario Monicelli",
@@ -16151,13 +16171,18 @@ const filmes = [
     "sinopse": "A carismática gangue de trapalhões se reúne para um novo e ambicioso roubo a um carro-forte em Milão. Uma sequência brilhante da comédia italiana clássica que mistura planos mirabolantes, personagens excêntricos e confusões hilárias de alta qualidade.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Franquia - Eternos Desconhecidos",
+    "colecaoTipo": "Franquia - Eternos Desconhecidos; Coleção I-CM",
     "ordem": "ED 02",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Eternos Desconhecidos",
         "raw": "Franquia - Eternos Desconhecidos"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
       }
     ],
     "diretor": "Nanni Loy",
@@ -16183,13 +16208,18 @@ const filmes = [
     "sinopse": "Uma ácida e brilhante antologia de esquetes que escancara o egoísmo, a hipocrisia e os pequenos monstros morais da Itália do milagre econômico. Uma das comédias mais influentes do cinema europeu, recheada de atuações magistrais e humor negro afiadíssimo.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Franquia - Os Monstros",
+    "colecaoTipo": "Franquia - Os Monstros; Coleção I-ECM",
     "ordem": "OM 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Os Monstros",
         "raw": "Franquia - Os Monstros"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-ECM",
+        "raw": "Coleção I-ECM"
       }
     ],
     "diretor": "Dino Risi",
@@ -16215,13 +16245,18 @@ const filmes = [
     "sinopse": "A continuação direta do clássico satírico, atualizando as mesquinharias e absurdos da sociedade italiana para o final dos anos 70. Dividido em episódios rápidos e implacáveis, o filme entrega piadas visuais geniais e uma crítica social mordaz e atemporal.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Franquia - Os Monstros",
+    "colecaoTipo": "Franquia - Os Monstros; Coleção I-ECM",
     "ordem": "OM 02",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Os Monstros",
         "raw": "Franquia - Os Monstros"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-ECM",
+        "raw": "Coleção I-ECM"
       }
     ],
     "diretor": "Dino Risi",
@@ -16247,13 +16282,18 @@ const filmes = [
     "sinopse": "Um charmoso marechal de meia-idade é transferido para uma pacata vila italiana e se vê dividido entre uma jovem impetuosa e uma parteira local. Uma comédia romântica vibrante e cheia de frescor que marcou o início do neorrealismo rosa no cinema.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Franquia - Pão, Amor",
+    "colecaoTipo": "Franquia - Pão, Amor; Coleção I-CL",
     "ordem": "PA 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Pão, Amor",
         "raw": "Franquia - Pão, Amor"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
       }
     ],
     "diretor": "Luigi Comencini",
@@ -16279,13 +16319,18 @@ const filmes = [
     "sinopse": "A continuação das confusões românticas em um vilarejo italiano, onde mal-entendidos, fofocas locais e crises de ciúmes ameaçam os noivados dos moradores. Uma sátira adorável sobre os costumes rurais com atuações carismáticas e diálogos rápidos.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Franquia - Pão, Amor",
+    "colecaoTipo": "Franquia - Pão, Amor; Coleção I-CL",
     "ordem": "PA 02",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Pão, Amor",
         "raw": "Franquia - Pão, Amor"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
       }
     ],
     "diretor": "Luigi Comencini",
@@ -16311,13 +16356,18 @@ const filmes = [
     "sinopse": null,
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Franquia - Pão, Amor",
+    "colecaoTipo": "Franquia - Pão, Amor; Coleção I-CL",
     "ordem": "PA 03",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Pão, Amor",
         "raw": "Franquia - Pão, Amor"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
       }
     ],
     "diretor": "Dino Risi",
@@ -16343,9 +16393,15 @@ const filmes = [
     "sinopse": "Um jornalista cínico acompanha a elite decadente, celebridades e escândalos nas noites luxuosas de Roma enquanto busca um sentido para sua própria vida. O clássico definitivo do cinema que definiu uma era com sua atmosfera magnética e inesquecível.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Federico Fellini",
     "ator1": "Marcello Mastroianni",
     "ator2": "Anita Ekberg",
@@ -16369,9 +16425,15 @@ const filmes = [
     "sinopse": "Após ser seduzida e abandonada em sua vila na Sicília, uma jovem armada viaja até a Inglaterra disposta a lavar sua honra com sangue. O choque cultural com a modernidade londrina transforma sua missão de vingança em uma jornada de libertação feminina.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Mario Monicelli",
     "ator1": "Monica Vitti",
     "ator2": "Stanley Baker",
@@ -16395,9 +16457,15 @@ const filmes = [
     "sinopse": "Um jornalista veterano reflete sobre sua juventude e seus amores enquanto transita pelas festas luxuosas e decadentes da alta sociedade de Roma. Uma obra-prima visual deslumbrante e melancólica sobre a passagem do tempo e a busca pelo sentido da arte.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-MD",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-MD",
+        "raw": "Coleção I-MD"
+      }
+    ],
     "diretor": "Paolo Sorrentino",
     "ator1": "Toni Servillo",
     "ator2": "Carlo Verdone",
@@ -16421,9 +16489,15 @@ const filmes = [
     "sinopse": "Três homens humildes e honestos encontram uma placa original de impressão de dinheiro e decidem fabricar notas falsas para sair da miséria. Uma comédia hilária e cativante que equilibra o desespero financeiro com a integridade moral dos personagens.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Camillo Mastrocinque",
     "ator1": "Totò",
     "ator2": "Peppino De Filippo",
@@ -16447,9 +16521,15 @@ const filmes = [
     "sinopse": "Para se vingar da infidelidade do marido, uma mulher arquiteta um plano mirabolante para traí-lo de forma milimetricamente calculada. Uma comédia de erros vibrante que satiriza o machismo e as hipocrisias dos arranjos matrimoniais da Itália dos anos 60.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Pasquale Festa Campanile",
     "ator1": "Nino Manfredi",
     "ator2": "Catherine Spaak",
@@ -16473,9 +16553,15 @@ const filmes = [
     "sinopse": "Dois homens com personalidades opostas cruzam a Itália em um carro esporte durante um feriado de verão, transformando uma carona casual em uma jornada de excessos e descobertas. O retrato definitivo do milagre econômico italiano, unindo humor vibrante e reflexão profunda.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Dino Risi",
     "ator1": "Vittorio Gassman",
     "ator2": "Jean-Louis Trintignant",
@@ -16499,9 +16585,15 @@ const filmes = [
     "sinopse": "Quatro histórias divertidas focadas em mulheres ricas, extravagantes e manipuladoras que colocam a vida de seus parceiros de cabeça para baixo. Uma produção luxuosa que mistura sátira social com o charme irresistível das grandes divas da época.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-ECM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-ECM",
+        "raw": "Coleção I-ECM"
+      }
+    ],
     "diretor": "Mauro Bolognini",
     "ator1": "Monica Vitti",
     "ator2": "Claudia Cardinale",
@@ -16525,9 +16617,15 @@ const filmes = [
     "sinopse": "Dois homens paupérrimos aceitam se passar por parentes nobres de um jovem rico para impressionar a família da noiva dele. Uma farsa teatral clássica e hilária, repleta de confusões por comida e disfarces absurdos que consagram o humor italiano.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Mattoli Mario",
     "ator1": "Totò",
     "ator2": "Sophia Loren",
@@ -16551,9 +16649,15 @@ const filmes = [
     "sinopse": "Um grupo de turistas italianos ricaços e excêntricos vira suspeito do assassinato de uma milionária em Monte Carlo. Uma comédia satírica e intrigante que ironiza os costumes da alta sociedade através de mentiras cruzadas e muito mistério.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Mario Camerini",
     "ator1": "Alberto Sordi",
     "ator2": "Vittorio Gassman",
@@ -16577,9 +16681,15 @@ const filmes = [
     "sinopse": "Desesperado para se casar com a jovem prima, um nobre siciliano arquiteta um plano absurdo para forçar sua atual esposa a traí-lo, permitindo um crime de honra. Uma obra-prima do humor negro que critica as leis e hipocrisias da época.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Pietro Germi",
     "ator1": "Marcello Mastroianni",
     "ator2": "Daniela Rocca",
@@ -16603,9 +16713,15 @@ const filmes = [
     "sinopse": "Uma brilhante antologia dividida em episódios que ironiza os hábitos, defeitos e excentricidades da sociedade italiana dos anos 60. Uma comédia ágil e mordaz que retrata desde a burocracia até a obsessão familiar com um humor tipicamente italiano.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-ECL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-ECL",
+        "raw": "Coleção I-ECL"
+      }
+    ],
     "diretor": "Nanni Loy",
     "ator1": "Lando Buzzanca",
     "ator2": "Walter Chiari",
@@ -16629,9 +16745,15 @@ const filmes = [
     "sinopse": "O rei absolutista de Nápoles tenta manter sua coroa fingindo ser um homem do povo, recorrendo a disfarces e mentiras hilárias. Uma comédia histórica brilhante que ridiculariza a monarquia, a vaidade do poder e os absurdos da burocracia estatal.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Gianni Franciolini",
     "ator1": "Peppino De Filippo",
     "ator2": "Eduardo De Filippo",
@@ -16655,9 +16777,15 @@ const filmes = [
     "sinopse": "Um empresário rico e acostumado a conseguir tudo o que quer vira refém dos caprichos e chantagens de uma adolescente sedutora de 17 anos. Uma sátira mordaz sobre a obsessão masculina, a perda de controle e as aparências sociais burguesas.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Franco Giraldi",
     "ator1": "Ugo Tognazzi",
     "ator2": "Isabella Rei",
@@ -16681,9 +16809,15 @@ const filmes = [
     "sinopse": "Na noite de Ano Novo em Roma, dois figurantes de cinema azarados cruzam o caminho de um ladrão profissional em busca de golpes fáceis. Uma comédia agridoce e frenética que une grandes astros em uma jornada hilária e melancólica pela madrugada.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Mario Monicelli",
     "ator1": "Anna Magnani",
     "ator2": "Totò",
@@ -16707,9 +16841,15 @@ const filmes = [
     "sinopse": "Um bom funcionário de fábrica viaja com a família para sua terra natal na Sicília para apresentar a esposa aos parentes. O que era para ser uma viagem de férias se transforma em um pesadelo quando o passado e as antigas cobranças da máfia local batem à sua porta.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Alberto Lattuada",
     "ator1": "Alberto Sordi",
     "ator2": "Norma Bengell",
@@ -16733,9 +16873,15 @@ const filmes = [
     "sinopse": "Uma jovem italiana viaja para Nova York para reencontrar o noivo, mas fica presa na alfândega por se recusar a abrir mão de uma mortadela. O incidente vira um circo mediático, transformando uma simples viagem em uma sátira hilária sobre Choque cultural.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Mario Monicelli",
     "ator1": "Sophia Loren",
     "ator2": "William Devane",
@@ -16759,9 +16905,15 @@ const filmes = [
     "sinopse": "Uma única e brilhante atriz interpreta doze mulheres diferentes em esquetes que satirizam o universo feminino na Itália moderna. Uma comédia vibrante sobre as contradições, neuroses, forças e fraquezas das mulheres diante das pressões sociais.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-ECL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-ECL",
+        "raw": "Coleção I-ECL"
+      }
+    ],
     "diretor": "Dino Risi",
     "ator1": "Monica Vitti",
     "ator2": "Enrico Maria Salerno",
@@ -16785,9 +16937,15 @@ const filmes = [
     "sinopse": "Três amigos ideais e apaixonados pela mesma mulher seguem caminhos opostos após a Segunda Guerra Mundial. Um retrato emocionante de trinta anos da história italiana que mistura nostalgia, desilusão política e a força inabalável do afeto.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Ettore Scola",
     "ator1": "Vittorio Gassman",
     "ator2": "Nino Manfredi",
@@ -16811,9 +16969,15 @@ const filmes = [
     "sinopse": "Uma jovem decide terminar seu noivado e mergulha em um novo e complexo romance com um corretor de valores ambicioso. Uma obra-prima visual que explora o vazio existencial, o materialismo moderno e o desencontro afetivo nas paisagens urbanas de Roma.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Michelangelo Antonioni",
     "ator1": "Alain Delon",
     "ator2": "Monica Vitti",
@@ -16837,9 +17001,15 @@ const filmes = [
     "sinopse": "Um cavaleiro atrapalhado e falido lidera um exército de maltrapilhos em uma jornada absurda para reivindicar um feudo distante. Uma paródia genial dos contos medievais que revolucionou o gênero com sua linguagem inventiva e humor escrachado.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Mario Monicelli",
     "ator1": "Vittorio Gassman",
     "ator2": "Catherine Spaak",
@@ -16863,9 +17033,15 @@ const filmes = [
     "sinopse": "Várias histórias de clientes e funcionários se cruzam durante uma única noite nas mesas de um tradicional restaurante romano. Uma comédia dramática envolvente que serve como um banquete de reflexões sobre a vida, os segredos e as relações humanas.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Ettore Scola",
     "ator1": "Fanny Ardant",
     "ator2": "Stefania Sandrelli",
@@ -16889,9 +17065,15 @@ const filmes = [
     "sinopse": "Um solteirão convicto se casa com uma jovem religiosa e descobre que ela esconde uma personalidade controladora e obsessiva pela procriação. Uma comédia ácida e polêmica que satiriza o casamento tradicional e os papéis de gênero com extrema inteligência.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Marco Ferreri",
     "ator1": "Ugo Tognazzi",
     "ator2": "Marina Vlady",
@@ -16915,9 +17097,15 @@ const filmes = [
     "sinopse": "Um nobre romano do século XIX passa os dias aplicando trotes extravagantes e cruéis na corte e nos plebeus. Uma comédia histórica irreverente sobre o abuso de poder, a aristocracia decadente e a busca incansável por diversão a qualquer custo.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Mario Monicelli",
     "ator1": "Alberto Sordi",
     "ator2": "Paolo Stoppa",
@@ -16941,9 +17129,15 @@ const filmes = [
     "sinopse": "Um cinquentão bem-sucedido entra em crise de meia-idade ao se apaixonar perdidamente por uma jovem estudante e rebelde de dezenove anos. Uma comédia ágil e divertida sobre o choque geracional e as tentativas desesperadas de manter a juventude.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Dino Risi",
     "ator1": "Vittorio Gassman",
     "ator2": "Ann-Margret",
@@ -16967,9 +17161,15 @@ const filmes = [
     "sinopse": "Um empresário incompetente e endividado sonha com a morte de sua esposa rica e dominadora para herdar sua fortuna. Quando um acidente de trem acontece, ele acredita estar livre, iniciando uma comédia de humor negro refinada sobre ganância e aparências.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Dino Risi",
     "ator1": "Alberto Sordi",
     "ator2": "Franca Valeri",
@@ -16993,9 +17193,15 @@ const filmes = [
     "sinopse": "Um modesto funcionário de escritório se vê sustentado por uma mulher rica e controladora, invertendo os papéis sociais tradicionais. Uma comédia ácida e divertida que satiriza o orgulho masculino, a dependência financeira e as convenções românticas.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Ugo Tognazzi",
     "ator1": "Ugo Tognazzi",
     "ator2": "Ilaria Occhini",
@@ -17019,9 +17225,15 @@ const filmes = [
     "sinopse": "Esquecida pela família em uma excursão de ônibus, uma dona de casa decide recomeçar a vida sozinha na mágica cidade de Veneza. Uma comédia romântica leve, poética e premiada que exalta a liberdade individual, novas amizades e as surpresas do destino.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-MD",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-MD",
+        "raw": "Coleção I-MD"
+      }
+    ],
     "diretor": "Silvio Soldini",
     "ator1": "Licia Maglietta",
     "ator2": "Bruno Ganz",
@@ -17045,7 +17257,7 @@ const filmes = [
     "sinopse": "Um casal à beira do divórcio decide passar um último fim de semana juntos, convidando seus respectivos amantes para jantar. Um jogo psicológico refinado, repleto de ciúmes, ironias ácidas e planos de reconquista regados a alta gastronomia.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Coleção Special Soundtrack; Coleção X-Cinema Cult",
+    "colecaoTipo": "Coleção Special Soundtrack; Coleção X-Cinema Cult; Coleção I-CM",
     "ordem": null,
     "tags": [
       {
@@ -17057,6 +17269,11 @@ const filmes = [
         "tipo": "Coleção",
         "nome": "Coleção X-Cinema Cult",
         "raw": "Coleção X-Cinema Cult"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
       }
     ],
     "diretor": "Luciano Salce",
@@ -17082,9 +17299,15 @@ const filmes = [
     "sinopse": "Um capitão do exército cego e amargurado viaja pela Itália acompanhado por um jovem soldado, escondendo um plano trágico por trás de sua fachada sedutora. Um clássico comovente que equilibra perfeitamente o drama profundo com o humor ácido.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Dino Risi",
     "ator1": "Vittorio Gassman",
     "ator2": "Alessandro Momo",
@@ -17108,9 +17331,15 @@ const filmes = [
     "sinopse": "Uma madame rica e arrogante e um marinheiro comunista ficam naufragados em uma ilha deserta, onde os papéis sociais de poder se invertem completamente. Uma sátira política e romântica ácida e provocativa sobre a luta de classes e a guerra dos sexos.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Lina Wertmüller",
     "ator1": "Giancarlo Giannini",
     "ator2": "Mariangela Melato",
@@ -17134,9 +17363,15 @@ const filmes = [
     "sinopse": "Após ser seduzida pelo noivo de sua irmã, uma jovem siciliana engravida e desencadeia uma caótica guerra familiar para salvar a honra da casa. Uma comédia de humor negro afiada que ridiculariza o machismo, a hipocrisia social e as tradições religiosas da época.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Pietro Germi",
     "ator1": "Stefania Sandrelli",
     "ator2": "Saro Urzì",
@@ -17160,9 +17395,15 @@ const filmes = [
     "sinopse": "Um burocrata arrogante do governo fascista fica preso em um pequeno vilarejo após seu carro quebrar na estrada. A presença dele transforma a rotina dos moradores locais em uma sucessão de farsas e bajulações hilárias para impressionar a autoridade.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Mario Mattoli",
     "ator1": "Totò",
     "ator2": "Ugo Tognazzi",
@@ -17186,9 +17427,15 @@ const filmes = [
     "sinopse": "Um ator fracassado descobre seu verdadeiro talento ao aplicar disfarces geniais e golpes mirabolantes na alta sociedade. Uma comédia sofisticada e dinâmica que consagra o talento multifacetado do cinema italiano em uma sátira irresistível sobre a malandragem.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Dino Risi",
     "ator1": "Vittorio Gassman",
     "ator2": "Dorian Gray",
@@ -17212,9 +17459,15 @@ const filmes = [
     "sinopse": "Um bem-sucedido homem de meia-idade se apaixona obsessivamente por uma adolescente provocadora e sua turma de amigos jovens e descompromissados. Uma comédia dramática ácida sobre a crise da meia-idade, o conflito de gerações e a perda da juventude.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CL",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CL",
+        "raw": "Coleção I-CL"
+      }
+    ],
     "diretor": "Luciano Salce",
     "ator1": "Ugo Tognazzi",
     "ator2": "Catherine Spaak",
@@ -17238,9 +17491,15 @@ const filmes = [
     "sinopse": "Um imigrante italiano tímido na Austrália tenta encontrar uma esposa por correspondência enviando a foto de um amigo bonitão. Quando a pretendente chega, uma sucessão de farsas e choques de realidade transforma o romance em uma hilária aventura.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Luigi Zampa",
     "ator1": "Alberto Sordi",
     "ator2": "Claudia Cardinale",
@@ -17264,9 +17523,15 @@ const filmes = [
     "sinopse": "A trajetória caótica de uma nota promissória que passa de mão em mão, revelando a ganância e os segredos de diferentes personagens da sociedade italiana. Uma sátira social ágil e divertida que expõe a obsessão pelo dinheiro fácil.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Camillo Mastrocinque",
     "ator1": "Totò",
     "ator2": "Peppino De Filippo",
@@ -17290,9 +17555,15 @@ const filmes = [
     "sinopse": "Um gondoleiro galanteador de Veneza vive dividindo sua atenção entre duas noivas locais e as turistas estrangeiras que atrai diariamente. Uma comédia romântica solar e nostálgica que usa os belos canais venezianos como pano de fundo para trapalhadas amorosas.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Dino Risi",
     "ator1": "Alberto Sordi",
     "ator2": "Nino Manfredi",
@@ -17316,9 +17587,15 @@ const filmes = [
     "sinopse": "Um homem desempregado consegue um cargo de guarda de trânsito e decide usar sua pequena autoridade para se vingar de todos que o humilhavam. Uma sátira mordaz sobre o abuso de poder, a burocracia e os pequenos privilégios sociais com atuações brilhantes.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção I-CM",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção I-CM",
+        "raw": "Coleção I-CM"
+      }
+    ],
     "diretor": "Luigi Zampa",
     "ator1": "Alberto Sordi",
     "ator2": "Vittorio De Sica",
