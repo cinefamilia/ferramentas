@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encurtador de Legendas — Cine Legenda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f7f3ea;
+    --surface: #ffffff;
+    --surface-2: #f0ebdf;
+    --border: #ddd4c0;
+    --text: #241f18;
+    --text-dim: #7a7062;
+    --accent: #a86a26;
+    --accent-dim: #d9bb8a;
+    --ok: #4a7752;
+    --warn: #ad4432;
+    --radius: 10px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(168,106,38,0.06), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    padding-bottom:120px;
+  }
+  header{
+    padding:36px 20px 20px;
+    text-align:center;
+    border-bottom:1px solid var(--border);
+    margin-bottom:28px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    color:var(--accent);
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(24px,4vw,34px);
+    font-weight:700;
+    margin:0 0 8px;
+    letter-spacing:-0.01em;
+  }
+  .sub{
+    color:var(--text-dim);
+    font-size:14px;
+    max-width:520px;
+    margin:0 auto;
+    line-height:1.5;
+  }
+  main{
+    max-width:640px;
+    margin:0 auto;
+    padding:0 16px;
+  }
+  .panel{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:18px;
+    margin-bottom:20px;
+  }
+  .panel-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  textarea{
+    width:100%;
+    min-height:160px;
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:8px;
+    color:var(--text);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    line-height:1.55;
+    padding:12px;
+    resize:vertical;
+  }
+  textarea:focus, input:focus{ outline:1px solid var(--accent); }
+  .btn{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    border:none;
+    border-radius:8px;
+    padding:10px 18px;
+    cursor:pointer;
+    transition:transform .08s ease, background .15s ease;
+  }
+  .btn:active{ transform:scale(0.97); }
+  .btn-primary{ background:var(--accent); color:#fffaf0; }
+  .btn-primary:hover{ background:#93591e; }
+  .btn-ghost{
+    background:transparent;
+    color:var(--text-dim);
+    border:1px solid var(--border);
+  }
+  .btn-ghost:hover{ color:var(--text); border-color:var(--text-dim); }
+  .row{ display:flex; gap:10px; flex-wrap:wrap; }
+
+  .case-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px 16px 18px;
+    margin-bottom:16px;
+    position:relative;
+  }
+  .case-card.decided{ border-color:var(--accent-dim); }
+  .case-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:10px;
+  }
+  .case-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--accent);
+    background:rgba(168,106,38,0.08);
+    border:1px solid var(--accent-dim);
+    padding:3px 9px;
+    border-radius:20px;
+  }
+  .case-orig-len{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--text-dim);
+  }
+  .orig-text{
+    font-size:14px;
+    color:var(--text-dim);
+    font-style:italic;
+    line-height:1.5;
+    margin-bottom:12px;
+    padding-left:10px;
+    border-left:2px solid var(--border);
+  }
+  .opt{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:9px 12px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    margin-bottom:8px;
+    cursor:pointer;
+    transition:border-color .12s ease, background .12s ease;
+  }
+  .opt:hover{ border-color:var(--accent-dim); }
+  .opt.selected{
+    border-color:var(--accent);
+    background:rgba(168,106,38,0.06);
+  }
+  .opt-letter{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    width:22px; height:22px;
+    border-radius:5px;
+    background:var(--surface-2);
+    color:var(--text-dim);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .opt.selected .opt-letter{ background:var(--accent); color:#fffaf0; }
+  .opt-text{ flex:1; font-size:14px; line-height:1.4; }
+  .opt-chars{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--ok);
+    flex-shrink:0;
+  }
+
+  .free-wrap{ margin-top:4px; }
+  .free-input-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:9px 12px;
+  }
+  .free-input-row.selected{ border-color:var(--accent); background:rgba(168,106,38,0.06); }
+  .free-input-row input[type=text]{
+    flex:1;
+    background:transparent;
+    border:none;
+    color:var(--text);
+    font-size:14px;
+    font-family:'Inter',sans-serif;
+  }
+  .meter{
+    width:34px; height:6px;
+    border-radius:3px;
+    background:var(--surface-2);
+    overflow:hidden;
+    flex-shrink:0;
+  }
+  .meter-fill{ height:100%; background:var(--ok); transition: width .12s ease, background .12s ease; }
+  .free-count{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--ok);
+    width:34px;
+    text-align:right;
+    flex-shrink:0;
+  }
+  .free-count.over{ color:var(--warn); }
+  .meter-fill.over{ background:var(--warn); }
+
+  .empty{
+    text-align:center;
+    color:var(--text-dim);
+    font-size:14px;
+    padding:40px 20px;
+    line-height:1.6;
+  }
+  .empty code{
+    background:var(--surface-2);
+    padding:2px 6px;
+    border-radius:4px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+  }
+
+  .output-bar{
+    position:fixed;
+    bottom:0; left:0; right:0;
+    background:var(--surface);
+    border-top:1px solid var(--border);
+    padding:14px 16px;
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .output-text{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--accent);
+    max-width:340px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  .output-count{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--text-dim);
+  }
+  .copied-flash{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--ok);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Cine Legenda</div>
+  <h1>Encurtador de Legendas</h1>
+  <div class="sub">Cole o lote em markdown que o Agente enviou, escolha A, B, C ou digite seu próprio texto — e copie a resposta pronta pra colar de volta no aLLM.</div>
+</header>
+
+<main>
+  <div class="panel">
+    <div class="panel-label">
+      <span>Colar lote (markdown)</span>
+    </div>
+    <textarea id="pasteArea" placeholder="Cole aqui o bloco markdown com os casos (Legenda #, Texto Original, Opção A/B/C)..."></textarea>
+    <div class="row" style="margin-top:12px;">
+      <button class="btn btn-primary" onclick="parseInput()">Processar lote</button>
+      <button class="btn btn-ghost" onclick="clearAll()">Limpar tudo</button>
+    </div>
+  </div>
+
+  <div id="cases"></div>
+</main>
+
+<div class="output-bar">
+  <div class="output-text" id="outputPreview">Nenhuma decisão ainda</div>
+  <div class="output-count" id="outputCount"></div>
+  <button class="btn btn-primary" onclick="copyOutput()">Copiar resposta</button>
+  <span class="copied-flash" id="copiedFlash"></span>
+</div>
+
+<script>
+let cases = []; // {num, orig, origLen, options: {A:{text,len}, B:{...}, C:{...}}, choice: null | 'A'|'B'|'C'|'free', freeText: ''}
+
+function clearAll(){
+  document.getElementById('pasteArea').value = '';
+  cases = [];
+  render();
+}
+
+function parseInput(){
+  const raw = document.getElementById('pasteArea').value;
+  if(!raw.trim()) return;
+
+  // Split into blocks by the "Legenda #" marker
+  const blockRegex = /\*\*\[Legenda #(\d+)\]\*\*\s*\(Original fundido:\s*(\d+)\s*caracteres?\)[\s\S]*?\*Texto Original:\*\s*"([^"]*)"([\s\S]*?)(?=\*\*\[Legenda #|\s*$)/g;
+
+  let match;
+  const found = [];
+  while((match = blockRegex.exec(raw)) !== null){
+    const num = match[1];
+    const origLen = match[2];
+    const orig = match[3];
+    const optionsBlock = match[4];
+
+    const optRegex = /-\s*\*\*Op[cç][ãa]o\s*([A-C])\s*\((\d+)\s*chars?\):\*\*\s*"([^"]*)"/gi;
+    let optMatch;
+    const options = {};
+    while((optMatch = optRegex.exec(optionsBlock)) !== null){
+      options[optMatch[1].toUpperCase()] = { text: optMatch[3], len: parseInt(optMatch[2], 10) };
+    }
+
+    if(Object.keys(options).length > 0){
+      found.push({ num, orig, origLen, options, choice: null, freeText: '' });
+    }
+  }
+
+  if(found.length === 0){
+    alert('Não encontrei nenhum caso reconhecível nesse texto. Confira se o formato colado é o mesmo gerado pelo Agente (com **[Legenda #N]**, *Texto Original:* e as opções A/B/C).');
+    return;
+  }
+
+  // Merge with existing cases (avoid duplicating already-loaded numbers)
+  const existingNums = new Set(cases.map(c => c.num));
+  found.forEach(f => { if(!existingNums.has(f.num)) cases.push(f); });
+
+  document.getElementById('pasteArea').value = '';
+  render();
+}
+
+function selectOption(caseIdx, letter){
+  cases[caseIdx].choice = letter;
+  render();
+}
+
+function updateFreeText(caseIdx, value){
+  cases[caseIdx].freeText = value;
+  cases[caseIdx].choice = 'free';
+  renderOutput();
+  // Update just the meter for this card without full re-render (avoid losing focus)
+  const meterFill = document.getElementById('meterFill-' + caseIdx);
+  const countEl = document.getElementById('freeCount-' + caseIdx);
+  const rowEl = document.getElementById('freeRow-' + caseIdx);
+  const len = value.length;
+  const pct = Math.min(100, (len / 55) * 100);
+  const over = len > 55;
+  meterFill.style.width = pct + '%';
+  meterFill.classList.toggle('over', over);
+  countEl.textContent = len;
+  countEl.classList.toggle('over', over);
+  rowEl.classList.add('selected');
+  document.querySelectorAll('.opt[data-case="'+caseIdx+'"]').forEach(el => el.classList.remove('selected'));
+  document.querySelector('.case-card[data-case="'+caseIdx+'"]').classList.add('decided');
+}
+
+function render(){
+  const container = document.getElementById('cases');
+  if(cases.length === 0){
+    container.innerHTML = '<div class="empty">Nenhum lote carregado ainda.<br>Cole o markdown do Agente acima e clique em <code>Processar lote</code>.</div>';
+    renderOutput();
+    return;
+  }
+
+  container.innerHTML = cases.map((c, idx) => {
+    const optionsHtml = ['A','B','C'].map(letter => {
+      const opt = c.options[letter];
+      if(!opt) return '';
+      const selected = c.choice === letter ? 'selected' : '';
+      return `
+        <div class="opt ${selected}" data-case="${idx}" onclick="selectOption(${idx}, '${letter}')">
+          <div class="opt-letter">${letter}</div>
+          <div class="opt-text">${escapeHtml(opt.text)}</div>
+          <div class="opt-chars">${opt.len}c</div>
+        </div>`;
+    }).join('');
+
+    const freeSelected = c.choice === 'free' ? 'selected' : '';
+    const freeLen = c.freeText.length;
+    const freeOver = freeLen > 55;
+    const freePct = Math.min(100, (freeLen / 55) * 100);
+
+    return `
+      <div class="case-card ${c.choice ? 'decided' : ''}" data-case="${idx}">
+        <div class="case-head">
+          <div class="case-num">#${c.num}</div>
+          <div class="case-orig-len">${c.origLen} chars original</div>
+        </div>
+        <div class="orig-text">${escapeHtml(c.orig)}</div>
+        ${optionsHtml}
+        <div class="free-wrap">
+          <div class="free-input-row ${freeSelected}" id="freeRow-${idx}">
+            <input type="text" placeholder="Ou escreva seu texto..." value="${escapeAttr(c.freeText)}"
+              oninput="updateFreeText(${idx}, this.value)">
+            <div class="meter"><div class="meter-fill ${freeOver ? 'over' : ''}" id="meterFill-${idx}" style="width:${freePct}%"></div></div>
+            <div class="free-count ${freeOver ? 'over' : ''}" id="freeCount-${idx}">${freeLen}</div>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  renderOutput();
+}
+
+function escapeHtml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function escapeAttr(s){
+  return escapeHtml(s).replace(/"/g,'&quot;');
+}
+
+function buildOutputString(){
+  const decided = cases.filter(c => c.choice);
+  const parts = decided.map(c => {
+    if(c.choice === 'free'){
+      return `${c.num}: "${c.freeText}"`;
+    }
+    return `${c.num}: ${c.choice}`;
+  });
+  return { text: parts.join(', '), count: decided.length, total: cases.length };
+}
+
+function renderOutput(){
+  const { text, count, total } = buildOutputString();
+  document.getElementById('outputPreview').textContent = text || 'Nenhuma decisão ainda';
+  document.getElementById('outputCount').textContent = total > 0 ? `${count}/${total} decididos` : '';
+}
+
+function copyOutput(){
+  const { text } = buildOutputString();
+  if(!text){ return; }
+  navigator.clipboard.writeText(text).then(() => {
+    const flash = document.getElementById('copiedFlash');
+    flash.textContent = 'Copiado!';
+    setTimeout(() => flash.textContent = '', 1800);
+  });
+}
+
+render();
+</script>
+
+</body>
+</html>
