@@ -250,10 +250,24 @@
     border-top:1px solid var(--border);
     padding:14px 16px;
     display:flex;
-    gap:12px;
+    gap:16px;
     align-items:center;
-    justify-content:center;
+    justify-content:space-between;
     flex-wrap:wrap;
+  }
+  .output-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:0;
+    flex:1;
+  }
+  .output-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-shrink:0;
+    margin-left:auto;
   }
   .output-text{
     font-family:'IBM Plex Mono',monospace;
@@ -304,10 +318,15 @@
 </main>
 
 <div class="output-bar">
-  <div class="output-text" id="outputPreview">Nenhuma decisão ainda</div>
-  <div class="output-count" id="outputCount"></div>
-  <button class="btn btn-primary" onclick="copyOutput()">Copiar resposta</button>
-  <span class="copied-flash" id="copiedFlash"></span>
+  <div class="output-left">
+    <div class="output-text" id="outputPreview">Nenhuma decisão ainda</div>
+    <div class="output-count" id="outputCount"></div>
+  </div>
+  <div class="output-right">
+    <span class="copied-flash" id="copiedFlash"></span>
+    <button class="btn btn-ghost" onclick="clearAll()">Limpar tudo</button>
+    <button class="btn btn-primary" onclick="copyOutput()">Copiar resposta</button>
+  </div>
 </div>
 
 <script>
