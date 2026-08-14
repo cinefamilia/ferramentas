@@ -81,7 +81,33 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
   }
+  .btn-paste{
+    font-family:'Inter',sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    text-transform:none;
+    letter-spacing:normal;
+    background:var(--surface-2);
+    color:var(--text);
+    border:1px solid var(--border);
+    border-radius:7px;
+    padding:6px 12px;
+    cursor:pointer;
+    transition:border-color .12s ease, background .12s ease, transform .08s ease;
+  }
+  .btn-paste:hover{ border-color:var(--accent-dim); background:var(--bg); }
+  .btn-paste:active{ transform:scale(0.97); }
+  .paste-flash{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--ok);
+    min-height:16px;
+    margin-top:6px;
+  }
+  .paste-flash.error{ color:var(--warn); }
   textarea{
     width:100%;
     min-height:160px;
@@ -306,8 +332,10 @@
   <div class="panel">
     <div class="panel-label">
       <span>Colar lote (markdown)</span>
+      <button class="btn-paste" onclick="pasteFromClipboard()" id="pasteBtn" title="Cola o conteúdo copiado direto na caixa abaixo">📋 Colar da área de transferência</button>
     </div>
     <textarea id="pasteArea" placeholder="Cole aqui o bloco markdown com os casos (Legenda #, Texto Original, Opção A/B/C)..."></textarea>
+    <div class="paste-flash" id="pasteFlash"></div>
     <div class="row" style="margin-top:12px;">
       <button class="btn btn-primary" onclick="parseInput()">Processar lote</button>
       <button class="btn btn-ghost" onclick="clearAll()">Limpar tudo</button>
@@ -332,8 +360,28 @@
 <script>
 let cases = []; // {num, orig, origLen, options: {A:{text,len}, B:{...}, C:{...}}, choice: null | 'A'|'B'|'C'|'free', freeText: ''}
 
+async function pasteFromClipboard(){
+  const flash = document.getElementById('pasteFlash');
+  try{
+    const text = await navigator.clipboard.readText();
+    if(!text){
+      flash.textContent = 'A área de transferência está vazia.';
+      flash.classList.add('error');
+      return;
+    }
+    document.getElementById('pasteArea').value = text;
+    flash.textContent = 'Colado! Pode clicar em "Processar lote".';
+    flash.classList.remove('error');
+    setTimeout(() => { flash.textContent = ''; }, 3000);
+  }catch(err){
+    flash.textContent = 'Não consegui acessar a área de transferência — o navegador pode ter bloqueado o acesso automático. Use Ctrl+V normalmente nesse caso.';
+    flash.classList.add('error');
+  }
+}
+
 function clearAll(){
   document.getElementById('pasteArea').value = '';
+  document.getElementById('pasteFlash').textContent = '';
   cases = [];
   render();
 }
