@@ -390,8 +390,11 @@ function parseInput(){
   const raw = document.getElementById('pasteArea').value;
   if(!raw.trim()) return;
 
-  // Split into blocks by the "Legenda #" marker
-  const blockRegex = /\*\*\[Legenda #(\d+)\]\*\*\s*\(Original fundido:\s*(\d+)\s*caracteres?\)[\s\S]*?\*Texto Original:\*\s*"([^"]*)"([\s\S]*?)(?=\*\*\[Legenda #|\s*$)/g;
+  // Split into blocks by the "Legenda #" marker.
+  // The leading/trailing "**" around [Legenda #N] are optional (\**) because the
+  // Agent (LLM) doesn't always emit them consistently — some batches come back
+  // with plain "[Legenda #10]" instead of "**[Legenda #10]**".
+  const blockRegex = /\**\[Legenda #(\d+)\]\**\s*\(Original fundido:\s*(\d+)\s*caracteres?\)[\s\S]*?\*Texto Original:\*\s*"([^"]*)"([\s\S]*?)(?=\**\[Legenda #|\s*$)/g;
 
   let match;
   const found = [];
@@ -414,7 +417,7 @@ function parseInput(){
   }
 
   if(found.length === 0){
-    alert('Não encontrei nenhum caso reconhecível nesse texto. Confira se o formato colado é o mesmo gerado pelo Agente (com **[Legenda #N]**, *Texto Original:* e as opções A/B/C).');
+    alert('Não encontrei nenhum caso reconhecível nesse texto. Confira se o formato colado é o mesmo gerado pelo Agente (com [Legenda #N], *Texto Original:* e as opções A/B/C).');
     return;
   }
 
