@@ -508,6 +508,10 @@
   </div>
 </main>
 
+<button id="jumpPendingBtn" onclick="jumpToPending()" style="display:none; position:fixed; right:16px; bottom:90px; z-index:50; background:var(--accent); color:#fffaf0; border:none; border-radius:24px; padding:12px 18px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px; box-shadow:0 4px 14px rgba(36,31,24,0.25); cursor:pointer;">
+  ↓ Próximo pendente
+</button>
+
 <div class="output-bar">
   <div class="output-left">
     <div class="output-text" id="outputPreview">Nenhuma decisão ainda</div>
@@ -712,6 +716,28 @@ async function pasteFromClipboard(){
   }
 }
 
+function firstPendingCaseIdx(){
+  return cases.findIndex(c => !c.choice);
+}
+
+function jumpToPending(){
+  const idx = firstPendingCaseIdx();
+  if(idx === -1) return;
+  const el = document.getElementById('case-' + idx);
+  if(el){
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    el.style.transition = 'box-shadow .2s ease';
+    el.style.boxShadow = '0 0 0 3px var(--accent-dim)';
+    setTimeout(() => { el.style.boxShadow = ''; }, 1200);
+  }
+}
+
+function updateJumpButton(){
+  const btn = document.getElementById('jumpPendingBtn');
+  const hasPending = firstPendingCaseIdx() !== -1;
+  btn.style.display = hasPending ? 'block' : 'none';
+}
+
 function parseInput(){
   const raw = document.getElementById('pasteArea').value;
   if(!raw.trim()) return;
@@ -749,6 +775,9 @@ function parseInput(){
   document.getElementById('pasteArea').value = '';
   saveSession();
   renderAll();
+
+  // leva o usuário direto ao primeiro caso novo pendente
+  setTimeout(() => jumpToPending(), 60);
 }
 
 function selectOption(caseIdx, letter){
@@ -861,7 +890,7 @@ function renderCases(){
     const freePct = Math.min(100, (freeLen / LIMIT) * 100);
 
     return `
-      <div class="case-card ${c.choice ? 'decided' : ''}" data-case="${idx}">
+      <div class="case-card ${c.choice ? 'decided' : ''}" data-case="${idx}" id="case-${idx}">
         <div class="case-head">
           <div class="case-num">#${c.num}</div>
           <div class="case-orig-len">${c.origLen} chars original</div>
@@ -936,6 +965,7 @@ function renderAll(){
   renderFinalStatus();
   renderSessionBar();
   document.getElementById('draftDownloadBtn').disabled = srtBlocks.length === 0;
+  updateJumpButton();
 }
 
 // ---- rascunho (.json) ----
