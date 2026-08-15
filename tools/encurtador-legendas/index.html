@@ -55,14 +55,33 @@
   .sub{
     color:var(--text-dim);
     font-size:14px;
-    max-width:520px;
+    max-width:560px;
     margin:0 auto;
     line-height:1.5;
   }
   main{
-    max-width:640px;
+    max-width:680px;
     margin:0 auto;
     padding:0 16px;
+  }
+  .step-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:28px 0 10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .step-label .n{
+    background:var(--accent);
+    color:#fffaf0;
+    width:18px;height:18px;
+    border-radius:50%;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-size:10px;
   }
   .panel{
     background:var(--surface);
@@ -132,16 +151,72 @@
     cursor:pointer;
     transition:transform .08s ease, background .15s ease;
   }
-  .btn:active{ transform:scale(0.97); }
+  .btn:disabled{ opacity:0.4; cursor:not-allowed; }
+  .btn:active:not(:disabled){ transform:scale(0.97); }
   .btn-primary{ background:var(--accent); color:#fffaf0; }
-  .btn-primary:hover{ background:#93591e; }
+  .btn-primary:hover:not(:disabled){ background:#93591e; }
   .btn-ghost{
     background:transparent;
     color:var(--text-dim);
     border:1px solid var(--border);
   }
-  .btn-ghost:hover{ color:var(--text); border-color:var(--text-dim); }
-  .row{ display:flex; gap:10px; flex-wrap:wrap; }
+  .btn-ghost:hover:not(:disabled){ color:var(--text); border-color:var(--text-dim); }
+  .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+
+  .file-drop{
+    border:2px dashed var(--border);
+    border-radius:8px;
+    padding:26px 16px;
+    text-align:center;
+    cursor:pointer;
+    transition:border-color .12s ease, background .12s ease;
+  }
+  .file-drop:hover, .file-drop.drag{ border-color:var(--accent-dim); background:var(--bg); }
+  .file-drop input{ display:none; }
+  .file-drop .hint{ color:var(--text-dim); font-size:13px; margin-top:4px; }
+
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:16px;
+  }
+  .stat-box{
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:12px 10px;
+    text-align:center;
+  }
+  .stat-box .num{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:22px;
+  }
+  .stat-box .lbl{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin-top:2px;
+  }
+  .stat-box.ok .num{ color:var(--ok); }
+  .stat-box.warn .num{ color:var(--warn); }
+
+  .batch-nav{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:space-between;
+    margin-top:12px;
+    flex-wrap:wrap;
+  }
+  .batch-pos{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--text-dim);
+  }
 
   .case-card{
     background:var(--surface);
@@ -269,6 +344,35 @@
     font-size:12.5px;
   }
 
+  .filename-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:12px;
+  }
+  .filename-row input[type=text]{
+    flex:1;
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:9px 12px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--text);
+  }
+
+  .session-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--text-dim);
+    margin-bottom:14px;
+    flex-wrap:wrap;
+  }
+
   .output-bar{
     position:fixed;
     bottom:0; left:0; right:0;
@@ -325,24 +429,83 @@
 <header>
   <div class="eyebrow">Cine Legenda</div>
   <h1>Encurtador de Legendas</h1>
-  <div class="sub">Cole o lote em markdown que o Agente enviou, escolha A, B, C ou digite seu próprio texto — e copie a resposta pronta pra colar de volta no aLLM.</div>
+  <div class="sub">Carregue o .srt original, revise só os casos problemáticos com a ajuda do Gemini, e baixe o .srt final pronto — tudo direto pelo navegador.</div>
 </header>
 
 <main>
+  <div class="session-bar" id="sessionBar"></div>
+
+  <!-- STEP 1: upload -->
+  <div class="step-label"><span class="n">1</span> Carregar arquivo .srt</div>
   <div class="panel">
-    <div class="panel-label">
-      <span>Colar lote (markdown)</span>
-      <button class="btn-paste" onclick="pasteFromClipboard()" id="pasteBtn" title="Cola o conteúdo copiado direto na caixa abaixo">📋 Colar da área de transferência</button>
+    <div class="file-drop" id="fileDrop" onclick="document.getElementById('fileInput').click()">
+      <div>📄 Clique ou arraste o arquivo .srt aqui</div>
+      <div class="hint" id="fileHint">Nenhum arquivo carregado ainda</div>
+      <input type="file" id="fileInput" accept=".srt" onchange="handleFileSelect(this.files)">
     </div>
-    <textarea id="pasteArea" placeholder="Cole aqui o bloco markdown com os casos (Legenda #, Texto Original, Opção A/B/C)..."></textarea>
-    <div class="paste-flash" id="pasteFlash"></div>
-    <div class="row" style="margin-top:12px;">
-      <button class="btn btn-primary" onclick="parseInput()">Processar lote</button>
-      <button class="btn btn-ghost" onclick="clearAll()">Limpar tudo</button>
+    <div id="statsBox"></div>
+    <div class="row" style="margin-top:14px; justify-content:space-between;">
+      <button class="btn btn-ghost" onclick="downloadDraft()" id="draftDownloadBtn" disabled>💾 Baixar rascunho (.json)</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('draftInput').click()">📂 Carregar rascunho (.json)</button>
+      <input type="file" id="draftInput" accept=".json" style="display:none;" onchange="handleDraftSelect(this.files)">
+    </div>
+    <div class="paste-flash" id="draftFlash"></div>
+  </div>
+
+  <!-- STEP 2: export batch to gemini -->
+  <div id="step2Wrap" style="display:none;">
+    <div class="step-label"><span class="n">2</span> Exportar lote para o Gemini</div>
+    <div class="panel">
+      <div class="panel-label">
+        <span>Lote atual de casos problemáticos</span>
+      </div>
+      <div class="batch-nav">
+        <button class="btn btn-ghost" onclick="prevBatch()" id="prevBatchBtn">← Lote anterior</button>
+        <span class="batch-pos" id="batchPos"></span>
+        <button class="btn btn-ghost" onclick="nextBatch()" id="nextBatchBtn">Próximo lote →</button>
+      </div>
+      <div class="row" style="margin-top:12px;">
+        <button class="btn btn-primary" onclick="copyBatchForGemini()">📋 Copiar lote atual (texto p/ Gemini)</button>
+      </div>
+      <div class="paste-flash" id="batchFlash"></div>
+      <textarea id="batchFallback" readonly style="display:none; margin-top:10px; min-height:110px;"></textarea>
+      <div class="hint" id="batchFallbackHint" style="display:none; margin-top:4px;">Se o botão não copiou automaticamente: clique na caixa acima, Cmd+A (selecionar tudo) e Cmd+C (copiar).</div>
     </div>
   </div>
 
-  <div id="cases"></div>
+  <!-- STEP 3: paste gemini response -->
+  <div id="step3Wrap" style="display:none;">
+    <div class="step-label"><span class="n">3</span> Colar resposta do Gemini (opções A/B/C)</div>
+    <div class="panel">
+      <div class="panel-label">
+        <span>Colar resposta (markdown)</span>
+        <button class="btn-paste" onclick="pasteFromClipboard()" title="Tenta colar automático; se falhar, cole manualmente com Cmd+V na caixa">📋 Colar da área de transferência</button>
+      </div>
+      <textarea id="pasteArea" placeholder="Clique aqui e cole com Cmd+V (ou Ctrl+V) a resposta do Gemini com as opções A/B/C para o lote..."></textarea>
+      <div class="paste-flash" id="pasteFlash"></div>
+      <div class="row" style="margin-top:12px;">
+        <button class="btn btn-primary" onclick="parseInput()">Processar resposta</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('pasteArea').value=''">Limpar caixa</button>
+      </div>
+    </div>
+
+    <div id="cases"></div>
+  </div>
+
+  <!-- STEP 4: final srt -->
+  <div id="step4Wrap" style="display:none;">
+    <div class="step-label"><span class="n">4</span> Gerar .srt final</div>
+    <div class="panel">
+      <div id="finalStatus" style="font-size:13.5px; color:var(--text-dim); margin-bottom:10px;"></div>
+      <div class="filename-row">
+        <input type="text" id="finalFilename" placeholder="NomeDoFilme_FINAL.srt">
+      </div>
+      <div class="row" style="margin-top:12px;">
+        <button class="btn btn-primary" id="downloadBtn" onclick="downloadFinalSrt()">⬇️ Baixar .srt final</button>
+        <button class="btn btn-ghost" onclick="clearSession()">Limpar sessão</button>
+      </div>
+    </div>
+  </div>
 </main>
 
 <div class="output-bar">
@@ -352,48 +515,207 @@
   </div>
   <div class="output-right">
     <span class="copied-flash" id="copiedFlash"></span>
-    <button class="btn btn-ghost" onclick="clearAll()">Limpar tudo</button>
-    <button class="btn btn-primary" onclick="copyOutput()">Copiar resposta</button>
+    <button class="btn btn-ghost" onclick="clearAllCases()">Limpar decisões</button>
+    <button class="btn btn-primary" onclick="copyOutput()">Copiar resposta (formato compacto)</button>
   </div>
 </div>
 
 <script>
-let cases = []; // {num, orig, origLen, options: {A:{text,len}, B:{...}, C:{...}}, choice: null | 'A'|'B'|'C'|'free', freeText: ''}
+const LIMIT = 55;
+const STORAGE_KEY = 'cineLegendaSession_v2';
 
-async function pasteFromClipboard(){
-  const flash = document.getElementById('pasteFlash');
+// ---- state ----
+let srtBlocks = [];   // {index:'1', time:'00:00:01,000 --> ...', origLines:[...], merged, len, status:'auto'|'problem', finalText}
+let cases = [];        // {num, orig, origLen, options:{A,B,C}, choice, freeText}
+let batchIndex = 0;    // current batch (of 5) among problematic blocks
+let fileNameBase = '';
+
+// ---- persistence ----
+function saveSession(){
   try{
-    const text = await navigator.clipboard.readText();
-    if(!text){
-      flash.textContent = 'A área de transferência está vazia.';
-      flash.classList.add('error');
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ srtBlocks, cases, batchIndex, fileNameBase }));
+  }catch(e){ /* ignore quota errors */ }
+}
+function loadSession(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return false;
+    const data = JSON.parse(raw);
+    srtBlocks = data.srtBlocks || [];
+    cases = data.cases || [];
+    batchIndex = data.batchIndex || 0;
+    fileNameBase = data.fileNameBase || '';
+    return srtBlocks.length > 0;
+  }catch(e){ return false; }
+}
+function clearSession(){
+  if(!confirm('Isso apaga o progresso salvo neste navegador (arquivo carregado + decisões). Confirma?')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  srtBlocks = []; cases = []; batchIndex = 0; fileNameBase = '';
+  document.getElementById('fileInput').value = '';
+  document.getElementById('fileHint').textContent = 'Nenhum arquivo carregado ainda';
+  renderAll();
+}
+
+// ---- SRT parsing & Passo 1 (pré-processamento) ----
+function parseSrt(raw){
+  const normalized = raw.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  const chunks = normalized.split(/\n\s*\n/).map(c => c.trim()).filter(Boolean);
+  const blocks = [];
+  for(const chunk of chunks){
+    const lines = chunk.split('\n');
+    if(lines.length < 2) continue;
+    const index = lines[0].trim();
+    const time = lines[1].trim();
+    const textLines = lines.slice(2);
+    if(!/^\d+$/.test(index) || !time.includes('-->')) continue; // skip malformed
+    blocks.push({ index, time, origLines: textLines });
+  }
+  return blocks;
+}
+
+function mergeAndCorrect(origLines){
+  const parts = origLines.map(l => l.trim()).filter(l => l.length > 0);
+  if(parts.length === 0) return '';
+  let merged = parts[0];
+  for(let i = 1; i < parts.length; i++){
+    const sep = parts[i].startsWith('-') ? '  ' : ' ';
+    merged += sep + parts[i];
+  }
+  // 2.5b: remove trailing single period if it brings length to <= LIMIT
+  if(merged.endsWith('.') && !merged.endsWith('...')){
+    const withoutPeriod = merged.slice(0, -1);
+    if(withoutPeriod.length <= LIMIT){
+      merged = withoutPeriod;
+    }
+  }
+  return merged;
+}
+
+function preprocessBlocks(blocks){
+  return blocks.map(b => {
+    const merged = mergeAndCorrect(b.origLines);
+    const len = merged.length;
+    const status = len <= LIMIT ? 'auto' : 'problem';
+    return { ...b, merged, len, status, finalText: status === 'auto' ? merged : null };
+  });
+}
+
+// ---- file handling ----
+const fileDrop = document.getElementById('fileDrop');
+fileDrop.addEventListener('dragover', e => { e.preventDefault(); fileDrop.classList.add('drag'); });
+fileDrop.addEventListener('dragleave', () => fileDrop.classList.remove('drag'));
+fileDrop.addEventListener('drop', e => {
+  e.preventDefault();
+  fileDrop.classList.remove('drag');
+  if(e.dataTransfer.files && e.dataTransfer.files.length) handleFileSelect(e.dataTransfer.files);
+});
+
+function handleFileSelect(files){
+  if(!files || !files.length) return;
+  const file = files[0];
+  fileNameBase = file.name.replace(/\.srt$/i, '');
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const raw = e.target.result;
+    const parsed = parseSrt(raw);
+    if(parsed.length === 0){
+      alert('Não consegui reconhecer blocos de legenda nesse arquivo. Confira se é um .srt válido (UTF-8).');
       return;
     }
-    document.getElementById('pasteArea').value = text;
-    flash.textContent = 'Colado! Pode clicar em "Processar lote".';
-    flash.classList.remove('error');
-    setTimeout(() => { flash.textContent = ''; }, 3000);
-  }catch(err){
-    flash.textContent = 'Não consegui acessar a área de transferência — o navegador pode ter bloqueado o acesso automático. Use Ctrl+V normalmente nesse caso.';
+    srtBlocks = preprocessBlocks(parsed);
+    cases = [];
+    batchIndex = 0;
+    document.getElementById('fileHint').textContent = `Carregado: ${file.name}`;
+    document.getElementById('finalFilename').value = fileNameBase + '_FINAL.srt';
+    saveSession();
+    renderAll();
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+// ---- problematic list / batches ----
+function problematicBlocks(){
+  return srtBlocks.filter(b => b.status === 'problem');
+}
+function currentBatch(){
+  const probs = problematicBlocks();
+  const start = batchIndex * 5;
+  return probs.slice(start, start + 5);
+}
+function totalBatches(){
+  return Math.max(1, Math.ceil(problematicBlocks().length / 5));
+}
+function prevBatch(){ if(batchIndex > 0){ batchIndex--; saveSession(); renderAll(); } }
+function nextBatch(){ if(batchIndex < totalBatches() - 1){ batchIndex++; saveSession(); renderAll(); } }
+
+function copyBatchForGemini(){
+  const batch = currentBatch();
+  const flash = document.getElementById('batchFlash');
+  if(batch.length === 0){
+    flash.textContent = 'Nenhum caso neste lote.';
     flash.classList.add('error');
+    return;
+  }
+  const text = '```\n' + batch.map(b =>
+    `**[Legenda #${b.index}]** (Original fundido: ${b.len} caracteres)\n*Texto Original:* "${b.merged}"`
+  ).join('\n\n') + '\n```';
+
+  const fallback = document.getElementById('batchFallback');
+  const fallbackHint = document.getElementById('batchFallbackHint');
+  fallback.value = text;
+  fallback.style.display = 'block';
+  fallbackHint.style.display = 'block';
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(() => {
+      flash.textContent = `Copiado! ${batch.length} caso(s) prontos para colar no Gemini.`;
+      flash.classList.remove('error');
+      setTimeout(() => flash.textContent = '', 3000);
+    }).catch(() => {
+      flash.textContent = 'Não copiou automaticamente — use a caixa abaixo (Cmd+A, Cmd+C).';
+      flash.classList.add('error');
+      fallback.focus();
+      fallback.select();
+    });
+  }else{
+    flash.textContent = 'Use a caixa abaixo (Cmd+A, Cmd+C) para copiar.';
+    flash.classList.add('error');
+    fallback.focus();
+    fallback.select();
   }
 }
 
-function clearAll(){
-  document.getElementById('pasteArea').value = '';
-  document.getElementById('pasteFlash').textContent = '';
-  cases = [];
-  render();
+// ---- clipboard paste (step 3) — best-effort, never blocks manual Cmd+V ----
+async function pasteFromClipboard(){
+  const flash = document.getElementById('pasteFlash');
+  const area = document.getElementById('pasteArea');
+  try{
+    if(!navigator.clipboard || !navigator.clipboard.readText){
+      throw new Error('API indisponível');
+    }
+    const text = await navigator.clipboard.readText();
+    if(!text){
+      flash.textContent = 'A área de transferência parece vazia — cole manualmente com Cmd+V.';
+      flash.classList.add('error');
+      area.focus();
+      return;
+    }
+    area.value = text;
+    flash.textContent = 'Colado automaticamente! Pode clicar em "Processar resposta".';
+    flash.classList.remove('error');
+    setTimeout(() => { flash.textContent = ''; }, 3000);
+  }catch(err){
+    flash.textContent = 'Não consegui colar automaticamente — clique na caixa abaixo e use Cmd+V normalmente.';
+    flash.classList.add('error');
+    area.focus();
+  }
 }
 
 function parseInput(){
   const raw = document.getElementById('pasteArea').value;
   if(!raw.trim()) return;
 
-  // Split into blocks by the "Legenda #" marker.
-  // The leading/trailing "**" around [Legenda #N] are optional (\**) because the
-  // Agent (LLM) doesn't always emit them consistently — some batches come back
-  // with plain "[Legenda #10]" instead of "**[Legenda #10]**".
   const blockRegex = /\**\[Legenda #(\d+)\]\**\s*\(Original fundido:\s*(\d+)\s*caracteres?\)[\s\S]*?\*Texto Original:\*\s*"([^"]*)"([\s\S]*?)(?=\**\[Legenda #|\s*$)/g;
 
   let match;
@@ -417,34 +739,50 @@ function parseInput(){
   }
 
   if(found.length === 0){
-    alert('Não encontrei nenhum caso reconhecível nesse texto. Confira se o formato colado é o mesmo gerado pelo Agente (com [Legenda #N], *Texto Original:* e as opções A/B/C).');
+    alert('Não encontrei nenhum caso reconhecível nesse texto. Confira se o formato colado é o mesmo gerado pelo Gemini (com [Legenda #N], *Texto Original:* e as opções A/B/C).');
     return;
   }
 
-  // Merge with existing cases (avoid duplicating already-loaded numbers)
   const existingNums = new Set(cases.map(c => c.num));
   found.forEach(f => { if(!existingNums.has(f.num)) cases.push(f); });
 
   document.getElementById('pasteArea').value = '';
-  render();
+  saveSession();
+  renderAll();
 }
 
 function selectOption(caseIdx, letter){
   cases[caseIdx].choice = letter;
-  render();
+  applyDecisionToBlock(cases[caseIdx]);
+  saveSession();
+  renderAll();
+}
+
+function applyDecisionToBlock(c){
+  const block = srtBlocks.find(b => b.index === c.num);
+  if(!block) return;
+  if(c.choice === 'free'){
+    block.finalText = c.freeText;
+  }else if(c.choice && c.options[c.choice]){
+    block.finalText = c.options[c.choice].text;
+  }else{
+    block.finalText = null;
+  }
 }
 
 function updateFreeText(caseIdx, value){
   cases[caseIdx].freeText = value;
   cases[caseIdx].choice = 'free';
+  applyDecisionToBlock(cases[caseIdx]);
+  saveSession();
   renderOutput();
-  // Update just the meter for this card without full re-render (avoid losing focus)
+  renderFinalStatus();
   const meterFill = document.getElementById('meterFill-' + caseIdx);
   const countEl = document.getElementById('freeCount-' + caseIdx);
   const rowEl = document.getElementById('freeRow-' + caseIdx);
   const len = value.length;
-  const pct = Math.min(100, (len / 55) * 100);
-  const over = len > 55;
+  const pct = Math.min(100, (len / LIMIT) * 100);
+  const over = len > LIMIT;
   meterFill.style.width = pct + '%';
   meterFill.classList.toggle('over', over);
   countEl.textContent = len;
@@ -454,11 +792,53 @@ function updateFreeText(caseIdx, value){
   document.querySelector('.case-card[data-case="'+caseIdx+'"]').classList.add('decided');
 }
 
-function render(){
+function clearAllCases(){
+  if(!confirm('Limpar todas as decisões A/B/C/livre já tomadas? O arquivo carregado continua.')) return;
+  cases = [];
+  srtBlocks.forEach(b => { if(b.status === 'problem') b.finalText = null; });
+  saveSession();
+  renderAll();
+}
+
+// ---- rendering ----
+function escapeHtml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function escapeAttr(s){
+  return escapeHtml(s).replace(/"/g,'&quot;');
+}
+
+function renderStats(){
+  const box = document.getElementById('statsBox');
+  if(srtBlocks.length === 0){ box.innerHTML = ''; return; }
+  const total = srtBlocks.length;
+  const auto = srtBlocks.filter(b => b.status === 'auto').length;
+  const prob = srtBlocks.filter(b => b.status === 'problem').length;
+  box.innerHTML = `
+    <div class="stats-grid">
+      <div class="stat-box"><div class="num">${total}</div><div class="lbl">Total de blocos</div></div>
+      <div class="stat-box ok"><div class="num">${auto}</div><div class="lbl">Aprovados auto</div></div>
+      <div class="stat-box warn"><div class="num">${prob}</div><div class="lbl">Problemáticos</div></div>
+    </div>`;
+}
+
+function renderBatchNav(){
+  const probs = problematicBlocks();
+  document.getElementById('step2Wrap').style.display = probs.length > 0 ? 'block' : 'none';
+  document.getElementById('step3Wrap').style.display = probs.length > 0 ? 'block' : 'none';
+  document.getElementById('step4Wrap').style.display = srtBlocks.length > 0 ? 'block' : 'none';
+  if(probs.length === 0) return;
+
+  const tb = totalBatches();
+  document.getElementById('batchPos').textContent = `Lote ${batchIndex + 1} de ${tb} (${currentBatch().length} casos)`;
+  document.getElementById('prevBatchBtn').disabled = batchIndex === 0;
+  document.getElementById('nextBatchBtn').disabled = batchIndex >= tb - 1;
+}
+
+function renderCases(){
   const container = document.getElementById('cases');
   if(cases.length === 0){
-    container.innerHTML = '<div class="empty">Nenhum lote carregado ainda.<br>Cole o markdown do Agente acima e clique em <code>Processar lote</code>.</div>';
-    renderOutput();
+    container.innerHTML = '<div class="empty">Nenhuma resposta do Gemini processada ainda.<br>Copie um lote (passo 2), cole a resposta do Gemini acima e clique em <code>Processar resposta</code>.</div>';
     return;
   }
 
@@ -477,8 +857,8 @@ function render(){
 
     const freeSelected = c.choice === 'free' ? 'selected' : '';
     const freeLen = c.freeText.length;
-    const freeOver = freeLen > 55;
-    const freePct = Math.min(100, (freeLen / 55) * 100);
+    const freeOver = freeLen > LIMIT;
+    const freePct = Math.min(100, (freeLen / LIMIT) * 100);
 
     return `
       <div class="case-card ${c.choice ? 'decided' : ''}" data-case="${idx}">
@@ -498,15 +878,6 @@ function render(){
         </div>
       </div>`;
   }).join('');
-
-  renderOutput();
-}
-
-function escapeHtml(s){
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-function escapeAttr(s){
-  return escapeHtml(s).replace(/"/g,'&quot;');
 }
 
 function buildOutputString(){
@@ -536,7 +907,135 @@ function copyOutput(){
   });
 }
 
-render();
+function renderFinalStatus(){
+  const el = document.getElementById('finalStatus');
+  const dlBtn = document.getElementById('downloadBtn');
+  if(srtBlocks.length === 0){ el.textContent = ''; return; }
+  const probs = problematicBlocks();
+  const pending = probs.filter(b => b.finalText === null || b.finalText === undefined);
+  if(pending.length === 0){
+    el.innerHTML = `✅ Todos os ${srtBlocks.length} blocos estão prontos (${probs.length} revisados manualmente).`;
+    dlBtn.disabled = false;
+  }else{
+    el.innerHTML = `⚠️ Ainda faltam <strong>${pending.length}</strong> caso(s) problemático(s) sem decisão. Você pode baixar mesmo assim — os pendentes sairão com o texto original fundido (pode passar de ${LIMIT} caracteres).`;
+    dlBtn.disabled = false;
+  }
+}
+
+function renderSessionBar(){
+  const bar = document.getElementById('sessionBar');
+  if(srtBlocks.length === 0){ bar.innerHTML = ''; return; }
+  bar.innerHTML = `<span>Sessão salva automaticamente neste navegador — ${fileNameBase || 'arquivo'}.srt</span>`;
+}
+
+function renderAll(){
+  renderStats();
+  renderBatchNav();
+  renderCases();
+  renderOutput();
+  renderFinalStatus();
+  renderSessionBar();
+  document.getElementById('draftDownloadBtn').disabled = srtBlocks.length === 0;
+}
+
+// ---- rascunho (.json) ----
+function draftFilename(){
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  const stamp = `${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}`;
+  return `${fileNameBase || 'legendas'}_rascunho_${stamp}.json`;
+}
+
+function downloadDraft(){
+  if(srtBlocks.length === 0) return;
+  const payload = {
+    tipo: 'cine-legenda-rascunho',
+    versao: 1,
+    salvoEm: new Date().toISOString(),
+    fileNameBase,
+    srtBlocks,
+    cases,
+    batchIndex
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = draftFilename();
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  const flash = document.getElementById('draftFlash');
+  flash.textContent = `Rascunho baixado: ${a.download}`;
+  flash.classList.remove('error');
+  setTimeout(() => flash.textContent = '', 4000);
+}
+
+function handleDraftSelect(files){
+  if(!files || !files.length) return;
+  const file = files[0];
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const flash = document.getElementById('draftFlash');
+    try{
+      const data = JSON.parse(e.target.result);
+      if(data.tipo !== 'cine-legenda-rascunho' || !Array.isArray(data.srtBlocks)){
+        throw new Error('formato inesperado');
+      }
+      srtBlocks = data.srtBlocks;
+      cases = data.cases || [];
+      batchIndex = data.batchIndex || 0;
+      fileNameBase = data.fileNameBase || fileNameBase;
+      document.getElementById('fileHint').textContent = `Rascunho retomado: ${file.name}`;
+      document.getElementById('finalFilename').value = fileNameBase + '_FINAL.srt';
+      saveSession();
+      renderAll();
+      flash.textContent = 'Rascunho carregado com sucesso — retomando de onde parou.';
+      flash.classList.remove('error');
+      setTimeout(() => flash.textContent = '', 4000);
+    }catch(err){
+      flash.textContent = 'Não consegui ler esse arquivo como rascunho válido. Confira se é o .json gerado pelo botão "Baixar rascunho".';
+      flash.classList.add('error');
+    }
+  };
+  reader.readAsText(file, 'UTF-8');
+  document.getElementById('draftInput').value = '';
+}
+
+// ---- final srt build & download ----
+function padTime(t){ return t; } // timestamps kept exactly as original
+
+function buildFinalSrt(){
+  let out = '';
+  srtBlocks.forEach((b, i) => {
+    const text = (b.finalText !== null && b.finalText !== undefined) ? b.finalText : b.merged;
+    out += `${i + 1}\n${b.time}\n${text}\n\n`;
+  });
+  return out.trim() + '\n';
+}
+
+function downloadFinalSrt(){
+  if(srtBlocks.length === 0) return;
+  const content = buildFinalSrt();
+  const filename = (document.getElementById('finalFilename').value || (fileNameBase + '_FINAL.srt')).trim();
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ---- init ----
+if(loadSession()){
+  document.getElementById('fileHint').textContent = `Sessão restaurada: ${fileNameBase}.srt`;
+  document.getElementById('finalFilename').value = fileNameBase + '_FINAL.srt';
+}
+renderAll();
 </script>
 
 </body>
