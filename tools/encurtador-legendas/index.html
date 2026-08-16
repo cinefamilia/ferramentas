@@ -436,7 +436,7 @@
   <div class="session-bar" id="sessionBar"></div>
 
   <!-- STEP 1: upload -->
-  <div class="step-label"><span class="n">1</span> Carregar arquivo .srt</div>
+  <div class="step-label" id="step1Anchor"><span class="n">1</span> Carregar arquivo .srt</div>
   <div class="panel">
     <div class="file-drop" id="fileDrop" onclick="document.getElementById('fileInput').click()">
       <div>📄 Clique ou arraste o arquivo .srt aqui</div>
@@ -508,8 +508,12 @@
   </div>
 </main>
 
-<button id="jumpPendingBtn" onclick="jumpToPending()" style="display:none; position:fixed; right:16px; bottom:90px; z-index:50; background:var(--accent); color:#fffaf0; border:none; border-radius:24px; padding:12px 18px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px; box-shadow:0 4px 14px rgba(36,31,24,0.25); cursor:pointer;">
+<button id="jumpPendingBtn" onclick="jumpToPending()" style="display:none; position:fixed; right:16px; bottom:150px; z-index:50; background:var(--accent); color:#fffaf0; border:none; border-radius:24px; padding:12px 18px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px; box-shadow:0 4px 14px rgba(36,31,24,0.25); cursor:pointer;">
   ↓ Próximo pendente
+</button>
+
+<button id="scrollTopBtn" onclick="scrollToStep1()" style="display:none; position:fixed; right:16px; bottom:90px; z-index:50; background:var(--surface); color:var(--text); border:1px solid var(--border); border-radius:24px; padding:12px 18px; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:13.5px; box-shadow:0 4px 14px rgba(36,31,24,0.18); cursor:pointer;">
+  ↑ Carregar / lote
 </button>
 
 <div class="output-bar">
@@ -732,10 +736,15 @@ function jumpToPending(){
   }
 }
 
+function scrollToStep1(){
+  const el = document.getElementById('step1Anchor');
+  if(el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 function updateJumpButton(){
-  const btn = document.getElementById('jumpPendingBtn');
   const hasPending = firstPendingCaseIdx() !== -1;
-  btn.style.display = hasPending ? 'block' : 'none';
+  document.getElementById('jumpPendingBtn').style.display = hasPending ? 'block' : 'none';
+  document.getElementById('scrollTopBtn').style.display = srtBlocks.length > 0 ? 'block' : 'none';
 }
 
 function parseInput(){
