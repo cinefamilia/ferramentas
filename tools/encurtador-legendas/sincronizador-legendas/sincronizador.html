@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sincronizador de Legendas — Cine Legenda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f7f3ea;
+    --surface: #ffffff;
+    --surface-2: #f0ebdf;
+    --border: #ddd4c0;
+    --text: #241f18;
+    --text-dim: #7a7062;
+    --accent: #a86a26;
+    --accent-dim: #d9bb8a;
+    --ok: #4a7752;
+    --ok-bg: #eaf1ea;
+    --warn: #ad4432;
+    --warn-bg: #f7eae7;
+    --radius: 10px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(168,106,38,0.06), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    padding-bottom:100px;
+  }
+  header{
+    padding:36px 20px 20px;
+    text-align:center;
+    border-bottom:1px solid var(--border);
+    margin-bottom:28px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    color:var(--accent);
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(24px,4vw,34px);
+    font-weight:700;
+    margin:0 0 8px;
+    letter-spacing:-0.01em;
+  }
+  .sub{
+    color:var(--text-dim);
+    font-size:14px;
+    max-width:560px;
+    margin:0 auto;
+    line-height:1.5;
+  }
+  main{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 16px;
+  }
+  .panel{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:18px;
+    margin-bottom:20px;
+  }
+  .panel-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+    margin-bottom:12px;
+  }
+  .upload-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  @media (max-width:520px){ .upload-row{ grid-template-columns:1fr; } }
+  .drop{
+    border:1.5px dashed var(--border);
+    border-radius:8px;
+    padding:20px 12px;
+    text-align:center;
+    cursor:pointer;
+    transition:border-color .12s ease, background .12s ease;
+    background:var(--bg);
+  }
+  .drop:hover, .drop.dragover{ border-color:var(--accent); background:var(--surface-2); }
+  .drop-lang{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:6px;
+  }
+  .drop-filename{
+    font-size:13px;
+    color:var(--text);
+    font-weight:600;
+    word-break:break-all;
+  }
+  .drop-hint{
+    font-size:12px;
+    color:var(--text-dim);
+  }
+  input[type=file]{ display:none; }
+
+  .btn{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    border:none;
+    border-radius:8px;
+    padding:10px 18px;
+    cursor:pointer;
+    transition:transform .08s ease, background .15s ease;
+  }
+  .btn:active{ transform:scale(0.97); }
+  .btn:disabled{ opacity:0.45; cursor:not-allowed; }
+  .btn-primary{ background:var(--accent); color:#fffaf0; }
+  .btn-primary:hover:not(:disabled){ background:#93591e; }
+  .btn-ghost{ background:transparent; color:var(--text-dim); border:1px solid var(--border); }
+  .btn-ghost:hover{ color:var(--text); border-color:var(--text-dim); }
+  .btn-sm{ font-size:12.5px; padding:7px 12px; }
+  .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+
+  .diag-box{
+    border-radius:8px;
+    padding:14px;
+    font-size:14px;
+    line-height:1.55;
+    margin-top:16px;
+  }
+  .diag-caseA{ background:var(--ok-bg); border:1px solid var(--ok); color:var(--text); }
+  .diag-caseB{ background:var(--warn-bg); border:1px solid var(--warn); color:var(--text); }
+  .diag-title{ font-family:'Space Grotesk',sans-serif; font-weight:700; margin-bottom:4px; }
+
+  .stats-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:14px;
+  }
+  .stat{
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:8px 12px;
+    font-size:12.5px;
+    color:var(--text-dim);
+  }
+  .stat b{ color:var(--text); font-family:'IBM Plex Mono',monospace; }
+
+  .group-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px;
+    margin-bottom:14px;
+  }
+  .group-card.resolved{ border-color:var(--ok); }
+  .group-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+  }
+  .group-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--accent);
+    background:rgba(168,106,38,0.08);
+    border:1px solid var(--accent-dim);
+    padding:3px 9px;
+    border-radius:20px;
+  }
+  .group-status{ font-size:11px; font-family:'IBM Plex Mono',monospace; color:var(--text-dim); }
+  .group-status.ok{ color:var(--ok); }
+
+  .sub-block{
+    border-left:2px solid var(--border);
+    padding-left:10px;
+    margin-bottom:10px;
+  }
+  .sub-block-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--text-dim);
+    margin-bottom:3px;
+  }
+  .sub-block-text{ font-size:13.5px; line-height:1.5; }
+  .en-text{ color:var(--text); }
+  .pt-text{ color:var(--text-dim); font-style:italic; }
+
+  .final-input{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:7px;
+    padding:8px 10px;
+    font-size:13.5px;
+    font-family:'Inter',sans-serif;
+    margin-top:6px;
+    background:var(--bg);
+  }
+  .final-input:focus{ outline:1px solid var(--accent); border-color:var(--accent); }
+
+  textarea.markdown-out{
+    width:100%;
+    min-height:120px;
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:8px;
+    color:var(--text);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    line-height:1.5;
+    padding:10px;
+    resize:vertical;
+  }
+
+  .empty{
+    text-align:center;
+    color:var(--text-dim);
+    font-size:14px;
+    padding:30px 20px;
+    line-height:1.6;
+  }
+
+  .output-bar{
+    position:fixed;
+    bottom:0; left:0; right:0;
+    background:var(--surface);
+    border-top:1px solid var(--border);
+    padding:14px 16px;
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+  .output-status{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--text-dim); }
+  .flash{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ok); }
+
+  .section-title{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:16px;
+    margin:26px 0 12px;
+  }
+
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Cine Legenda</div>
+  <h1>Sincronizador de Legendas</h1>
+  <div class="sub">Suba a legenda em inglês (tempos corretos) e a em português (texto correto). A ferramenta resolve sozinha o que der e separa só os casos difíceis para revisar com o Gemini.</div>
+</header>
+
+<main>
+  <div class="panel">
+    <div class="panel-label">Carregar arquivos .srt</div>
+    <div class="upload-row">
+      <div>
+        <div class="drop" id="dropEN" onclick="document.getElementById('fileEN').click()">
+          <div class="drop-lang">Inglês (correto)</div>
+          <div class="drop-filename" id="fileNameEN">Nenhum arquivo</div>
+          <div class="drop-hint">Clique ou arraste o .srt aqui</div>
+        </div>
+        <input type="file" id="fileEN" accept=".srt" onchange="handleFile(event,'en')">
+      </div>
+      <div>
+        <div class="drop" id="dropPT" onclick="document.getElementById('filePT').click()">
+          <div class="drop-lang">Português (a corrigir)</div>
+          <div class="drop-filename" id="fileNamePT">Nenhum arquivo</div>
+          <div class="drop-hint">Clique ou arraste o .srt aqui</div>
+        </div>
+        <input type="file" id="filePT" accept=".srt" onchange="handleFile(event,'pt')">
+      </div>
+    </div>
+    <div class="row" style="margin-top:14px;">
+      <button class="btn btn-primary" id="btnDiagnose" onclick="diagnose()" disabled>Diagnosticar e sincronizar</button>
+      <button class="btn btn-ghost" onclick="resetAll()">Limpar tudo</button>
+    </div>
+    <div id="diagBox"></div>
+    <div class="stats-row" id="statsRow"></div>
+  </div>
+
+  <div id="hardSection"></div>
+</main>
+
+<div class="output-bar">
+  <div class="output-status" id="outputStatus">Nenhum arquivo carregado ainda</div>
+  <div class="row">
+    <span class="flash" id="flashMsg"></span>
+    <input type="file" id="loadDraftInput" accept=".json" style="display:none" onchange="loadDraftFile(event)">
+    <button class="btn btn-ghost btn-sm" onclick="document.getElementById('loadDraftInput').click()">Carregar rascunho</button>
+    <button class="btn btn-ghost btn-sm" id="btnSaveDraft" onclick="saveDraft()" disabled>Salvar rascunho</button>
+    <button class="btn btn-primary btn-sm" id="btnDownload" onclick="downloadFinal()" disabled>Baixar .srt final</button>
+  </div>
+</div>
+
+<script>
+var enFileName = '', ptFileName = '';
+var enBlocks = [], ptBlocks = [];
+var finalBlocks = []; // {num, start, end, text, source: 'A'|'easy'|'hard'}
+var hardGroups = []; // {id, enIndices:[...], enBlocks:[...], ptCandidates:[...], resolved:false, finalTexts:{}}
+var caseType = null; // 'A' or 'B'
+
+// ---------- SRT parsing ----------
+function timeToMs(str){
+  const m = str.match(/(\d+):(\d+):(\d+)[,.](\d+)/);
+  if(!m) return 0;
+  return (+m[1])*3600000 + (+m[2])*60000 + (+m[3])*1000 + (+m[4]);
+}
+function msToTime(ms){
+  ms = Math.max(0, Math.round(ms));
+  const h = Math.floor(ms/3600000); ms -= h*3600000;
+  const m = Math.floor(ms/60000); ms -= m*60000;
+  const s = Math.floor(ms/1000); ms -= s*1000;
+  const pad = (n,l=2) => String(n).padStart(l,'0');
+  return `${pad(h)}:${pad(m)}:${pad(s)},${pad(ms,3)}`;
+}
+function parseSRT(text){
+  const blocks = [];
+  const chunks = text.replace(/\r/g,'').split(/\n\n+/);
+  chunks.forEach(chunk => {
+    const lines = chunk.split('\n').filter(l => l.trim() !== '');
+    if(lines.length < 2) return;
+    let idx = 0;
+    if(/^\d+$/.test(lines[0].trim())) idx = 1;
+    const timeLine = lines[idx];
+    const tm = timeLine.match(/(\d+:\d+:\d+[,.]\d+)\s*-->\s*(\d+:\d+:\d+[,.]\d+)/);
+    if(!tm) return;
+    const start = timeToMs(tm[1]);
+    const end = timeToMs(tm[2]);
+    const textLines = lines.slice(idx+1);
+    const text = textLines.join(' ').replace(/\s+/g,' ').trim();
+    if(text) blocks.push({ start, end, text });
+  });
+  return blocks;
+}
+function wordCount(s){ return (s.trim().match(/\S+/g) || []).length; }
+
+// ---------- File handling ----------
+function handleFile(evt, lang){
+  const file = evt.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const blocks = parseSRT(reader.result);
+    if(lang === 'en'){ enBlocks = blocks; enFileName = file.name; document.getElementById('fileNameEN').textContent = file.name + ` (${blocks.length} blocos)`; }
+    else{ ptBlocks = blocks; ptFileName = file.name; document.getElementById('fileNamePT').textContent = file.name + ` (${blocks.length} blocos)`; }
+    document.getElementById('btnDiagnose').disabled = !(enBlocks.length && ptBlocks.length);
+  };
+  reader.readAsText(file, 'utf-8');
+}
+['dropEN','dropPT'].forEach((id, i) => {
+  const el = document.getElementById(id);
+  const lang = i === 0 ? 'en' : 'pt';
+  el.addEventListener('dragover', e => { e.preventDefault(); el.classList.add('dragover'); });
+  el.addEventListener('dragleave', () => el.classList.remove('dragover'));
+  el.addEventListener('drop', e => {
+    e.preventDefault();
+    el.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if(!file) return;
+    const input = document.getElementById(lang === 'en' ? 'fileEN' : 'filePT');
+    const dt = new DataTransfer();
+    dt.items.add(file);
+    input.files = dt.files;
+    handleFile({ target: { files: [file] } }, lang);
+  });
+});
+
+var DRAFT_KEY = 'sincronizador_legendas_draft_v1';
+
+function persist(){
+  try{
+    const data = {
+      enFileName, ptFileName, enBlocks, ptBlocks, finalBlocks,
+      hardGroups: hardGroups.map(g => ({ id:g.id, enIndices:g.enIndices, ptCandidates:g.ptCandidates, resolved:g.resolved, finalTexts:g.finalTexts })),
+      caseType
+    };
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+  }catch(e){ /* localStorage indisponível — segue sem persistência automática */ }
+}
+
+function applyState(obj){
+  enFileName = obj.enFileName || '';
+  ptFileName = obj.ptFileName || '';
+  enBlocks = obj.enBlocks || [];
+  ptBlocks = obj.ptBlocks || [];
+  finalBlocks = obj.finalBlocks || [];
+  hardGroups = obj.hardGroups || [];
+  caseType = obj.caseType || null;
+
+  document.getElementById('fileNameEN').textContent = enFileName ? `${enFileName} (${enBlocks.length} blocos)` : 'Nenhum arquivo';
+  document.getElementById('fileNamePT').textContent = ptFileName ? `${ptFileName} (${ptBlocks.length} blocos)` : 'Nenhum arquivo';
+  document.getElementById('btnDiagnose').disabled = !(enBlocks.length && ptBlocks.length);
+  document.getElementById('btnSaveDraft').disabled = !enBlocks.length;
+
+  if(caseType === 'A'){
+    document.getElementById('diagBox').innerHTML = `<div class="diag-box diag-caseA"><div class="diag-title">Caso A — mesma quantidade de blocos (${enBlocks.length})</div>Rascunho restaurado — todos os blocos já sincronizados.</div>`;
+    document.getElementById('statsRow').innerHTML = '';
+    document.getElementById('hardSection').innerHTML = '';
+  } else if(caseType === 'B'){
+    const easyCount = finalBlocks.filter(b => b && b.source === 'easy').length;
+    const pendingCount = hardGroups.filter(g => !g.resolved).length;
+    document.getElementById('diagBox').innerHTML = `<div class="diag-box diag-caseB"><div class="diag-title">Caso B — quantidades diferentes (EN: ${enBlocks.length} / PT: ${ptBlocks.length})</div>Rascunho restaurado — ${easyCount} blocos automáticos, ${pendingCount} grupo(s) ainda pendente(s) de ${hardGroups.length}.</div>`;
+    document.getElementById('statsRow').innerHTML = `
+      <div class="stat">Blocos EN: <b>${enBlocks.length}</b></div>
+      <div class="stat">Fáceis (auto): <b>${easyCount}</b></div>
+      <div class="stat">Grupos difíceis: <b>${hardGroups.length}</b></div>
+    `;
+    renderHardGroups();
+  }
+  updateDownloadState();
+}
+
+function saveDraft(){
+  const data = {
+    enFileName, ptFileName, enBlocks, ptBlocks, finalBlocks,
+    hardGroups: hardGroups.map(g => ({ id:g.id, enIndices:g.enIndices, ptCandidates:g.ptCandidates, resolved:g.resolved, finalTexts:g.finalTexts })),
+    caseType
+  };
+  const blob = new Blob([JSON.stringify(data)], { type: 'application/json;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const baseName = (enFileName || 'legenda').replace(/\.srt$/i,'');
+  a.href = url;
+  a.download = `${baseName}_rascunho_sincronizacao.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  document.getElementById('flashMsg').textContent = 'Rascunho baixado!';
+  setTimeout(() => document.getElementById('flashMsg').textContent = '', 2500);
+}
+
+function loadDraftFile(evt){
+  const file = evt.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      const obj = JSON.parse(reader.result);
+      applyState(obj);
+      persist();
+      document.getElementById('flashMsg').textContent = 'Rascunho carregado!';
+      setTimeout(() => document.getElementById('flashMsg').textContent = '', 2500);
+    }catch(e){
+      alert('Não consegui ler esse arquivo de rascunho. Confira se é o .json gerado por esta ferramenta.');
+    }
+  };
+  reader.readAsText(file, 'utf-8');
+  evt.target.value = '';
+}
+
+function resetAll(){
+  enBlocks = []; ptBlocks = []; finalBlocks = []; hardGroups = []; caseType = null;
+  enFileName = ''; ptFileName = '';
+  document.getElementById('fileNameEN').textContent = 'Nenhum arquivo';
+  document.getElementById('fileNamePT').textContent = 'Nenhum arquivo';
+  document.getElementById('fileEN').value = '';
+  document.getElementById('filePT').value = '';
+  document.getElementById('btnDiagnose').disabled = true;
+  document.getElementById('btnDownload').disabled = true;
+  document.getElementById('btnSaveDraft').disabled = true;
+  document.getElementById('diagBox').innerHTML = '';
+  document.getElementById('statsRow').innerHTML = '';
+  document.getElementById('hardSection').innerHTML = '';
+  document.getElementById('outputStatus').textContent = 'Nenhum arquivo carregado ainda';
+  try{ localStorage.removeItem(DRAFT_KEY); }catch(e){}
+}
+
+// ---------- Diagnosis ----------
+function diagnose(){
+  if(enBlocks.length === ptBlocks.length){
+    caseType = 'A';
+    resolveCaseA();
+  } else {
+    caseType = 'B';
+    resolveCaseB();
+  }
+}
+
+function resolveCaseA(){
+  const deltaFirst = enBlocks[0].start - ptBlocks[0].start;
+  const deltaLast = enBlocks[enBlocks.length-1].start - ptBlocks[ptBlocks.length-1].start;
+  const drift = Math.abs(deltaFirst - deltaLast) > 400; // ms tolerance
+  finalBlocks = enBlocks.map((b, i) => ({ num: i+1, start: b.start, end: b.end, text: ptBlocks[i].text }));
+
+  const diagBox = document.getElementById('diagBox');
+  const fmtDelta = ms => {
+    const sign = ms >= 0 ? 'atrasado' : 'adiantado';
+    return `${(Math.abs(ms)/1000).toFixed(2)}s ${sign} em relação ao inglês`;
+  };
+  diagBox.innerHTML = `
+    <div class="diag-box diag-caseA">
+      <div class="diag-title">Caso A — mesma quantidade de blocos (${enBlocks.length})</div>
+      ${drift
+        ? `O desvio parece <b>variável (drift)</b> — no início: ${fmtDelta(deltaFirst)}; no final: ${fmtDelta(deltaLast)}. Provável diferença de frame rate entre as fontes. Mesmo assim, a correção abaixo (usar timestamp do inglês bloco a bloco) já resolve corretamente, pois não depende de um valor fixo.`
+        : `Desvio constante de aproximadamente <b>${fmtDelta(deltaFirst)}</b>. Corrigido automaticamente.`
+      }
+      <br><br>Todos os ${enBlocks.length} blocos foram sincronizados automaticamente (timestamp do inglês + texto do português). Nenhuma revisão manual necessária.
+    </div>
+  `;
+  document.getElementById('statsRow').innerHTML = '';
+  document.getElementById('hardSection').innerHTML = '';
+  document.getElementById('btnDownload').disabled = false;
+  document.getElementById('btnSaveDraft').disabled = false;
+  document.getElementById('outputStatus').textContent = `Caso A resolvido — ${finalBlocks.length} blocos prontos`;
+  persist();
+}
+
+function charLen(s){ return s.replace(/\s+/g,'').length; }
+function costPair(aLen, bLen){
+  const r = (bLen+1) / (aLen+1);
+  return Math.abs(Math.log(r));
+}
+const INDEL_PENALTY = 2.2;
+const STRUCT_PENALTY = 0.25;
+
+// Alinhamento por comprimento de texto (técnica tipo Gale-Church), robusto a
+// divisão/fusão de blocos — não depende de proporção de tempo, que falha
+// quando um único bloco precisa ser dividido em dois (o ponto de tempo só
+// pode "cair" perto de um dos dois destinos).
+function alignBlocks(enBlocks, ptBlocks){
+  const n = enBlocks.length, m = ptBlocks.length;
+  const enLen = enBlocks.map(b => charLen(b.text));
+  const ptLen = ptBlocks.map(b => charLen(b.text));
+  const INF = Infinity;
+  const dp = Array.from({length:n+1}, () => new Array(m+1).fill(INF));
+  const bp = Array.from({length:n+1}, () => new Array(m+1).fill(null));
+  dp[0][0] = 0;
+  for(let i=0;i<=n;i++){
+    for(let j=0;j<=m;j++){
+      if(i===0 && j===0) continue;
+      let best = INF, bestMove = null;
+      if(i>=1 && j>=1){
+        const c = dp[i-1][j-1] + costPair(enLen[i-1], ptLen[j-1]);
+        if(c < best){ best = c; bestMove = {type:'11', ei:[i-1], pj:[j-1]}; }
+      }
+      if(i>=1){
+        const c = dp[i-1][j] + INDEL_PENALTY;
+        if(c < best){ best = c; bestMove = {type:'10', ei:[i-1], pj:[]}; }
+      }
+      if(j>=1){
+        const c = dp[i][j-1] + INDEL_PENALTY;
+        if(c < best){ best = c; bestMove = {type:'01', ei:[], pj:[j-1]}; }
+      }
+      if(i>=2 && j>=1){
+        const combinedEn = enLen[i-2] + enLen[i-1];
+        const c = dp[i-2][j-1] + costPair(combinedEn, ptLen[j-1]) + STRUCT_PENALTY;
+        if(c < best){ best = c; bestMove = {type:'21', ei:[i-2,i-1], pj:[j-1]}; }
+      }
+      if(i>=1 && j>=2){
+        const combinedPt = ptLen[j-2] + ptLen[j-1];
+        const c = dp[i-1][j-2] + costPair(enLen[i-1], combinedPt) + STRUCT_PENALTY;
+        if(c < best){ best = c; bestMove = {type:'12', ei:[i-1], pj:[j-2,j-1]}; }
+      }
+      dp[i][j] = best;
+      bp[i][j] = bestMove;
+    }
+  }
+  let i=n, j=m;
+  const moves = [];
+  while(i>0 || j>0){
+    const mv = bp[i][j];
+    moves.push(mv);
+    i -= mv.ei.length;
+    j -= mv.pj.length;
+  }
+  moves.reverse();
+  return moves;
+}
+
+function resolveCaseB(){
+  const moves = alignBlocks(enBlocks, ptBlocks);
+
+  const easyMask = enBlocks.map(() => false);
+  finalBlocks = new Array(enBlocks.length).fill(null);
+  moves.forEach(mv => {
+    if(mv.type === '11'){
+      const idx = mv.ei[0];
+      const pb = ptBlocks[mv.pj[0]];
+      const eb = enBlocks[idx];
+      easyMask[idx] = true;
+      finalBlocks[idx] = { num: idx+1, start: eb.start, end: eb.end, text: pb.text, source: 'easy' };
+    }
+  });
+
+  // group consecutive non-1:1 moves into hard groups; a lone insertion (0-1,
+  // sem bloco EN) é anexada ao grupo/bloco vizinho mais próximo como candidato extra
+  hardGroups = [];
+  let pendingInsertPt = [];
+  moves.forEach(mv => {
+    if(mv.type === '11'){
+      pendingInsertPt = []; // easy block already "absorbs" any prior stray insertion context reset
+      return;
+    }
+    if(mv.type === '01'){
+      pendingInsertPt.push(...mv.pj);
+      return;
+    }
+    // mv.type is '10', '21' or '12' — real hard case with at least one EN index
+    const last = hardGroups[hardGroups.length-1];
+    const enSet = new Set(mv.ei);
+    const ptSet = new Set([...pendingInsertPt, ...mv.pj]);
+    pendingInsertPt = [];
+    if(last && last._openForMerge){
+      mv.ei.forEach(x => last.enIndices.push(x));
+      ptSet.forEach(x => last._ptSet.add(x));
+    } else {
+      hardGroups.push({
+        id: 'G' + (hardGroups.length+1),
+        enIndices: [...enSet],
+        _ptSet: ptSet,
+        _openForMerge: true,
+        resolved: false,
+        finalTexts: {}
+      });
+    }
+  });
+  // leftover trailing insertion with no following hard group: attach to last hard group,
+  // or if none exists, drop silently (rare edge case, only pure insertions with no complex move)
+  if(pendingInsertPt.length && hardGroups.length){
+    pendingInsertPt.forEach(x => hardGroups[hardGroups.length-1]._ptSet.add(x));
+  }
+  hardGroups.forEach(g => {
+    g.enIndices.sort((a,b)=>a-b);
+    g.ptCandidates = Array.from(g._ptSet).sort((a,b)=>a-b).map(pj => ptBlocks[pj]);
+    delete g._ptSet;
+    delete g._openForMerge;
+  });
+
+  const easyCount = easyMask.filter(Boolean).length;
+  const diagBox = document.getElementById('diagBox');
+  diagBox.innerHTML = `
+    <div class="diag-box diag-caseB">
+      <div class="diag-title">Caso B — quantidades diferentes (EN: ${enBlocks.length} / PT: ${ptBlocks.length})</div>
+      Alinhamento automático por comprimento de texto. ${easyCount} blocos resolvidos sozinhos, ${hardGroups.length} grupo(s) precisam de revisão (fusão/divisão de frase).
+    </div>
+  `;
+  document.getElementById('statsRow').innerHTML = `
+    <div class="stat">Blocos EN: <b>${enBlocks.length}</b></div>
+    <div class="stat">Fáceis (auto): <b>${easyCount}</b></div>
+    <div class="stat">Grupos difíceis: <b>${hardGroups.length}</b></div>
+  `;
+  document.getElementById('btnSaveDraft').disabled = false;
+  renderHardGroups();
+  updateDownloadState();
+  persist();
+}
+
+// ---------- Hard groups UI ----------
+function renderHardGroups(){
+  const container = document.getElementById('hardSection');
+  if(hardGroups.length === 0){
+    container.innerHTML = '';
+    return;
+  }
+  let html = `<div class="section-title">Casos difíceis (fusão/divisão)</div>`;
+  html += `<div class="row" style="margin-bottom:14px;">
+    <button class="btn btn-primary btn-sm" onclick="exportBatch()">Copiar próximo lote (até 5) para o Gemini</button>
+  </div>`;
+
+  hardGroups.forEach((g) => {
+    const enTexts = g.enIndices.map(idx => enBlocks[idx]);
+    html += `<div class="group-card ${g.resolved ? 'resolved' : ''}">
+      <div class="group-head">
+        <div class="group-tag">${g.id} · blocos EN #${g.enIndices.map(i=>i+1).join(', #')}</div>
+        <div class="group-status ${g.resolved ? 'ok' : ''}">${g.resolved ? 'RESOLVIDO' : 'PENDENTE'}</div>
+      </div>`;
+
+    html += `<div style="margin-bottom:8px;"><b style="font-size:12px;color:var(--text-dim);">TRECHO EM INGLÊS</b></div>`;
+    enTexts.forEach((eb, k) => {
+      html += `<div class="sub-block">
+        <div class="sub-block-label">EN #${g.enIndices[k]+1} — ${msToTime(eb.start)} → ${msToTime(eb.end)}</div>
+        <div class="sub-block-text en-text">${escapeHtml(eb.text)}</div>
+      </div>`;
+    });
+
+    html += `<div style="margin:10px 0 8px;"><b style="font-size:12px;color:var(--text-dim);">TEXTO(S) ORIGINAIS EM PORTUGUÊS (candidatos)</b></div>`;
+    if(g.ptCandidates.length === 0){
+      html += `<div class="sub-block"><div class="sub-block-text pt-text">Nenhum bloco em português foi associado a este trecho — verifique se um bloco vizinho cobre esse conteúdo.</div></div>`;
+    }
+    g.ptCandidates.forEach(pb => {
+      html += `<div class="sub-block">
+        <div class="sub-block-label">${msToTime(pb.start)} → ${msToTime(pb.end)} (original)</div>
+        <div class="sub-block-text pt-text">${escapeHtml(pb.text)}</div>
+      </div>`;
+    });
+
+    html += `<div style="margin:12px 0 6px;"><b style="font-size:12px;color:var(--text-dim);">TEXTO FINAL PARA CADA BLOCO EN (cole a decisão feita com o Gemini)</b></div>`;
+    g.enIndices.forEach(idx => {
+      const val = g.finalTexts[idx] || '';
+      html += `<input type="text" class="final-input" placeholder="Texto final para o bloco EN #${idx+1}..." value="${escapeAttr(val)}" oninput="updateGroupText('${g.id}', ${idx}, this.value)">`;
+    });
+
+    html += `<div class="row" style="margin-top:10px;">
+      <button class="btn btn-ghost btn-sm" onclick="markGroupResolved('${g.id}')">Marcar grupo como resolvido</button>
+    </div>`;
+
+    html += `</div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+let persistDebounce = null;
+function updateGroupText(groupId, enIdx, value){
+  const g = hardGroups.find(x => x.id === groupId);
+  if(!g) return;
+  g.finalTexts[enIdx] = value;
+  clearTimeout(persistDebounce);
+  persistDebounce = setTimeout(persist, 500);
+}
+
+function markGroupResolved(groupId){
+  const g = hardGroups.find(x => x.id === groupId);
+  if(!g) return;
+  const missing = g.enIndices.filter(idx => !(g.finalTexts[idx] && g.finalTexts[idx].trim()));
+  if(missing.length){
+    alert('Preencha o texto final de todos os blocos EN deste grupo antes de marcar como resolvido (faltam: #' + missing.map(i=>i+1).join(', #') + ').');
+    return;
+  }
+  g.resolved = true;
+  g.enIndices.forEach(idx => {
+    const eb = enBlocks[idx];
+    finalBlocks[idx] = { num: idx+1, start: eb.start, end: eb.end, text: g.finalTexts[idx].trim(), source: 'hard' };
+  });
+  renderHardGroups();
+  updateDownloadState();
+  persist();
+}
+
+function exportBatch(){
+  const pending = hardGroups.filter(g => !g.resolved).slice(0, 5);
+  if(pending.length === 0){
+    document.getElementById('flashMsg').textContent = 'Nenhum grupo pendente.';
+    setTimeout(()=>document.getElementById('flashMsg').textContent='',2500);
+    return;
+  }
+  let md = '```\n';
+  pending.forEach(g => {
+    md += `[Grupo ${g.id}] Blocos EN #${g.enIndices.map(i=>i+1).join(', #')}\n`;
+    g.enIndices.forEach(idx => {
+      const eb = enBlocks[idx];
+      md += `EN #${idx+1} (${msToTime(eb.start)} --> ${msToTime(eb.end)}): "${eb.text}"\n`;
+    });
+    md += `Candidatos em português:\n`;
+    g.ptCandidates.forEach(pb => { md += `- "${pb.text}"\n`; });
+    md += `\n`;
+  });
+  md += '```';
+  navigator.clipboard.writeText(md).then(() => {
+    document.getElementById('flashMsg').textContent = `Copiado! ${pending.length} grupo(s) prontos para colar no Workspace.`;
+    setTimeout(()=>document.getElementById('flashMsg').textContent='',3000);
+  });
+}
+
+function updateDownloadState(){
+  const allResolved = finalBlocks.length === enBlocks.length && finalBlocks.every(b => b);
+  document.getElementById('btnDownload').disabled = !allResolved;
+  const resolvedCount = finalBlocks.filter(b => b).length;
+  document.getElementById('outputStatus').textContent = caseType === 'A'
+    ? `Caso A resolvido — ${finalBlocks.length} blocos prontos`
+    : `${resolvedCount}/${enBlocks.length} blocos prontos`;
+}
+
+function downloadFinal(){
+  if(!finalBlocks.every(b => b)) return;
+  let srt = '';
+  finalBlocks.forEach((b, i) => {
+    srt += `${i+1}\n${msToTime(b.start)} --> ${msToTime(b.end)}\n${b.text}\n\n`;
+  });
+  const blob = new Blob([srt], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'legenda_sincronizada.srt';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function escapeHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function escapeAttr(s){ return escapeHtml(s).replace(/"/g,'&quot;'); }
+
+// Restauração automática ao abrir a página, se houver sessão salva neste navegador
+(function autoRestore(){
+  try{
+    const raw = localStorage.getItem(DRAFT_KEY);
+    if(raw){
+      const obj = JSON.parse(raw);
+      if(obj && obj.enBlocks && obj.enBlocks.length){
+        applyState(obj);
+        document.getElementById('flashMsg').textContent = 'Sessão anterior restaurada automaticamente.';
+        setTimeout(() => document.getElementById('flashMsg').textContent = '', 4000);
+      }
+    }
+  }catch(e){ /* localStorage indisponível ou dado corrompido — ignora silenciosamente */ }
+})();
+</script>
+
+</body>
+</html>
