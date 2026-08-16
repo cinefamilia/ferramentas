@@ -600,6 +600,23 @@ function mergeAndCorrect(origLines){
   return merged;
 }
 
+// Detecta se o bloco original tinha estrutura de duas falas (2ª linha começando com "-")
+function blockHasSpeakerDash(block){
+  if(!block.origLines) return false;
+  const parts = block.origLines.map(l => l.trim()).filter(l => l.length > 0);
+  return parts.length > 1 && parts.slice(1).some(p => p.startsWith('-'));
+}
+
+// Garante espaço duplo antes do traço de segunda fala, protegendo o que já está correto
+function fixSpeakerDash(text){
+  if(!text) return text;
+  const PROTECT = '\u0000DASH\u0000';
+  let t = text.split('  -').join(PROTECT);
+  t = t.split(' -').join('  -');
+  t = t.split(PROTECT).join('  -');
+  return t;
+}
+
 function preprocessBlocks(blocks){
   return blocks.map(b => {
     const merged = mergeAndCorrect(b.origLines);
@@ -1048,7 +1065,10 @@ function padTime(t){ return t; } // timestamps kept exactly as original
 function buildFinalSrt(){
   let out = '';
   srtBlocks.forEach((b, i) => {
-    const text = (b.finalText !== null && b.finalText !== undefined) ? b.finalText : b.merged;
+    let text = (b.finalText !== null && b.finalText !== undefined) ? b.finalText : b.merged;
+    if(blockHasSpeakerDash(b)){
+      text = fixSpeakerDash(text);
+    }
     out += `${i + 1}\n${b.time}\n${text}\n\n`;
   });
   return out.trim() + '\n';
