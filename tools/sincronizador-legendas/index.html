@@ -134,6 +134,43 @@
   .btn-ghost{ background:transparent; color:var(--text-dim); border:1px solid var(--border); }
   .btn-ghost:hover{ color:var(--text); border-color:var(--text-dim); }
   .btn-sm{ font-size:12.5px; padding:7px 12px; }
+  .btn-apply{
+    background:var(--ok-bg);
+    color:var(--ok);
+    border:1px solid var(--ok);
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+    border-radius:7px;
+    padding:7px 12px;
+    cursor:pointer;
+    transition:transform .08s ease, background .12s ease;
+  }
+  .btn-apply:hover{ background:var(--ok); color:#fff; }
+  .btn-apply:active{ transform:scale(0.97); }
+  .btn-paste{
+    font-family:'Inter',sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    text-transform:none;
+    letter-spacing:normal;
+    background:var(--surface-2);
+    color:var(--text);
+    border:1px solid var(--border);
+    border-radius:7px;
+    padding:6px 12px;
+    cursor:pointer;
+    transition:border-color .12s ease, background .12s ease;
+  }
+  .btn-paste:hover{ border-color:var(--accent-dim); background:var(--bg); }
+  .paste-flash{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--ok);
+    min-height:16px;
+    margin-top:6px;
+  }
+  .paste-flash.error{ color:var(--warn); }
   .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
 
   .diag-box{
@@ -300,6 +337,18 @@
     <div class="stats-row" id="statsRow"></div>
   </div>
 
+  <div class="panel" id="geminiPastePanel" style="display:none;">
+    <div class="panel-label" style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+      <span>Colar resposta do Gemini (pode conter vários grupos de uma vez)</span>
+      <button class="btn-paste" onclick="pasteGeminiFromClipboard()">📋 Colar da área de transferência</button>
+    </div>
+    <textarea id="geminiReplyArea" placeholder="Cole aqui a resposta do Gemini, com as Opções A e B de um ou mais grupos..." style="width:100%; min-height:100px; background:var(--bg); border:1px solid var(--border); border-radius:8px; color:var(--text); font-family:'IBM Plex Mono',monospace; font-size:12px; line-height:1.5; padding:10px; resize:vertical;"></textarea>
+    <div class="row" style="margin-top:10px;">
+      <button class="btn btn-primary btn-sm" onclick="processGeminiReply()">Processar resposta</button>
+    </div>
+    <div class="paste-flash" id="geminiParseFlash"></div>
+  </div>
+
   <div id="hardSection"></div>
 </main>
 
@@ -320,6 +369,7 @@ var enBlocks = [], ptBlocks = [];
 var finalBlocks = []; // {num, start, end, text, source: 'A'|'easy'|'hard'}
 var hardGroups = []; // {id, enIndices:[...], enBlocks:[...], ptCandidates:[...], resolved:false, finalTexts:{}}
 var caseType = null; // 'A' or 'B'
+var geminiOptions = {}; // { G1: {A:{'3':'texto','4':'texto'}, B:{...}}, ... } — cache de respostas coladas, não persistido
 
 // ---------- SRT parsing ----------
 function timeToMs(str){
@@ -418,6 +468,7 @@ function applyState(obj){
     document.getElementById('diagBox').innerHTML = `<div class="diag-box diag-caseA"><div class="diag-title">Caso A — mesma quantidade de blocos (${enBlocks.length})</div>Rascunho restaurado — todos os blocos já sincronizados.</div>`;
     document.getElementById('statsRow').innerHTML = '';
     document.getElementById('hardSection').innerHTML = '';
+    document.getElementById('geminiPastePanel').style.display = 'none';
   } else if(caseType === 'B'){
     const easyCount = finalBlocks.filter(b => b && b.source === 'easy').length;
     const pendingCount = hardGroups.filter(g => !g.resolved).length;
@@ -427,6 +478,7 @@ function applyState(obj){
       <div class="stat">Fáceis (auto): <b>${easyCount}</b></div>
       <div class="stat">Grupos difíceis: <b>${hardGroups.length}</b></div>
     `;
+    document.getElementById('geminiPastePanel').style.display = hardGroups.some(g => !g.resolved) ? 'block' : 'none';
     renderHardGroups();
   }
   updateDownloadState();
@@ -482,6 +534,8 @@ function resetAll(){
   document.getElementById('diagBox').innerHTML = '';
   document.getElementById('statsRow').innerHTML = '';
   document.getElementById('hardSection').innerHTML = '';
+  document.getElementById('geminiPastePanel').style.display = 'none';
+  geminiOptions = {};
   document.getElementById('outputStatus').textContent = 'Nenhum arquivo carregado ainda';
   try{ localStorage.removeItem(DRAFT_KEY); }catch(e){}
 }
@@ -520,6 +574,7 @@ function resolveCaseA(){
   `;
   document.getElementById('statsRow').innerHTML = '';
   document.getElementById('hardSection').innerHTML = '';
+  document.getElementById('geminiPastePanel').style.display = 'none';
   document.getElementById('btnDownload').disabled = false;
   document.getElementById('btnSaveDraft').disabled = false;
   document.getElementById('outputStatus').textContent = `Caso A resolvido — ${finalBlocks.length} blocos prontos`;
@@ -662,6 +717,7 @@ function resolveCaseB(){
     <div class="stat">Grupos difíceis: <b>${hardGroups.length}</b></div>
   `;
   document.getElementById('btnSaveDraft').disabled = false;
+  document.getElementById('geminiPastePanel').style.display = hardGroups.length ? 'block' : 'none';
   renderHardGroups();
   updateDownloadState();
   persist();
@@ -706,7 +762,19 @@ function renderHardGroups(){
       </div>`;
     });
 
-    html += `<div style="margin:12px 0 6px;"><b style="font-size:12px;color:var(--text-dim);">TEXTO FINAL PARA CADA BLOCO EN (cole a decisão feita com o Gemini)</b></div>`;
+    const parsedOpts = geminiOptions[g.id];
+    if(parsedOpts && !g.resolved){
+      html += `<div style="margin:12px 0 6px;"><b style="font-size:12px;color:var(--text-dim);">RESPOSTA DO GEMINI RECONHECIDA — aplicar com um clique</b></div>`;
+      html += `<div class="row">`;
+      ['A','B'].forEach(letter => {
+        if(parsedOpts[letter]){
+          html += `<button class="btn-apply" onclick="applyOption('${g.id}','${letter}')">✓ Usar Opção ${letter}</button>`;
+        }
+      });
+      html += `</div>`;
+    }
+
+    html += `<div style="margin:12px 0 6px;"><b style="font-size:12px;color:var(--text-dim);">TEXTO FINAL PARA CADA BLOCO EN (ou preencha manualmente aqui)</b></div>`;
     g.enIndices.forEach(idx => {
       const val = g.finalTexts[idx] || '';
       html += `<input type="text" class="final-input" placeholder="Texto final para o bloco EN #${idx+1}..." value="${escapeAttr(val)}" oninput="updateGroupText('${g.id}', ${idx}, this.value)">`;
@@ -744,9 +812,91 @@ function markGroupResolved(groupId){
     const eb = enBlocks[idx];
     finalBlocks[idx] = { num: idx+1, start: eb.start, end: eb.end, text: g.finalTexts[idx].trim(), source: 'hard' };
   });
+  if(hardGroups.every(x => x.resolved)){
+    document.getElementById('geminiPastePanel').style.display = 'none';
+  }
   renderHardGroups();
   updateDownloadState();
   persist();
+}
+
+// ---------- Colar e aplicar resposta do Gemini ----------
+function parseGeminiReply(text){
+  const groups = {};
+  const groupRegex = /\[Grupo\s+(G\d+)\]([\s\S]*?)(?=\[Grupo\s+G\d+\]|$)/g;
+  let gm;
+  while((gm = groupRegex.exec(text)) !== null){
+    const gid = gm[1];
+    const body = gm[2];
+    const optRegex = /Op[cç][ãa]o\s*([AB])\s*:?([\s\S]*?)(?=Op[cç][ãa]o\s*[AB]\s*:?|\[Grupo|$)/gi;
+    const opts = {};
+    let om;
+    while((om = optRegex.exec(body)) !== null){
+      const letter = om[1].toUpperCase();
+      const chunk = om[2];
+      const lineRegex = /EN\s*#\s*(\d+)\s*:?\s*["“]([^"”]+)["”]/g;
+      let lm;
+      const texts = {};
+      while((lm = lineRegex.exec(chunk)) !== null){
+        texts[lm[1]] = lm[2].trim();
+      }
+      if(Object.keys(texts).length) opts[letter] = texts;
+    }
+    if(Object.keys(opts).length) groups[gid] = opts;
+  }
+  return groups;
+}
+
+function processGeminiReply(){
+  const flash = document.getElementById('geminiParseFlash');
+  const text = document.getElementById('geminiReplyArea').value;
+  if(!text.trim()){
+    flash.textContent = 'Cole a resposta do Gemini primeiro.';
+    flash.classList.add('error');
+    return;
+  }
+  const parsed = parseGeminiReply(text);
+  const count = Object.keys(parsed).length;
+  if(count === 0){
+    flash.textContent = 'Não consegui reconhecer nenhum grupo nesse texto — confira se o formato "[Grupo GX]" e "EN #N: "texto"" está presente.';
+    flash.classList.add('error');
+    return;
+  }
+  Object.assign(geminiOptions, parsed);
+  flash.textContent = `${count} grupo(s) reconhecido(s)! Clique em "Usar Opção A/B" em cada card abaixo.`;
+  flash.classList.remove('error');
+  document.getElementById('geminiReplyArea').value = '';
+  renderHardGroups();
+}
+
+function pasteGeminiFromClipboard(){
+  const flash = document.getElementById('geminiParseFlash');
+  navigator.clipboard.readText().then(text => {
+    document.getElementById('geminiReplyArea').value = text;
+    processGeminiReply();
+  }).catch(() => {
+    flash.textContent = 'Não consegui acessar a área de transferência automaticamente — cole manualmente (Ctrl+V) e clique em "Processar resposta".';
+    flash.classList.add('error');
+  });
+}
+
+function applyOption(groupId, letter){
+  const g = hardGroups.find(x => x.id === groupId);
+  if(!g) return;
+  const opts = geminiOptions[groupId];
+  if(!opts || !opts[letter]) return;
+  const texts = opts[letter];
+  const missing = g.enIndices.filter(idx => !texts[String(idx+1)]);
+  g.enIndices.forEach(idx => {
+    if(texts[String(idx+1)]) g.finalTexts[idx] = texts[String(idx+1)];
+  });
+  if(missing.length){
+    alert('A resposta colada não cobre todos os blocos deste grupo (faltam EN #' + missing.map(i=>i+1).join(', #') + '). Preencha esses manualmente antes de marcar como resolvido.');
+    renderHardGroups();
+    persist();
+    return;
+  }
+  markGroupResolved(groupId);
 }
 
 function exportBatch(){
