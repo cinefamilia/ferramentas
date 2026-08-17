@@ -610,6 +610,7 @@ function resolveCaseB(){
   moves.forEach(mv => {
     if(mv.type === '11'){
       pendingInsertPt = []; // easy block already "absorbs" any prior stray insertion context reset
+      if(hardGroups.length) hardGroups[hardGroups.length-1]._openForMerge = false; // fecha o grupo em aberto — um bloco fácil encerra a sequência
       return;
     }
     if(mv.type === '01'){
