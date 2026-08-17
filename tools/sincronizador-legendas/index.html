@@ -791,8 +791,9 @@ function downloadFinal(){
   const blob = new Blob([srt], { type: 'text/plain;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
+  const baseName = (ptFileName || enFileName || 'legenda').replace(/\.srt$/i, '');
   a.href = url;
-  a.download = 'legenda_sincronizada.srt';
+  a.download = `${baseName}_FINAL.srt`;
   a.click();
   URL.revokeObjectURL(url);
 }
