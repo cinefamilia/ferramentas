@@ -11,7 +11,7 @@ Lê Cine_Fami_lia_B09_2.xlsx e gera filmes.js (window.FILMES = [...]).
 import json
 import openpyxl
 
-XLSX_PATH = "Cine_Fami_lia_B09_2.xlsx"
+XLSX_PATH = "Cine Família B10 Completo.xlsx"
 OUT_PATH = "filmes.js"
 
 # Abas que são "gênero" puro -> genero = nome da aba, origem = "genero"
@@ -98,12 +98,19 @@ def build_row(headers, row_cells, aba_nome, origem, genero):
     preset_elmedia = s(val("Preset Elmedia").value)
     situacao = s(val("Situação").value)
     sinopse = s(val("Sinopse").value)
+
     colecao_tipo = s(val("Coleção Tipo").value)
     ordem = val("Ordem").value
     if isinstance(ordem, str):
         ordem = s(ordem)
     diretor = s(val("Diretor").value)
     atores = [s(val(f"Ator{i}").value) for i in range(1, 7)]
+
+    # Regra de segurança: Para ser considerado um filme válido, além do Nome deve
+    # possuir ao menos uma informação estruturada de filme (Capa, Ano, Sinopse, Diretor ou Nome Original).
+    # Linhas de anotações/avisos (como 'Faltam filmes com problema na legenda') são ignoradas.
+    if not any([capa, ano, sinopse, diretor, nome_original]):
+        return None
 
     tags = parse_tags(colecao_tipo)
 
