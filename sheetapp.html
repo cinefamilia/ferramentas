@@ -781,6 +781,19 @@
 <script src="filmes.js"></script>
 <script>
 
+// ── VISIBILIDADE: oculta filmes com dados incompletos (só nome+ano preenchidos) ──
+(function(){
+  function isFilmeCompleto(f){
+    const atores = [f.ator1,f.ator2,f.ator3,f.ator4,f.ator5,f.ator6];
+    return !!(f.capa && f.sinopse && f.diretor && atores.some(a=>a));
+  }
+  const completos = filmes.filter(isFilmeCompleto);
+  if(completos.length !== filmes.length){
+    filmes.length = 0;
+    filmes.push(...completos);
+  }
+})();
+
 // ── ESTADO ────────────────────────────────────────────────────────────────────
 const GENRE_SHEETS = ["Clássicos","Ação","Comédia","Drama","Romance","Musicais","Suspense","Policial","Cult-Favoritos","Filmes Família"];
 const CINE_ITALIA_TAB = "Cine Itália";
