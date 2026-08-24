@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divisor &amp; Juntador de Legendas — Cine Legenda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f7f3ea;
+    --surface: #ffffff;
+    --surface-2: #f0ebdf;
+    --border: #ddd4c0;
+    --text: #241f18;
+    --text-dim: #7a7062;
+    --accent: #a86a26;
+    --accent-dim: #d9bb8a;
+    --ok: #4a7752;
+    --ok-bg: #eaf1ea;
+    --warn: #ad4432;
+    --warn-bg: #f7eae7;
+    --radius: 10px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% -10%, rgba(168,106,38,0.06), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    padding-bottom:60px;
+  }
+  header{
+    padding:36px 20px 20px;
+    text-align:center;
+    border-bottom:1px solid var(--border);
+    margin-bottom:28px;
+  }
+  header.join-header{
+    margin-top:44px;
+    padding-top:40px;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    color:var(--accent);
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(24px,4vw,34px);
+    font-weight:700;
+    margin:0 0 8px;
+    letter-spacing:-0.01em;
+  }
+  h1.join-h1{ font-size:clamp(21px,3.4vw,28px); }
+  .sub{
+    color:var(--text-dim);
+    font-size:14px;
+    max-width:560px;
+    margin:0 auto;
+    line-height:1.5;
+  }
+  main{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 16px;
+  }
+  .panel{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:18px;
+    margin-bottom:20px;
+  }
+  .panel-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+    margin-bottom:12px;
+  }
+  .drop{
+    border:1.5px dashed var(--border);
+    border-radius:8px;
+    padding:26px 12px;
+    text-align:center;
+    cursor:pointer;
+    transition:border-color .12s ease, background .12s ease;
+    background:var(--bg);
+  }
+  .drop:hover, .drop.dragover{ border-color:var(--accent); background:var(--surface-2); }
+  .drop-filename{
+    font-size:14px;
+    color:var(--text);
+    font-weight:600;
+    word-break:break-all;
+  }
+  .drop-hint{
+    font-size:12px;
+    color:var(--text-dim);
+    margin-top:4px;
+  }
+  input[type=file]{ display:none; }
+  input[type=number]{
+    width:90px;
+    border:1px solid var(--border);
+    border-radius:7px;
+    padding:8px 10px;
+    font-size:14px;
+    font-family:'IBM Plex Mono',monospace;
+    background:var(--bg);
+    color:var(--text);
+  }
+  input[type=number]:focus{ outline:1px solid var(--accent); border-color:var(--accent); }
+  label.field-label{
+    font-size:13px;
+    color:var(--text-dim);
+    margin-right:10px;
+  }
+  .btn{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    border:none;
+    border-radius:8px;
+    padding:10px 18px;
+    cursor:pointer;
+    transition:transform .08s ease, background .15s ease;
+  }
+  .btn:active{ transform:scale(0.97); }
+  .btn:disabled{ opacity:0.45; cursor:not-allowed; }
+  .btn-primary{ background:var(--accent); color:#fffaf0; }
+  .btn-primary:hover:not(:disabled){ background:#93591e; }
+  .btn-ghost{ background:transparent; color:var(--text-dim); border:1px solid var(--border); }
+  .btn-ghost:hover{ color:var(--text); border-color:var(--text-dim); }
+  .btn-sm{ font-size:12.5px; padding:7px 12px; }
+  .row{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+
+  .stats-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:14px;
+  }
+  .stat{
+    background:var(--surface-2);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:8px 12px;
+    font-size:12.5px;
+    color:var(--text-dim);
+  }
+  .stat b{ color:var(--text); font-family:'IBM Plex Mono',monospace; }
+
+  .part-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px;
+    margin-bottom:14px;
+  }
+  .part-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .part-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--accent);
+    background:rgba(168,106,38,0.08);
+    border:1px solid var(--accent-dim);
+    padding:3px 9px;
+    border-radius:20px;
+  }
+  .part-range{ font-size:12.5px; color:var(--text-dim); }
+  textarea.part-out{
+    width:100%;
+    min-height:110px;
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:8px;
+    color:var(--text);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    line-height:1.5;
+    padding:10px;
+    resize:vertical;
+  }
+  textarea.part-in{
+    width:100%;
+    min-height:110px;
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:8px;
+    color:var(--text);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    line-height:1.5;
+    padding:10px;
+    resize:vertical;
+  }
+  textarea.part-in:focus{ outline:1px solid var(--accent); border-color:var(--accent); }
+  textarea.part-in::placeholder{ color:var(--text-dim); font-family:'Inter',sans-serif; }
+  .flash{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ok); margin-left:8px; }
+  .status-line{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    margin-top:8px;
+  }
+  .status-ok{ color:var(--ok); }
+  .status-warn{ color:var(--warn); }
+  .status-idle{ color:var(--text-dim); }
+  .empty{
+    text-align:center;
+    color:var(--text-dim);
+    font-size:14px;
+    padding:30px 20px;
+    line-height:1.6;
+  }
+  .final-panel{
+    background:var(--surface);
+    border:1.5px solid var(--accent-dim);
+    border-radius:var(--radius);
+    padding:18px;
+    margin-top:6px;
+  }
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Cine Legenda</div>
+  <h1>Divisor de Legendas</h1>
+  <div class="sub">Solte um .srt e ele é dividido em partes pela numeração das legendas — nunca no meio de uma fala — cada parte já sai em JSON indexado por ID, pronta para colar no Gemini.</div>
+</header>
+
+<main>
+  <div class="panel">
+    <div class="panel-label">Carregar arquivo .srt</div>
+    <div class="drop" id="drop" onclick="document.getElementById('fileInput').click()">
+      <div class="drop-filename" id="fileName">Nenhum arquivo</div>
+      <div class="drop-hint">Clique ou arraste o .srt aqui</div>
+    </div>
+    <input type="file" id="fileInput" accept=".srt" onchange="handleFile(event)">
+
+    <div class="row" style="margin-top:16px;">
+      <label class="field-label" for="chunkSize">Blocos por parte</label>
+      <input type="number" id="chunkSize" value="300" min="1" step="1">
+      <button class="btn btn-primary" id="btnSplit" onclick="doSplit()" disabled>Dividir</button>
+      <button class="btn btn-ghost" onclick="resetAll()">Limpar tudo</button>
+    </div>
+    <div class="stats-row" id="statsRow"></div>
+  </div>
+
+  <div id="partsWrap"></div>
+
+  <div id="joinSection" style="display:none;">
+    <header class="join-header">
+      <div class="eyebrow">Cine Legenda</div>
+      <h1 class="join-h1">Juntar Traduções</h1>
+      <div class="sub">Cole abaixo o JSON que o Gemini devolveu para cada parte. A numeração e os timestamps originais são preservados — a busca é feita por ID, então um bloco pulado nunca desalinha os demais.</div>
+    </header>
+    <div id="joinPartsWrap"></div>
+    <div class="final-panel">
+      <div class="panel-label">Arquivo final</div>
+      <div class="row">
+        <button class="btn btn-primary" id="btnFinal" onclick="generateFinal()" disabled>Gerar .srt final</button>
+        <button class="btn btn-ghost btn-sm" onclick="downloadFinal()" id="btnFinalDownload" style="display:none;">Baixar .srt</button>
+        <span class="flash" id="finalFlash"></span>
+      </div>
+      <div class="stats-row" id="finalStatsRow"></div>
+    </div>
+  </div>
+</main>
+
+<script>
+let srtBlocks = [];
+let srtFileName = '';
+let partsData = [];      // [{start,end,blocks}]
+let finalSrtText = '';
+let finalFileName = '';
+
+// Divide preservando o timestamp e o texto ORIGINAIS de cada bloco — nada
+// nisso é normalizado ou reescrito. O único campo forçado é o NÚMERO do
+// bloco: em vez de confiar no número gravado no arquivo (que pode estar
+// com numeração inconsistente por erro da fonte original), usamos sempre
+// a posição sequencial real do bloco (1, 2, 3...), tanto nas partes do
+// Divisor quanto no .srt final remontado pelo Juntador.
+function parseSRTRaw(text){
+  const blocks = [];
+  const normalized = text.replace(/\r/g, '');
+  const chunks = normalized.split(/\n\n+/);
+  chunks.forEach(chunk => {
+    const trimmed = chunk.trim();
+    if(!trimmed) return;
+    const lines = trimmed.split('\n');
+    // Cada pedaço vira um bloco atômico — nunca é subdividido por frase,
+    // só agrupado inteiro numa parte ou outra. Isso garante que nenhuma
+    // legenda seja cortada no meio.
+    blocks.push({ raw: trimmed, lines, seq: blocks.length + 1 });
+  });
+  return blocks;
+}
+
+// Reconstrói o texto de um bloco usando SEMPRE a numeração sequencial
+// forçada (seq), mantendo o timestamp original (lines[1]) e o texto
+// original (lines a partir de lines[2]) intactos.
+function buildBlockText(b){
+  const text = b.lines.slice(2).join('\n');
+  return `${b.seq}\n${b.lines[1]}\n${text}`;
+}
+
+// Monta o payload JSON indexado por ID (a numeração sequencial forçada,
+// mesma usada no .srt) — cada chave é o número do bloco, cada valor é
+// SÓ o texto da legenda (sem número nem timestamp, que nunca precisam
+// de tradução). Isso é o que vai colado no Gemini em vez do .srt puro.
+function buildBlockJSON(blocks){
+  const map = {};
+  blocks.forEach(b => {
+    map[b.seq] = b.lines.slice(2).join('\n');
+  });
+  return map;
+}
+
+function handleFile(evt){
+  const file = evt.target.files[0];
+  if(!file) return;
+  loadFile(file);
+}
+function loadFile(file){
+  const reader = new FileReader();
+  reader.onload = () => {
+    srtBlocks = parseSRTRaw(reader.result);
+    srtFileName = file.name;
+    document.getElementById('fileName').textContent = file.name + ` (${srtBlocks.length} blocos)`;
+    document.getElementById('btnSplit').disabled = srtBlocks.length === 0;
+    document.getElementById('partsWrap').innerHTML = '';
+    document.getElementById('statsRow').innerHTML = '';
+    resetJoinSection();
+  };
+  reader.readAsText(file, 'utf-8');
+}
+const dropEl = document.getElementById('drop');
+dropEl.addEventListener('dragover', e => { e.preventDefault(); dropEl.classList.add('dragover'); });
+dropEl.addEventListener('dragleave', () => dropEl.classList.remove('dragover'));
+dropEl.addEventListener('drop', e => {
+  e.preventDefault();
+  dropEl.classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if(file) loadFile(file);
+});
+
+function baseName(name){
+  return name.replace(/\.srt$/i, '');
+}
+
+// Troca qualquer palavra isolada de exatamente duas letras maiúsculas
+// (código de idioma: EN, IT, XX, etc.) por "PT". Se não achar nenhuma,
+// cai no fallback de acrescentar " PT" antes da extensão.
+function translatedFileName(originalName){
+  const base = baseName(originalName);
+  const langCodeRe = /\b[A-Z]{2}\b/;
+  let newBase;
+  if(langCodeRe.test(base)){
+    newBase = base.replace(langCodeRe, 'PT');
+  } else {
+    newBase = base + ' PT';
+  }
+  return newBase + '.srt';
+}
+
+function doSplit(){
+  const size = Math.max(1, parseInt(document.getElementById('chunkSize').value, 10) || 300);
+  const total = srtBlocks.length;
+  const numParts = Math.ceil(total / size);
+
+  const statsRow = document.getElementById('statsRow');
+  statsRow.innerHTML = `
+    <div class="stat">Total de blocos: <b>${total}</b></div>
+    <div class="stat">Blocos por parte: <b>${size}</b></div>
+    <div class="stat">Partes geradas: <b>${numParts}</b></div>
+  `;
+
+  const wrap = document.getElementById('partsWrap');
+  wrap.innerHTML = '';
+  partsData = [];
+
+  if(total === 0){
+    wrap.innerHTML = '<div class="empty">Nenhum bloco encontrado no arquivo.</div>';
+    resetJoinSection();
+    return;
+  }
+
+  for(let p = 0; p < numParts; p++){
+    const start = p * size;
+    const end = Math.min(start + size, total);
+    const partBlocks = srtBlocks.slice(start, end);
+    partsData.push({ start, end, blocks: partBlocks, translated: {} });
+
+    const partText = JSON.stringify(buildBlockJSON(partBlocks), null, 2);
+
+    const card = document.createElement('div');
+    card.className = 'part-card';
+    const partNum = p + 1;
+    const fname = `${baseName(srtFileName)}_parte${String(partNum).padStart(2,'0')}.json`;
+    card.innerHTML = `
+      <div class="part-head">
+        <span class="part-tag">Parte ${partNum} / ${numParts}</span>
+        <span class="part-range">blocos ${start+1}–${end} (${partBlocks.length} legendas)</span>
+      </div>
+      <textarea class="part-out" readonly id="partOut${partNum}">${escapeHtml(partText)}</textarea>
+      <div class="row" style="margin-top:8px;">
+        <button class="btn btn-primary btn-sm" onclick="copyPart(${partNum})">Copiar</button>
+        <button class="btn btn-ghost btn-sm" onclick="downloadPart(${partNum}, '${fname}')">Baixar .json</button>
+        <span class="flash" id="flash${partNum}"></span>
+      </div>
+    `;
+    wrap.appendChild(card);
+  }
+
+  buildJoinSection(numParts);
+}
+
+function escapeHtml(s){
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function copyPart(n){
+  const ta = document.getElementById('partOut' + n);
+  navigator.clipboard.writeText(ta.value).then(() => {
+    const flash = document.getElementById('flash' + n);
+    flash.textContent = 'copiado!';
+    setTimeout(() => flash.textContent = '', 1800);
+  });
+}
+
+function downloadPart(n, filename){
+  const ta = document.getElementById('partOut' + n);
+  triggerDownload(ta.value, filename);
+}
+
+function triggerDownload(text, filename){
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function resetAll(){
+  srtBlocks = [];
+  srtFileName = '';
+  document.getElementById('fileName').textContent = 'Nenhum arquivo';
+  document.getElementById('btnSplit').disabled = true;
+  document.getElementById('fileInput').value = '';
+  document.getElementById('partsWrap').innerHTML = '';
+  document.getElementById('statsRow').innerHTML = '';
+  resetJoinSection();
+}
+
+// ---------- Juntar Traduções ----------
+
+function resetJoinSection(){
+  partsData = [];
+  finalSrtText = '';
+  finalFileName = '';
+  document.getElementById('joinSection').style.display = 'none';
+  document.getElementById('joinPartsWrap').innerHTML = '';
+  document.getElementById('finalStatsRow').innerHTML = '';
+  document.getElementById('btnFinal').disabled = true;
+  document.getElementById('btnFinalDownload').style.display = 'none';
+  document.getElementById('finalFlash').textContent = '';
+}
+
+function buildJoinSection(numParts){
+  const joinSection = document.getElementById('joinSection');
+  const wrap = document.getElementById('joinPartsWrap');
+  wrap.innerHTML = '';
+  finalSrtText = '';
+  finalFileName = '';
+  document.getElementById('btnFinal').disabled = true;
+  document.getElementById('btnFinalDownload').style.display = 'none';
+  document.getElementById('finalFlash').textContent = '';
+  document.getElementById('finalStatsRow').innerHTML = '';
+
+  for(let p = 0; p < numParts; p++){
+    const partNum = p + 1;
+    const expected = partsData[p].blocks.length;
+    const start = partsData[p].start;
+    const end = partsData[p].end;
+
+    partsData[p].translated = {};
+
+    const card = document.createElement('div');
+    card.className = 'part-card';
+    card.innerHTML = `
+      <div class="part-head">
+        <span class="part-tag">Parte ${partNum} / ${numParts}</span>
+        <span class="part-range">blocos ${start+1}–${end} (${expected} legendas esperadas)</span>
+      </div>
+      <textarea class="part-in" id="joinIn${partNum}" placeholder='Cole aqui o JSON traduzido devolvido pelo Gemini para esta parte (ex: {"1": "texto traduzido", "2": "..."})' oninput="updateJoinStatus(${partNum})"></textarea>
+      <div class="status-line status-idle" id="joinStatus${partNum}">aguardando colagem</div>
+      <div id="pendingBox${partNum}" style="display:none; margin-top:6px; padding:8px; border:1px dashed var(--warn); border-radius:6px; font-size:0.85em;">
+        <div id="pendingList${partNum}" style="margin-bottom:6px;"></div>
+        <button class="btn btn-ghost btn-sm" onclick="copyPendencias(${partNum})">Copiar pendências (JSON para reenviar ao Gemini)</button>
+        <span class="flash" id="pendingFlash${partNum}"></span>
+      </div>
+    `;
+    wrap.appendChild(card);
+  }
+
+  joinSection.style.display = 'block';
+}
+
+// Tenta interpretar o texto colado como o JSON indexado por ID que o
+// Gemini deveria ter devolvido (mesmas chaves do payload enviado).
+// Retorna null se não for um JSON válido de objeto simples (chave→texto),
+// nunca lança erro — quem chama trata o null como "ainda não deu certo".
+function parseTranslatedInput(text){
+  const normalized = text.trim();
+  if(!normalized) return null;
+  let parsed;
+  try{
+    parsed = JSON.parse(normalized);
+  } catch(e){
+    return null;
+  }
+  if(!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return null;
+  return parsed;
+}
+
+function updateJoinStatus(partNum){
+  const ta = document.getElementById('joinIn' + partNum);
+  const statusEl = document.getElementById('joinStatus' + partNum);
+  const part = partsData[partNum - 1];
+  const text = ta.value;
+
+  if(!text.trim()){
+    statusEl.className = 'status-line status-idle';
+    statusEl.textContent = 'aguardando colagem';
+  } else {
+    const parsed = parseTranslatedInput(text);
+    if(parsed === null){
+      statusEl.className = 'status-line status-warn';
+      statusEl.textContent = '⚠ JSON inválido — cole exatamente o que o Gemini devolveu, sem texto extra antes/depois';
+    } else {
+      // Mescla no armazenamento acumulado desta parte: cada colagem nova
+      // SOMA/SOBRESCREVE pelas chaves que trouxer, sem apagar o que já
+      // estava correto de uma colagem anterior. É isso que permite colar
+      // primeiro o lote inteiro e, depois, só as correções pontuais.
+      Object.assign(part.translated, parsed);
+
+      const found = Object.keys(parsed).length;
+      statusEl.className = 'status-line status-ok';
+      statusEl.textContent = `✓ ${found} ID(s) recebido(s) nesta colagem — mesclado ao total já registrado desta parte`;
+    }
+  }
+
+  updatePendingReport(partNum);
+  checkAllFilled();
+}
+
+// Calcula quais IDs desta parte ainda estão SEM tradução utilizável —
+// tanto os que nunca vieram (chave ausente) quanto os que vieram só com
+// texto em branco/espaço (Gemini "pulou" a legenda mas devolveu a chave
+// mesmo assim). Atualiza o aviso de pendências e mostra/esconde o botão
+// de copiar.
+function updatePendingReport(partNum){
+  const part = partsData[partNum - 1];
+  const pendingBox = document.getElementById('pendingBox' + partNum);
+  const pendingList = document.getElementById('pendingList' + partNum);
+
+  const pendingIds = part.blocks
+    .map(b => String(b.seq))
+    .filter(key => {
+      const val = part.translated[key];
+      return val === undefined || val === null || !String(val).trim();
+    });
+
+  if(pendingIds.length === 0){
+    pendingBox.style.display = 'none';
+    pendingList.textContent = '';
+  } else {
+    pendingBox.style.display = 'block';
+    pendingList.textContent = `⚠ ${pendingIds.length} legenda(s) ainda sem tradução (ID${pendingIds.length > 1 ? 's' : ''}: ${pendingIds.join(', ')})`;
+  }
+}
+
+// Monta um JSON só com os IDs pendentes desta parte (texto ORIGINAL, para
+// reenviar ao Gemini pedindo só essas legendas) e copia para a área de
+// transferência.
+function copyPendencias(partNum){
+  const part = partsData[partNum - 1];
+  const pendingIds = part.blocks
+    .map(b => String(b.seq))
+    .filter(key => {
+      const val = part.translated[key];
+      return val === undefined || val === null || !String(val).trim();
+    });
+
+  const map = {};
+  part.blocks.forEach(b => {
+    const key = String(b.seq);
+    if(pendingIds.includes(key)){
+      map[key] = b.lines.slice(2).join('\n');
+    }
+  });
+
+  const json = JSON.stringify(map, null, 2);
+  navigator.clipboard.writeText(json).then(() => {
+    const flash = document.getElementById('pendingFlash' + partNum);
+    flash.textContent = 'copiado! peça ao Gemini só estes IDs e cole a resposta na caixa acima';
+    setTimeout(() => flash.textContent = '', 4000);
+  });
+}
+
+function checkAllFilled(){
+  const numParts = partsData.length;
+  let allFilled = numParts > 0;
+  for(let p = 1; p <= numParts; p++){
+    const ta = document.getElementById('joinIn' + p);
+    if(!ta || !ta.value.trim()){ allFilled = false; break; }
+  }
+  document.getElementById('btnFinal').disabled = !allFilled;
+}
+
+function generateFinal(){
+  const numParts = partsData.length;
+  const finalParts = [];
+  let totalExpected = 0;
+  let totalMatched = 0;
+  let totalMissing = 0;
+
+  for(let p = 0; p < numParts; p++){
+    const originalBlocks = partsData[p].blocks;
+    const translatedMap = partsData[p].translated || {};
+
+    totalExpected += originalBlocks.length;
+
+    originalBlocks.forEach(b => {
+      const key = String(b.seq);
+      const timestamp = b.lines[1];
+      const originalText = b.lines.slice(2).join('\n');
+      const val = translatedMap[key];
+      let translatedText;
+
+      // Lookup por ID (chave) no armazenamento ACUMULADO — não por posição
+      // e não só na última colagem. Chave ausente OU presente-mas-em-branco
+      // contam igual: "ainda não traduzido", mesmo critério do relatório
+      // de pendências, mantendo o bloco na posição certa de qualquer jeito.
+      if(val !== undefined && val !== null && String(val).trim()){
+        translatedText = val;
+        totalMatched++;
+      } else {
+        translatedText = originalText; // mantém o texto original em vez de deixar em branco
+        totalMissing++;
+      }
+
+      finalParts.push(`${b.seq}\n${timestamp}\n${translatedText}`);
+    });
+  }
+
+  finalSrtText = finalParts.join('\n\n') + '\n';
+  finalFileName = translatedFileName(srtFileName);
+
+  const finalStatsRow = document.getElementById('finalStatsRow');
+  finalStatsRow.innerHTML = `
+    <div class="stat">Blocos originais: <b>${totalExpected}</b></div>
+    <div class="stat">Traduzidos: <b>${totalMatched}</b></div>
+    <div class="stat">Sem tradução (original mantido): <b>${totalMissing}</b></div>
+    <div class="stat">Arquivo final: <b>${escapeHtml(finalFileName)}</b></div>
+  `;
+
+  const flash = document.getElementById('finalFlash');
+  if(totalMissing > 0){
+    flash.className = 'flash';
+    flash.style.color = 'var(--warn)';
+    flash.textContent = `gerado com ${totalMissing} bloco(s) sem tradução (texto original mantido na posição certa) — confira antes de usar`;
+  } else {
+    flash.className = 'flash';
+    flash.style.color = 'var(--ok)';
+    flash.textContent = 'gerado sem avisos — todos os blocos traduzidos!';
+  }
+
+  document.getElementById('btnFinalDownload').style.display = 'inline-block';
+}
+
+function downloadFinal(){
+  if(!finalSrtText) return;
+  triggerDownload(finalSrtText, finalFileName);
+}
+</script>
+
+</body>
+</html>
