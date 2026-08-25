@@ -902,6 +902,8 @@ function applyDecisionToBlock(c){
 }
 
 function updateFreeText(caseIdx, value){
+  // Salva a cada tecla (nunca perde o que foi digitado), mas NÃO fecha o lote
+  // nem atualiza trilha/marcador ainda — isso só acontece em confirmFreeText (Enter ou blur).
   cases[caseIdx].freeText = value;
   cases[caseIdx].choice = 'free';
   applyDecisionToBlock(cases[caseIdx]);
@@ -920,7 +922,16 @@ function updateFreeText(caseIdx, value){
   countEl.classList.toggle('over', over);
   rowEl.classList.add('selected');
   document.querySelectorAll('.opt[data-case="'+caseIdx+'"]').forEach(el => el.classList.remove('selected'));
+}
+
+// Confirmação explícita do texto livre: dispara com Enter (change) ou ao clicar fora (blur).
+// Só aqui a trilha de lotes, o marcador de pendência e o "decided" do card são atualizados —
+// assim o usuário pode ir, voltar e reescrever à vontade sem que o sistema marque "concluído" cedo demais.
+function confirmFreeText(caseIdx){
+  if(cases[caseIdx].choice !== 'free') return; // campo vazio ou não é o modo ativo: nada a confirmar
   document.querySelector('.case-card[data-case="'+caseIdx+'"]').classList.add('decided');
+  renderBatchNav();
+  updateJumpButton();
 }
 
 function clearAllCases(){
@@ -1024,7 +1035,9 @@ function renderCases(){
         <div class="free-wrap">
           <div class="free-input-row ${freeSelected}" id="freeRow-${idx}">
             <input type="text" placeholder="Ou escreva seu texto..." value="${escapeAttr(c.freeText)}"
-              oninput="updateFreeText(${idx}, this.value)">
+              oninput="updateFreeText(${idx}, this.value)"
+              onchange="confirmFreeText(${idx})"
+              onkeydown="if(event.key==='Enter'){ this.blur(); }">
             <div class="meter"><div class="meter-fill ${freeOver ? 'over' : ''}" id="meterFill-${idx}" style="width:${freePct}%"></div></div>
             <div class="free-count ${freeOver ? 'over' : ''}" id="freeCount-${idx}">${freeLen}</div>
           </div>
