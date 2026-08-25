@@ -218,6 +218,30 @@
     color:var(--text-dim);
   }
 
+  .lote-track{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-top:12px;
+  }
+  .lote-chip{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    font-weight:600;
+    width:28px;height:28px;
+    border-radius:6px;
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    border:1px solid var(--border);
+    background:var(--surface-2);
+    color:var(--text-dim);
+    transition:transform .08s ease, border-color .12s ease;
+  }
+  .lote-chip:hover{ transform:scale(1.08); border-color:var(--accent-dim); }
+  .lote-chip.current{ border-color:var(--accent); box-shadow:0 0 0 2px rgba(168,106,38,0.15); }
+  .lote-chip.done{ background:var(--ok); color:#fffaf0; border-color:var(--ok); }
+  .lote-chip.partial{ background:var(--accent-dim); color:#3c2a10; border-color:var(--accent); }
+
   .case-card{
     background:var(--surface);
     border:1px solid var(--border);
@@ -227,6 +251,10 @@
     position:relative;
   }
   .case-card.decided{ border-color:var(--accent-dim); }
+  .case-card.next-pending{
+    border-color:var(--accent);
+    box-shadow:0 0 0 2px rgba(168,106,38,0.15);
+  }
   .case-head{
     display:flex;
     align-items:baseline;
@@ -234,13 +262,20 @@
     margin-bottom:10px;
   }
   .case-num{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:13px;
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:16px;
     color:var(--accent);
     background:rgba(168,106,38,0.08);
     border:1px solid var(--accent-dim);
-    padding:3px 9px;
+    padding:4px 12px;
     border-radius:20px;
+  }
+  .case-card.next-pending .case-num{
+    font-size:19px;
+    background:var(--accent);
+    color:#fffaf0;
+    border-color:var(--accent);
   }
   .case-orig-len{
     font-family:'IBM Plex Mono',monospace;
@@ -464,6 +499,7 @@
         <span class="batch-pos" id="batchPos"></span>
         <button class="btn btn-ghost" onclick="nextBatch()" id="nextBatchBtn">Próximo lote →</button>
       </div>
+      <div class="lote-track" id="loteTrack"></div>
       <div class="row" style="margin-top:12px;">
         <button class="btn btn-primary" onclick="copyBatchForGemini()">📋 Copiar lote atual (texto p/ Gemini)</button>
       </div>
@@ -674,6 +710,33 @@ function totalBatches(){
 function prevBatch(){ if(batchIndex > 0){ batchIndex--; saveSession(); renderAll(); } }
 function nextBatch(){ if(batchIndex < totalBatches() - 1){ batchIndex++; saveSession(); renderAll(); } }
 
+// Status de um lote (0-indexed): 'done' | 'partial' | 'empty', baseado no finalText dos blocos que o compõem
+function loteStatus(i){
+  const probs = problematicBlocks();
+  const start = i * 5;
+  const blocks = probs.slice(start, start + 5);
+  if(blocks.length === 0) return 'empty';
+  const decidedCount = blocks.filter(b => b.finalText !== null && b.finalText !== undefined).length;
+  if(decidedCount === blocks.length) return 'done';
+  if(decidedCount === 0) return 'empty';
+  return 'partial';
+}
+
+// Primeiro lote (0-indexed) que ainda não está 'done'; -1 se todos concluídos
+function firstIncompleteLote(){
+  const tb = totalBatches();
+  for(let i = 0; i < tb; i++){
+    if(loteStatus(i) !== 'done') return i;
+  }
+  return -1;
+}
+
+function goToLote(i){
+  batchIndex = i;
+  saveSession();
+  renderAll();
+}
+
 function copyBatchForGemini(){
   const batch = currentBatch();
   const flash = document.getElementById('batchFlash');
@@ -682,7 +745,20 @@ function copyBatchForGemini(){
     flash.classList.add('error');
     return;
   }
-  const text = '```\n' + batch.map(b =>
+
+  // Aviso de sequência: se existe um lote anterior incompleto e não é o atual, confirma antes de copiar
+  const incomplete = firstIncompleteLote();
+  if(incomplete !== -1 && incomplete !== batchIndex){
+    const ok = confirm(
+      `O Lote ${incomplete + 1} ainda está incompleto (você ainda não decidiu todos os casos dele).\n\n` +
+      `Copiar o Lote ${batchIndex + 1} mesmo assim? Isso pode causar confusão de posição no chat do Gemini.`
+    );
+    if(!ok) return;
+  }
+
+  const tb = totalBatches();
+  const header = `LOTE ${batchIndex + 1} DE ${tb}\n`;
+  const text = header + '```\n' + batch.map(b =>
     `**[Legenda #${b.index}]** (Original fundido: ${b.len} caracteres)\n*Texto Original:* "${b.merged}"`
   ).join('\n\n') + '\n```';
 
@@ -694,7 +770,7 @@ function copyBatchForGemini(){
 
   if(navigator.clipboard && navigator.clipboard.writeText){
     navigator.clipboard.writeText(text).then(() => {
-      flash.textContent = `Copiado! ${batch.length} caso(s) prontos para colar no Gemini.`;
+      flash.textContent = `Copiado! ${batch.length} caso(s) do Lote ${batchIndex + 1}/${tb} prontos para colar no Gemini.`;
       flash.classList.remove('error');
       setTimeout(() => flash.textContent = '', 3000);
     }).catch(() => {
@@ -877,6 +953,21 @@ function renderStats(){
     </div>`;
 }
 
+function renderLoteTrack(){
+  const track = document.getElementById('loteTrack');
+  const probs = problematicBlocks();
+  if(probs.length === 0){ track.innerHTML = ''; return; }
+  const tb = totalBatches();
+  let html = '';
+  for(let i = 0; i < tb; i++){
+    const status = loteStatus(i);
+    const cls = ['lote-chip', status];
+    if(i === batchIndex) cls.push('current');
+    html += `<div class="${cls.join(' ')}" onclick="goToLote(${i})" title="Lote ${i + 1} — ${status === 'done' ? 'completo' : status === 'partial' ? 'parcial' : 'não iniciado'}">${i + 1}</div>`;
+  }
+  track.innerHTML = html;
+}
+
 function renderBatchNav(){
   const probs = problematicBlocks();
   document.getElementById('step2Wrap').style.display = probs.length > 0 ? 'block' : 'none';
@@ -888,6 +979,7 @@ function renderBatchNav(){
   document.getElementById('batchPos').textContent = `Lote ${batchIndex + 1} de ${tb} (${currentBatch().length} casos)`;
   document.getElementById('prevBatchBtn').disabled = batchIndex === 0;
   document.getElementById('nextBatchBtn').disabled = batchIndex >= tb - 1;
+  renderLoteTrack();
 }
 
 function renderCases(){
@@ -896,6 +988,8 @@ function renderCases(){
     container.innerHTML = '<div class="empty">Nenhuma resposta do Gemini processada ainda.<br>Copie um lote (passo 2), cole a resposta do Gemini acima e clique em <code>Processar resposta</code>.</div>';
     return;
   }
+
+  const nextIdx = firstPendingCaseIdx();
 
   container.innerHTML = cases.map((c, idx) => {
     const optionsHtml = ['A','B','C'].map(letter => {
@@ -915,8 +1009,12 @@ function renderCases(){
     const freeOver = freeLen > LIMIT;
     const freePct = Math.min(100, (freeLen / LIMIT) * 100);
 
+    const cardClasses = ['case-card'];
+    if(c.choice) cardClasses.push('decided');
+    if(idx === nextIdx) cardClasses.push('next-pending');
+
     return `
-      <div class="case-card ${c.choice ? 'decided' : ''}" data-case="${idx}" id="case-${idx}">
+      <div class="${cardClasses.join(' ')}" data-case="${idx}" id="case-${idx}">
         <div class="case-head">
           <div class="case-num">#${c.num}</div>
           <div class="case-orig-len">${c.origLen} chars original</div>
