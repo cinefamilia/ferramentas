@@ -326,6 +326,18 @@
     color:var(--ok);
     flex-shrink:0;
   }
+  /* Alerta de contagem real estourada — cor deliberadamente fora da paleta do site,
+     para nunca se "acomodar" visualmente e sempre saltar aos olhos como bug de dados. */
+  .opt.mismatch{
+    background:#0ea5e9 !important;
+    border-color:#0ea5e9 !important;
+  }
+  .opt.mismatch .opt-text,
+  .opt.mismatch .opt-chars{ color:#062b3b; font-weight:600; }
+  .opt.mismatch .opt-letter{ background:#062b3b; color:#0ea5e9; }
+  .opt-chars.mismatch-flag::after{
+    content:" ⚠ real";
+  }
 
   .free-wrap{ margin-top:4px; }
   .free-input-row{
@@ -858,7 +870,10 @@ function parseInput(){
     let optMatch;
     const options = {};
     while((optMatch = optRegex.exec(optionsBlock)) !== null){
-      options[optMatch[1].toUpperCase()] = { text: optMatch[3], len: parseInt(optMatch[2], 10) };
+      // Nunca confiar no "Xc" que o Gemini reporta — recontar o texto de verdade.
+      // reportedLen fica guardado só para referência/depuração, não é usado na UI.
+      const realText = optMatch[3];
+      options[optMatch[1].toUpperCase()] = { text: realText, len: realText.length, reportedLen: parseInt(optMatch[2], 10) };
     }
 
     if(Object.keys(options).length > 0){
@@ -1007,11 +1022,12 @@ function renderCases(){
       const opt = c.options[letter];
       if(!opt) return '';
       const selected = c.choice === letter ? 'selected' : '';
+      const overLimit = opt.len > LIMIT;
       return `
-        <div class="opt ${selected}" data-case="${idx}" onclick="selectOption(${idx}, '${letter}')">
+        <div class="opt ${selected} ${overLimit ? 'mismatch' : ''}" data-case="${idx}" onclick="selectOption(${idx}, '${letter}')">
           <div class="opt-letter">${letter}</div>
           <div class="opt-text">${escapeHtml(opt.text)}</div>
-          <div class="opt-chars">${opt.len}c</div>
+          <div class="opt-chars ${overLimit ? 'mismatch-flag' : ''}">${opt.len}c</div>
         </div>`;
     }).join('');
 
