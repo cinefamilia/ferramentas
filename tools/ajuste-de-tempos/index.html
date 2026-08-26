@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajuste de Sincronia — Cine Família</title>
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --card-bg: #ffffff;
+    --border: #e2e2df;
+    --border-strong: #c9c9c5;
+    --text: #2b2b28;
+    --text-muted: #6b6b66;
+    --accent: #4a6fa5;
+    --accent-hover: #3a5a8a;
+    --ok: #2f7d4f;
+    --ok-bg: #eaf6ee;
+    --ok-border: #bfe3cc;
+    --warn: #a6660a;
+    --warn-bg: #fff6e8;
+    --warn-border: #f0d59c;
+    --error: #b3392c;
+    --error-bg: #fdeeec;
+    --error-border: #f1c3bc;
+    --radius: 10px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 32px 20px 60px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+  }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  header {
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 650;
+    margin: 0 0 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 22px;
+    margin-bottom: 20px;
+  }
+
+  .card h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+
+  .card .hint {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin: 0 0 16px;
+  }
+
+  .dropzones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 620px) {
+    .dropzones { grid-template-columns: 1fr; }
+  }
+
+  .dropzone {
+    border: 2px dashed var(--border-strong);
+    border-radius: var(--radius);
+    padding: 24px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    background: #fbfbfa;
+  }
+
+  .dropzone:hover {
+    border-color: var(--accent);
+    background: #f4f7fb;
+  }
+
+  .dropzone.dragover {
+    border-color: var(--accent);
+    background: #eef3fa;
+  }
+
+  .dropzone.filled {
+    border-style: solid;
+    border-color: var(--ok-border);
+    background: var(--ok-bg);
+  }
+
+  .dropzone .label {
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 4px;
+  }
+
+  .dropzone .filename {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    word-break: break-all;
+    margin-top: 6px;
+  }
+
+  .dropzone .icon {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+    opacity: 0.7;
+  }
+
+  input[type="file"] { display: none; }
+
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  button {
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.15s, opacity 0.15s;
+  }
+
+  button.primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  button.primary:hover { background: var(--accent-hover); }
+  button.primary:disabled {
+    background: #b7c3d4;
+    cursor: not-allowed;
+  }
+
+  button.secondary {
+    background: #fff;
+    color: var(--text);
+    border-color: var(--border-strong);
+  }
+  button.secondary:hover { background: #f2f2f0; }
+
+  .result {
+    display: none;
+  }
+
+  .result.show { display: block; }
+
+  .status-box {
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    border: 1px solid;
+    font-size: 0.9rem;
+  }
+
+  .status-box.ok {
+    background: var(--ok-bg);
+    border-color: var(--ok-border);
+    color: #1f5c39;
+  }
+
+  .status-box.warn {
+    background: var(--warn-bg);
+    border-color: var(--warn-border);
+    color: #7a4d06;
+  }
+
+  .status-box.error {
+    background: var(--error-bg);
+    border-color: var(--error-border);
+    color: #8a2b20;
+  }
+
+  .status-box .title {
+    font-weight: 650;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+  }
+
+  .status-box ul {
+    margin: 8px 0 0;
+    padding-left: 20px;
+  }
+
+  .counts {
+    display: flex;
+    gap: 24px;
+    margin: 10px 0 4px;
+    font-size: 0.88rem;
+  }
+
+  .counts .n {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  footer {
+    margin-top: 30px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+  }
+
+  .step-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--accent);
+    background: #eaf0f8;
+    border-radius: 5px;
+    padding: 2px 8px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Ajuste de Sincronia</h1>
+    <p class="subtitle">Cine Família — corrige o timestamp da legenda em português usando uma legenda de referência com timing correto (sempre que ambas tiverem a mesma quantidade de blocos)</p>
+  </header>
+
+  <div class="card">
+    <span class="step-tag">Etapa 1 — Carregar arquivos</span>
+    <h2>Legendas</h2>
+    <p class="hint">Solte ou selecione os dois arquivos .srt. A legenda original deve ter o timing correto; a legenda em português é a que será corrigida.</p>
+
+    <div class="dropzones">
+      <div class="dropzone" id="dz-original">
+        <div class="icon">🎬</div>
+        <div class="label">Legenda original (timing correto)</div>
+        <div class="filename" id="fn-original">Nenhum arquivo</div>
+        <input type="file" id="file-original" accept=".srt">
+      </div>
+      <div class="dropzone" id="dz-pt">
+        <div class="icon">🇧🇷</div>
+        <div class="label">Legenda em português (a corrigir)</div>
+        <div class="filename" id="fn-pt">Nenhum arquivo</div>
+        <input type="file" id="file-pt" accept=".srt">
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="primary" id="btn-process" disabled>Verificar e corrigir</button>
+      <button class="secondary" id="btn-reset">Limpar</button>
+    </div>
+  </div>
+
+  <div class="card result" id="result-card">
+    <span class="step-tag">Etapa 2 — Resultado</span>
+    <h2>Resultado da verificação</h2>
+    <div id="status-area"></div>
+    <div class="actions" id="download-area" style="display:none;">
+      <button class="primary" id="btn-download">Baixar .srt corrigido</button>
+    </div>
+  </div>
+
+  <footer>Processamento 100% local no navegador — nenhum arquivo é enviado a servidor algum.</footer>
+</div>
+
+<script>
+(function () {
+  const state = { original: null, pt: null, originalName: '', ptName: '' };
+
+  const dzOriginal = document.getElementById('dz-original');
+  const dzPt = document.getElementById('dz-pt');
+  const fileOriginal = document.getElementById('file-original');
+  const filePt = document.getElementById('file-pt');
+  const fnOriginal = document.getElementById('fn-original');
+  const fnPt = document.getElementById('fn-pt');
+  const btnProcess = document.getElementById('btn-process');
+  const btnReset = document.getElementById('btn-reset');
+  const resultCard = document.getElementById('result-card');
+  const statusArea = document.getElementById('status-area');
+  const downloadArea = document.getElementById('download-area');
+  const btnDownload = document.getElementById('btn-download');
+
+  let outputBlob = null;
+  let outputFilename = 'legenda_sincronizada.srt';
+  let lastOriginalBlocks = null;
+  let lastPtBlocks = null;
+
+  function setupDropzone(zone, input, onFile) {
+    zone.addEventListener('click', () => input.click());
+    zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('dragover'); });
+    zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+    zone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      zone.classList.remove('dragover');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        onFile(e.dataTransfer.files[0]);
+      }
+    });
+    input.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) onFile(e.target.files[0]);
+    });
+  }
+
+  function readFileAsText(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error('Falha ao ler o arquivo'));
+      // .srt costuma vir em UTF-8; se vier em latin1 os acentos quebram,
+      // mas mantemos UTF-8 como padrão (mesma convenção das outras ferramentas)
+      reader.readAsText(file, 'UTF-8');
+    });
+  }
+
+  function checkReady() {
+    btnProcess.disabled = !(state.original && state.pt);
+  }
+
+  setupDropzone(dzOriginal, fileOriginal, async (file) => {
+    state.originalName = file.name;
+    state.original = await readFileAsText(file);
+    fnOriginal.textContent = file.name;
+    dzOriginal.classList.add('filled');
+    checkReady();
+  });
+
+  setupDropzone(dzPt, filePt, async (file) => {
+    state.ptName = file.name;
+    state.pt = await readFileAsText(file);
+    fnPt.textContent = file.name;
+    dzPt.classList.add('filled');
+    checkReady();
+  });
+
+  btnReset.addEventListener('click', () => {
+    state.original = null;
+    state.pt = null;
+    state.originalName = '';
+    state.ptName = '';
+    fnOriginal.textContent = 'Nenhum arquivo';
+    fnPt.textContent = 'Nenhum arquivo';
+    dzOriginal.classList.remove('filled');
+    dzPt.classList.remove('filled');
+    fileOriginal.value = '';
+    filePt.value = '';
+    btnProcess.disabled = true;
+    resultCard.classList.remove('show');
+    statusArea.innerHTML = '';
+    downloadArea.style.display = 'none';
+    outputBlob = null;
+  });
+
+  // --- Parser de SRT ---
+  // Retorna array de { id, startRaw, endRaw, text }
+  function parseSRT(raw) {
+    // normaliza quebras de linha e remove BOM
+    const text = raw.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
+    const blocks = text.split(/\n\s*\n/);
+    const timeRe = /(\d{2}:\d{2}:\d{2},\d{3})\s*-->\s*(\d{2}:\d{2}:\d{2},\d{3})/;
+    const result = [];
+
+    for (const block of blocks) {
+      const lines = block.split('\n').filter((l, idx) => true);
+      if (lines.length < 2) continue;
+
+      let idx = 0;
+      // primeira linha pode ser o número do bloco (opcional/robusto)
+      let id = null;
+      if (/^\d+$/.test(lines[0].trim())) {
+        id = lines[0].trim();
+        idx = 1;
+      }
+
+      const timeMatch = (lines[idx] || '').match(timeRe);
+      if (!timeMatch) continue; // bloco malformado, ignora
+
+      const startRaw = timeMatch[1];
+      const endRaw = timeMatch[2];
+      const textLines = lines.slice(idx + 1);
+      const textContent = textLines.join('\n').trim();
+
+      result.push({ id: id, startRaw, endRaw, text: textContent });
+    }
+    return result;
+  }
+
+  function buildSRT(blocks) {
+    return blocks.map((b, i) => {
+      const num = i + 1; // renumeração sequencial por posição
+      return `${num}\n${b.startRaw} --> ${b.endRaw}\n${b.text}`;
+    }).join('\n\n') + '\n';
+  }
+
+  function deriveOutputFilename(ptName) {
+    // segue a convenção já usada nas outras ferramentas do catálogo:
+    // troca um código de idioma isolado de 2 letras maiúsculas por "PT";
+    // se não encontrar, acrescenta " (sincronizado)" antes da extensão
+    const dot = ptName.lastIndexOf('.');
+    const base = dot >= 0 ? ptName.slice(0, dot) : ptName;
+    const ext = dot >= 0 ? ptName.slice(dot) : '.srt';
+
+    const langCodeRe = /\b([A-Z]{2})\b/;
+    if (langCodeRe.test(base)) {
+      return base.replace(langCodeRe, 'PT') + ext;
+    }
+    return base + ' (sincronizado)' + ext;
+  }
+
+  function escapeHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  // --- Conversão de tempo SRT (HH:MM:SS,mmm) <-> milissegundos ---
+  function timeToMs(raw) {
+    const m = raw.match(/(\d{2}):(\d{2}):(\d{2}),(\d{3})/);
+    if (!m) return 0;
+    const [, hh, mm, ss, ms] = m;
+    return (((+hh) * 3600 + (+mm) * 60 + (+ss)) * 1000) + (+ms);
+  }
+
+  function msToTime(ms) {
+    const clamped = Math.max(0, Math.round(ms));
+    const hh = Math.floor(clamped / 3600000);
+    const mm = Math.floor((clamped % 3600000) / 60000);
+    const ss = Math.floor((clamped % 60000) / 1000);
+    const mmm = clamped % 1000;
+    const pad = (n, len) => String(n).padStart(len, '0');
+    return `${pad(hh, 2)}:${pad(mm, 2)}:${pad(ss, 2)},${pad(mmm, 3)}`;
+  }
+
+  function formatOffset(ms) {
+    const sign = ms >= 0 ? '+' : '-';
+    const abs = Math.abs(ms);
+    const totalSeconds = abs / 1000;
+    return `${sign}${totalSeconds.toFixed(3)}s`;
+  }
+
+  btnProcess.addEventListener('click', () => {
+    resultCard.classList.add('show');
+    downloadArea.style.display = 'none';
+    outputBlob = null;
+
+    let originalBlocks, ptBlocks;
+    try {
+      originalBlocks = parseSRT(state.original);
+    } catch (e) {
+      statusArea.innerHTML = statusBox('error', 'Erro ao ler a legenda original', 'Não foi possível interpretar o arquivo como .srt válido.');
+      return;
+    }
+    try {
+      ptBlocks = parseSRT(state.pt);
+    } catch (e) {
+      statusArea.innerHTML = statusBox('error', 'Erro ao ler a legenda em português', 'Não foi possível interpretar o arquivo como .srt válido.');
+      return;
+    }
+
+    if (originalBlocks.length === 0 || ptBlocks.length === 0) {
+      statusArea.innerHTML = statusBox('error', 'Nenhum bloco reconhecido',
+        'Um dos arquivos não teve blocos de legenda reconhecidos. Confira se o .srt está no formato padrão (número, timestamp, texto).');
+      return;
+    }
+
+    const nOriginal = originalBlocks.length;
+    const nPt = ptBlocks.length;
+
+    if (nOriginal === nPt) {
+      // Caso A: mesma quantidade — copia os timestamps do original, mantendo o texto em português
+      const merged = ptBlocks.map((b, i) => ({
+        startRaw: originalBlocks[i].startRaw,
+        endRaw: originalBlocks[i].endRaw,
+        text: b.text
+      }));
+
+      const srtOut = buildSRT(merged);
+      outputBlob = new Blob([srtOut], { type: 'text/plain;charset=utf-8' });
+      outputFilename = deriveOutputFilename(state.ptName || 'legenda.srt');
+
+      statusArea.innerHTML =
+        countsHtml(nOriginal, nPt) +
+        statusBox('ok', 'Quantidade de blocos igual — corrigido com sucesso',
+          `Os ${nPt} timestamps da legenda em português foram substituídos pelos timestamps da legenda original. O texto em português foi mantido intacto.`);
+      downloadArea.style.display = 'flex';
+    } else {
+      // Caso B: quantidades diferentes — correção automática por posição não é confiável,
+      // mas pode ser só um atraso/adiantamento constante desde o início.
+      // Guardamos os blocos para o ajuste opcional por offset do primeiro bloco.
+      lastOriginalBlocks = originalBlocks;
+      lastPtBlocks = ptBlocks;
+
+      const offsetMs = timeToMs(originalBlocks[0].startRaw) - timeToMs(ptBlocks[0].startRaw);
+
+      statusArea.innerHTML =
+        countsHtml(nOriginal, nPt) +
+        statusBox('warn', 'Quantidade de blocos diferente — correção automática não aplicada',
+          `A legenda original tem ${nOriginal} blocos e a legenda em português tem ${nPt}. Isso normalmente indica divergência de fusão/divisão entre as legendas, não apenas atraso/adiantamento simples — um ajuste posição-a-posição não é confiável aqui.`) +
+        `<div class="status-box warn" style="margin-top:10px;">
+           <div class="title">Ajustar mesmo assim, usando o 1º bloco como referência?</div>
+           <div>Diferença encontrada entre o início da legenda original e o início da legenda em português: <strong>${formatOffset(offsetMs)}</strong>.
+           Se confirmar, esse deslocamento fixo será somado a <em>todos</em> os ${nPt} timestamps da legenda em português (mantendo a duração e o texto de cada bloco como estão) — sem alterar a quantidade de blocos. Vale a pena conferir o resultado do meio e do fim do arquivo depois, já que essa correção não leva em conta divergências de conteúdo ao longo da legenda.</div>
+           <div class="actions" style="margin-top:12px;">
+             <button class="primary" id="btn-apply-offset">Sim, ajustar todos os tempos</button>
+           </div>
+         </div>` +
+        statusBox('warn', 'Alternativa', 'Se preferir não aplicar esse ajuste, encaminhe este par de legendas para o Sincronizador para revisão caso a caso.');
+
+      const btnApplyOffset = document.getElementById('btn-apply-offset');
+      if (btnApplyOffset) {
+        btnApplyOffset.addEventListener('click', () => applyOffset(offsetMs, nOriginal, nPt));
+      }
+    }
+  });
+
+  function applyOffset(offsetMs, nOriginal, nPt) {
+    const shifted = lastPtBlocks.map((b) => ({
+      startRaw: msToTime(timeToMs(b.startRaw) + offsetMs),
+      endRaw: msToTime(timeToMs(b.endRaw) + offsetMs),
+      text: b.text
+    }));
+
+    const srtOut = buildSRT(shifted);
+    outputBlob = new Blob([srtOut], { type: 'text/plain;charset=utf-8' });
+    outputFilename = deriveOutputFilename(state.ptName || 'legenda.srt').replace(/\.srt$/i, ' (offset aplicado).srt');
+
+    statusArea.innerHTML =
+      countsHtml(nOriginal, nPt) +
+      statusBox('ok', 'Offset aplicado a todos os blocos',
+        `Deslocamento de ${formatOffset(offsetMs)} aplicado aos ${nPt} timestamps da legenda em português. A quantidade de blocos e o texto não foram alterados — confira o meio e o fim do arquivo antes de considerar definitivo.`);
+    downloadArea.style.display = 'flex';
+  }
+
+  function countsHtml(nOriginal, nPt) {
+    return `<div class="counts">
+      <div>Blocos na original: <span class="n">${nOriginal}</span></div>
+      <div>Blocos em português: <span class="n">${nPt}</span></div>
+    </div>`;
+  }
+
+  function statusBox(kind, title, msg) {
+    return `<div class="status-box ${kind}" style="margin-top:10px;">
+      <div class="title">${escapeHtml(title)}</div>
+      <div>${escapeHtml(msg)}</div>
+    </div>`;
+  }
+
+  btnDownload.addEventListener('click', () => {
+    if (!outputBlob) return;
+    const url = URL.createObjectURL(outputBlob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = outputFilename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+})();
+</script>
+</body>
+</html>
