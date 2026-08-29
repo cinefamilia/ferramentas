@@ -11515,14 +11515,9 @@ const filmes = [
     "sinopse": "Um assassino de aluguel frio, meticuloso e solitário executa seus alvos seguindo um código rígido de conduta e silêncio. Sua rotina perfeitamente calculada entra em colapso quando ele é traído por seus contratantes e passa a ser caçado pela polícia.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Belle Cult - Masculina; Coleção Noir",
+    "colecaoTipo": "Coleção Noir",
     "ordem": null,
     "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Belle Cult - Masculina",
-        "raw": "Coleção Belle Cult - Masculina"
-      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Noir",
@@ -17114,7 +17109,7 @@ const filmes = [
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1nLxXRXtwL8mzuiPdYRakVMjrmbvxjRBt",
-    "nome": "O Ladrão Apaixonado",
+    "nome": "Ladrão Apaixonado",
     "ano": 1960,
     "duracao": "01h 46m",
     "gb": 0.8,
@@ -17892,7 +17887,7 @@ const filmes = [
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1LE1_6lRjmbjOQZBBDROztTxS3-axrS_y",
-    "nome": "O Vigilante Trapalhão",
+    "nome": "Vigilante Trapalhão",
     "ano": 1960,
     "duracao": "01h 44m",
     "gb": 3.1,
