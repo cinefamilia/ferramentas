@@ -782,9 +782,15 @@ const filmes = [
     "sinopse": "Seis convidados excêntricos são reunidos em uma mansão isolada e tornam-se suspeitos quando o anfitrião é assassinado. Uma comédia de mistério ágil e cheia de reviravoltas, baseada no famoso jogo de tabuleiro, onde todos têm um motivo e ninguém é inocente.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Sátira",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
+      }
+    ],
     "diretor": "Jonathan Lynn",
     "ator1": "Eileen Brennan",
     "ator2": "Tim Curry",
@@ -860,9 +866,15 @@ const filmes = [
     "sinopse": "O jogador de futebol americano Flash Gordon é transportado para o planeta Mongo, onde se torna a última esperança da Terra contra o implacável Imperador Ming. Uma ópera espacial vibrante com estética pop e trilha sonora lendária da banda Queen.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Special Soundtrack",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
+      }
+    ],
     "diretor": "Mike Hodges",
     "ator1": "Sam J. Jones",
     "ator2": "Melody Anderson",
@@ -1224,9 +1236,15 @@ const filmes = [
     "sinopse": "Um jovem mestre de artes marciais de Nova York busca alcançar o nível místico supremo conhecido como O Brilho. Ele precisa proteger sua comunidade e uma bela VJ de televisão contra as ameaças de um magnata corrupto e do temido Shogun do Harlem.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Sátira",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
+      }
+    ],
     "diretor": "Michael Schultz",
     "ator1": "Taimak",
     "ator2": "Vanity",
@@ -2072,13 +2090,18 @@ const filmes = [
     "sinopse": "Após ser traído por sua esposa e por seu parceiro em um assalto, um criminoso durão sobrevive aos tiros e retorna dos mortos para recuperar sua parte exata do dinheiro. Uma jornada violenta e sarcástica pelo submundo onde ele enfrenta mafiosos e policiais corruptos sem recuar um milímetro.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": "Coleção Submundo",
+    "colecaoTipo": "Coleção Submundo; Coleção Noir",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Submundo",
         "raw": "Coleção Submundo"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
       }
     ],
     "diretor": "Brian Helgeland",
@@ -2780,9 +2803,15 @@ const filmes = [
     "sinopse": "Um ex-agente secreto da CIA tem sua vida pacata interrompida quando uma equipe de assassinos tenta matá-lo. Ele reúne seus antigos companheiros de agência, todos veteranos considerados aposentados e perigosos, para desmascarar uma conspiração que envolve o alto escalão do governo.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Sátira",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
+      }
+    ],
     "diretor": "Robert Schwentke",
     "ator1": "Bruce Willis",
     "ator2": "Morgan Freeman",
@@ -3334,13 +3363,18 @@ const filmes = [
     "sinopse": "Após um atentado eliminar todos os agentes secretos britânicos, o incompetente e atrapalhado funcionário de escritório Johnny English se torna a única esperança do país para proteger as Joias da Coroa e salvar a nação de um magnata misterioso.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Johnny English",
+    "colecaoTipo": "Franquia - Johnny English; Coleção Sátira",
     "ordem": "JE 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Johnny English",
         "raw": "Franquia - Johnny English"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
       }
     ],
     "diretor": "Peter Howitt",
@@ -3366,13 +3400,18 @@ const filmes = [
     "sinopse": "Desta vez, o espião mais incomum do MI7 precisa sair de seu exílio em um monastério tibetano para impedir uma conspiração internacional de assassinato contra o primeiro-ministro chinês, usando métodos absurdos e tecnologias de ponta.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Johnny English",
+    "colecaoTipo": "Franquia - Johnny English; Coleção Sátira",
     "ordem": "JE 02",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Johnny English",
         "raw": "Franquia - Johnny English"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
       }
     ],
     "diretor": "Oliver Parker",
@@ -3398,13 +3437,18 @@ const filmes = [
     "sinopse": "Um ataque cibernético massivo revela a identidade de todos os agentes infiltrados da Grã-Bretanha, forçando o veterano Johnny English a sair da aposentadoria para enfrentar hackers modernos usando suas táticas totalmente analógicas e caóticas.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Johnny English",
+    "colecaoTipo": "Franquia - Johnny English; Coleção Sátira",
     "ordem": "JE 03",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Johnny English",
         "raw": "Franquia - Johnny English"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
       }
     ],
     "diretor": "David Kerr",
@@ -3846,9 +3890,15 @@ const filmes = [
     "sinopse": "Um poderoso chefe da máfia sofre de crises de ansiedade e ataques de pânico, sendo obrigado a procurar a ajuda de um psiquiatra suburbano relutante. Uma comédia hilária que coloca o crime organizado frente a frente com as neuroses da terapia de forma brilhante.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Sátira",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
+      }
+    ],
     "diretor": "Harold Ramis",
     "ator1": "Robert De Niro",
     "ator2": "Billy Crystal",
@@ -4028,9 +4078,15 @@ const filmes = [
     "sinopse": "Um policial de elite supercompetente de Londres é transferido contra a sua vontade para uma pacata cidadezinha do interior, onde descobre uma série de assassinatos misteriosos mascarados como acidentes. Uma comédia de ação genial e satírica.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Sátira",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
+      }
+    ],
     "diretor": "Edgar Wright",
     "ator1": "Simon Pegg",
     "ator2": "Nick Frost",
@@ -4444,9 +4500,15 @@ const filmes = [
     "sinopse": "Um escritor de romances baratos mistura sua vida pacata com as aventuras mirabolantes do agente secreto que criou na ficção. Ele projeta suas frustrações reais em um mundo de espionagem hilário, onde ele é o herói imbatível e sedutor.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Sátira",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
+      }
+    ],
     "diretor": "Philippe de Broca",
     "ator1": "Jean-Paul Belmondo",
     "ator2": "Jacqueline Bisset",
@@ -4652,9 +4714,15 @@ const filmes = [
     "sinopse": "Atores egocêntricos gravam um filme de guerra de alto orçamento e acabam abandonados na selva por um diretor desesperado para obter realismo. Eles precisam agir como soldados de verdade para sobreviver quando batem de frente com guerrilheiros armados reais.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Sátira",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
+      }
+    ],
     "diretor": "Ben Stiller",
     "ator1": "Ben Stiller",
     "ator2": "Jack Black",
@@ -6702,13 +6770,18 @@ const filmes = [
     "sinopse": "Um taxista comum de Los Angeles vive uma noite de pesadelo ao ser feito refém por um assassino de aluguel frio e calculista. Ele é forçado a dirigir pela cidade servindo de motorista para uma série de execuções planejadas antes do amanhecer.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Submundo",
+    "colecaoTipo": "Coleção Submundo; Coleção Noir",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Submundo",
         "raw": "Coleção Submundo"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
       }
     ],
     "diretor": "Michael Mann",
@@ -7390,9 +7463,15 @@ const filmes = [
     "sinopse": "Um ator de filmes B claustrofóbico fica obcecado ao observar uma bela vizinha com um telescópio do apartamento onde está hospedado. Ele testemunha o assassinato brutal da mulher e acaba tragado por uma teia perigosa de mistério e obsessão no submundo do cinema.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Noir",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
+      }
+    ],
     "diretor": "Brian De Palma",
     "ator1": "Craig Wasson",
     "ator2": "Melanie Griffith",
@@ -7884,9 +7963,15 @@ const filmes = [
     "sinopse": "Na crescente fronteira sem lei entre os Estados Unidos e o México, uma agente do FBI é exposta ao mundo brutal do tráfico internacional de drogas por membros de uma força-tarefa do governo que a escalam em seu plano para derrotar o chefe de um cartel mexicano.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Noir",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
+      }
+    ],
     "diretor": "Denis Villeneuve",
     "ator1": "Emily Blunt",
     "ator2": "Benicio del Toro",
@@ -8340,9 +8425,14 @@ const filmes = [
     "sinopse": "Um detetive de polícia investiga o brutal assassinato de um astro do rock e se envolve com a principal suspeita, uma sedutora escritora de romances policiais. Ele entra em uma espiral de obsessão enquanto os crimes reais imitam os livros dela.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": "Coleção X-Cinema Cult",
+    "colecaoTipo": "Coleção Noir; Coleção X-Cinema Cult",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção X-Cinema Cult",
@@ -8580,9 +8670,15 @@ const filmes = [
     "sinopse": "Três detetives com métodos e personalidades totalmente opostas investigam uma chacina em uma lanchonete na Hollywood dos anos 1950. A investigação os arrasta para o submundo de corrupção, prostituição de luxo e segredos obscuros da própria polícia.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Noir",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
+      }
+    ],
     "diretor": "Curtis Hanson",
     "ator1": "Kevin Spacey",
     "ator2": "Russell Crowe",
@@ -10132,9 +10228,15 @@ const filmes = [
     "sinopse": "Expulso de seu castelo na Transpiração por causa de reformas burocráticas do regime comunista, o Conde Drácula viaja até a Nova York moderna dos anos 70. Ele tenta encontrar seu grande amor encarnado em uma modelo de moda de sucesso.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Sátira",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
+      }
+    ],
     "diretor": "Stan Dragoti",
     "ator1": "George Hamilton",
     "ator2": "Susan Saint James",
@@ -10184,9 +10286,15 @@ const filmes = [
     "sinopse": "Em uma Los Angeles futurista e decadente, um ex-policial é escalado para caçar e eliminar quatro androides altamente avançados que fugiram de uma colônia espacial. Uma obra-prima da ficção científica neo-noir com dilemas existenciais profundos.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Noir",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
+      }
+    ],
     "diretor": "Ridley Scott",
     "ator1": "Harrison Ford",
     "ator2": "Rutger Hauer",
@@ -10288,9 +10396,15 @@ const filmes = [
     "sinopse": "Um respeitado neurocirurgião americano herda o castelo de seu infame avô na Transilvânia e decide provar que suas pesquisas científicas não eram loucura. Ele acaba repetindo os experimentos e trazendo à vida uma criatura gigante e incontrolável.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Sátira",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
+      }
+    ],
     "diretor": "Mel Brooks",
     "ator1": "Gene Wilder",
     "ator2": "Peter Boyle",
@@ -11401,13 +11515,18 @@ const filmes = [
     "sinopse": "Um assassino de aluguel frio, meticuloso e solitário executa seus alvos seguindo um código rígido de conduta e silêncio. Sua rotina perfeitamente calculada entra em colapso quando ele é traído por seus contratantes e passa a ser caçado pela polícia.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Belle Cult - Masculina",
+    "colecaoTipo": "Coleção Belle Cult - Masculina; Coleção Noir",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Belle Cult - Masculina",
         "raw": "Coleção Belle Cult - Masculina"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
       }
     ],
     "diretor": "Jean-Pierre Melville",
@@ -14187,13 +14306,18 @@ const filmes = [
     "sinopse": "Um detetive particular de São Francisco assume um caso aparentemente simples que o coloca no centro de uma perseguição mortal por uma estatueta inestimável. Uma obra-prima do cinema noir repleta de traições, mentiras e personagens ambiciosos.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Investigativa",
+    "colecaoTipo": "Coleção Investigativa; Coleção Noir",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Investigativa",
         "raw": "Coleção Investigativa"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
       }
     ],
     "diretor": "John Huston",
@@ -14251,13 +14375,18 @@ const filmes = [
     "sinopse": "Um detetive de polícia de Nova York investiga uma série de assassinatos brutais de homens solitários através de anúncios classificados românticos. Ele se apaixona perdidamente pela principal suspeita, entrando em um jogo perigoso de obsessão e sedução.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Investigativa",
+    "colecaoTipo": "Coleção Investigativa; Coleção Noir",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Investigativa",
         "raw": "Coleção Investigativa"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
       }
     ],
     "diretor": "Harold Becker",
@@ -15676,6 +15805,198 @@ const filmes = [
     "ator5": "Joe Mantegna",
     "ator6": "Philip Bosco",
     "nomeOriginal": "Under Suspicion"
+  },
+  {
+    "nome": "À Beira do Abismo",
+    "nomeOriginal": "The Big Sleep",
+    "ano": 1946,
+    "duracao": "01h 53m",
+    "gb": 4.9,
+    "local": "TF",
+    "codec": "HEVC",
+    "perfilCor": null,
+    "presetElmedia": "B2 | S0 | C7 | G2 | H0 | Sh1.5",
+    "situacao": null,
+    "capa": "https://lh3.googleusercontent.com/d/10Td0B6WriMoMwkyrhMGZG7DQvt0sVKmc",
+    "sinopse": "À Beira do Abismo é uma história do detetive particular Philip Marlowe, que é contratado por um rico general para descobrir e impedir que sua filha mais nova, Carmen, seja chantageada por suas dívidas de jogo. As coisas quase imediatamente se desvendam e explodem, enquanto Marlowe se vê profundamente emaranhado numa teia de triângulos amorosos, chantagem, assassinato, jogo e crime organizado. Marlowe, com a ajuda da filha mais velha do General, Vivian, habilmente trama para libertar a família desta teia.",
+    "diretor": "Howard Hawks",
+    "ator1": "Humphrey Bogart",
+    "ator2": "Lauren Bacall",
+    "ator3": "John Ridgely",
+    "ator4": "Martha Vickers",
+    "ator5": "Louis Jean Heydt",
+    "ator6": "Charles Waldron",
+    "origem": "colecoes",
+    "genero": null,
+    "colecaoTipo": "Coleção Noir",
+    "ordem": null,
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
+      }
+    ]
+  },
+  {
+    "nome": "As Diabólicas",
+    "nomeOriginal": "Les Diaboliques",
+    "ano": 1955,
+    "duracao": "01h 57m",
+    "gb": 1.8,
+    "local": "TF",
+    "codec": null,
+    "perfilCor": null,
+    "presetElmedia": "B2 | S0 | C6 | G2 | H0 | Sh1.5",
+    "situacao": null,
+    "capa": "https://lh3.googleusercontent.com/d/1t6-RcwjV9ZcXWn7kyPBQKnQxATrCP_7E",
+    "sinopse": "Michel Delassalle dirige com mão de ferro um pensionato para meninos, assistida por sua doce esposa Christina. Ele tem por amante Nicole Horner, professora da instituição. Cansadas do despotismo de Michel, as duas mulheres associam-se para assassinar o odioso personagem. Alguns dias depois do crime, o cadáver desaparece.",
+    "diretor": "Henri-Georges Clouzot",
+    "ator1": "Véra Clouzot",
+    "ator2": "Simone Signoret",
+    "ator3": "Paul Meurisse",
+    "ator4": "Charles Vanel",
+    "ator5": "Jean Brochard",
+    "ator6": "Pierre Larquey",
+    "origem": "colecoes",
+    "genero": null,
+    "colecaoTipo": "Coleção Noir",
+    "ordem": null,
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
+      }
+    ]
+  },
+  {
+    "nome": "Ascensor para o Cadafalso",
+    "nomeOriginal": "Ascenseur pour l'échafaud",
+    "ano": 1958,
+    "duracao": "01h 31m",
+    "gb": 3.5,
+    "local": "TF",
+    "codec": "x265",
+    "perfilCor": null,
+    "presetElmedia": "B2 | S0 | C6 | G4 | H0 | Sh1.5",
+    "situacao": null,
+    "capa": "https://lh3.googleusercontent.com/d/1xNyqSljo_aterzLbpawaNwdrwHL9bnNl",
+    "sinopse": "Florence recruta seu amante, Julien, para assassinar seu marido no escritório dele. Ele comete o crime com entusiasmo, mas fica preso em um elevador quando volta para remover uma prova importante. O infeliz engano de Julien provocará involuntariamente uma série de eventos desafortunados.",
+    "diretor": "Louis Malle",
+    "ator1": "Jeanne Moreau",
+    "ator2": "Maurice Ronet",
+    "ator3": "Georges Poujouly",
+    "ator4": "Yori Bertin",
+    "ator5": "Jean Wall",
+    "ator6": "Elga Andersen",
+    "origem": "colecoes",
+    "genero": null,
+    "colecaoTipo": "Coleção Noir",
+    "ordem": null,
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
+      }
+    ]
+  },
+  {
+    "nome": "Crônica de um Amor",
+    "nomeOriginal": "Cronaca di um amore",
+    "ano": 1950,
+    "duracao": "01h 42m",
+    "gb": 1.8,
+    "local": "TF",
+    "codec": null,
+    "perfilCor": null,
+    "presetElmedia": "B2 | S0 | C6 | G3 | H0 | Sh1.2",
+    "situacao": null,
+    "capa": "https://lh3.googleusercontent.com/d/1wqhNxMD7kZWRrZGJa6LSOPI0CJBA80mH",
+    "sinopse": "Um rico e obsessivo industrial contrata um detetive particular para investigar o passado nebuloso de sua jovem esposa, Paola. O tiro sai pela culatra quando a investigação reaproxima a mulher de seu antigo e proibido amor da juventude, reacendendo uma paixão perigosa.",
+    "diretor": "Michelangelo Antonioni",
+    "ator1": "Massimo Girotti",
+    "ator2": "Lucia Bosè",
+    "ator3": "Gino Rossi",
+    "ator4": "Marika Rowsky",
+    "ator5": "Ferdinando Sarmi",
+    "ator6": "Rubi D'Alma",
+    "origem": "colecoes",
+    "genero": null,
+    "colecaoTipo": "Coleção Noir",
+    "ordem": null,
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
+      }
+    ]
+  },
+  {
+    "nome": "Pacto de Sangue",
+    "nomeOriginal": "Double Indemnity",
+    "ano": 1944,
+    "duracao": "01h 47m",
+    "gb": 5,
+    "local": "TF",
+    "codec": "x265",
+    "perfilCor": null,
+    "presetElmedia": "B2 | S0 | C7 | G2 | H0 | Sh1.5",
+    "situacao": null,
+    "capa": "https://lh3.googleusercontent.com/d/1Rwgz0lxLv1sV6TeCbXnCmieUgwKbfeMS",
+    "sinopse": "Um agente de seguros encontra a atraente (e casada) Phyllis quando vai efetuar um negócio e ambos logo se apaixonam. Phyllis o convence a efetuar um plano para assassinar seu marido após fazer um seguro de vida para ele. O objetivo? Ficar com o dinheiro do seguro. Mas nem tudo dá certo na execução do plano.",
+    "diretor": "Billy Wilder",
+    "ator1": "Fred MacMurray",
+    "ator2": "Barbara Stanwyck",
+    "ator3": "Edward G. Robinson",
+    "ator4": "Porter Hall",
+    "ator5": "Jean Heather",
+    "ator6": "Tom Powers",
+    "origem": "colecoes",
+    "genero": null,
+    "colecaoTipo": "Coleção Noir",
+    "ordem": null,
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
+      }
+    ]
+  },
+  {
+    "nome": "Rififi",
+    "nomeOriginal": "Du rififi chez les hommes",
+    "ano": 1955,
+    "duracao": "01h 58m",
+    "gb": 6.5,
+    "local": "TF",
+    "codec": "HEVC",
+    "perfilCor": null,
+    "presetElmedia": "B2 | S0 | C6 | G3 | H0 | Sh1.5",
+    "situacao": null,
+    "capa": "https://lh3.googleusercontent.com/d/1sKOfvHopfycEYgor9jyY9O8uPBbIwZ1u",
+    "sinopse": "Após cumprir cinco anos de prisão, o ladrão de joias Tony recusa um trabalho rápido oferecido por seu amigo Jo, até descobrir que sua ex-namorada, Mado, se tornou amante do gangster local Pierre Grutter durante sua ausência. Transformando um pequeno furto em um roubo de joias em grande escala, Tony e sua equipe aparentemente saem ilesos, mas suas ações após a conclusão do crime ameaçam a vida de todos os envolvidos.",
+    "diretor": "Jules Dassin",
+    "ator1": "Jean Servais",
+    "ator2": "Carl Möhner",
+    "ator3": "Robert Manuel",
+    "ator4": "Janine Darcey",
+    "ator5": "Pierre Grasset",
+    "ator6": "Robert Hossein",
+    "origem": "colecoes",
+    "genero": null,
+    "colecaoTipo": "Coleção Noir",
+    "ordem": null,
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Noir",
+        "raw": "Coleção Noir"
+      }
+    ]
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1YXP0rGPLlKafcBC-0NDtkBM8fj4P6Djk",
