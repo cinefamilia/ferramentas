@@ -17114,7 +17114,7 @@ const filmes = [
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1nLxXRXtwL8mzuiPdYRakVMjrmbvxjRBt",
-    "nome": "Ladrão Apaixonado",
+    "nome": "O Ladrão Apaixonado",
     "ano": 1960,
     "duracao": "01h 46m",
     "gb": 0.8,
@@ -17892,7 +17892,7 @@ const filmes = [
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1LE1_6lRjmbjOQZBBDROztTxS3-axrS_y",
-    "nome": "Vigilante Trapalhão",
+    "nome": "O Vigilante Trapalhão",
     "ano": 1960,
     "duracao": "01h 44m",
     "gb": 3.1,
