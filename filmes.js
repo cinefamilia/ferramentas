@@ -1119,32 +1119,6 @@ const filmes = [
     "nomeOriginal": "Le Comte de Monte Cristo"
   },
   {
-    "capa": "https://lh3.googleusercontent.com/d/1oKy9gUON8uU8ABckCucydC_F2QElfSbK",
-    "nome": "O Evangelho Segundo João",
-    "ano": 2003,
-    "duracao": "03h 01m",
-    "gb": 0.6,
-    "local": "TA-Coleção Fé",
-    "codec": "480p",
-    "perfilCor": null,
-    "presetElmedia": "B1 | S4 | C6 | G5 | H1 | NR0.02 | Sh1.25",
-    "situacao": null,
-    "sinopse": "Uma adaptação cinematográfica fiel e minuciosa que narra a vida, os milagres e os ensinamentos de Jesus sob a perspectiva íntima e teológica do apóstolo João. Um relato tocante e focado na força das palavras e no impacto espiritual de sua jornada.",
-    "genero": "Clássicos",
-    "origem": "genero",
-    "colecaoTipo": null,
-    "ordem": null,
-    "tags": [],
-    "diretor": "Philip Saville",
-    "ator1": "Christopher Plummer",
-    "ator2": "Henry Ian Cusick",
-    "ator3": "Stuart Bunce",
-    "ator4": "Daniel Kash",
-    "ator5": "Stephen Russell",
-    "ator6": "Diana Berriman",
-    "nomeOriginal": "The Gospel of John"
-  },
-  {
     "capa": "https://lh3.googleusercontent.com/d/1tMA5Vab7IMx4U5cDnCHhb3Ybz5vI-Mjt",
     "nome": "O Gordo e o Magro  Perdão para Dois",
     "ano": 1933,
@@ -1435,6 +1409,38 @@ const filmes = [
     "ator5": "Peter Ustinov",
     "ator6": "John Gavin",
     "nomeOriginal": "Spartacus"
+  },
+  {
+    "capa": "https://lh3.googleusercontent.com/d/13zgJairKndWIiHc9EVdXNZApJgkfeDvr",
+    "nome": "Remo, Desarmado e Perigoso",
+    "nomeOriginal": "Remo Williams - The Adventure Begins",
+    "ano": 1985,
+    "duracao": "02h 01m",
+    "gb": 1.9,
+    "local": "TR",
+    "codec": "x265",
+    "perfilCor": null,
+    "presetElmedia": "B0 | S-2 | C7 | G6 | H0 | Sh1",
+    "situacao": null,
+    "sinopse": "Um policial de Nova York tem sua morte forjada pelo governo americano para ser introduzido em uma organização secreta. Agora, com uma nova identidade, Remo Williams será treinado por um velho coreano, especialista em artes marciais, que o tornará um assassino infalível.",
+    "genero": "Clássicos",
+    "origem": "genero",
+    "colecaoTipo": "Coleção Sátira",
+    "ordem": null,
+    "diretor": "Guy Hamilton",
+    "ator1": "Fred Ward",
+    "ator2": "Joel Grey",
+    "ator3": "Wilford Brimley",
+    "ator4": "J.A. Preston",
+    "ator5": "George Coe",
+    "ator6": "Kate Mulgrew",
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Sátira",
+        "raw": "Coleção Sátira"
+      }
+    ]
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1s3fcUSEije5JvSUnv6fF4tUs7_t12LIt",
