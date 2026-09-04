@@ -73,6 +73,28 @@
     margin:0 auto;
     padding:0 16px;
   }
+  main.wide{ max-width:1180px; }
+  .cols-head{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-bottom:10px;
+  }
+  .cols-head div{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--text-dim);
+    padding-left:2px;
+  }
+  .part-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-bottom:14px;
+    align-items:start;
+  }
   .panel{
     background:var(--surface);
     border:1px solid var(--border);
@@ -185,7 +207,29 @@
     padding:3px 9px;
     border-radius:20px;
   }
+  .part-head-left{ display:inline-flex; align-items:center; gap:8px; }
   .part-range{ font-size:12.5px; color:var(--text-dim); }
+  .part-card.col-join.awaiting-paste{
+    border-color:var(--accent);
+    box-shadow:0 0 0 1px var(--accent) inset;
+    background:linear-gradient(180deg, rgba(168,106,38,0.06), transparent 45%), var(--surface);
+  }
+  .cols-head .cols-hint{
+    font-family:'Inter',sans-serif;
+    font-size:11.5px;
+    color:var(--text-dim);
+    margin-top:4px;
+    text-transform:none;
+    letter-spacing:normal;
+    line-height:1.4;
+  }
+  .cols-head .cols-hint code{
+    font-family:'IBM Plex Mono',monospace;
+    background:var(--surface-2);
+    padding:1px 4px;
+    border-radius:4px;
+    font-size:11px;
+  }
   textarea.part-out{
     width:100%;
     min-height:110px;
@@ -244,11 +288,11 @@
 
 <header>
   <div class="eyebrow">Cine Legenda</div>
-  <h1>Divisor de Legendas</h1>
-  <div class="sub">Solte um .srt e ele é dividido em partes pela numeração das legendas — nunca no meio de uma fala — cada parte já sai em JSON indexado por ID, pronta para colar no Gemini.</div>
+  <h1>Divisor &amp; Juntador de Legendas</h1>
+  <div class="sub">Solte um .srt e ele é dividido em partes pela numeração das legendas — nunca no meio de uma fala. Cada linha abaixo mostra a parte já dividida (Dividir) ao lado da caixa para colar a tradução devolvida pelo Gemini (Juntar) — mesma numeração dos dois lados.</div>
 </header>
 
-<main>
+<main class="wide">
   <div class="panel">
     <div class="panel-label">Carregar arquivo .srt</div>
     <div class="drop" id="drop" onclick="document.getElementById('fileInput').click()">
@@ -259,31 +303,38 @@
 
     <div class="row" style="margin-top:16px;">
       <label class="field-label" for="chunkSize">Blocos por parte</label>
-      <input type="number" id="chunkSize" value="300" min="1" step="1">
+      <input type="number" id="chunkSize" value="200" min="1" step="1">
       <button class="btn btn-primary" id="btnSplit" onclick="doSplit()" disabled>Dividir</button>
       <button class="btn btn-ghost" onclick="resetAll()">Limpar tudo</button>
     </div>
     <div class="stats-row" id="statsRow"></div>
+
+    <div class="row" style="margin-top:14px; justify-content:space-between;">
+      <button class="btn btn-ghost" onclick="downloadDraft()" id="draftDownloadBtn" disabled>💾 Baixar rascunho (.json)</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('draftInput').click()">📂 Carregar rascunho (.json)</button>
+      <input type="file" id="draftInput" accept=".json" style="display:none;" onchange="handleDraftSelect(this.files)">
+    </div>
+    <span class="flash" id="draftFlash" style="display:block; margin-top:4px;"></span>
   </div>
 
-  <div id="partsWrap"></div>
-
-  <div id="joinSection" style="display:none;">
-    <header class="join-header">
-      <div class="eyebrow">Cine Legenda</div>
-      <h1 class="join-h1">Juntar Traduções</h1>
-      <div class="sub">Cole abaixo o JSON que o Gemini devolveu para cada parte. A numeração e os timestamps originais são preservados — a busca é feita por ID, então um bloco pulado nunca desalinha os demais.</div>
-    </header>
-    <div id="joinPartsWrap"></div>
-    <div class="final-panel">
-      <div class="panel-label">Arquivo final</div>
-      <div class="row">
-        <button class="btn btn-primary" id="btnFinal" onclick="generateFinal()" disabled>Gerar .srt final</button>
-        <button class="btn btn-ghost btn-sm" onclick="downloadFinal()" id="btnFinalDownload" style="display:none;">Baixar .srt</button>
-        <span class="flash" id="finalFlash"></span>
-      </div>
-      <div class="stats-row" id="finalStatsRow"></div>
+  <div class="cols-head" id="colsHead" style="display:none;">
+    <div>Dividir — copie/baixe e cole no Gemini</div>
+    <div>
+      Juntar — cole aqui o JSON que o Gemini devolveu
+      <div class="cols-hint">Faltou alguma legenda? Edite o JSON aqui mesmo: adicione uma vírgula após a última chave e cole a nova entrada antes do <code>}</code> final — ex: <code>..., "197": "Bom dia!"}</code></div>
     </div>
+  </div>
+
+  <div id="rowsWrap"></div>
+
+  <div class="final-panel" id="finalPanel" style="display:none;">
+    <div class="panel-label">Arquivo final</div>
+    <div class="row">
+      <button class="btn btn-primary" id="btnFinal" onclick="generateFinal()" disabled>Gerar .srt final</button>
+      <button class="btn btn-ghost btn-sm" onclick="downloadFinal()" id="btnFinalDownload" style="display:none;">Baixar .srt</button>
+      <span class="flash" id="finalFlash"></span>
+    </div>
+    <div class="stats-row" id="finalStatsRow"></div>
   </div>
 </main>
 
@@ -348,7 +399,9 @@ function loadFile(file){
     srtFileName = file.name;
     document.getElementById('fileName').textContent = file.name + ` (${srtBlocks.length} blocos)`;
     document.getElementById('btnSplit').disabled = srtBlocks.length === 0;
-    document.getElementById('partsWrap').innerHTML = '';
+    document.getElementById('draftDownloadBtn').disabled = srtBlocks.length === 0;
+    document.getElementById('rowsWrap').innerHTML = '';
+    document.getElementById('colsHead').style.display = 'none';
     document.getElementById('statsRow').innerHTML = '';
     resetJoinSection();
   };
@@ -384,7 +437,7 @@ function translatedFileName(originalName){
 }
 
 function doSplit(){
-  const size = Math.max(1, parseInt(document.getElementById('chunkSize').value, 10) || 300);
+  const size = Math.max(1, parseInt(document.getElementById('chunkSize').value, 10) || 200);
   const total = srtBlocks.length;
   const numParts = Math.ceil(total / size);
 
@@ -395,9 +448,11 @@ function doSplit(){
     <div class="stat">Partes geradas: <b>${numParts}</b></div>
   `;
 
-  const wrap = document.getElementById('partsWrap');
+  const wrap = document.getElementById('rowsWrap');
   wrap.innerHTML = '';
   partsData = [];
+  document.getElementById('colsHead').style.display = 'none';
+  document.getElementById('finalPanel').style.display = 'none';
 
   if(total === 0){
     wrap.innerHTML = '<div class="empty">Nenhum bloco encontrado no arquivo.</div>';
@@ -411,13 +466,16 @@ function doSplit(){
     const partBlocks = srtBlocks.slice(start, end);
     partsData.push({ start, end, blocks: partBlocks, translated: {} });
 
-    const partText = JSON.stringify(buildBlockJSON(partBlocks), null, 2);
-
-    const card = document.createElement('div');
-    card.className = 'part-card';
     const partNum = p + 1;
+    const partText = JSON.stringify(buildBlockJSON(partBlocks), null, 2);
     const fname = `${baseName(srtFileName)}_parte${String(partNum).padStart(2,'0')}.json`;
-    card.innerHTML = `
+
+    const row = document.createElement('div');
+    row.className = 'part-row';
+
+    const splitCard = document.createElement('div');
+    splitCard.className = 'part-card col-split';
+    splitCard.innerHTML = `
       <div class="part-head">
         <span class="part-tag">Parte ${partNum} / ${numParts}</span>
         <span class="part-range">blocos ${start+1}–${end} (${partBlocks.length} legendas)</span>
@@ -429,10 +487,38 @@ function doSplit(){
         <span class="flash" id="flash${partNum}"></span>
       </div>
     `;
-    wrap.appendChild(card);
+
+    const joinCard = document.createElement('div');
+    joinCard.id = 'joinCard' + partNum;
+    joinCard.className = 'part-card col-join';
+    joinCard.innerHTML = `
+      <div class="part-head">
+        <span class="part-head-left">
+          <span class="part-tag">Parte ${partNum} / ${numParts}</span>
+          <button class="btn btn-ghost btn-sm" onclick="pasteIntoJoin(${partNum})" title="Colar da área de transferência">📋 Colar</button>
+        </span>
+        <span class="part-range">blocos ${start+1}–${end} (${partBlocks.length} legendas esperadas)</span>
+      </div>
+      <textarea class="part-in" id="joinIn${partNum}" placeholder='Cole aqui o JSON traduzido devolvido pelo Gemini para esta parte (ex: {"1": "texto traduzido", "2": "..."})' oninput="updateJoinStatus(${partNum})"></textarea>
+      <div class="status-line status-idle" id="joinStatus${partNum}">aguardando colagem</div>
+      <div id="pendingBox${partNum}" style="display:none; margin-top:6px; padding:8px; border:1px dashed var(--warn); border-radius:6px; font-size:0.85em;">
+        <div id="pendingList${partNum}" style="margin-bottom:6px;"></div>
+        <button class="btn btn-ghost btn-sm" onclick="copyPendencias(${partNum})">Copiar pendências (JSON para reenviar ao Gemini)</button>
+        <span class="flash" id="pendingFlash${partNum}"></span>
+      </div>
+    `;
+
+    row.appendChild(splitCard);
+    row.appendChild(joinCard);
+    wrap.appendChild(row);
   }
 
-  buildJoinSection(numParts);
+  document.getElementById('colsHead').style.display = 'grid';
+  document.getElementById('finalPanel').style.display = 'block';
+  document.getElementById('btnFinal').disabled = true;
+  document.getElementById('btnFinalDownload').style.display = 'none';
+  document.getElementById('finalFlash').textContent = '';
+  document.getElementById('finalStatsRow').innerHTML = '';
 }
 
 function escapeHtml(s){
@@ -447,6 +533,25 @@ function copyPart(n){
     const flash = document.getElementById('flash' + n);
     flash.textContent = 'copiado!';
     setTimeout(() => flash.textContent = '', 1800);
+    const joinCard = document.getElementById('joinCard' + n);
+    if(joinCard) joinCard.classList.add('awaiting-paste');
+  });
+}
+
+// Cola o conteúdo da área de transferência diretamente na caixa "Juntar"
+// da parte correspondente. Depende de navigator.clipboard.readText(), que
+// funciona bem em navegadores baseados em Chromium (ex: Thorium) mesmo em
+// arquivos locais — mas pode pedir permissão na primeira vez.
+function pasteIntoJoin(partNum){
+  const ta = document.getElementById('joinIn' + partNum);
+  navigator.clipboard.readText().then(text => {
+    ta.value = text;
+    updateJoinStatus(partNum);
+  }).catch(() => {
+    const statusEl = document.getElementById('joinStatus' + partNum);
+    statusEl.className = 'status-line status-warn';
+    statusEl.textContent = '⚠ não consegui colar automaticamente — clique na caixa e use Cmd+V';
+    ta.focus();
   });
 }
 
@@ -472,64 +577,110 @@ function resetAll(){
   srtFileName = '';
   document.getElementById('fileName').textContent = 'Nenhum arquivo';
   document.getElementById('btnSplit').disabled = true;
+  document.getElementById('draftDownloadBtn').disabled = true;
   document.getElementById('fileInput').value = '';
-  document.getElementById('partsWrap').innerHTML = '';
+  document.getElementById('draftInput').value = '';
+  document.getElementById('draftFlash').textContent = '';
+  document.getElementById('rowsWrap').innerHTML = '';
   document.getElementById('statsRow').innerHTML = '';
+  document.getElementById('colsHead').style.display = 'none';
   resetJoinSection();
 }
 
-// ---------- Juntar Traduções ----------
+// ---------- Rascunho (.json) — salvar/retomar sessão ----------
+// Guarda os blocos originais do .srt, o tamanho de parte usado e o que já
+// foi traduzido em cada parte (por ID). Ao recarregar, refaz a divisão com
+// o mesmo tamanho e repopula cada caixa "Juntar" com o que já estava colado.
+function draftFilename(){
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  const stamp = `${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}`;
+  return `${baseName(srtFileName || 'legendas')}_rascunho_${stamp}.json`;
+}
+
+function downloadDraft(){
+  if(srtBlocks.length === 0) return;
+  const chunkSize = Math.max(1, parseInt(document.getElementById('chunkSize').value, 10) || 200);
+  const translatedByPart = partsData.map(p => p.translated || {});
+  const payload = {
+    tipo: 'cine-legenda-divisor-rascunho',
+    versao: 1,
+    salvoEm: new Date().toISOString(),
+    srtFileName,
+    chunkSize,
+    srtBlocks,
+    translatedByPart
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = draftFilename();
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  const flash = document.getElementById('draftFlash');
+  flash.style.color = 'var(--ok)';
+  flash.textContent = `Rascunho baixado: ${a.download}`;
+  setTimeout(() => flash.textContent = '', 4000);
+}
+
+function handleDraftSelect(files){
+  if(!files || !files.length) return;
+  const file = files[0];
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const flash = document.getElementById('draftFlash');
+    try{
+      const data = JSON.parse(e.target.result);
+      if(data.tipo !== 'cine-legenda-divisor-rascunho' || !Array.isArray(data.srtBlocks)){
+        throw new Error('formato inesperado');
+      }
+      srtBlocks = data.srtBlocks;
+      srtFileName = data.srtFileName || 'legendas.srt';
+      document.getElementById('fileName').textContent = srtFileName + ` (${srtBlocks.length} blocos)`;
+      document.getElementById('btnSplit').disabled = srtBlocks.length === 0;
+      document.getElementById('draftDownloadBtn').disabled = srtBlocks.length === 0;
+      document.getElementById('chunkSize').value = data.chunkSize || 200;
+
+      doSplit(); // refaz as linhas (Dividir + Juntar) com o mesmo tamanho de parte
+
+      const translatedByPart = data.translatedByPart || [];
+      translatedByPart.forEach((trans, idx) => {
+        const partNum = idx + 1;
+        if(!partsData[idx] || !trans || !Object.keys(trans).length) return;
+        Object.assign(partsData[idx].translated, trans);
+        const ta = document.getElementById('joinIn' + partNum);
+        if(ta){
+          ta.value = JSON.stringify(trans, null, 2);
+          updateJoinStatus(partNum);
+        }
+      });
+
+      flash.style.color = 'var(--ok)';
+      flash.textContent = 'Rascunho carregado com sucesso — retomando de onde parou.';
+      setTimeout(() => flash.textContent = '', 4000);
+    }catch(err){
+      flash.style.color = 'var(--warn)';
+      flash.textContent = 'Não consegui ler esse arquivo como rascunho válido. Confira se é o .json gerado pelo botão "Baixar rascunho".';
+    }
+  };
+  reader.readAsText(file, 'UTF-8');
+  document.getElementById('draftInput').value = '';
+}
+
+// ---------- Juntar Traduções (agora integrado linha a linha com o Divisor) ----------
 
 function resetJoinSection(){
   partsData = [];
   finalSrtText = '';
   finalFileName = '';
-  document.getElementById('joinSection').style.display = 'none';
-  document.getElementById('joinPartsWrap').innerHTML = '';
+  document.getElementById('finalPanel').style.display = 'none';
   document.getElementById('finalStatsRow').innerHTML = '';
   document.getElementById('btnFinal').disabled = true;
   document.getElementById('btnFinalDownload').style.display = 'none';
   document.getElementById('finalFlash').textContent = '';
-}
-
-function buildJoinSection(numParts){
-  const joinSection = document.getElementById('joinSection');
-  const wrap = document.getElementById('joinPartsWrap');
-  wrap.innerHTML = '';
-  finalSrtText = '';
-  finalFileName = '';
-  document.getElementById('btnFinal').disabled = true;
-  document.getElementById('btnFinalDownload').style.display = 'none';
-  document.getElementById('finalFlash').textContent = '';
-  document.getElementById('finalStatsRow').innerHTML = '';
-
-  for(let p = 0; p < numParts; p++){
-    const partNum = p + 1;
-    const expected = partsData[p].blocks.length;
-    const start = partsData[p].start;
-    const end = partsData[p].end;
-
-    partsData[p].translated = {};
-
-    const card = document.createElement('div');
-    card.className = 'part-card';
-    card.innerHTML = `
-      <div class="part-head">
-        <span class="part-tag">Parte ${partNum} / ${numParts}</span>
-        <span class="part-range">blocos ${start+1}–${end} (${expected} legendas esperadas)</span>
-      </div>
-      <textarea class="part-in" id="joinIn${partNum}" placeholder='Cole aqui o JSON traduzido devolvido pelo Gemini para esta parte (ex: {"1": "texto traduzido", "2": "..."})' oninput="updateJoinStatus(${partNum})"></textarea>
-      <div class="status-line status-idle" id="joinStatus${partNum}">aguardando colagem</div>
-      <div id="pendingBox${partNum}" style="display:none; margin-top:6px; padding:8px; border:1px dashed var(--warn); border-radius:6px; font-size:0.85em;">
-        <div id="pendingList${partNum}" style="margin-bottom:6px;"></div>
-        <button class="btn btn-ghost btn-sm" onclick="copyPendencias(${partNum})">Copiar pendências (JSON para reenviar ao Gemini)</button>
-        <span class="flash" id="pendingFlash${partNum}"></span>
-      </div>
-    `;
-    wrap.appendChild(card);
-  }
-
-  joinSection.style.display = 'block';
 }
 
 // Tenta interpretar o texto colado como o JSON indexado por ID que o
@@ -554,6 +705,11 @@ function updateJoinStatus(partNum){
   const statusEl = document.getElementById('joinStatus' + partNum);
   const part = partsData[partNum - 1];
   const text = ta.value;
+
+  if(text.trim()){
+    const joinCard = document.getElementById('joinCard' + partNum);
+    if(joinCard) joinCard.classList.remove('awaiting-paste');
+  }
 
   if(!text.trim()){
     statusEl.className = 'status-line status-idle';
