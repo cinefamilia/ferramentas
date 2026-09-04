@@ -81,10 +81,40 @@
     margin: 0 0 16px;
   }
 
+  .mode-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .mode-btn {
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-strong);
+    background: #fff;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .mode-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  .mode-btn:not(.active):hover {
+    background: #f2f2f0;
+  }
+
   .dropzones {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
+    align-items: stretch;
   }
 
   @media (max-width: 620px) {
@@ -136,6 +166,44 @@
     opacity: 0.7;
   }
 
+  .manual-box {
+    border: 2px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 20px 16px;
+    background: #fbfbfa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .manual-box .label {
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .manual-box input[type="text"] {
+    font: inherit;
+    font-size: 1rem;
+    text-align: center;
+    padding: 9px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    width: 100%;
+    letter-spacing: 0.02em;
+  }
+
+  .manual-box input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .manual-box .hint {
+    text-align: center;
+    margin: 8px 0 0;
+  }
+
   input[type="file"] { display: none; }
 
   .actions {
@@ -143,6 +211,7 @@
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    align-items: center;
   }
 
   button {
@@ -227,6 +296,31 @@
     font-size: 1.1rem;
   }
 
+  .finetune-input {
+    font: inherit;
+    font-size: 0.95rem;
+    padding: 9px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    width: 140px;
+    text-align: center;
+  }
+
+  .finetune-input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .finetune-log {
+    margin-top: 12px;
+    font-size: 0.83rem;
+    color: var(--text-muted);
+  }
+
+  .finetune-log strong {
+    color: var(--text);
+  }
+
   footer {
     margin-top: 30px;
     text-align: center;
@@ -253,26 +347,38 @@
 
   <header>
     <h1>Ajuste de Sincronia</h1>
-    <p class="subtitle">Cine Família — corrige o timestamp da legenda em português usando uma legenda de referência com timing correto (sempre que ambas tiverem a mesma quantidade de blocos)</p>
+    <p class="subtitle">Cine Família — corrige o timestamp de uma legenda (Destino) usando uma Referência de Tempo, seja outra legenda com timing correto ou um timestamp informado manualmente.</p>
   </header>
 
   <div class="card">
-    <span class="step-tag">Etapa 1 — Carregar arquivos</span>
+    <span class="step-tag">Etapa 1 — Referência de Tempo e Destino</span>
     <h2>Legendas</h2>
-    <p class="hint">Solte ou selecione os dois arquivos .srt. A legenda original deve ter o timing correto; a legenda em português é a que será corrigida.</p>
+    <p class="hint">Escolha como fornecer a Referência de Tempo, e solte ou selecione o arquivo Destino (.srt) que será corrigido.</p>
+
+    <div class="mode-toggle">
+      <button type="button" class="mode-btn active" id="mode-file">Legenda de referência</button>
+      <button type="button" class="mode-btn" id="mode-manual">Timestamp manual</button>
+    </div>
 
     <div class="dropzones">
-      <div class="dropzone" id="dz-original">
-        <div class="icon">🎬</div>
-        <div class="label">Legenda original (timing correto)</div>
-        <div class="filename" id="fn-original">Nenhum arquivo</div>
-        <input type="file" id="file-original" accept=".srt">
+      <div>
+        <div class="dropzone" id="dz-ref">
+          <div class="icon">🎬</div>
+          <div class="label">Referência de Tempo (timing correto)</div>
+          <div class="filename" id="fn-ref">Nenhum arquivo</div>
+          <input type="file" id="file-ref" accept=".srt">
+        </div>
+        <div class="manual-box" id="manual-box" style="display:none;">
+          <div class="label">Referência de Tempo — timestamp da primeira fala</div>
+          <input type="text" id="input-manual-time" placeholder="00:02:15,000">
+          <p class="hint">Formato HH:MM:SS,mmm — preencha com a precisão que você tiver (os milissegundos são opcionais).</p>
+        </div>
       </div>
-      <div class="dropzone" id="dz-pt">
-        <div class="icon">🇧🇷</div>
-        <div class="label">Legenda em português (a corrigir)</div>
-        <div class="filename" id="fn-pt">Nenhum arquivo</div>
-        <input type="file" id="file-pt" accept=".srt">
+      <div class="dropzone" id="dz-dest">
+        <div class="icon">🎯</div>
+        <div class="label">Destino (legenda a sincronizar)</div>
+        <div class="filename" id="fn-dest">Nenhum arquivo</div>
+        <input type="file" id="file-dest" accept=".srt">
       </div>
     </div>
 
@@ -291,19 +397,41 @@
     </div>
   </div>
 
+  <div class="card" id="finetune-card" style="display:none;">
+    <span class="step-tag">Etapa 3 — Ajuste fino (opcional)</span>
+    <h2>Pequenos ajustes de tempo</h2>
+    <p class="hint">Teste o arquivo baixado no player/Tero. Se ainda estiver um pouco fora, informe um deslocamento em milissegundos (positivo adianta, negativo atrasa) e gere um novo download a partir do resultado atual. Pode repetir quantas vezes precisar.</p>
+    <div class="actions">
+      <input type="number" step="10" class="finetune-input" id="input-finetune-ms" placeholder="ex: 150 ou -150">
+      <button class="primary" id="btn-apply-finetune">Aplicar ajuste e baixar</button>
+    </div>
+    <div class="finetune-log" id="finetune-log"></div>
+  </div>
+
   <footer>Processamento 100% local no navegador — nenhum arquivo é enviado a servidor algum.</footer>
 </div>
 
 <script>
 (function () {
-  const state = { original: null, pt: null, originalName: '', ptName: '' };
+  const state = {
+    mode: 'file', // 'file' | 'manual'
+    ref: null, refName: '',
+    dest: null, destName: '',
+    manualTimeStr: ''
+  };
 
-  const dzOriginal = document.getElementById('dz-original');
-  const dzPt = document.getElementById('dz-pt');
-  const fileOriginal = document.getElementById('file-original');
-  const filePt = document.getElementById('file-pt');
-  const fnOriginal = document.getElementById('fn-original');
-  const fnPt = document.getElementById('fn-pt');
+  const modeFileBtn = document.getElementById('mode-file');
+  const modeManualBtn = document.getElementById('mode-manual');
+  const dzRef = document.getElementById('dz-ref');
+  const manualBox = document.getElementById('manual-box');
+  const fileRef = document.getElementById('file-ref');
+  const fnRef = document.getElementById('fn-ref');
+  const inputManualTime = document.getElementById('input-manual-time');
+
+  const dzDest = document.getElementById('dz-dest');
+  const fileDest = document.getElementById('file-dest');
+  const fnDest = document.getElementById('fn-dest');
+
   const btnProcess = document.getElementById('btn-process');
   const btnReset = document.getElementById('btn-reset');
   const resultCard = document.getElementById('result-card');
@@ -311,10 +439,34 @@
   const downloadArea = document.getElementById('download-area');
   const btnDownload = document.getElementById('btn-download');
 
+  const finetuneCard = document.getElementById('finetune-card');
+  const inputFinetuneMs = document.getElementById('input-finetune-ms');
+  const btnApplyFinetune = document.getElementById('btn-apply-finetune');
+  const finetuneLog = document.getElementById('finetune-log');
+
   let outputBlob = null;
   let outputFilename = 'legenda_sincronizada.srt';
-  let lastOriginalBlocks = null;
-  let lastPtBlocks = null;
+  let lastRefBlocks = null;
+  let lastDestBlocks = null;
+  let activeBlocks = null;   // blocos do resultado atual (base para o ajuste fino)
+  let activeBaseFilename = ''; // nome base (sem sufixos) para os downloads do ajuste fino
+  let finetuneTotalMs = 0;
+
+  // --- Alternância de modo ---
+  function setMode(mode) {
+    state.mode = mode;
+    modeFileBtn.classList.toggle('active', mode === 'file');
+    modeManualBtn.classList.toggle('active', mode === 'manual');
+    dzRef.style.display = mode === 'file' ? '' : 'none';
+    manualBox.style.display = mode === 'manual' ? '' : 'none';
+    checkReady();
+  }
+  modeFileBtn.addEventListener('click', () => setMode('file'));
+  modeManualBtn.addEventListener('click', () => setMode('manual'));
+  inputManualTime.addEventListener('input', () => {
+    state.manualTimeStr = inputManualTime.value;
+    checkReady();
+  });
 
   function setupDropzone(zone, input, onFile) {
     zone.addEventListener('click', () => input.click());
@@ -344,41 +496,54 @@
   }
 
   function checkReady() {
-    btnProcess.disabled = !(state.original && state.pt);
+    const destOk = !!state.dest;
+    if (state.mode === 'file') {
+      btnProcess.disabled = !(state.ref && destOk);
+    } else {
+      btnProcess.disabled = !(destOk && parseManualTime(state.manualTimeStr) !== null);
+    }
   }
 
-  setupDropzone(dzOriginal, fileOriginal, async (file) => {
-    state.originalName = file.name;
-    state.original = await readFileAsText(file);
-    fnOriginal.textContent = file.name;
-    dzOriginal.classList.add('filled');
+  setupDropzone(dzRef, fileRef, async (file) => {
+    state.refName = file.name;
+    state.ref = await readFileAsText(file);
+    fnRef.textContent = file.name;
+    dzRef.classList.add('filled');
     checkReady();
   });
 
-  setupDropzone(dzPt, filePt, async (file) => {
-    state.ptName = file.name;
-    state.pt = await readFileAsText(file);
-    fnPt.textContent = file.name;
-    dzPt.classList.add('filled');
+  setupDropzone(dzDest, fileDest, async (file) => {
+    state.destName = file.name;
+    state.dest = await readFileAsText(file);
+    fnDest.textContent = file.name;
+    dzDest.classList.add('filled');
     checkReady();
   });
 
   btnReset.addEventListener('click', () => {
-    state.original = null;
-    state.pt = null;
-    state.originalName = '';
-    state.ptName = '';
-    fnOriginal.textContent = 'Nenhum arquivo';
-    fnPt.textContent = 'Nenhum arquivo';
-    dzOriginal.classList.remove('filled');
-    dzPt.classList.remove('filled');
-    fileOriginal.value = '';
-    filePt.value = '';
+    state.ref = null;
+    state.dest = null;
+    state.refName = '';
+    state.destName = '';
+    state.manualTimeStr = '';
+    inputManualTime.value = '';
+    fnRef.textContent = 'Nenhum arquivo';
+    fnDest.textContent = 'Nenhum arquivo';
+    dzRef.classList.remove('filled');
+    dzDest.classList.remove('filled');
+    fileRef.value = '';
+    fileDest.value = '';
     btnProcess.disabled = true;
     resultCard.classList.remove('show');
     statusArea.innerHTML = '';
     downloadArea.style.display = 'none';
     outputBlob = null;
+    activeBlocks = null;
+    finetuneTotalMs = 0;
+    finetuneCard.style.display = 'none';
+    finetuneLog.innerHTML = '';
+    inputFinetuneMs.value = '';
+    setMode('file');
   });
 
   // --- Parser de SRT ---
@@ -422,13 +587,13 @@
     }).join('\n\n') + '\n';
   }
 
-  function deriveOutputFilename(ptName) {
+  function deriveOutputFilename(destName) {
     // segue a convenção já usada nas outras ferramentas do catálogo:
     // troca um código de idioma isolado de 2 letras maiúsculas por "PT";
     // se não encontrar, acrescenta " (sincronizado)" antes da extensão
-    const dot = ptName.lastIndexOf('.');
-    const base = dot >= 0 ? ptName.slice(0, dot) : ptName;
-    const ext = dot >= 0 ? ptName.slice(dot) : '.srt';
+    const dot = destName.lastIndexOf('.');
+    const base = dot >= 0 ? destName.slice(0, dot) : destName;
+    const ext = dot >= 0 ? destName.slice(dot) : '.srt';
 
     const langCodeRe = /\b([A-Z]{2})\b/;
     if (langCodeRe.test(base)) {
@@ -466,103 +631,190 @@
     return `${sign}${totalSeconds.toFixed(3)}s`;
   }
 
+  // Aceita HH:MM:SS,mmm / HH:MM:SS.mmm / HH:MM:SS / MM:SS,mmm / MM:SS
+  // Não exige milissegundos (o usuário raramente consegue cronometrar isso no player).
+  function parseManualTime(str) {
+    if (!str) return null;
+    const s = str.trim();
+
+    let m = s.match(/^(\d{1,2}):(\d{2}):(\d{2})(?:[.,](\d{1,3}))?$/);
+    if (m) {
+      const hh = +m[1], mm = +m[2], ss = +m[3];
+      const msStr = (m[4] || '0').padEnd(3, '0');
+      return ((hh * 3600 + mm * 60 + ss) * 1000) + parseInt(msStr, 10);
+    }
+
+    m = s.match(/^(\d{1,2}):(\d{2})(?:[.,](\d{1,3}))?$/);
+    if (m) {
+      const mm = +m[1], ss = +m[2];
+      const msStr = (m[3] || '0').padEnd(3, '0');
+      return ((mm * 60 + ss) * 1000) + parseInt(msStr, 10);
+    }
+
+    return null;
+  }
+
   btnProcess.addEventListener('click', () => {
     resultCard.classList.add('show');
     downloadArea.style.display = 'none';
     outputBlob = null;
+    activeBlocks = null;
+    finetuneTotalMs = 0;
+    finetuneCard.style.display = 'none';
+    finetuneLog.innerHTML = '';
+    inputFinetuneMs.value = '';
 
-    let originalBlocks, ptBlocks;
+    let destBlocks;
     try {
-      originalBlocks = parseSRT(state.original);
+      destBlocks = parseSRT(state.dest);
     } catch (e) {
-      statusArea.innerHTML = statusBox('error', 'Erro ao ler a legenda original', 'Não foi possível interpretar o arquivo como .srt válido.');
+      statusArea.innerHTML = statusBox('error', 'Erro ao ler o Destino', 'Não foi possível interpretar o arquivo como .srt válido.');
       return;
     }
+    if (destBlocks.length === 0) {
+      statusArea.innerHTML = statusBox('error', 'Nenhum bloco reconhecido no Destino',
+        'Confira se o .srt está no formato padrão (número, timestamp, texto).');
+      return;
+    }
+
+    if (state.mode === 'manual') {
+      processManualMode(destBlocks);
+    } else {
+      processFileMode(destBlocks);
+    }
+  });
+
+  function processManualMode(destBlocks) {
+    const manualMs = parseManualTime(state.manualTimeStr);
+    if (manualMs === null) {
+      statusArea.innerHTML = statusBox('error', 'Timestamp inválido',
+        'Use o formato HH:MM:SS,mmm (os milissegundos são opcionais), por exemplo 00:02:15 ou 00:02:15,500.');
+      return;
+    }
+
+    lastDestBlocks = destBlocks;
+    const offsetMs = manualMs - timeToMs(destBlocks[0].startRaw);
+    const nDest = destBlocks.length;
+
+    statusArea.innerHTML =
+      countsHtmlManual(nDest, manualMs) +
+      `<div class="status-box warn" style="margin-top:10px;">
+         <div class="title">Aplicar deslocamento com base no timestamp informado?</div>
+         <div>O primeiro bloco do Destino começa em <strong>${destBlocks[0].startRaw}</strong>; você informou <strong>${msToTime(manualMs)}</strong> como o momento correto da primeira fala.
+         Deslocamento calculado: <strong>${formatOffset(offsetMs)}</strong>. Se confirmar, esse valor será somado a <em>todos</em> os ${nDest} timestamps do Destino (duração e texto de cada bloco permanecem os mesmos).</div>
+         <div class="actions" style="margin-top:12px;">
+           <button class="primary" id="btn-apply-offset">Sim, aplicar deslocamento</button>
+         </div>
+       </div>`;
+
+    const btnApplyOffset = document.getElementById('btn-apply-offset');
+    if (btnApplyOffset) {
+      btnApplyOffset.addEventListener('click', () => applyOffset(offsetMs, null, nDest, 'manual'));
+    }
+  }
+
+  function processFileMode(destBlocks) {
+    let refBlocks;
     try {
-      ptBlocks = parseSRT(state.pt);
+      refBlocks = parseSRT(state.ref);
     } catch (e) {
-      statusArea.innerHTML = statusBox('error', 'Erro ao ler a legenda em português', 'Não foi possível interpretar o arquivo como .srt válido.');
+      statusArea.innerHTML = statusBox('error', 'Erro ao ler a Referência de Tempo', 'Não foi possível interpretar o arquivo como .srt válido.');
+      return;
+    }
+    if (refBlocks.length === 0) {
+      statusArea.innerHTML = statusBox('error', 'Nenhum bloco reconhecido na Referência de Tempo',
+        'Confira se o .srt está no formato padrão (número, timestamp, texto).');
       return;
     }
 
-    if (originalBlocks.length === 0 || ptBlocks.length === 0) {
-      statusArea.innerHTML = statusBox('error', 'Nenhum bloco reconhecido',
-        'Um dos arquivos não teve blocos de legenda reconhecidos. Confira se o .srt está no formato padrão (número, timestamp, texto).');
-      return;
-    }
+    const nRef = refBlocks.length;
+    const nDest = destBlocks.length;
 
-    const nOriginal = originalBlocks.length;
-    const nPt = ptBlocks.length;
-
-    if (nOriginal === nPt) {
-      // Caso A: mesma quantidade — copia os timestamps do original, mantendo o texto em português
-      const merged = ptBlocks.map((b, i) => ({
-        startRaw: originalBlocks[i].startRaw,
-        endRaw: originalBlocks[i].endRaw,
+    if (nRef === nDest) {
+      // Caso A: mesma quantidade — copia os timestamps da referência, mantendo o texto do destino
+      const merged = destBlocks.map((b, i) => ({
+        startRaw: refBlocks[i].startRaw,
+        endRaw: refBlocks[i].endRaw,
         text: b.text
       }));
 
-      const srtOut = buildSRT(merged);
-      outputBlob = new Blob([srtOut], { type: 'text/plain;charset=utf-8' });
-      outputFilename = deriveOutputFilename(state.ptName || 'legenda.srt');
-
-      statusArea.innerHTML =
-        countsHtml(nOriginal, nPt) +
+      finishWithBlocks(merged, nRef, nDest,
         statusBox('ok', 'Quantidade de blocos igual — corrigido com sucesso',
-          `Os ${nPt} timestamps da legenda em português foram substituídos pelos timestamps da legenda original. O texto em português foi mantido intacto.`);
-      downloadArea.style.display = 'flex';
+          `Os ${nDest} timestamps do Destino foram substituídos pelos timestamps da Referência de Tempo. O texto do Destino foi mantido intacto.`));
     } else {
       // Caso B: quantidades diferentes — correção automática por posição não é confiável,
       // mas pode ser só um atraso/adiantamento constante desde o início.
-      // Guardamos os blocos para o ajuste opcional por offset do primeiro bloco.
-      lastOriginalBlocks = originalBlocks;
-      lastPtBlocks = ptBlocks;
+      lastRefBlocks = refBlocks;
+      lastDestBlocks = destBlocks;
 
-      const offsetMs = timeToMs(originalBlocks[0].startRaw) - timeToMs(ptBlocks[0].startRaw);
+      const offsetMs = timeToMs(refBlocks[0].startRaw) - timeToMs(destBlocks[0].startRaw);
 
       statusArea.innerHTML =
-        countsHtml(nOriginal, nPt) +
+        countsHtml(nRef, nDest) +
         statusBox('warn', 'Quantidade de blocos diferente — correção automática não aplicada',
-          `A legenda original tem ${nOriginal} blocos e a legenda em português tem ${nPt}. Isso normalmente indica divergência de fusão/divisão entre as legendas, não apenas atraso/adiantamento simples — um ajuste posição-a-posição não é confiável aqui.`) +
+          `A Referência de Tempo tem ${nRef} blocos e o Destino tem ${nDest}. Isso normalmente indica divergência de fusão/divisão entre as legendas, não apenas atraso/adiantamento simples — um ajuste posição-a-posição não é confiável aqui.`) +
         `<div class="status-box warn" style="margin-top:10px;">
            <div class="title">Ajustar mesmo assim, usando o 1º bloco como referência?</div>
-           <div>Diferença encontrada entre o início da legenda original e o início da legenda em português: <strong>${formatOffset(offsetMs)}</strong>.
-           Se confirmar, esse deslocamento fixo será somado a <em>todos</em> os ${nPt} timestamps da legenda em português (mantendo a duração e o texto de cada bloco como estão) — sem alterar a quantidade de blocos. Vale a pena conferir o resultado do meio e do fim do arquivo depois, já que essa correção não leva em conta divergências de conteúdo ao longo da legenda.</div>
+           <div>Diferença encontrada entre o início da Referência de Tempo e o início do Destino: <strong>${formatOffset(offsetMs)}</strong>.
+           Se confirmar, esse deslocamento fixo será somado a <em>todos</em> os ${nDest} timestamps do Destino (mantendo a duração e o texto de cada bloco como estão) — sem alterar a quantidade de blocos. Vale a pena conferir o resultado do meio e do fim do arquivo depois, já que essa correção não leva em conta divergências de conteúdo ao longo da legenda.</div>
            <div class="actions" style="margin-top:12px;">
              <button class="primary" id="btn-apply-offset">Sim, ajustar todos os tempos</button>
            </div>
          </div>` +
-        statusBox('warn', 'Alternativa', 'Se preferir não aplicar esse ajuste, encaminhe este par de legendas para o Sincronizador para revisão caso a caso.');
+        statusBox('warn', 'Alternativa', 'Se preferir não aplicar esse ajuste, revise manualmente o par de legendas caso a caso.');
 
       const btnApplyOffset = document.getElementById('btn-apply-offset');
       if (btnApplyOffset) {
-        btnApplyOffset.addEventListener('click', () => applyOffset(offsetMs, nOriginal, nPt));
+        btnApplyOffset.addEventListener('click', () => applyOffset(offsetMs, nRef, nDest, 'file'));
       }
     }
-  });
+  }
 
-  function applyOffset(offsetMs, nOriginal, nPt) {
-    const shifted = lastPtBlocks.map((b) => ({
+  function applyOffset(offsetMs, nRef, nDest, origin) {
+    const shifted = lastDestBlocks.map((b) => ({
       startRaw: msToTime(timeToMs(b.startRaw) + offsetMs),
       endRaw: msToTime(timeToMs(b.endRaw) + offsetMs),
       text: b.text
     }));
 
-    const srtOut = buildSRT(shifted);
-    outputBlob = new Blob([srtOut], { type: 'text/plain;charset=utf-8' });
-    outputFilename = deriveOutputFilename(state.ptName || 'legenda.srt').replace(/\.srt$/i, ' (offset aplicado).srt');
-
-    statusArea.innerHTML =
-      countsHtml(nOriginal, nPt) +
-      statusBox('ok', 'Offset aplicado a todos os blocos',
-        `Deslocamento de ${formatOffset(offsetMs)} aplicado aos ${nPt} timestamps da legenda em português. A quantidade de blocos e o texto não foram alterados — confira o meio e o fim do arquivo antes de considerar definitivo.`);
-    downloadArea.style.display = 'flex';
+    const countsBlock = origin === 'manual' ? countsHtmlManual(nDest) : countsHtml(nRef, nDest);
+    finishWithBlocks(shifted, nRef, nDest,
+      countsBlock +
+      statusBox('ok', 'Deslocamento aplicado a todos os blocos',
+        `Deslocamento de ${formatOffset(offsetMs)} aplicado aos ${nDest} timestamps do Destino. A quantidade de blocos e o texto não foram alterados — confira o meio e o fim do arquivo antes de considerar definitivo.`),
+      true);
   }
 
-  function countsHtml(nOriginal, nPt) {
+  // Fecha o processamento (Caso A ou aplicação de offset): monta o SRT final,
+  // guarda os blocos como base ativa para o ajuste fino, e libera o download.
+  function finishWithBlocks(blocks, nRef, nDest, statusHtml, alreadyHasCounts) {
+    const srtOut = buildSRT(blocks);
+    outputBlob = new Blob([srtOut], { type: 'text/plain;charset=utf-8' });
+    const derivedName = deriveOutputFilename(state.destName || 'legenda.srt');
+    outputFilename = derivedName;
+
+    activeBlocks = blocks;
+    activeBaseFilename = derivedName.replace(/\.srt$/i, '');
+    finetuneTotalMs = 0;
+    finetuneLog.innerHTML = '';
+
+    statusArea.innerHTML = alreadyHasCounts ? statusHtml : statusHtml;
+    downloadArea.style.display = 'flex';
+    finetuneCard.style.display = 'block';
+  }
+
+  function countsHtml(nRef, nDest) {
     return `<div class="counts">
-      <div>Blocos na original: <span class="n">${nOriginal}</span></div>
-      <div>Blocos em português: <span class="n">${nPt}</span></div>
+      <div>Blocos na Referência de Tempo: <span class="n">${nRef}</span></div>
+      <div>Blocos no Destino: <span class="n">${nDest}</span></div>
+    </div>`;
+  }
+
+  function countsHtmlManual(nDest, manualMs) {
+    const refLabel = (typeof manualMs === 'number') ? msToTime(manualMs) : '—';
+    return `<div class="counts">
+      <div>Referência de Tempo informada: <span class="n">${refLabel}</span></div>
+      <div>Blocos no Destino: <span class="n">${nDest}</span></div>
     </div>`;
   }
 
@@ -575,15 +827,56 @@
 
   btnDownload.addEventListener('click', () => {
     if (!outputBlob) return;
-    const url = URL.createObjectURL(outputBlob);
+    triggerDownload(outputBlob, outputFilename);
+  });
+
+  function triggerDownload(blob, filename) {
+    const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = outputFilename;
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  // --- Etapa 3: ajuste fino iterativo ---
+  // Aplica um deslocamento (ms) sobre o resultado atual (activeBlocks), gera
+  // um novo .srt e já dispara o download. Pode ser repetido várias vezes,
+  // sempre a partir do último resultado — sem precisar reenviar arquivos.
+  btnApplyFinetune.addEventListener('click', () => {
+    if (!activeBlocks) return;
+    const raw = inputFinetuneMs.value;
+    const ms = Number(raw);
+    if (raw === '' || Number.isNaN(ms)) {
+      finetuneLog.innerHTML = `<span style="color: var(--error);">Informe um número de milissegundos (ex: 150 ou -150).</span>`;
+      return;
+    }
+
+    activeBlocks = activeBlocks.map((b) => ({
+      startRaw: msToTime(timeToMs(b.startRaw) + ms),
+      endRaw: msToTime(timeToMs(b.endRaw) + ms),
+      text: b.text
+    }));
+    finetuneTotalMs += ms;
+
+    const srtOut = buildSRT(activeBlocks);
+    const blob = new Blob([srtOut], { type: 'text/plain;charset=utf-8' });
+    const filename = `${activeBaseFilename} (ajuste ${formatOffset(finetuneTotalMs)}).srt`;
+
+    // atualiza também o botão de download da Etapa 2, para ficar coerente
+    // com o último resultado gerado
+    outputBlob = blob;
+    outputFilename = filename;
+
+    triggerDownload(blob, filename);
+
+    finetuneLog.innerHTML = `Ajuste aplicado: <strong>${formatOffset(ms)}</strong> — total acumulado: <strong>${formatOffset(finetuneTotalMs)}</strong>. Novo arquivo baixado: <em>${escapeHtml(filename)}</em>`;
+    inputFinetuneMs.value = '';
   });
+
+  setMode('file');
 })();
 </script>
 </body>
