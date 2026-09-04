@@ -157,6 +157,7 @@
     • Bloco cujo texto inteiro é descritivo (ex: <code>[risos]</code>, <code>- [balbucia]</code>) → o bloco é removido por completo.<br>
     • Fala misturada com descrição (ex: <code>Oi, tudo bem? [risos]</code>) → mantém a fala, remove só o trecho entre colchetes/parênteses (e o hífen, se estiver colado direto no colchete/parêntese).<br>
     • Hífen de virada de diálogo (<code>- Fala do personagem</code>) não é tocado — só é removido quando está imediatamente antes de um colchete/parêntese.<br>
+    • Marcador de fala com <code>&gt;</code> ou <code>&lt;</code> no início da linha vira hífen; se houver um nome antes dos dois-pontos (ex: <code>&gt; Porteiro: Quem é você?</code>), o nome é removido junto, sobrando só <code>- Quem é você?</code><br>
     • Ao final, os blocos restantes são renumerados sequencialmente.
   </div>
 
@@ -244,14 +245,48 @@ function cleanTextLines(textLines) {
   const cleanedLines = [];
   for (let line of textLines) {
     const original = line;
+    let modified = false;
+    let newLine = line;
+
     // 1) remove hífen colado direto em colchete/parêntese: "- [algo]" ou "-[algo]" ou "- (algo)"
-    line = line.replace(/-\s*(\[[^\]\r\n]*\]|\([^)\r\n]*\))/g, '');
+    //    (feito antes de normalizar > / < para não confundir um hífen recém-criado com este caso)
+    let stepped = newLine.replace(/-\s*(\[[^\]\r\n]*\]|\([^)\r\n]*\))/g, '');
+    if (stepped !== newLine) modified = true;
+    newLine = stepped;
+
+    // 1b) normaliza marcador de fala no início da linha: "> " ou "< " vira "- "
+    //     se houver um nome antes de ":" (ex: "> Porteiro: Quem é você?"), remove o nome junto
+    {
+      const before = newLine;
+      newLine = newLine.replace(/^[ \t]*[><]\s*(?:[^:\n\r.!?]{1,30}:\s*)?/, '- ');
+      if (newLine !== before) modified = true;
+    }
+
     // 2) remove colchetes/parênteses remanescentes (sem hífen colado)
-    line = line.replace(/\[[^\]\r\n]*\]|\([^)\r\n]*\)/g, '');
-    // limpa espaços duplicados e espaços nas pontas
-    line = line.replace(/[ \t]{2,}/g, ' ').trim();
-    if (line !== original.trim()) changed = true;
-    if (line.length > 0) cleanedLines.push(line);
+    stepped = newLine.replace(/\[[^\]\r\n]*\]|\([^)\r\n]*\)/g, '');
+    if (stepped !== newLine) modified = true;
+    newLine = stepped;
+
+    // 3) remove tags (ex: <font color="...">...</font>) que ficaram vazias após a limpeza acima
+    for (let i = 0; i < 3; i++) {
+      const before = newLine;
+      newLine = newLine.replace(/<([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>\s*<\/\1>/g, '');
+      if (newLine !== before) modified = true; else break;
+    }
+
+    // 4) limpa espaços duplicados
+    newLine = newLine.replace(/[ \t]{2,}/g, ' ');
+    // 5) remove espaço sobrando antes de pontuação (ex: "capão ." -> "capão.")
+    newLine = newLine.replace(/[ \t]+([.,!?;:])/g, '$1');
+    newLine = newLine.trim();
+
+    // 6) se a linha foi modificada e sobrou só um hífen solto (sem texto), descarta
+    if (modified && (newLine === '-' || newLine === '--')) {
+      newLine = '';
+    }
+
+    if (newLine !== original.trim()) changed = true;
+    if (newLine.length > 0) cleanedLines.push(newLine);
   }
   const emptied = cleanedLines.length === 0;
   return { cleanedLines, changed, emptied };
