@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Remover Legendas Descritivas</title>
+<style>
+  :root {
+    --bg: #f7f7f8;
+    --card-bg: #ffffff;
+    --border: #d8d8dc;
+    --text: #1c1c1e;
+    --muted: #6b6b70;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --removed: #fde8e8;
+    --removed-text: #b42318;
+    --edited: #fff8e1;
+    --edited-text: #92650a;
+    --ok: #eaf7ee;
+    --ok-text: #1a7f37;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 24px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  h1 {
+    font-size: 20px;
+    margin: 0 0 4px 0;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+  }
+  .card h2 {
+    font-size: 15px;
+    margin: 0 0 12px 0;
+  }
+  .rules {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .drop-zone {
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 28px;
+    text-align: center;
+    color: var(--muted);
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+    font-size: 13.5px;
+  }
+  .drop-zone.dragover {
+    border-color: var(--accent);
+    background: #eef2ff;
+  }
+  input[type=file] { display: none; }
+  button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 9px 16px;
+    font-size: 13.5px;
+    cursor: pointer;
+  }
+  button:hover { background: var(--accent-hover); }
+  button:disabled {
+    background: #c7c7cc;
+    cursor: not-allowed;
+  }
+  button.secondary {
+    background: #fff;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  button.secondary:hover { background: #f2f2f3; }
+  .filename {
+    font-size: 13px;
+    margin-top: 10px;
+    color: var(--text);
+  }
+  .stats {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 14px 0;
+  }
+  .stat {
+    flex: 1;
+    min-width: 130px;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+  }
+  .stat b { display: block; font-size: 19px; margin-bottom: 2px; }
+  .stat.total { background: #f0f1f3; color: var(--text); }
+  .stat.removed { background: var(--removed); color: var(--removed-text); }
+  .stat.edited { background: var(--edited); color: var(--edited-text); }
+  .stat.kept { background: var(--ok); color: var(--ok-text); }
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .log {
+    max-height: 320px;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 12px;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+  }
+  .log-row {
+    padding: 7px 12px;
+    border-bottom: 1px solid #eee;
+    white-space: pre-wrap;
+  }
+  .log-row:last-child { border-bottom: none; }
+  .log-row.removed { background: var(--removed); color: var(--removed-text); }
+  .log-row.edited { background: var(--edited); color: var(--edited-text); }
+  .log-row .tag {
+    display: inline-block;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .hidden { display: none; }
+  .footer-note {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Remover Legendas Descritivas</h1>
+<div class="subtitle">Remove blocos e trechos como [risos], (música tocando), - [balbucia] etc. de um arquivo .srt</div>
+
+<div class="card">
+  <h2>1. Regras aplicadas</h2>
+  <div class="rules">
+    • Bloco cujo texto inteiro é descritivo (ex: <code>[risos]</code>, <code>- [balbucia]</code>) → o bloco é removido por completo.<br>
+    • Fala misturada com descrição (ex: <code>Oi, tudo bem? [risos]</code>) → mantém a fala, remove só o trecho entre colchetes/parênteses (e o hífen, se estiver colado direto no colchete/parêntese).<br>
+    • Hífen de virada de diálogo (<code>- Fala do personagem</code>) não é tocado — só é removido quando está imediatamente antes de um colchete/parêntese.<br>
+    • Ao final, os blocos restantes são renumerados sequencialmente.
+  </div>
+
+  <div id="dropZone" class="drop-zone">
+    Arraste o arquivo .srt aqui ou clique para selecionar
+    <input type="file" id="fileInput" accept=".srt">
+  </div>
+  <div id="fileName" class="filename hidden"></div>
+</div>
+
+<div id="resultCard" class="card hidden">
+  <h2>2. Resultado</h2>
+  <div class="stats">
+    <div class="stat total"><b id="statTotal">0</b>blocos originais</div>
+    <div class="stat removed"><b id="statRemoved">0</b>removidos (100% descritivos)</div>
+    <div class="stat edited"><b id="statEdited">0</b>editados (descrição parcial)</div>
+    <div class="stat kept"><b id="statFinal">0</b>blocos no arquivo final</div>
+  </div>
+
+  <div class="actions">
+    <button id="downloadBtn">Baixar .srt limpo</button>
+    <button id="toggleLogBtn" class="secondary">Ver detalhes das alterações</button>
+  </div>
+  <div class="footer-note" id="outName"></div>
+
+  <div id="logWrap" class="hidden" style="margin-top:14px;">
+    <div id="log" class="log"></div>
+  </div>
+</div>
+
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const fileNameEl = document.getElementById('fileName');
+const resultCard = document.getElementById('resultCard');
+const logWrap = document.getElementById('logWrap');
+const logEl = document.getElementById('log');
+const toggleLogBtn = document.getElementById('toggleLogBtn');
+const downloadBtn = document.getElementById('downloadBtn');
+const outNameEl = document.getElementById('outName');
+
+let outputSrt = '';
+let outputName = '';
+
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('dragover');
+  if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+});
+fileInput.addEventListener('change', e => {
+  if (e.target.files.length) handleFile(e.target.files[0]);
+});
+
+function handleFile(file) {
+  fileNameEl.textContent = 'Arquivo: ' + file.name;
+  fileNameEl.classList.remove('hidden');
+  const reader = new FileReader();
+  reader.onload = ev => process(ev.target.result, file.name);
+  reader.readAsText(file, 'UTF-8');
+}
+
+// Parseia o .srt em blocos {num, time, textLines[]}
+function parseSrt(content) {
+  const normalized = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+  const rawBlocks = normalized.split(/\n\s*\n/).map(b => b.trim()).filter(b => b.length > 0);
+  const blocks = [];
+  for (const rb of rawBlocks) {
+    const lines = rb.split('\n');
+    if (lines.length < 2) continue;
+    const num = lines[0].trim();
+    const time = lines[1].trim();
+    const textLines = lines.slice(2);
+    blocks.push({ num, time, textLines });
+  }
+  return blocks;
+}
+
+// Remove trechos descritivos de um conjunto de linhas de texto.
+// Retorna { cleanedLines, changed, emptied }
+function cleanTextLines(textLines) {
+  let changed = false;
+  const cleanedLines = [];
+  for (let line of textLines) {
+    const original = line;
+    // 1) remove hífen colado direto em colchete/parêntese: "- [algo]" ou "-[algo]" ou "- (algo)"
+    line = line.replace(/-\s*(\[[^\]\r\n]*\]|\([^)\r\n]*\))/g, '');
+    // 2) remove colchetes/parênteses remanescentes (sem hífen colado)
+    line = line.replace(/\[[^\]\r\n]*\]|\([^)\r\n]*\)/g, '');
+    // limpa espaços duplicados e espaços nas pontas
+    line = line.replace(/[ \t]{2,}/g, ' ').trim();
+    if (line !== original.trim()) changed = true;
+    if (line.length > 0) cleanedLines.push(line);
+  }
+  const emptied = cleanedLines.length === 0;
+  return { cleanedLines, changed, emptied };
+}
+
+function process(content, originalName) {
+  const blocks = parseSrt(content);
+  let removedCount = 0;
+  let editedCount = 0;
+  const logEntries = [];
+  const survivors = [];
+
+  blocks.forEach((block, idx) => {
+    const { cleanedLines, changed, emptied } = cleanTextLines(block.textLines);
+    const originalText = block.textLines.join(' / ');
+    if (emptied) {
+      removedCount++;
+      logEntries.push({ type: 'removed', text: `Bloco #${block.num} REMOVIDO — texto original: "${originalText}"` });
+      return;
+    }
+    if (changed) {
+      editedCount++;
+      const cleanedText = cleanedLines.join(' / ');
+      logEntries.push({ type: 'edited', text: `Bloco #${block.num} editado — antes: "${originalText}"  →  depois: "${cleanedText}"` });
+    }
+    survivors.push({ time: block.time, textLines: cleanedLines });
+  });
+
+  // Renumeração sequencial
+  const outLines = [];
+  survivors.forEach((s, i) => {
+    outLines.push(String(i + 1));
+    outLines.push(s.time);
+    outLines.push(...s.textLines);
+    outLines.push('');
+  });
+  outputSrt = outLines.join('\n').trim() + '\n';
+
+  outputName = buildOutputName(originalName);
+
+  document.getElementById('statTotal').textContent = blocks.length;
+  document.getElementById('statRemoved').textContent = removedCount;
+  document.getElementById('statEdited').textContent = editedCount;
+  document.getElementById('statFinal').textContent = survivors.length;
+  outNameEl.textContent = 'Arquivo de saída: ' + outputName;
+
+  logEl.innerHTML = '';
+  if (logEntries.length === 0) {
+    logEl.innerHTML = '<div class="log-row">Nenhuma legenda descritiva encontrada — arquivo já estava limpo.</div>';
+  } else {
+    for (const entry of logEntries) {
+      const row = document.createElement('div');
+      row.className = 'log-row ' + entry.type;
+      const tag = entry.type === 'removed' ? '[REMOVIDO]' : '[EDITADO]';
+      row.innerHTML = `<span class="tag">${tag}</span>${escapeHtml(entry.text.replace(/^Bloco #\S+ (REMOVIDO|editado)[^"]*/, m => m))}`;
+      row.textContent = `${tag} ${entry.text}`;
+      logEl.appendChild(row);
+    }
+  }
+
+  resultCard.classList.remove('hidden');
+  logWrap.classList.add('hidden');
+  toggleLogBtn.textContent = 'Ver detalhes das alterações';
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function buildOutputName(name) {
+  const dot = name.lastIndexOf('.');
+  const base = dot === -1 ? name : name.slice(0, dot);
+  const ext = dot === -1 ? '.srt' : name.slice(dot);
+  return base + ' - limpo' + ext;
+}
+
+toggleLogBtn.addEventListener('click', () => {
+  const hidden = logWrap.classList.toggle('hidden');
+  toggleLogBtn.textContent = hidden ? 'Ver detalhes das alterações' : 'Ocultar detalhes';
+});
+
+downloadBtn.addEventListener('click', () => {
+  const blob = new Blob([outputSrt], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = outputName;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+</script>
+
+</body>
+</html>
