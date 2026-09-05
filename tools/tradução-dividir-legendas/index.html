@@ -376,15 +376,52 @@ function buildBlockText(b){
 }
 
 // Monta o payload JSON indexado por ID (a numeração sequencial forçada,
-// mesma usada no .srt) — cada chave é o número do bloco, cada valor é
-// SÓ o texto da legenda (sem número nem timestamp, que nunca precisam
-// de tradução). Isso é o que vai colado no Gemini em vez do .srt puro.
+// mesma usada no .srt) — cada chave é o número do bloco, cada valor
+// começa com a tag [ID:seq] seguida do texto da legenda (sem número nem
+// timestamp, que nunca precisam de tradução). A tag embutida no PRÓPRIO
+// texto (não só na chave externa) é o que permite ao Juntador detectar
+// blocos deslocados por fusão/corrupção — ver extractIdTag() e
+// classifyBlock(). Isso é o que vai colado no Gemini em vez do .srt puro.
 function buildBlockJSON(blocks){
   const map = {};
   blocks.forEach(b => {
-    map[b.seq] = b.lines.slice(2).join('\n');
+    const text = b.lines.slice(2).join('\n');
+    map[b.seq] = `[ID:${b.seq}] ${text}`;
   });
   return map;
+}
+
+// Extrai a tag [ID:X] do início de um valor traduzido, se existir.
+// Retorna {id, text} — id é number ou null (tag ausente/ilegível), text
+// já vem SEM a tag (pronto para uso no .srt final).
+function extractIdTag(value){
+  const str = String(value);
+  const m = str.match(/^\[ID:(\d+)\]\s*/);
+  if(!m) return { id: null, text: str.trim() };
+  return { id: parseInt(m[1], 10), text: str.slice(m[0].length) };
+}
+
+// Classifica o estado de uma chave (ID) dentro de uma parte, cruzando o
+// que foi acumulado em part.translated (armazenado SEMPRE com a tag
+// crua, como o Gemini devolveu) contra a chave externa esperada:
+//   'missing' -> a chave nunca veio, ou veio em branco/só com a tag vazia
+//   'shifted' -> veio com texto, mas a tag [ID:X] interna está ausente ou
+//                não bate com a chave -> sinal de fusão/corrupção em
+//                algum ponto anterior da resposta (efeito cascata)
+//   'ok'      -> tag presente e bate com a chave; texto pronto para uso
+function classifyBlock(part, key){
+  const raw = part.translated[key];
+  if(raw === undefined || raw === null || !String(raw).trim()){
+    return { status: 'missing' };
+  }
+  const { id, text } = extractIdTag(raw);
+  if(!text.trim()){
+    return { status: 'missing' };
+  }
+  if(id === null || String(id) !== String(key)){
+    return { status: 'shifted', text, foundId: id };
+  }
+  return { status: 'ok', text };
 }
 
 function handleFile(evt){
@@ -499,12 +536,17 @@ function doSplit(){
         </span>
         <span class="part-range">blocos ${start+1}–${end} (${partBlocks.length} legendas esperadas)</span>
       </div>
-      <textarea class="part-in" id="joinIn${partNum}" placeholder='Cole aqui o JSON traduzido devolvido pelo Gemini para esta parte (ex: {"1": "texto traduzido", "2": "..."})' oninput="updateJoinStatus(${partNum})"></textarea>
+      <textarea class="part-in" id="joinIn${partNum}" placeholder='Cole aqui o JSON traduzido devolvido pelo Gemini para esta parte (ex: {"1": "[ID:1] texto traduzido", "2": "[ID:2] ..."})' oninput="updateJoinStatus(${partNum})"></textarea>
       <div class="status-line status-idle" id="joinStatus${partNum}">aguardando colagem</div>
       <div id="pendingBox${partNum}" style="display:none; margin-top:6px; padding:8px; border:1px dashed var(--warn); border-radius:6px; font-size:0.85em;">
         <div id="pendingList${partNum}" style="margin-bottom:6px;"></div>
         <button class="btn btn-ghost btn-sm" onclick="copyPendencias(${partNum})">Copiar pendências (JSON para reenviar ao Gemini)</button>
         <span class="flash" id="pendingFlash${partNum}"></span>
+      </div>
+      <div id="shiftedBox${partNum}" style="display:none; margin-top:6px; padding:8px; border:1.5px solid var(--warn); border-radius:6px; font-size:0.85em;">
+        <div id="shiftedList${partNum}" style="margin-bottom:6px;"></div>
+        <button class="btn btn-ghost btn-sm" onclick="copyDeslocados(${partNum})">Copiar faixa deslocada (JSON para reenviar ao Gemini)</button>
+        <span class="flash" id="shiftedFlash${partNum}"></span>
       </div>
     `;
 
@@ -724,6 +766,8 @@ function updateJoinStatus(partNum){
       // SOMA/SOBRESCREVE pelas chaves que trouxer, sem apagar o que já
       // estava correto de uma colagem anterior. É isso que permite colar
       // primeiro o lote inteiro e, depois, só as correções pontuais.
+      // Guarda o valor CRU (com a tag [ID:X]) — a classificação/limpeza
+      // da tag acontece sob demanda em classifyBlock().
       Object.assign(part.translated, parsed);
 
       const found = Object.keys(parsed).length;
@@ -732,26 +776,34 @@ function updateJoinStatus(partNum){
     }
   }
 
-  updatePendingReport(partNum);
+  updateStatusReports(partNum);
   checkAllFilled();
 }
 
-// Calcula quais IDs desta parte ainda estão SEM tradução utilizável —
-// tanto os que nunca vieram (chave ausente) quanto os que vieram só com
-// texto em branco/espaço (Gemini "pulou" a legenda mas devolveu a chave
-// mesmo assim). Atualiza o aviso de pendências e mostra/esconde o botão
-// de copiar.
-function updatePendingReport(partNum){
+// Calcula, para esta parte, dois grupos de problema (usando
+// classifyBlock para cada ID esperado) e atualiza os dois avisos:
+//   - "pendentes": chave ausente ou em branco (Gemini pulou a legenda)
+//   - "deslocados": chave presente, mas a tag [ID:X] interna não bate
+//     com a chave externa — sinal de fusão/corrupção que empurrou o
+//     conteúdo de outros blocos para a posição errada. Como o efeito é
+//     em cascata, mostra a faixa contígua a partir do primeiro ID
+//     deslocado, não só os IDs isolados.
+function updateStatusReports(partNum){
   const part = partsData[partNum - 1];
   const pendingBox = document.getElementById('pendingBox' + partNum);
   const pendingList = document.getElementById('pendingList' + partNum);
+  const shiftedBox = document.getElementById('shiftedBox' + partNum);
+  const shiftedList = document.getElementById('shiftedList' + partNum);
 
-  const pendingIds = part.blocks
-    .map(b => String(b.seq))
-    .filter(key => {
-      const val = part.translated[key];
-      return val === undefined || val === null || !String(val).trim();
-    });
+  const pendingIds = [];
+  const shiftedIds = [];
+
+  part.blocks.forEach(b => {
+    const key = String(b.seq);
+    const result = classifyBlock(part, key);
+    if(result.status === 'missing') pendingIds.push(key);
+    else if(result.status === 'shifted') shiftedIds.push(key);
+  });
 
   if(pendingIds.length === 0){
     pendingBox.style.display = 'none';
@@ -760,25 +812,37 @@ function updatePendingReport(partNum){
     pendingBox.style.display = 'block';
     pendingList.textContent = `⚠ ${pendingIds.length} legenda(s) ainda sem tradução (ID${pendingIds.length > 1 ? 's' : ''}: ${pendingIds.join(', ')})`;
   }
+
+  if(shiftedIds.length === 0){
+    shiftedBox.style.display = 'none';
+    shiftedList.textContent = '';
+  } else {
+    const firstShifted = shiftedIds[0];
+    shiftedBox.style.display = 'block';
+    shiftedList.textContent = `🔀 ${shiftedIds.length} legenda(s) com tag [ID] deslocada (ID${shiftedIds.length > 1 ? 's' : ''}: ${shiftedIds.join(', ')}) — provável fusão/corrupção a partir do ID ${firstShifted}. Recomendado reenviar a FAIXA inteira a partir daí, não só os IDs isolados.`;
+  }
 }
 
-// Monta um JSON só com os IDs pendentes desta parte (texto ORIGINAL, para
-// reenviar ao Gemini pedindo só essas legendas) e copia para a área de
-// transferência.
+// Mantido por compatibilidade de nome com chamadas antigas — delega para
+// updateStatusReports, que cobre pendentes e deslocados.
+function updatePendingReport(partNum){
+  updateStatusReports(partNum);
+}
+
+// Monta um JSON só com os IDs pendentes desta parte (texto ORIGINAL, já
+// com a tag [ID:X], para reenviar ao Gemini pedindo só essas legendas) e
+// copia para a área de transferência.
 function copyPendencias(partNum){
   const part = partsData[partNum - 1];
   const pendingIds = part.blocks
     .map(b => String(b.seq))
-    .filter(key => {
-      const val = part.translated[key];
-      return val === undefined || val === null || !String(val).trim();
-    });
+    .filter(key => classifyBlock(part, key).status === 'missing');
 
   const map = {};
   part.blocks.forEach(b => {
     const key = String(b.seq);
     if(pendingIds.includes(key)){
-      map[key] = b.lines.slice(2).join('\n');
+      map[key] = `[ID:${key}] ${b.lines.slice(2).join('\n')}`;
     }
   });
 
@@ -787,6 +851,34 @@ function copyPendencias(partNum){
     const flash = document.getElementById('pendingFlash' + partNum);
     flash.textContent = 'copiado! peça ao Gemini só estes IDs e cole a resposta na caixa acima';
     setTimeout(() => flash.textContent = '', 4000);
+  });
+}
+
+// Monta um JSON com a FAIXA CONTÍGUA desta parte a partir do primeiro ID
+// deslocado até o último bloco da parte (texto ORIGINAL, com tag [ID:X]),
+// para reenviar ao Gemini pedindo a retradução do trecho inteiro afetado
+// pela cascata — não só os IDs pontualmente marcados como deslocados.
+function copyDeslocados(partNum){
+  const part = partsData[partNum - 1];
+  const shiftedIds = part.blocks
+    .map(b => String(b.seq))
+    .filter(key => classifyBlock(part, key).status === 'shifted');
+
+  if(shiftedIds.length === 0) return;
+  const firstShifted = parseInt(shiftedIds[0], 10);
+
+  const map = {};
+  part.blocks.forEach(b => {
+    if(b.seq >= firstShifted){
+      map[String(b.seq)] = `[ID:${b.seq}] ${b.lines.slice(2).join('\n')}`;
+    }
+  });
+
+  const json = JSON.stringify(map, null, 2);
+  navigator.clipboard.writeText(json).then(() => {
+    const flash = document.getElementById('shiftedFlash' + partNum);
+    flash.textContent = `copiado! faixa a partir do ID ${firstShifted} até o fim da parte — peça ao Gemini para retraduzir e cole a resposta na caixa acima (ela substitui/completa a colagem anterior)`;
+    setTimeout(() => flash.textContent = '', 6000);
   });
 }
 
@@ -806,10 +898,11 @@ function generateFinal(){
   let totalExpected = 0;
   let totalMatched = 0;
   let totalMissing = 0;
+  let totalShifted = 0;
 
   for(let p = 0; p < numParts; p++){
-    const originalBlocks = partsData[p].blocks;
-    const translatedMap = partsData[p].translated || {};
+    const part = partsData[p];
+    const originalBlocks = part.blocks;
 
     totalExpected += originalBlocks.length;
 
@@ -817,19 +910,22 @@ function generateFinal(){
       const key = String(b.seq);
       const timestamp = b.lines[1];
       const originalText = b.lines.slice(2).join('\n');
-      const val = translatedMap[key];
+
+      // Um bloco só é aceito como traduzido se a tag [ID:X] embutida no
+      // próprio valor bater com a chave externa (classifyBlock 'ok').
+      // 'missing' e 'shifted' recebem o MESMO tratamento aqui — mantém o
+      // texto original na posição certa — mas contam separado no
+      // relatório, porque a causa (e a correção) é diferente em cada caso.
+      const result = classifyBlock(part, key);
       let translatedText;
 
-      // Lookup por ID (chave) no armazenamento ACUMULADO — não por posição
-      // e não só na última colagem. Chave ausente OU presente-mas-em-branco
-      // contam igual: "ainda não traduzido", mesmo critério do relatório
-      // de pendências, mantendo o bloco na posição certa de qualquer jeito.
-      if(val !== undefined && val !== null && String(val).trim()){
-        translatedText = val;
+      if(result.status === 'ok'){
+        translatedText = result.text;
         totalMatched++;
       } else {
-        translatedText = originalText; // mantém o texto original em vez de deixar em branco
-        totalMissing++;
+        translatedText = originalText; // mantém o texto original em vez de usar conteúdo não confiável
+        if(result.status === 'shifted') totalShifted++;
+        else totalMissing++;
       }
 
       finalParts.push(`${b.seq}\n${timestamp}\n${translatedText}`);
@@ -839,23 +935,30 @@ function generateFinal(){
   finalSrtText = finalParts.join('\n\n') + '\n';
   finalFileName = translatedFileName(srtFileName);
 
+  const totalUnresolved = totalMissing + totalShifted;
   const finalStatsRow = document.getElementById('finalStatsRow');
   finalStatsRow.innerHTML = `
     <div class="stat">Blocos originais: <b>${totalExpected}</b></div>
     <div class="stat">Traduzidos: <b>${totalMatched}</b></div>
     <div class="stat">Sem tradução (original mantido): <b>${totalMissing}</b></div>
+    <div class="stat">Deslocados (original mantido): <b>${totalShifted}</b></div>
     <div class="stat">Arquivo final: <b>${escapeHtml(finalFileName)}</b></div>
   `;
 
   const flash = document.getElementById('finalFlash');
-  if(totalMissing > 0){
+  if(totalUnresolved > 0){
     flash.className = 'flash';
     flash.style.color = 'var(--warn)';
-    flash.textContent = `gerado com ${totalMissing} bloco(s) sem tradução (texto original mantido na posição certa) — confira antes de usar`;
+    let msg = `gerado com ${totalUnresolved} bloco(s) sem tradução confiável (texto original mantido na posição certa)`;
+    if(totalShifted > 0){
+      msg += ` — ${totalShifted} deles por tag [ID] deslocada (possível fusão em cascata; veja o aviso 🔀 na parte correspondente)`;
+    }
+    msg += ' — confira antes de usar';
+    flash.textContent = msg;
   } else {
     flash.className = 'flash';
     flash.style.color = 'var(--ok)';
-    flash.textContent = 'gerado sem avisos — todos os blocos traduzidos!';
+    flash.textContent = 'gerado sem avisos — todos os blocos traduzidos e com tag [ID] confirmada!';
   }
 
   document.getElementById('btnFinalDownload').style.display = 'inline-block';
