@@ -3438,7 +3438,7 @@ const filmes = [
     "local": "TR",
     "codec": "HEVC",
     "perfilCor": "HDR",
-    "presetElmedia": "B5 | S10 | C10 | G8 | H-1 | Sh1.5",
+    "presetElmedia": "B2 | S10 | C10 | G7 | H-1 | Sh1.5",
     "situacao": "F",
     "sinopse": "Um ataque cibernético massivo revela a identidade de todos os agentes infiltrados da Grã-Bretanha, forçando o veterano Johnny English a sair da aposentadoria para enfrentar hackers modernos usando suas táticas totalmente analógicas e caóticas.",
     "genero": "Comédia",
