@@ -782,15 +782,23 @@
 <script>
 
 // ── VISIBILIDADE: oculta filmes com dados incompletos (só nome+ano preenchidos) ──
+// ── e filmes marcados com "NÃO" (primeira palavra da coluna Ordem) — ex: problema grave de sincronia ──
 (function(){
   function isFilmeCompleto(f){
     const atores = [f.ator1,f.ator2,f.ator3,f.ator4,f.ator5,f.ator6];
     return !!(f.capa && f.sinopse && f.diretor && atores.some(a=>a));
   }
-  const completos = filmes.filter(isFilmeCompleto);
-  if(completos.length !== filmes.length){
+  function primeiraPalavraOrdem(v){
+    if(!v) return '';
+    return String(v).trim().split(/[\s;]+/)[0];
+  }
+  function isFilmeBloqueado(f){
+    return primeiraPalavraOrdem(f.ordem) === 'NÃO';
+  }
+  const visiveis = filmes.filter(f=>isFilmeCompleto(f) && !isFilmeBloqueado(f));
+  if(visiveis.length !== filmes.length){
     filmes.length = 0;
-    filmes.push(...completos);
+    filmes.push(...visiveis);
   }
 })();
 
