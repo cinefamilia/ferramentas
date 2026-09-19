@@ -302,9 +302,14 @@ const filmes = [
     "sinopse": "A lenda definitiva do Rei Arthur renasce em uma atmosfera visual sombria, mística e violenta. Da retirada da espada mágica da pedra até a busca obsessiva pelo Santo Graal, o filme acompanha a ascensão e a trágica queda de Camelot sob o peso das paixões humanas.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": "Coleção Special Soundtrack",
+    "colecaoTipo": "Coleção X-Cinema Cult; Coleção Special Soundtrack",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção X-Cinema Cult",
+        "raw": "Coleção X-Cinema Cult"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Special Soundtrack",
@@ -2783,9 +2788,15 @@ const filmes = [
     "sinopse": "O maior assassino do mundo está prestes a se aposentar, mas seu chefe decide eliminá-lo para economizar o dinheiro de sua pensão milionária. Forçado a voltar à ativa, o veterano enfrenta um exército de matadores mais jovens e implacáveis em um combate brutal pela sobrevivência.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção X-Cinema Cult",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção X-Cinema Cult",
+        "raw": "Coleção X-Cinema Cult"
+      }
+    ],
     "diretor": "Jonas Åkerlund",
     "ator1": "Mads Mikkelsen",
     "ator2": "Vanessa Hudgens",
@@ -4894,9 +4905,14 @@ const filmes = [
     "sinopse": "Um jovem do Brooklyn encontra nas pistas de dança de uma discoteca local a única rota de fuga para sua realidade familiar frustrante e um futuro sem perspectivas. Impulsionado por uma trilha sonora lendária, o filme é o retrato definitivo da era de ouro das discotecas.",
     "genero": "Drama",
     "origem": "genero",
-    "colecaoTipo": "Os Embalos Collection; Coleção Special Soundtrack",
+    "colecaoTipo": "Coleção X-Cinema Cult; Os Embalos Collection; Coleção Special Soundtrack",
     "ordem": "ES 01",
     "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção X-Cinema Cult",
+        "raw": "Coleção X-Cinema Cult"
+      },
       {
         "tipo": "Outro",
         "nome": "Os Embalos Collection",
@@ -4918,38 +4934,6 @@ const filmes = [
     "nomeOriginal": "Saturday Night Fever"
   },
   {
-    "capa": "https://lh3.googleusercontent.com/d/1lqKpc2nqJo06ew5Faurn58YD9Vk1cPQi",
-    "nome": "Os Embalos de Sábado [Versão do Diretor]",
-    "ano": 1977,
-    "duracao": "02h 02m",
-    "gb": 4.9,
-    "local": "TF",
-    "codec": "x265",
-    "perfilCor": null,
-    "presetElmedia": "B2 | S7 | C8 | G7 | H-3 | Sh1.5",
-    "situacao": null,
-    "sinopse": "Um jovem do Brooklyn encontra nas pistas de dança de uma discoteca local a única rota de fuga para sua realidade familiar frustrante e um futuro sem perspectivas. Impulsionado por uma trilha sonora lendária, o filme é o retrato definitivo da era de ouro das discotecas.",
-    "genero": "Drama",
-    "origem": "genero",
-    "colecaoTipo": "Os Embalos Collection",
-    "ordem": "ES 02",
-    "tags": [
-      {
-        "tipo": "Outro",
-        "nome": "Os Embalos Collection",
-        "raw": "Os Embalos Collection"
-      }
-    ],
-    "diretor": "John Badham",
-    "ator1": "John Travolta",
-    "ator2": "Karen Lynn Gorney",
-    "ator3": "Barry Miller",
-    "ator4": "Joseph Cali",
-    "ator5": "Paul Pape",
-    "ator6": "Donna Pescow",
-    "nomeOriginal": "Saturday Night Fever [DC]"
-  },
-  {
     "capa": "https://lh3.googleusercontent.com/d/1u9W5CL3LeSezUuDZL2QcfcSi3A6Q1WVp",
     "nome": "Os Embalos de Sábado Continuam",
     "ano": 1983,
@@ -4964,7 +4948,7 @@ const filmes = [
     "genero": "Drama",
     "origem": "genero",
     "colecaoTipo": "Os Embalos Collection",
-    "ordem": "ES 03",
+    "ordem": "ES 02",
     "tags": [
       {
         "tipo": "Outro",
@@ -7474,9 +7458,14 @@ const filmes = [
     "sinopse": "Um ator de filmes B claustrofóbico fica obcecado ao observar uma bela vizinha com um telescópio do apartamento onde está hospedado. Ele testemunha o assassinato brutal da mulher e acaba tragado por uma teia perigosa de mistério e obsessão no submundo do cinema.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Noir",
+    "colecaoTipo": "Coleção X-Cinema Cult; Coleção Noir",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção X-Cinema Cult",
+        "raw": "Coleção X-Cinema Cult"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Noir",
@@ -14082,9 +14071,14 @@ const filmes = [
     "sinopse": "Uma jovem e ingênua aspirante a atriz chega a Los Angeles e ajuda uma mulher misteriosa que sofreu amnésia após um acidente de carro em Hollywood. Elas mergulham em uma teia surrealista e hipnotizante de ilusões, sonhos e segredos sombrios no submundo do cinema.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Intelectuais",
+    "colecaoTipo": "Coleção X-Cinema Cult; Coleção Intelectuais",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção X-Cinema Cult",
+        "raw": "Coleção X-Cinema Cult"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Intelectuais",
