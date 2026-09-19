@@ -371,9 +371,15 @@ const filmes = [
     "sinopse": "Na histórica Batalha das Termópilas, o Rei Leônidas lidera apenas 300 destemidos guerreiros espartanos contra o colossal e esmagador exército persa comandado por Xerxes. Um sacrifício lendário por liberdade que mudará o destino de toda a Grécia.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Zack Snyder",
     "ator1": "Gerard Butler",
     "ator2": "Lena Headey",
@@ -579,9 +585,15 @@ const filmes = [
     "sinopse": "Na imponente Rússia imperial do século XIX, a aristocrata Anna Karenina arrisca sua posição social, seu casamento e o convívio com o filho ao se entregar a uma paixão avassaladora com o jovem Conde Vronsky, desafiando as regras da alta sociedade.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Bernard Rose",
     "ator1": "Sophie Marceau",
     "ator2": "Sean Bean",
@@ -1403,9 +1415,15 @@ const filmes = [
     "sinopse": "O escravo Spartacus lidera uma revolta histórica que abala as estruturas da República Romana, transformando gladiadores em um exército imbatível de homens livres. Uma obra-prima épica sobre dignidade humana, amor e o preço definitivo da liberdade.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Stanley Kubrick",
     "ator1": "Kirk Douglas",
     "ator2": "Laurence Olivier",
@@ -1781,9 +1799,14 @@ const filmes = [
     "sinopse": "O jovem e audacioso piloto Maverick entra para a principal escola de aviação de caça da Marinha americana para provar seu valor. Entre rivalidades intensas, um romance proibido com sua instrutora e a perda de seu melhor amigo, ele descobre o custo real do heroísmo nos céus.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Top Gun",
+    "colecaoTipo": "Coleção Adulto; Franquia - Top Gun",
     "ordem": "TG 01",
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Franquia",
         "nome": "Top Gun",
@@ -2005,9 +2028,14 @@ const filmes = [
     "sinopse": "Dois policiais de Nova York escoltam um perigoso assassino da Yakuza de volta ao Japão, mas o criminoso consegue escapar logo no desembarque. Eles entram em uma caçada implacável pelo submundo de Osaka, enfrentando um choque cultural violento e o crime organizado local.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": "Coleção Máfia",
+    "colecaoTipo": "Coleção Adulto; Coleção Máfia",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Máfia",
@@ -2216,9 +2244,15 @@ const filmes = [
     "sinopse": "Arthur Bishop é um matador de elite meticuloso que faz seus assassinatos parecerem acidentes perfeitos. O isolamento de sua rotina fria é rompido quando ele decide treinar o filho de sua última vítima, ensinando os segredos mais sombrios da profissão.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Simon West",
     "ator1": "Jason Statham",
     "ator2": "Ben Foster",
@@ -2554,9 +2588,15 @@ const filmes = [
     "sinopse": "Um misterioso e habilidoso atirador precisa proteger um bebê recém-nascido de uma organização criminosa liderada por um gângster implacável, engajando-se em tiroteios absurdos e eletrizantes. Uma comédia de ação estilizada, frenética e cheia de adrenalina.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Michael Davis",
     "ator1": "Clive Owen",
     "ator2": "Paul Giamatti",
@@ -2658,9 +2698,15 @@ const filmes = [
     "sinopse": "Um pistoleiro enigmático chega a uma cidade fantasma na fronteira do México assolada por uma guerra sangrenta entre duas gangues rivais. Ele decide vender seus serviços letais para ambos os lados, jogando os criminosos uns contra os outros em um duelo de inteligência e balas.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Walter Hill",
     "ator1": "Bruce Willis",
     "ator2": "Christopher Walken",
@@ -2684,9 +2730,15 @@ const filmes = [
     "sinopse": "Um técnico trabalha na reconstrução do que restou da Terra, devastada por alienígenas. Até que o resgate de uma desconhecida revela fatos que vão mudar sua vida.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Joseph Kosinski",
     "ator1": "Tom Cruise",
     "ator2": "Morgan Freeman",
@@ -3034,9 +3086,15 @@ const filmes = [
     "sinopse": "Um azarado jovem é confundido com outra pessoa em Nova York e acaba preso no meio de uma violenta guerra de poder entre dois chefões da máfia rivais. Um thriller policial inteligente, estiloso e repleto de reviravoltas engenhosas.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Paul McGuigan",
     "ator1": "Josh Hartnett",
     "ator2": "Bruce Willis",
@@ -3252,9 +3310,14 @@ const filmes = [
     "sinopse": "Após a morte de um dos membros do grupo, os amigos restantes se reúnem no cemitério para relembrar o passado. O luto logo se transforma em combustível para uma nova rodada de pegadinhas inesquecíveis e confusões repletas de humor negro.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Caros Amigos",
+    "colecaoTipo": "Coleção Adulto; Franquia - Caros Amigos",
     "ordem": "CA 02",
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Franquia",
         "nome": "Caros Amigos",
@@ -3939,9 +4002,15 @@ const filmes = [
     "sinopse": "Uma produtora de TV romântica e idealista é forçada a trabalhar com um apresentador cínico e machista que promete revelar a verdade sobre os relacionamentos. Ele se propõe a ajudá-la a conquistar o homem dos seus sonhos em um jogo provocante.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Robert Luketic",
     "ator1": "Katherine Heigl",
     "ator2": "Gerard Butler",
@@ -4231,9 +4300,15 @@ const filmes = [
     "sinopse": "Seis amigos de Hollywood ficam presos em uma mansão durante um apocalipse devastador que atinge a cidade de Los Angeles. Uma comédia escrachada e satírica onde celebridades interpretam versões exageradas e hilárias de si mesmas pela sobrevivência.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Seth Rogen",
     "ator1": "James Franco",
     "ator2": "Jonah Hill",
@@ -4653,9 +4728,15 @@ const filmes = [
     "sinopse": "Três amigos frustrados com suas rotinas profissionais chegam ao limite com seus respectivos superiores abusivos e insuportáveis. Sob o efeito da bebida, eles planejam uma estratégia caótica e desajeitada para assassinar os três patrões sem deixar rastros.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Seth Gordon",
     "ator1": "Jason Bateman",
     "ator2": "Charlie Day",
@@ -4705,9 +4786,15 @@ const filmes = [
     "sinopse": "Dois milionários entediados fazem uma aposta cruel e invertem as vidas de um investidor arrogante de Wall Street e de um malandro de rua esperto. A dupla injustiçada acaba unindo forças para aplicar uma vingança financeira genial na bolsa de valores.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "John Landis",
     "ator1": "Dan Aykroyd",
     "ator2": "Eddie Murphy",
@@ -4979,9 +5066,15 @@ const filmes = [
     "sinopse": "Na Berlim Oriental de 1984, um oficial leal da polícia secreta estatal (Stasi) é designado para espionar um dramaturgo famoso e sua namorada atriz. À medida que se aprofunda na intimidade do casal, sua própria visão de mundo e fidelidade ao regime começam a desmoronar.",
     "genero": "Drama",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Florian Henckel von Donnersmarck",
     "ator1": "Ulrich Mühe",
     "ator2": "Sebastian Koch",
@@ -5005,9 +5098,15 @@ const filmes = [
     "sinopse": "Um brilhante e ambicioso advogado invicto da Flórida aceita uma proposta irrecusável para trabalhar em uma poderosa firma de advocacia em Nova York. Ele logo descobre que seu carismático e misterioso novo chefe esconde segredos obscuros e sobrenaturais que ameaçam sua alma.",
     "genero": "Drama",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Taylor Hackford",
     "ator1": "Keanu Reeves",
     "ator2": "Al Pacino",
@@ -5109,9 +5208,15 @@ const filmes = [
     "sinopse": "Um repórter de São Francisco escuta a fascinante e sombria história de vida de um homem que afirma ser um vampiro secular. Ele relata sua transformação no século XVIII, seus conflitos morais com a imortalidade e sua relação conturbada com o criador.",
     "genero": "Drama",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção X-Cinema Cult",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção X-Cinema Cult",
+        "raw": "Coleção X-Cinema Cult"
+      }
+    ],
     "diretor": "Neil Jordan",
     "ator1": "Brad Pitt",
     "ator2": "Tom Cruise",
@@ -5135,9 +5240,15 @@ const filmes = [
     "sinopse": "O cotidiano de um grupo de jovens talentosos que enfrentam testes rigorosos, rivalidades intensas e dramas pessoais na prestigiada Escola de Artes Cênicas de Nova York. Um clássico vibrante sobre a busca implacável pelo sucesso e o preço da ambição.",
     "genero": "Drama",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Alan Parker",
     "ator1": "Irene Cara",
     "ator2": "Lee Curreri",
@@ -5369,9 +5480,15 @@ const filmes = [
     "sinopse": "Um jovem rebelde entra para a Escola de Candidatos a Oficiais da Marinha para mudar de vida, enfrentando a rotina rígida e um instrutor implacável. No processo, ele descobre o valor da disciplina, da amizade verdadeira e de um amor transformador.",
     "genero": "Romance",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Taylor Hackford",
     "ator1": "Richard Gere",
     "ator2": "Debra Winger",
@@ -5655,9 +5772,15 @@ const filmes = [
     "sinopse": "Um jovem William Shakespeare sofre com um terrível bloqueio criativo até conhecer uma bela mulher nobre que se disfarça de homem para poder atuar. Esse romance proibido e apaixonante torna-se a inspiração secreta por trás da criação de sua maior obra-prima teatral.",
     "genero": "Romance",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "John Madden",
     "ator1": "Gwyneth Paltrow",
     "ator2": "Joseph Fiennes",
@@ -5785,9 +5908,15 @@ const filmes = [
     "sinopse": "Uma jovem obstinada trabalha duro como operária em uma fábrica de aço de dia e dançarina de boate à noite, alimentando o sonho de entrar em uma prestigiada companhia de balé. Uma obra icônica dos anos 80 embalada por uma trilha sonora memorável.",
     "genero": "Musicais",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Adrian Lyne",
     "ator1": "Jennifer Beals",
     "ator2": "Michael Nouri",
@@ -6701,9 +6830,14 @@ const filmes = [
     "sinopse": "Uma bailarina russa é forçada a entrar para uma escola governamental secreta de espiões que usam a sedução como arma mortal. Sua primeira missão envolve um agente da CIA e testa os limites de sua lealdade em um perigoso jogo de traição.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Espionagem",
+    "colecaoTipo": "Coleção Adulto; Coleção Espionagem",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Espionagem",
@@ -6733,9 +6867,14 @@ const filmes = [
     "sinopse": "Um oficial da marinha americana aceita um cargo de confiança no Pentágono e se envolve romanticamente com uma mulher misteriosa que mantém um caso com o Secretário de Defesa. Quando ela é assassinada, ele é encarregado de liderar a investigação do próprio crime.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Espionagem",
+    "colecaoTipo": "Coleção Adulto; Coleção Espionagem",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Espionagem",
@@ -6834,9 +6973,14 @@ const filmes = [
     "sinopse": "Um mafioso de baixo escalão é encarregado de se livrar da arma que matou policiais corruptos, mas o item é roubado pelo melhor amigo de seu filho. O jovem atira no padrasto abusivo, desencadeando uma noite frenética de caçada urbana pela sobrevivência.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Submundo",
+    "colecaoTipo": "Coleção Adulto; Coleção Submundo",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Submundo",
@@ -7068,9 +7212,15 @@ const filmes = [
     "sinopse": "Cinco histórias aparentemente distintas se entrelaçam de forma caótica na mesma noite, culminando em um trágico e bizarro acidente automobilístico às 11:14. Um suspense ágil repleto de humor negro, reviravoltas e consequências inesperadas.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Greg Marcks",
     "ator1": "Henry Thomas",
     "ator2": "Colin Hanks",
@@ -7094,9 +7244,15 @@ const filmes = [
     "sinopse": "Um excêntrico detetive de Nova York é enviado ao misterioso vilarejo de Sleepy Hollow para investigar uma série de decapitações brutais. Ele precisa usar seus métodos científicos para enfrentar uma força sobrenatural vingativa e sem cabeça.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Tim Burton",
     "ator1": "Johnny Depp",
     "ator2": "Christina Ricci",
@@ -7198,9 +7354,15 @@ const filmes = [
     "sinopse": "Um brilhante promotor público é encarregado de investigar o brutal assassinato de uma colega de trabalho com quem mantinha um caso secreto. Ele logo se torna o principal suspeito do crime, precisando lutar no tribunal para provar sua própria inocência.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Alan J. Pakula",
     "ator1": "Harrison Ford",
     "ator2": "Brian Dennehy",
@@ -7432,9 +7594,15 @@ const filmes = [
     "sinopse": "Na Londres vitoriana de 1888, um inspetor de polícia clarividente e atormentado investiga os brutais assassinatos cometidos por Jack, o Estripador. Ele descobre uma conspiração sombria que envolve os mais altos escalões da aristocracia e da realeza britânica.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Albert Hughes",
     "ator1": "Johnny Depp",
     "ator2": "Heather Graham",
@@ -7573,9 +7741,15 @@ const filmes = [
     "sinopse": "Um poderoso expatriado americano decide vender seu lucrativo império de maconha em Londres, desencadeando uma guerra clandestina repleta de conspirações, subornos e chantagens.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Guy Ritchie",
     "ator1": "Matthew McConaughey",
     "ator2": "Charlie Hunnam",
@@ -7937,9 +8111,15 @@ const filmes = [
     "sinopse": "Um escritor frustrado e em crise criativa tem acesso a uma pílula experimental revolucionária que permite o uso de cem por cento da capacidade de seu cérebro. Ele alcança o sucesso imediato, mas passa a ser caçado pelos terríveis efeitos colaterais do vício.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Neil Burger",
     "ator1": "Bradley Cooper",
     "ator2": "Robert De Niro",
@@ -8393,9 +8573,14 @@ const filmes = [
     "sinopse": "Um bilionário entediado e brilhante arquiteta o roubo perfeito de uma pintura inestimável de um museu de Nova York apenas pelo desafio intelectual. Seu plano encontra um obstáculo charmoso quando uma astuta investigadora de seguros começa a caçá-lo de perto.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": "Coleção Desfalque",
+    "colecaoTipo": "Coleção Adulto; Coleção Desfalque",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Desfalque",
@@ -8644,9 +8829,15 @@ const filmes = [
     "sinopse": "Um influente advogado americano em viagem de negócios a Pequim é falsamente acusado pelo assassinato da filha de um general chinês. Ele precisa enfrentar um sistema judicial implacável e desconhecido com a ajuda de uma defensora pública local.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Jon Avnet",
     "ator1": "Richard Gere",
     "ator2": "Bai Ling",
@@ -8670,9 +8861,14 @@ const filmes = [
     "sinopse": "Três detetives com métodos e personalidades totalmente opostas investigam uma chacina em uma lanchonete na Hollywood dos anos 1950. A investigação os arrasta para o submundo de corrupção, prostituição de luxo e segredos obscuros da própria polícia.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": "Coleção Noir",
+    "colecaoTipo": "Coleção Adulto; Coleção Noir",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Noir",
@@ -8780,9 +8976,15 @@ const filmes = [
     "sinopse": "Na França do século XVIII, um jovem órfão que possui um olfato extraordinariamente desenvolvido torna-se obcecado em criar o perfume perfeito. Sua busca implacável pela essência ideal o transforma em um meticuloso e perigoso assassino em série.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Tom Tykwer",
     "ator1": "Ben Whishaw",
     "ator2": "Dustin Hoffman",
@@ -9404,9 +9606,14 @@ const filmes = [
     "sinopse": "Um detetive veterano de Los Angeles prestes a se aposentar é forçado a trabalhar com um novo parceiro instável e com tendências suicidas. Apesar das diferenças brutais, a dupla improvável une forças para desmantelar uma perigosa quadrilha internacional de tráfico de drogas.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Máquina Mortífera",
+    "colecaoTipo": "Coleção Adulto; Franquia - Máquina Mortífera",
     "ordem": "MM 01",
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Franquia",
         "nome": "Máquina Mortífera",
@@ -9532,9 +9739,14 @@ const filmes = [
     "sinopse": "O patriarca de uma poderosa dinastia do crime organizado sobrevive a um atentado, desencadeando uma violenta guerra pelo poder em Nova York. Seu filho caçula, um herói de guerra idealista, é forçado a assumir os negócios da família e inicia sua transformação em um chefe implacável.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - O Poderoso Chefão; Coleção Máfia",
+    "colecaoTipo": "Coleção Adulto; Franquia - O Poderoso Chefão; Coleção Máfia",
     "ordem": "PC 01",
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Franquia",
         "nome": "O Poderoso Chefão",
@@ -9914,9 +10126,14 @@ const filmes = [
     "sinopse": "Uma jovem e promissora agente em treinamento do FBI é escalada para entrevistar o perigoso psiquiatra canibal Hannibal Lecter em uma prisão de segurança máxima. Ela busca pistas para capturar um assassino em série que sequestra e esfolia mulheres.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Silêncio dos Inocentes",
+    "colecaoTipo": "Coleção Adulto; Franquia - Silêncio dos Inocentes",
     "ordem": "SI 03",
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Franquia",
         "nome": "Silêncio dos Inocentes",
@@ -10344,9 +10561,15 @@ const filmes = [
     "sinopse": "Dois amigos de faculdade cruzam caminhos ao longo de doze anos enquanto debatem se homens e mulheres podem ser apenas amigos sem o sexo atrapalhar. Uma comédia romântica brilhante sobre encontros, desencontros e o amadurecimento do amor verdadeiro.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Rob Reiner",
     "ator1": "Billy Crystal",
     "ator2": "Meg Ryan",
@@ -10370,9 +10593,15 @@ const filmes = [
     "sinopse": "Um empresário de sucesso esconde uma vida dupla como um meticuloso assassino em série que é controlado pelo seu alter ego sombrio. Ele tenta parar com os crimes, mas se envolve em um jogo de chantagem após uma de suas execuções ser fotografada.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      }
+    ],
     "diretor": "Bruce A. Evans",
     "ator1": "Kevin Costner",
     "ator2": "Demi Moore",
@@ -10564,9 +10793,14 @@ const filmes = [
     "sinopse": "Um ex-traficante tenta se manter na legalidade, mas é pressionado por um antigo parceiro a realizar um último grande carregamento de drogas. A situação se complica quando seu melhor amigo de infância, agora um policial dedicado, é encarregado de prendê-lo.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Coleção Special Soundtrack",
+    "colecaoTipo": "Coleção Adulto; Coleção Special Soundtrack",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Special Soundtrack",
@@ -11218,9 +11452,14 @@ const filmes = [
     "sinopse": "Uma jovem de espírito livre e sensual vai a julgamento em Paris pelo assassinato de seu ex-namorado e músico talentoso. O processo judicial expõe os preconceitos da sociedade burguesa e os detalhes de uma conturbada relação movida por paixão e ciúme.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Belle Cult - Feminina",
+    "colecaoTipo": "Coleção Adulto; Coleção Belle Cult - Feminina",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Belle Cult - Feminina",
@@ -11416,9 +11655,14 @@ const filmes = [
     "sinopse": "Uma mulher astuta finge estar à beira da morte após passar duas décadas vivendo como amante secreta de um rico e bem-sucedido comerciante. Seu plano visa forçá-lo a um casamento legítimo para dar um nome e um futuro digno aos seus três filhos.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Belle Cult - Feminina",
+    "colecaoTipo": "Coleção Adulto; Coleção Belle Cult - Feminina",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Belle Cult - Feminina",
@@ -11936,9 +12180,14 @@ const filmes = [
     "sinopse": "Um experiente piloto de avião comercial realiza um pouso de emergência quase impossível na água após uma pane mecânica catastrófica, salvando quase todos a bordo. Ele é aclamado como herói, até que a investigação revela segredos sombrios sobre sua rotina.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Catástrofe",
+    "colecaoTipo": "Coleção Adulto; Coleção Catástrofe",
     "ordem": "CA 10",
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Catástrofe",
@@ -12422,9 +12671,14 @@ const filmes = [
     "sinopse": "A implacável rivalidade entre o carismático playboy James Hunt e o meticuloso estrategista Niki Lauda atinge o ápice na perigosa temporada de Fórmula 1 de 1976. O longa retrata os limites físicos e psicológicos de dois homens dispostos a morrer pelo título.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Corridas",
+    "colecaoTipo": "Coleção Adulto; Coleção Corridas",
     "ordem": "CO 04",
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Corridas",
@@ -12646,9 +12900,14 @@ const filmes = [
     "sinopse": "Após o trágico massacre de atletas israelenses nas Olimpíadas de 1972, um oficial da inteligência lidera uma equipe secreta do Mossad em uma missão de retaliação global. O grupo caça os responsáveis em uma espiral de violência que testa seus limites morais.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Espionagem",
+    "colecaoTipo": "Coleção Adulto; Coleção Espionagem",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Espionagem",
@@ -13687,9 +13946,14 @@ const filmes = [
     "sinopse": "Um renomado e apaixonado chef e sua talentosa e jovem auxiliar preparam banquetes impecáveis que encantam a aristocracia francesa do século XIX. A cozinha se transforma em um cenário poético onde o amor mútuo se expressa através de receitas e sabores.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Gastronômica",
+    "colecaoTipo": "Coleção Adulto; Coleção Gastronômica",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Gastronômica",
@@ -14210,9 +14474,14 @@ const filmes = [
     "sinopse": "Um homem se torna o principal suspeito do desaparecimento de sua esposa após o aniversário de casamento deles atrair uma cobertura midiática agressiva. Conforme a investigação avança, revelações perturbadoras mostram que o casamento perfeito era uma ilusão mortal.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Investigativa",
+    "colecaoTipo": "Coleção Adulto; Coleção Investigativa",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Investigativa",
@@ -14375,9 +14644,14 @@ const filmes = [
     "sinopse": "Um detetive de polícia de Nova York investiga uma série de assassinatos brutais de homens solitários através de anúncios classificados românticos. Ele se apaixona perdidamente pela principal suspeita, entrando em um jogo perigoso de obsessão e sedução.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Investigativa; Coleção Noir",
+    "colecaoTipo": "Coleção Adulto; Coleção Investigativa; Coleção Noir",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Investigativa",
@@ -14508,9 +14782,14 @@ const filmes = [
     "sinopse": "Para evitar que sua filial seja fechada por sua irmã executiva, um gerente de tecnologia organiza uma épica e descontrolada festa de Natal corporativa para impressionar um grande cliente. O evento foge do controle e transforma o escritório em uma zona de caos.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Natal",
+    "colecaoTipo": "Coleção Adulto; Coleção Natal",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Natal",
@@ -15212,9 +15491,14 @@ const filmes = [
     "sinopse": "Quatro investidores visionários enxergam o que ninguém mais viu e preveem o colapso iminente do mercado imobiliário dos Estados Unidos. Apostando contra o sistema bancário, eles navegam pela ganância corporativa e lucram bilhões com a maior crise financeira moderna.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Oscar",
+    "colecaoTipo": "Coleção Adulto; Coleção Oscar",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Oscar",
@@ -15244,9 +15528,14 @@ const filmes = [
     "sinopse": "Ao receber o diagnóstico devastador de que tem apenas 30 dias de vida devido à AIDS, o eletricista Ron Woodroof desafia o sistema médico. Ele começa a contrabandear tratamentos alternativos inovadores, criando um clube de compras clandestino que salva vidas.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Oscar",
+    "colecaoTipo": "Coleção Adulto; Coleção Oscar",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Oscar",
@@ -15404,9 +15693,14 @@ const filmes = [
     "sinopse": "Dois vigaristas brilhantes são forçados por um agente instável do FBI a entrar no perigoso e sedutor submundo da máfia e da política de Nova Jersey. O plano ambicioso rapidamente foge do controle, transformando-se em um perigoso jogo de máscaras.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Oscar",
+    "colecaoTipo": "Coleção Adulto; Coleção Oscar",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Oscar",
@@ -15564,9 +15858,14 @@ const filmes = [
     "sinopse": "Othello, um brilhante general mouro a serviço de Veneza, vive um casamento apaixonado com a bela Desdêmona. No entanto, ele se torna o alvo de um plano maquiavélico de seu alferes, Iago, que usa mentiras e manipulações para despertar um ciúme doentio e destruidor.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Shakespeare",
+    "colecaoTipo": "Coleção Adulto; Coleção Shakespeare",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Shakespeare",
@@ -15788,9 +16087,14 @@ const filmes = [
     "sinopse": "Uma defensora pública dedicada recebe a missão de defender um morador de rua mudo acusado de assassinar uma funcionária do governo em Washington. Ela une forças com um lobista astuto para investigar uma rede oculta de corrupção política que envolve o tribunal.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Tribunal",
+    "colecaoTipo": "Coleção Adulto; Coleção Tribunal",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Tribunal",
@@ -16377,9 +16681,14 @@ const filmes = [
     "sinopse": "Após a morte de um dos membros do grupo, os amigos restantes se reúnem no cemitério para relembrar o passado. O luto logo se transforma em combustível para uma nova rodada de pegadinhas inesquecíveis e confusões repletas de humor negro.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Franquia - Caros Amigos; Coleção I-CM",
+    "colecaoTipo": "Coleção Adulto; Franquia - Caros Amigos; Coleção I-CM",
     "ordem": "CA 02",
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Franquia",
         "nome": "Caros Amigos",
@@ -16562,9 +16871,14 @@ const filmes = [
     "sinopse": "A continuação direta do clássico satírico, atualizando as mesquinharias e absurdos da sociedade italiana para o final dos anos 70. Dividido em episódios rápidos e implacáveis, o filme entrega piadas visuais geniais e uma crítica social mordaz e atemporal.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Franquia - Os Monstros; Coleção I-ECM",
+    "colecaoTipo": "Coleção Adulto; Franquia - Os Monstros; Coleção I-ECM",
     "ordem": "OM 02",
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Franquia",
         "nome": "Os Monstros",
@@ -16710,9 +17024,14 @@ const filmes = [
     "sinopse": "Um jornalista cínico acompanha a elite decadente, celebridades e escândalos nas noites luxuosas de Roma enquanto busca um sentido para sua própria vida. O clássico definitivo do cinema que definiu uma era com sua atmosfera magnética e inesquecível.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Coleção I-CL",
+    "colecaoTipo": "Coleção Adulto; Coleção I-CL",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção I-CL",
@@ -16774,9 +17093,14 @@ const filmes = [
     "sinopse": "Um jornalista veterano reflete sobre sua juventude e seus amores enquanto transita pelas festas luxuosas e decadentes da alta sociedade de Roma. Uma obra-prima visual deslumbrante e melancólica sobre a passagem do tempo e a busca pelo sentido da arte.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Coleção I-MD",
+    "colecaoTipo": "Coleção Adulto; Coleção I-MD",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção I-MD",
@@ -16838,9 +17162,14 @@ const filmes = [
     "sinopse": "Para se vingar da infidelidade do marido, uma mulher arquiteta um plano mirabolante para traí-lo de forma milimetricamente calculada. Uma comédia de erros vibrante que satiriza o machismo e as hipocrisias dos arranjos matrimoniais da Itália dos anos 60.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Coleção I-CM",
+    "colecaoTipo": "Coleção Adulto; Coleção I-CM",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção I-CM",
@@ -17653,9 +17982,14 @@ const filmes = [
     "sinopse": "Uma madame rica e arrogante e um marinheiro comunista ficam naufragados em uma ilha deserta, onde os papéis sociais de poder se invertem completamente. Uma sátira política e romântica ácida e provocativa sobre a luta de classes e a guerra dos sexos.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Coleção I-CM",
+    "colecaoTipo": "Coleção Adulto; Coleção I-CM",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção I-CM",
@@ -18079,9 +18413,14 @@ const filmes = [
     "sinopse": "Três histórias distintas celebram a força e a sedução das mulheres italianas em Nápoles, Milão e Roma, todas vividas pela icônica Sophia Loren. Uma obra-prima premiada com o Oscar que transborda charme, humor e a vibrante essência da vida na Itália.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Coleção I-ECL",
+    "colecaoTipo": "Coleção Adulto; Coleção I-ECL",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção I-ECL",
@@ -18207,9 +18546,14 @@ const filmes = [
     "sinopse": "O mestre do cinema Gassman brilha em nove esquetes satíricos que exploram os vícios, as obsessões e as fraquezas dos homens em suas tentativas de sedução. Um retrato bem-humorado, irônico e dinâmico das relações amorosas nos anos 60.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Coleção I-ECM",
+    "colecaoTipo": "Coleção Adulto; Coleção I-ECM",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção I-ECM",
@@ -18500,9 +18844,14 @@ const filmes = [
     "sinopse": "Um jovem velejador aceita o convite de um excêntrico e rico veterano de guerra para se hospedar em sua mansão à beira de um lago. O que começa como uma estadia pacata transforma-se em um thriller psicológico sinuoso envolto em mistério, sedução e segredos de família.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Coleção I-CL",
+    "colecaoTipo": "Coleção Adulto; Coleção I-CL",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção I-CL",
@@ -18532,9 +18881,14 @@ const filmes = [
     "sinopse": "Um homem de meia-idade e com a carreira em declínio apaixona-se perdidamente por uma bela jovem e decide largar tudo para viver esse romance. Um drama irônico e melancólico que explora a obsessão, a vaidade masculina e os limites destrutivos da paixão tardia.",
     "genero": null,
     "origem": "cine_italia",
-    "colecaoTipo": "Coleção I-CL",
+    "colecaoTipo": "Coleção Adulto; Coleção I-CL",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção I-CL",

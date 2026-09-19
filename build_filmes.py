@@ -51,6 +51,12 @@ def parse_tags(colecao_tipo):
                 "nome": parte[len("Franquia - "):].strip(),
                 "raw": parte,
             })
+        elif parte == "Coleção Adulto":
+            tags.append({
+                "tipo": "Aviso",
+                "nome": parte,
+                "raw": parte,
+            })
         elif parte.startswith("Coleção "):
             tags.append({
                 "tipo": "Coleção",
