@@ -3618,9 +3618,14 @@ const filmes = [
     "sinopse": "Três padrinhos de casamento acordam em uma suíte de hotel em Las Vegas completamente destruída, com um tigre no banheiro e sem qualquer memória da noite anterior. O maior problema é que o noivo sumiu, forçando o grupo a reconstruir os passos da despedida de solteiro.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Se Beber Não Case",
+    "colecaoTipo": "Coleção Adulto; Franquia - Se Beber Não Case",
     "ordem": "SB 01",
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Franquia",
         "nome": "Se Beber Não Case",
@@ -3650,9 +3655,14 @@ const filmes = [
     "sinopse": "O bando de lobos viaja até a Tailândia para o casamento de Stu, planejando apenas um brunch tranquilo e seguro antes da cerimônia. As coisas fogem totalmente do controle após uma única noite de comemoração em Bangkok, resultando em novos apagões mentais e enrascadas internacionais.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Se Beber Não Case",
+    "colecaoTipo": "Coleção Adulto; Franquia - Se Beber Não Case",
     "ordem": "SB 02",
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Franquia",
         "nome": "Se Beber Não Case",
@@ -3682,9 +3692,14 @@ const filmes = [
     "sinopse": "Sem casamento ou despedida de solteiro pendentes, os amigos se reúnem para internar Alan em uma clínica de reabilitação após uma tragédia familiar. O plano é interrompido quando um gângster violento os sequestra, exigindo que encontrem o imprevisível Sr. Chow em troca de uma vida.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Se Beber Não Case",
+    "colecaoTipo": "Coleção Adulto; Franquia - Se Beber Não Case",
     "ordem": "SB 03",
     "tags": [
+      {
+        "tipo": "Aviso",
+        "nome": "Coleção Adulto",
+        "raw": "Coleção Adulto"
+      },
       {
         "tipo": "Franquia",
         "nome": "Se Beber Não Case",
