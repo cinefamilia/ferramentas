@@ -5845,9 +5845,15 @@ const filmes = [
     "sinopse": "Um empresário bilionário e solitário contrata uma carismática garota de programa de Hollywood para acompanhá-lo em eventos sociais durante uma semana de negócios. À medida que se inserem em mundos opostos, uma improvável e transformadora história de amor começa a se desenhar.",
     "genero": "Romance",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Recente",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Recente",
+        "raw": "Coleção Recente"
+      }
+    ],
     "diretor": "Garry Marshall",
     "ator1": "Richard Gere",
     "ator2": "Julia Roberts",
@@ -7401,9 +7407,15 @@ const filmes = [
     "sinopse": "No declínio da civilização Maia, um jovem caçador é capturado para ser sacrificado aos deuses, mas consegue escapar e inicia uma fuga frenética pela selva para salvar sua família grávida. Uma jornada visceral de ação e pura adrenalina.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Recente",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Recente",
+        "raw": "Coleção Recente"
+      }
+    ],
     "diretor": "Mel Gibson",
     "ator1": "Rudy Youngblood",
     "ator2": "Dalia Hernández",
@@ -8913,9 +8925,15 @@ const filmes = [
     "sinopse": "O brilhante psicólogo forense Alex Cross retorna à ação quando a filha de um importante senador é sequestrada de uma escola exclusiva. Ele precisa decifrar os enigmas de um criminoso meticuloso que busca fama mundial através do crime perfeito.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Recente",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Recente",
+        "raw": "Coleção Recente"
+      }
+    ],
     "diretor": "Lee Tamahori",
     "ator1": "Morgan Freeman",
     "ator2": "Monica Potter",
