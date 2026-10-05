@@ -838,13 +838,14 @@ const CINE_ITALIA_TAB = "Cine Itália";
 const RECENTES_ATIVO = true; // liga/desliga manual — chave única de controle da aba/página inicial "Recentes"
 const RECENTES_TAB = "Recentes";
 const TAG_RECENTE = "Coleção Recente";
+const TAG_ATUALIZACAO = "Coleção Atualização";
 const GENEROS_TABS = RECENTES_ATIVO ? [RECENTES_TAB, ...GENRE_SHEETS, CINE_ITALIA_TAB] : [...GENRE_SHEETS, CINE_ITALIA_TAB];
 let currentMode = "generos"; let currentTab = GENEROS_TABS[0]; let currentSort = "genero"; let isDark = false; let tudoGroup = "alpha";
-function getListForGenero(tab){ if(tab===RECENTES_TAB) return filmes.filter(f=>f.tags&&f.tags.some(t=>t.raw===TAG_RECENTE)); if(tab===CINE_ITALIA_TAB) return filmes.filter(f=>f.origem==="cine_italia"); return filmes.filter(f=>f.origem==="genero"&&f.genero===tab); }
+function getListForGenero(tab){ if(tab===RECENTES_TAB) return filmes.filter(f=>f.tags&&f.tags.some(t=>t.raw===TAG_RECENTE||t.raw===TAG_ATUALIZACAO)); if(tab===CINE_ITALIA_TAB) return filmes.filter(f=>f.origem==="cine_italia"); return filmes.filter(f=>f.origem==="genero"&&f.genero===tab); }
 function buildFranquias(){ const map={}; filmes.forEach(f=>{ if(f.origem!=="genero") return; (f.tags||[]).forEach(t=>{ if(t.tipo!=="Franquia") return; if(!map[t.nome]) map[t.nome]=[]; map[t.nome].push(f); }); }); return map; }
 const FRANQUIAS = buildFranquias(); const FRANQUIA_NAMES = Object.keys(FRANQUIAS).sort((a,b)=>a.localeCompare(b,'pt'));
 function buildColecoes(){ const map={}; filmes.forEach(f=>{ (f.tags||[]).forEach(t=>{ if(t.tipo!=="Coleção") return; if(!map[t.raw]) map[t.raw]=[]; map[t.raw].push(f); }); }); return map; }
-const COLECOES = buildColecoes(); const COLECAO_KEYS = Object.keys(COLECOES).filter(k=>!/^Coleção I-(CL|CM|ECL|ECM|MD)$/.test(k)&&k!==TAG_RECENTE).sort((a,b)=>displayColecaoName(a).localeCompare(displayColecaoName(b),'pt'));
+const COLECOES = buildColecoes(); const COLECAO_KEYS = Object.keys(COLECOES).filter(k=>!/^Coleção I-(CL|CM|ECL|ECM|MD)$/.test(k)&&k!==TAG_RECENTE&&k!==TAG_ATUALIZACAO).sort((a,b)=>displayColecaoName(a).localeCompare(displayColecaoName(b),'pt'));
 function displayColecaoName(raw){ return raw.replace(/^Coleção\s+/, ''); }
 function getList(){ if(currentMode==='tudo') return filmes; if(currentMode==='franquia') return FRANQUIAS[currentTab]||[]; if(currentMode==='colecoes') return COLECOES[currentTab]||[]; if(currentMode==='perfilCor') return filmes.filter(f=>f.perfilCor===currentTab); if(currentMode==='imax') return filmes.filter(f=>f.codec&&f.codec.includes('IMAX')); if(currentMode==='av1') return filmes.filter(f=>f.codec&&f.codec.includes('AV1')); return getListForGenero(currentTab); }
 function getTabNames(){ if(currentMode==='tudo'||currentMode==='perfilCor'||currentMode==='imax'||currentMode==='av1') return []; if(currentMode==='franquia') return FRANQUIA_NAMES; if(currentMode==='colecoes') return COLECAO_KEYS; return GENEROS_TABS; }

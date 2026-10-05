@@ -1071,9 +1071,15 @@ const filmes = [
     "sinopse": "Uma das adaptações televisivas mais fiéis ao clássico literário traz Richard Chamberlain na pele de Edmond Dantès. Uma jornada focada na astúcia psicológica, na perda da inocência e nos sacrifícios morais de uma implacável busca por justiça.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "David Greene",
     "ator1": "Richard Chamberlain",
     "ator2": "Tony Curtis",
@@ -1259,9 +1265,15 @@ const filmes = [
     "sinopse": "Um capitão americano traumatizado pela guerra é contratado para treinar o exército imperial japonês contra guerreiros rebeldes. Capturado pelos rebeldes, ele descobre e abraça o código de honra samurai em um Japão prestes a perder suas tradições.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Edward Zwick",
     "ator1": "Tom Cruise",
     "ator2": "Ken Watanabe",
@@ -1285,9 +1297,15 @@ const filmes = [
     "sinopse": "O jovem D'Artagnan une forças com os lendários mosqueteiros Athos, Porthos e Aramis para desmascarar uma conspiração contra a coroa francesa comandada pelo Cardeal Richelieu. Uma releitura enérgica com capa, espada e muitas reviravoltas na corte.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Stephen Herek",
     "ator1": "Charlie Sheen",
     "ator2": "Kiefer Sutherland",
@@ -3214,13 +3232,18 @@ const filmes = [
     "sinopse": "Após o falecimento do antigo técnico de basquete da infância, cinco grandes amigos de escola se reúnem com suas famílias para um fim de semana de feriado. Juntos, eles descobrem que envelhecer não significa necessariamente ter que crescer.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Adam Sandler",
+    "colecaoTipo": "Franquia - Adam Sandler; Coleção Atualização",
     "ordem": "AS 06",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Adam Sandler",
         "raw": "Franquia - Adam Sandler"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Dennis Dugan",
@@ -3246,13 +3269,18 @@ const filmes = [
     "sinopse": "Lenny se muda com sua família de volta para a pequena cidade natal para ficar perto de seus amigos de infância. Entre velhos valentões, policiais malucos e motoristas de ônibus excêntricos, o grupo descobre que a loucura os persegue onde quer que vão.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Adam Sandler",
+    "colecaoTipo": "Franquia - Adam Sandler; Coleção Atualização",
     "ordem": "AS 07",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Adam Sandler",
         "raw": "Franquia - Adam Sandler"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Dennis Dugan",
@@ -4917,9 +4945,15 @@ const filmes = [
     "sinopse": "Um avô com métodos antigos e sua esposa tradicional aceitam cuidar dos três netos hiperconectados a pedido da filha focada na carreira. O choque de gerações e as regras modernas de educação transformam a rotina da casa em uma verdadeira zona de desastre.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Andy Fickman",
     "ator1": "Billy Crystal",
     "ator2": "Bette Midler",
@@ -5391,9 +5425,15 @@ const filmes = [
     "sinopse": "A fascinante crônica sobre os bastidores da revolução dos computadores pessoais, detalhando a intensa rivalidade e genialidade de Steve Jobs e Bill Gates. O longa revela os segredos por trás da fundação e ascensão meteórica da Apple e da Microsoft.",
     "genero": "Drama",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Martyn Burke",
     "ator1": "Noah Wyle",
     "ator2": "Joey Slotnick",
@@ -5443,9 +5483,15 @@ const filmes = [
     "sinopse": "Um idealista diretor de comunicação trabalha nos bastidores de uma acirrada campanha eleitoral para a presidência dos Estados Unidos. Ele acaba sendo envolvido em uma teia perigosa de corrupção, traição e jogos de poder que testam seus limites morais.",
     "genero": "Drama",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "George Clooney",
     "ator1": "Ryan Gosling",
     "ator2": "George Clooney",
