@@ -434,6 +434,31 @@
     .card-year { font-size: 14px; }
   }
 
+  /* ── BOTÃO VOLTAR AO TOPO ── */
+  .btn-topo {
+    position: fixed;
+    right: 16px;
+    bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px var(--card-shadow);
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s, border-color 0.25s;
+    z-index: 90;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-topo.visivel { opacity: 0.92; transform: translateY(0); pointer-events: auto; }
+  .btn-topo:hover { opacity: 1; border-color: var(--accent); }
+  .btn-topo svg { width: 20px; height: 20px; }
+  [data-theme="light"] .btn-topo { background: #fffdf8; border-color: #d6cab6; }
+
   /* ── MODAL ── */
   .modal-overlay {
     display: none;
@@ -763,6 +788,10 @@
   <span id="collection-total"></span>
 </div>
 
+<button class="btn-topo" id="btn-topo" aria-label="Voltar ao topo" title="Voltar ao topo">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
     <button class="modal-close" onclick="closeModal(null, true)">✕</button>
@@ -912,6 +941,15 @@ document.getElementById('tabs').addEventListener('scroll', updateTabsArrows);
 window.addEventListener('resize', updateTabsArrows);
 renderTabs();
 renderGrid();
+// ── Botão "voltar ao topo": aparece após rolar; rolagem suave se poucos cards, instantânea se muitos ──
+const LIMITE_ROLAGEM_SUAVE = 60;
+(function(){
+  const btn=document.getElementById('btn-topo'); const MOSTRAR_APOS=400; let pend=false;
+  function atualizar(){ pend=false; btn.classList.toggle('visivel', window.scrollY>MOSTRAR_APOS); }
+  window.addEventListener('scroll', ()=>{ if(!pend){ pend=true; requestAnimationFrame(atualizar); } }, {passive:true});
+  btn.addEventListener('click', ()=>{ const n=document.querySelectorAll('#grid .card').length; window.scrollTo({top:0, behavior: n>LIMITE_ROLAGEM_SUAVE?'instant':'smooth'}); });
+  atualizar();
+})();
 </script>
 </body>
 </html>
