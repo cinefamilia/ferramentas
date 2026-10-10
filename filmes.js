@@ -2450,9 +2450,15 @@ const filmes = [
     "sinopse": "Um caçador de recompensas cínico captura um contador da máfia que desviou milhões e precisa levá-lo de Nova York a Los Angeles. A jornada vira uma comédia de ação caótica quando ambos passam a ser perseguidos pelo FBI, por assassinos profissionais e pela própria polícia.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Special Soundtrack",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
+      }
+    ],
     "diretor": "Martin Brest",
     "ator1": "Robert De Niro",
     "ator2": "Charles Grodin",
@@ -10538,9 +10544,15 @@ const filmes = [
     "sinopse": "Um pai de família pacato esconde um passado sombrio e decide reativar suas habilidades mortais quando criminosos invadem sua casa, desencadeando uma guerra sangrenta.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Special Soundtrack",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
+      }
+    ],
     "diretor": "Ilya Naishuller",
     "ator1": "Bob Odenkirk",
     "ator2": "Alexei Serebryakov",
