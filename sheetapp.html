@@ -458,6 +458,10 @@
   .btn-topo:hover { opacity: 1; border-color: var(--accent); }
   .btn-topo svg { width: 20px; height: 20px; }
   [data-theme="light"] .btn-topo { background: #fffdf8; border-color: #d6cab6; }
+  /* Computador (mouse/cursor): botão centralizado na parte inferior. Celular e tablet (toque) continuam no canto direito */
+  @media (hover: hover) and (pointer: fine) {
+    .btn-topo { right: auto; left: 50%; margin-left: -22px; }
+  }
 
   /* ── MODAL ── */
   .modal-overlay {
