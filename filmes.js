@@ -262,7 +262,7 @@ const filmes = [
     "ano": 1984,
     "duracao": "02:40:01",
     "gb": 9.2,
-    "local": "Tmac",
+    "local": "HD-Prata F",
     "codec": "HEVC",
     "perfilCor": "HDR",
     "presetElmedia": "B2 | S10 | C9 | G9 | H0 | NR0.005 | Sh1.6",
@@ -1071,15 +1071,9 @@ const filmes = [
     "sinopse": "Uma das adaptações televisivas mais fiéis ao clássico literário traz Richard Chamberlain na pele de Edmond Dantès. Uma jornada focada na astúcia psicológica, na perda da inocência e nos sacrifícios morais de uma implacável busca por justiça.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "David Greene",
     "ator1": "Richard Chamberlain",
     "ator2": "Tony Curtis",
@@ -1265,15 +1259,9 @@ const filmes = [
     "sinopse": "Um capitão americano traumatizado pela guerra é contratado para treinar o exército imperial japonês contra guerreiros rebeldes. Capturado pelos rebeldes, ele descobre e abraça o código de honra samurai em um Japão prestes a perder suas tradições.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Edward Zwick",
     "ator1": "Tom Cruise",
     "ator2": "Ken Watanabe",
@@ -1297,15 +1285,9 @@ const filmes = [
     "sinopse": "O jovem D'Artagnan une forças com os lendários mosqueteiros Athos, Porthos e Aramis para desmascarar uma conspiração contra a coroa francesa comandada pelo Cardeal Richelieu. Uma releitura enérgica com capa, espada e muitas reviravoltas na corte.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Stephen Herek",
     "ator1": "Charlie Sheen",
     "ator2": "Kiefer Sutherland",
@@ -2635,18 +2617,24 @@ const filmes = [
     "nome": "O Feitiço de Áquila",
     "ano": 1985,
     "duracao": "02:01:00",
-    "gb": 4.53,
+    "gb": 9.7,
     "local": "HD",
     "codec": "HEVC",
     "perfilCor": null,
-    "presetElmedia": "B2 | S5 | C8 | G6 | H-1 | Sh1.5",
-    "situacao": null,
+    "presetElmedia": "B2 | S6 | C8 | G7 | H-1 | Sh1.5",
+    "situacao": "F",
     "sinopse": "Um homem e uma bela mulher sofrem uma terrível maldição lançada por um bispo corrupto e invejoso: durante o dia ela se transforma em um falcão e, à noite, ele vira um lobo. Impedidos de se tocar em forma humana, eles unem forças com um jovem trapaceiro para quebrar o feitiço e retomar suas vidas.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Richard Donner",
     "ator1": "Matthew Broderick",
     "ator2": "Rutger Hauer",
@@ -3238,18 +3226,13 @@ const filmes = [
     "sinopse": "Após o falecimento do antigo técnico de basquete da infância, cinco grandes amigos de escola se reúnem com suas famílias para um fim de semana de feriado. Juntos, eles descobrem que envelhecer não significa necessariamente ter que crescer.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Adam Sandler; Coleção Atualização",
+    "colecaoTipo": "Franquia - Adam Sandler",
     "ordem": "AS 06",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Adam Sandler",
         "raw": "Franquia - Adam Sandler"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Dennis Dugan",
@@ -3275,18 +3258,13 @@ const filmes = [
     "sinopse": "Lenny se muda com sua família de volta para a pequena cidade natal para ficar perto de seus amigos de infância. Entre velhos valentões, policiais malucos e motoristas de ônibus excêntricos, o grupo descobre que a loucura os persegue onde quer que vão.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Adam Sandler; Coleção Atualização",
+    "colecaoTipo": "Franquia - Adam Sandler",
     "ordem": "AS 07",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Adam Sandler",
         "raw": "Franquia - Adam Sandler"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Dennis Dugan",
@@ -3680,18 +3658,23 @@ const filmes = [
     "nome": "Se Beber, Não Case! 2",
     "ano": 2011,
     "duracao": "01h 41m",
-    "gb": 4.1,
+    "gb": 6.5,
     "local": "TR",
-    "codec": "x265",
+    "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B0 | S11 | C12 | G7 | H0 | Sh1.5",
     "situacao": null,
     "sinopse": "O bando de lobos viaja até a Tailândia para o casamento de Stu, planejando apenas um brunch tranquilo e seguro antes da cerimônia. As coisas fogem totalmente do controle após uma única noite de comemoração em Bangkok, resultando em novos apagões mentais e enrascadas internacionais.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Coleção Adulto; Franquia - Se Beber Não Case",
+    "colecaoTipo": "Coleção Atualização; Coleção Adulto; Franquia - Se Beber Não Case",
     "ordem": "SB 02",
     "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      },
       {
         "tipo": "Aviso",
         "nome": "Coleção Adulto",
@@ -3717,18 +3700,23 @@ const filmes = [
     "nome": "Se Beber, Não Case! 3",
     "ano": 2013,
     "duracao": "01h 40m",
-    "gb": 4.4,
+    "gb": 7,
     "local": "TR",
-    "codec": "x265",
+    "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B5 | S17 | C8 | G6 | H-2 | Sh1",
     "situacao": null,
     "sinopse": "Sem casamento ou despedida de solteiro pendentes, os amigos se reúnem para internar Alan em uma clínica de reabilitação após uma tragédia familiar. O plano é interrompido quando um gângster violento os sequestra, exigindo que encontrem o imprevisível Sr. Chow em troca de uma vida.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Coleção Adulto; Franquia - Se Beber Não Case",
+    "colecaoTipo": "Coleção Atualização; Coleção Adulto; Franquia - Se Beber Não Case",
     "ordem": "SB 03",
     "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      },
       {
         "tipo": "Aviso",
         "nome": "Coleção Adulto",
@@ -4127,7 +4115,7 @@ const filmes = [
     "ano": 2006,
     "duracao": "01h 52m",
     "gb": 1.95,
-    "local": "TR",
+    "local": "TF",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B-1 | S8 | C10 | G6 | H0 | Sh1",
@@ -4178,18 +4166,24 @@ const filmes = [
     "nome": "Cegos, Surdos e Loucos",
     "ano": 1989,
     "duracao": "01h 43m",
-    "gb": 1.8,
-    "local": "TR",
-    "codec": "x265",
+    "gb": 5,
+    "local": "TF",
+    "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B4 | S6 | C7 | G5 | H-1 | Sh1.2",
     "situacao": null,
     "sinopse": "Um homem cego e outro surdo testemunham um assassinato na frente de sua banca de jornal: um viu o crime, e o outro ouviu os disparos. Agora, eles se tornam os principais suspeitos da polícia e alvos dos verdadeiros criminosos em uma fuga caótica.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Arthur Hiller",
     "ator1": "Gene Wilder",
     "ator2": "Richard Pryor",
@@ -4951,15 +4945,9 @@ const filmes = [
     "sinopse": "Um avô com métodos antigos e sua esposa tradicional aceitam cuidar dos três netos hiperconectados a pedido da filha focada na carreira. O choque de gerações e as regras modernas de educação transformam a rotina da casa em uma verdadeira zona de desastre.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Andy Fickman",
     "ator1": "Billy Crystal",
     "ator2": "Bette Midler",
@@ -5431,15 +5419,9 @@ const filmes = [
     "sinopse": "A fascinante crônica sobre os bastidores da revolução dos computadores pessoais, detalhando a intensa rivalidade e genialidade de Steve Jobs e Bill Gates. O longa revela os segredos por trás da fundação e ascensão meteórica da Apple e da Microsoft.",
     "genero": "Drama",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Martyn Burke",
     "ator1": "Noah Wyle",
     "ator2": "Joey Slotnick",
@@ -5489,15 +5471,9 @@ const filmes = [
     "sinopse": "Um idealista diretor de comunicação trabalha nos bastidores de uma acirrada campanha eleitoral para a presidência dos Estados Unidos. Ele acaba sendo envolvido em uma teia perigosa de corrupção, traição e jogos de poder que testam seus limites morais.",
     "genero": "Drama",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "George Clooney",
     "ator1": "Ryan Gosling",
     "ator2": "George Clooney",
@@ -7412,18 +7388,23 @@ const filmes = [
     "nome": "Acima de Qualquer Suspeita",
     "ano": 1990,
     "duracao": "02h 07m",
-    "gb": 1.9,
+    "gb": 5,
     "local": "TR",
-    "codec": "x265",
+    "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B2 | S-2 | C7 | G7 | H0 | Sh1.1",
     "situacao": null,
     "sinopse": "Um brilhante promotor público é encarregado de investigar o brutal assassinato de uma colega de trabalho com quem mantinha um caso secreto. Ele logo se torna o principal suspeito do crime, precisando lutar no tribunal para provar sua própria inocência.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Adulto",
+    "colecaoTipo": "Coleção Atualização; Coleção Adulto",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      },
       {
         "tipo": "Aviso",
         "nome": "Coleção Adulto",
@@ -7522,18 +7503,24 @@ const filmes = [
     "nome": "Carrie, a Estranha",
     "ano": 1976,
     "duracao": "01h 38m",
-    "gb": 1.5,
+    "gb": 5.2,
     "local": "TR",
-    "codec": "x265",
-    "perfilCor": null,
+    "codec": "HEVC",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B-1 | S8 | C10 | G6 | H0 | Sh1",
     "situacao": null,
     "sinopse": "Uma jovem tímida e isolada, que sofre abusos da mãe fanática religiosa e bullying dos colegas de escola, descobre possuir poderes telecinéticos. A humilhação sofrida no baile de formatura desencadeia uma vingança destrutiva e sangrenta.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Brian De Palma",
     "ator1": "Sissy Spacek",
     "ator2": "Piper Laurie",
@@ -7548,18 +7535,24 @@ const filmes = [
     "nome": "Carrie, a Estranha",
     "ano": 2013,
     "duracao": "01h40m",
-    "gb": 3.7,
+    "gb": 10,
     "local": "TR",
     "codec": "HEVC",
-    "perfilCor": null,
+    "perfilCor": "HDR",
     "presetElmedia": "B5 | S3 | C9 | G9 | H0 | Sh1.4",
     "situacao": null,
     "sinopse": "Uma jovem tímida e isolada, que sofre abusos da mãe fanática religiosa e bullying dos colegas de escola, descobre possuir poderes telecinéticos. A humilhação sofrida no baile de formatura desencadeia uma vingança destrutiva e sangrenta.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Kimberly Peirce",
     "ator1": "Chloë Grace Moretz",
     "ator2": "Julianne Moore",
@@ -9008,18 +9001,24 @@ const filmes = [
     "nome": "O Enigma da Pirâmide - O Jovem Sherlock",
     "ano": 1985,
     "duracao": "01:48:52",
-    "gb": 3.91,
-    "local": "HD-Prata F-TB",
-    "codec": "x265",
+    "gb": 9.5,
+    "local": "TF",
+    "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B0 | S0 | C7 | G8 | H0 | Sh1",
     "situacao": null,
     "sinopse": "Os jovens estudantes Sherlock Holmes e John Watson se conhecem em um colégio interno britânico e se deparam com uma série de mortes bizarras. Juntos, eles investigam uma seita religiosa secreta que realiza sacrifícios humanos no coração de Londres.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Barry Levinson",
     "ator1": "Nicholas Rowe",
     "ator2": "Alan Cox",
@@ -10689,8 +10688,8 @@ const filmes = [
     "nome": "Jovem Frankentein",
     "ano": 1974,
     "duracao": "01:45:41",
-    "gb": 3.07,
-    "local": "TR - call.cdma",
+    "gb": 9.1,
+    "local": "04 adm",
     "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B1 | S0 | C7 | G1 | H0 | Nr0.03 | Sh1.2",
@@ -10698,9 +10697,14 @@ const filmes = [
     "sinopse": "Um respeitado neurocirurgião americano herda o castelo de seu infame avô na Transilvânia e decide provar que suas pesquisas científicas não eram loucura. Ele acaba repetindo os experimentos e trazendo à vida uma criatura gigante e incontrolável.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Coleção Sátira",
+    "colecaoTipo": "Coleção Atualização; Coleção Sátira",
     "ordem": null,
     "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Sátira",
@@ -19247,15 +19251,9 @@ const filmes = [
     "sinopse": "Na conservadora Inglaterra do século XIX, duas irmãs de personalidades opostas enfrentam a ruína financeira após a morte do pai. Enquanto uma tenta agir com a razão e conter seus sentimentos, a outra se entrega à sensibilidade e à paixão arrebatadora, ambas descobrindo que o amor exige um equilíbrio entre a mente e o coração.",
     "genero": "Romance",
     "origem": "genero",
-    "colecaoTipo": "Coleção Recente",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Recente",
-        "raw": "Coleção Recente"
-      }
-    ],
+    "tags": [],
     "diretor": "Ang Lee",
     "ator1": "Emma Thompson",
     "ator2": "Kate Winslet",
@@ -19279,15 +19277,9 @@ const filmes = [
     "sinopse": "A filha de um humilde motorista retorna de Paris transformada em uma mulher sofisticada e desperta a atenção dos dois herdeiros milionários da mansão onde cresceu. Um charmoso e refinado triângulo amoroso onde o irmão mais velho, um empresário frio e focado nos negócios, tenta afastar a jovem do irmão caçula playboy, mas acaba caindo nos encantos dela.",
     "genero": "Romance",
     "origem": "genero",
-    "colecaoTipo": "Coleção Recente",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Recente",
-        "raw": "Coleção Recente"
-      }
-    ],
+    "tags": [],
     "diretor": "Billy Wilder",
     "ator1": "Humphrey Bogart",
     "ator2": "Audrey Hepburn",
@@ -19296,6 +19288,38 @@ const filmes = [
     "ator5": "John Williams",
     "ator6": "Martha Hyer",
     "nomeOriginal": null
+  },
+  {
+    "capa": "https://lh3.googleusercontent.com/d/18P8v1-L3tIQkj1P6u0_E7wDG6yuulsal",
+    "nome": "Contos de Nova York",
+    "ano": 1989,
+    "duracao": "02h 04m",
+    "gb": 1.8,
+    "local": "TF",
+    "codec": "x265",
+    "perfilCor": null,
+    "presetElmedia": "B0 | S11 | C12 | G7 | H0 | Sh1.5",
+    "situacao": null,
+    "sinopse": "Três dos maiores diretores do cinema americano — Woody Allen, Francis Ford Coppola e Martin Scorsese — comandam episódios que exploram as neuroses, paixões e excentricidades da vida em Nova York. Uma antologia vibrante que traduz a alma da metrópole através de conflitos amorosos, dramas artísticos e relações familiares hilárias.",
+    "genero": "Comédia",
+    "origem": "genero",
+    "colecaoTipo": "Coleção Novo",
+    "ordem": null,
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Novo",
+        "raw": "Coleção Novo"
+      }
+    ],
+    "diretor": "Francis Ford Coppola",
+    "ator1": "Nick Nolte",
+    "ator2": "Rosanna Arquette",
+    "ator3": "Patrick O'Neal",
+    "ator4": "Mae Questel",
+    "ator5": "Steve Buscemi",
+    "ator6": "Talia Shire",
+    "nomeOriginal": "New York Stories"
   }
 ];
 
