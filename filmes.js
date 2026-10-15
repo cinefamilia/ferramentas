@@ -421,7 +421,7 @@ const filmes = [
     "ano": 1971,
     "duracao": "01h 40m",
     "gb": 4.4,
-    "local": "TR",
+    "local": "TF",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B-1 | S8 | C10 | G6 | H0 | Sh1",
@@ -499,7 +499,7 @@ const filmes = [
     "ano": 1953,
     "duracao": "01h 58m",
     "gb": 1.9,
-    "local": "TR",
+    "local": "TF",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B1 | S4 | C6 | G5 | H1 | NR0.02 | Sh1.25",
@@ -525,7 +525,7 @@ const filmes = [
     "ano": 1987,
     "duracao": "01h 39m",
     "gb": 3.6,
-    "local": "TR",
+    "local": "TF",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B4 | S6 | C7 | G5 | H-1 | Sh1.2",
@@ -550,18 +550,24 @@ const filmes = [
     "nome": "Amistad",
     "ano": 1997,
     "duracao": "02h 35m",
-    "gb": 2.31,
-    "local": "TR",
-    "codec": "x265",
+    "gb": 7.5,
+    "local": "TF",
+    "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B1 | S5 | C6 | G7 | H0 | Sh1.25",
     "situacao": null,
     "sinopse": "Baseado em fatos reais, o filme narra a violenta revolta de escravos a bordo do navio negreiro Amistad, em 1839. Quando a embarcação é capturada nos EUA, os sobreviventes tornam-se o centro de uma batalha judicial histórica que desafia as leis e a moral do país sobre a liberdade humana.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Steven Spielberg",
     "ator1": "Morgan Freeman",
     "ator2": "Nigel Hawthorne",
@@ -577,7 +583,7 @@ const filmes = [
     "ano": 1997,
     "duracao": "01h 48m",
     "gb": 1.5,
-    "local": "TR",
+    "local": "TF",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B4 | S6 | C7 | G5 | H-1 | Sh1.2",
@@ -609,7 +615,7 @@ const filmes = [
     "ano": 2005,
     "duracao": "02h 23m",
     "gb": 6.2,
-    "local": "TR",
+    "local": "TF",
     "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B0 | S12 | C11 | G6 | H0 | Sh1.5",
@@ -661,7 +667,7 @@ const filmes = [
     "ano": 1959,
     "duracao": "03h 32m",
     "gb": 3.52,
-    "local": "TR",
+    "local": "TF",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B2 | S7 | C8 | G7 | H-3 | Sh1.5",
@@ -687,7 +693,7 @@ const filmes = [
     "ano": 1961,
     "duracao": "01h 55m",
     "gb": 5.6,
-    "local": "TR",
+    "local": "TF",
     "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B4 | S6 | C7 | G5 | H-1 | Sh1.2",
@@ -709,10 +715,10 @@ const filmes = [
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/19ghbArZsF92cd78KKtrkDc8B9ESRN3X3",
-    "nome": "Casablanca [PB]",
+    "nome": "Casablanca",
     "ano": 1942,
     "duracao": "01h 42m",
-    "gb": 1.53,
+    "gb": 4.5,
     "local": "TR",
     "codec": "HEVC",
     "perfilCor": "HDR 4K",
@@ -721,9 +727,15 @@ const filmes = [
     "sinopse": "No calor tenso da Segunda Guerra Mundial, o cínico exilado Rick Blaine reencontra em seu clube noturno o grande amor de sua vida, agora casada com um líder da resistência antinazista. Ele precisará escolher entre o egoísmo de uma paixão mal resolvida e o sacrifício por uma causa maior.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Michael Curtiz",
     "ator1": "Humphrey Bogart",
     "ator2": "Ingrid Bergman",
@@ -823,7 +835,7 @@ const filmes = [
     "ano": 1963,
     "duracao": "02h 41m",
     "gb": 3.2,
-    "local": "TR",
+    "local": "TF",
     "codec": "x264",
     "perfilCor": null,
     "presetElmedia": "B5 | S17 | C8 | G6 | H-2 | Sh1",
@@ -849,7 +861,7 @@ const filmes = [
     "ano": 1939,
     "duracao": "03h 58m",
     "gb": 3.5,
-    "local": "TR",
+    "local": "TF",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B2 | S7 | C8 | G7 | H-3 | Sh1.5",
@@ -933,7 +945,7 @@ const filmes = [
     "ano": 1995,
     "duracao": "02h 14m",
     "gb": 1.9,
-    "local": "TR",
+    "local": "TF",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B1 | S4 | C6 | G5 | H1 | NR0.02 | Sh1.25",
@@ -959,7 +971,7 @@ const filmes = [
     "ano": 1962,
     "duracao": "03h 48m",
     "gb": 3.38,
-    "local": "TR",
+    "local": "TF",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B2 | S7 | C8 | G6 | H-2 | Sh1",
@@ -1167,7 +1179,7 @@ const filmes = [
     "ano": 1939,
     "duracao": "01h 42m",
     "gb": 4.4,
-    "local": "TR",
+    "local": "TF",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B0 | S11 | C12 | G7 | H0 | Sh1.5",
@@ -1251,7 +1263,7 @@ const filmes = [
     "ano": 2003,
     "duracao": "02h 34m",
     "gb": 7.8,
-    "local": "TR",
+    "local": "TF",
     "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B0 | S12 | C11 | G6 | H0 | Sh1.5",
@@ -1329,7 +1341,7 @@ const filmes = [
     "ano": 1968,
     "duracao": "02h 18m",
     "gb": 5.4,
-    "local": "TR",
+    "local": "TF",
     "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B0 | S12 | C11 | G6 | H0 | Sh1.5",
@@ -1352,10 +1364,10 @@ const filmes = [
   {
     "capa": "https://lh3.googleusercontent.com/d/1kzKtPEzE6a45ZYWUBgFagYL-FaFVw46H",
     "nome": "Scaramouche",
-    "ano": 1954,
+    "ano": 1952,
     "duracao": "01h 55m",
     "gb": 0.89,
-    "local": "TR",
+    "local": "TF",
     "codec": "SD x265",
     "perfilCor": null,
     "presetElmedia": "B2 | S5 | C8 | G6 | H-1 | Sh1.5",
@@ -1407,7 +1419,7 @@ const filmes = [
     "ano": 1960,
     "duracao": "03h 17m",
     "gb": 2.76,
-    "local": "TR",
+    "local": "TF",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B2 | S7 | C8 | G7 | H-3 | Sh1.5",
@@ -1439,16 +1451,16 @@ const filmes = [
     "nomeOriginal": "Remo Williams - The Adventure Begins",
     "ano": 1985,
     "duracao": "02h 01m",
-    "gb": 1.9,
-    "local": "TR",
-    "codec": "x265",
+    "gb": 7,
+    "local": "TF",
+    "codec": "H264",
     "perfilCor": null,
     "presetElmedia": "B0 | S-2 | C7 | G6 | H0 | Sh1",
     "situacao": null,
     "sinopse": "Um policial de Nova York tem sua morte forjada pelo governo americano para ser introduzido em uma organização secreta. Agora, com uma nova identidade, Remo Williams será treinado por um velho coreano, especialista em artes marciais, que o tornará um assassino infalível.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": "Coleção Sátira",
+    "colecaoTipo": "Coleção Sátira; Coleção Atualização",
     "ordem": null,
     "diretor": "Guy Hamilton",
     "ator1": "Fred Ward",
@@ -1462,6 +1474,11 @@ const filmes = [
         "tipo": "Coleção",
         "nome": "Coleção Sátira",
         "raw": "Coleção Sátira"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ]
   },
@@ -2626,15 +2643,9 @@ const filmes = [
     "sinopse": "Um homem e uma bela mulher sofrem uma terrível maldição lançada por um bispo corrupto e invejoso: durante o dia ela se transforma em um falcão e, à noite, ele vira um lobo. Impedidos de se tocar em forma humana, eles unem forças com um jovem trapaceiro para quebrar o feitiço e retomar suas vidas.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Richard Donner",
     "ator1": "Matthew Broderick",
     "ator2": "Rutger Hauer",
@@ -3667,14 +3678,9 @@ const filmes = [
     "sinopse": "O bando de lobos viaja até a Tailândia para o casamento de Stu, planejando apenas um brunch tranquilo e seguro antes da cerimônia. As coisas fogem totalmente do controle após uma única noite de comemoração em Bangkok, resultando em novos apagões mentais e enrascadas internacionais.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização; Coleção Adulto; Franquia - Se Beber Não Case",
+    "colecaoTipo": "Coleção Adulto; Franquia - Se Beber Não Case",
     "ordem": "SB 02",
     "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      },
       {
         "tipo": "Aviso",
         "nome": "Coleção Adulto",
@@ -3709,14 +3715,9 @@ const filmes = [
     "sinopse": "Sem casamento ou despedida de solteiro pendentes, os amigos se reúnem para internar Alan em uma clínica de reabilitação após uma tragédia familiar. O plano é interrompido quando um gângster violento os sequestra, exigindo que encontrem o imprevisível Sr. Chow em troca de uma vida.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização; Coleção Adulto; Franquia - Se Beber Não Case",
+    "colecaoTipo": "Coleção Adulto; Franquia - Se Beber Não Case",
     "ordem": "SB 03",
     "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      },
       {
         "tipo": "Aviso",
         "nome": "Coleção Adulto",
@@ -4175,15 +4176,9 @@ const filmes = [
     "sinopse": "Um homem cego e outro surdo testemunham um assassinato na frente de sua banca de jornal: um viu o crime, e o outro ouviu os disparos. Agora, eles se tornam os principais suspeitos da polícia e alvos dos verdadeiros criminosos em uma fuga caótica.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Arthur Hiller",
     "ator1": "Gene Wilder",
     "ator2": "Richard Pryor",
@@ -4910,7 +4905,7 @@ const filmes = [
     "nome": "Um Salto Para a Felicidade",
     "ano": 1987,
     "duracao": "01:52:10",
-    "gb": 4.8,
+    "gb": 9.3,
     "local": "HD-Prata F",
     "codec": "HEVC",
     "perfilCor": null,
@@ -4919,9 +4914,15 @@ const filmes = [
     "sinopse": "Uma ricaça arrogante cai de seu iate, sofre de amnésia e acaba sendo enganada por um carpinteiro injustiçado que ela havia humilhado e se recusado a pagar. Ele a convence de que são casados, forçando-a a cuidar de sua casa bagunçada e de seus quatro filhos rebeldes.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Garry Marshall",
     "ator1": "Goldie Hawn",
     "ator2": "Kurt Russell",
@@ -7397,14 +7398,9 @@ const filmes = [
     "sinopse": "Um brilhante promotor público é encarregado de investigar o brutal assassinato de uma colega de trabalho com quem mantinha um caso secreto. Ele logo se torna o principal suspeito do crime, precisando lutar no tribunal para provar sua própria inocência.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização; Coleção Adulto",
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
     "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      },
       {
         "tipo": "Aviso",
         "nome": "Coleção Adulto",
@@ -7512,15 +7508,9 @@ const filmes = [
     "sinopse": "Uma jovem tímida e isolada, que sofre abusos da mãe fanática religiosa e bullying dos colegas de escola, descobre possuir poderes telecinéticos. A humilhação sofrida no baile de formatura desencadeia uma vingança destrutiva e sangrenta.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Brian De Palma",
     "ator1": "Sissy Spacek",
     "ator2": "Piper Laurie",
@@ -7544,15 +7534,9 @@ const filmes = [
     "sinopse": "Uma jovem tímida e isolada, que sofre abusos da mãe fanática religiosa e bullying dos colegas de escola, descobre possuir poderes telecinéticos. A humilhação sofrida no baile de formatura desencadeia uma vingança destrutiva e sangrenta.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Kimberly Peirce",
     "ator1": "Chloë Grace Moretz",
     "ator2": "Julianne Moore",
@@ -8226,8 +8210,8 @@ const filmes = [
     "nome": "Sleuth",
     "ano": 2007,
     "duracao": "01h 28m",
-    "gb": 1.4,
-    "local": "TR",
+    "gb": 3,
+    "local": "TF",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B0 | S-2 | C6 | G9 | H+2 | Sh1",
@@ -8235,9 +8219,15 @@ const filmes = [
     "sinopse": "Um milionário escritor de romances policiais convida o jovem amante de sua ex-esposa para uma visita à sua mansão ultra-tecnológica. O encontro logo se transforma em um sádico e perigoso jogo de aparências, manipulação psicológica e reviravoltas mortais.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Kenneth Branagh",
     "ator1": "Michael Caine",
     "ator2": "Jude Law",
@@ -9010,15 +9000,9 @@ const filmes = [
     "sinopse": "Os jovens estudantes Sherlock Holmes e John Watson se conhecem em um colégio interno britânico e se deparam com uma série de mortes bizarras. Juntos, eles investigam uma seita religiosa secreta que realiza sacrifícios humanos no coração de Londres.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Barry Levinson",
     "ator1": "Nicholas Rowe",
     "ator2": "Alan Cox",
@@ -10697,14 +10681,9 @@ const filmes = [
     "sinopse": "Um respeitado neurocirurgião americano herda o castelo de seu infame avô na Transilvânia e decide provar que suas pesquisas científicas não eram loucura. Ele acaba repetindo os experimentos e trazendo à vida uma criatura gigante e incontrolável.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização; Coleção Sátira",
+    "colecaoTipo": "Coleção Sátira",
     "ordem": null,
     "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      },
       {
         "tipo": "Coleção",
         "nome": "Coleção Sátira",
@@ -10836,7 +10815,7 @@ const filmes = [
     "ano": 2007,
     "duracao": "01:50:33",
     "gb": 3.04,
-    "local": "Cine Família 01",
+    "local": "CF.01",
     "codec": "HEVC",
     "perfilCor": "HDR 4K",
     "presetElmedia": "B0 | S12 | C11 | G6 | H0 | Sh1.5",
@@ -10925,7 +10904,7 @@ const filmes = [
     "ano": 2001,
     "duracao": "02:03:00",
     "gb": 7.8,
-    "local": "Cine Família 01",
+    "local": "CF.01",
     "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B0 | S-3 | C7 | G7 | H1 | Sh1",
@@ -10951,7 +10930,7 @@ const filmes = [
     "ano": 2008,
     "duracao": "01:37:25",
     "gb": 3,
-    "local": "Cine Família 01",
+    "local": "CF.01",
     "codec": "AV1",
     "perfilCor": "HDR 4K",
     "presetElmedia": "B0 | S9 | C8 | G8 | H1 | Sh1.5",
@@ -10977,7 +10956,7 @@ const filmes = [
     "ano": 1964,
     "duracao": "01h 50m",
     "gb": 2.6,
-    "local": "TR-Clássicos",
+    "local": "CF.01",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B0 | S12 | C11 | G6 | H0 | Sh1.5",
@@ -11009,7 +10988,7 @@ const filmes = [
     "ano": 1963,
     "duracao": "01h 55m",
     "gb": 2.8,
-    "local": "TR-Clássicos",
+    "local": "CF.01",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B1 | S5 | C6 | G7 | H0 | Sh1.25",
@@ -11041,7 +11020,7 @@ const filmes = [
     "ano": 1974,
     "duracao": "02h 05m",
     "gb": 3.2,
-    "local": "TR-Clássicos",
+    "local": "CF.01",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B2 | S5 | C8 | G6 | H-1 | Sh1.5",
@@ -11073,7 +11052,7 @@ const filmes = [
     "ano": 1977,
     "duracao": "02h 05m",
     "gb": 6.8,
-    "local": "TR-Clássicos",
+    "local": "CF.01",
     "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B0 | S12 | C11 | G6 | H0 | Sh1.5",
@@ -11105,7 +11084,7 @@ const filmes = [
     "ano": 1981,
     "duracao": "02h 07m",
     "gb": 2.2,
-    "local": "TR-Clássicos",
+    "local": "CF.01",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B1 | S4 | C6 | G5 | H1 | Sh1.25",
@@ -11137,7 +11116,7 @@ const filmes = [
     "ano": 1995,
     "duracao": "02h 10m",
     "gb": 2.3,
-    "local": "TR-Clássicos",
+    "local": "CF.01",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B1 | S-3 | C6 | G6 | H-1 | Sh1",
@@ -11169,7 +11148,7 @@ const filmes = [
     "ano": 1997,
     "duracao": "01h 59m",
     "gb": 3.8,
-    "local": "TR-Clássicos",
+    "local": "CF.01",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B-1 | S8 | C10 | G6 | H0 | Sh1",
@@ -11201,7 +11180,7 @@ const filmes = [
     "ano": 1999,
     "duracao": "02h 08m",
     "gb": 4.5,
-    "local": "TR-Clássicos",
+    "local": "CF.01",
     "codec": "x265",
     "perfilCor": null,
     "presetElmedia": "B0 | S-2 | C7 | G6 | H0 | Sh1",
@@ -12643,22 +12622,27 @@ const filmes = [
     "nome": "Grand Prix",
     "ano": 1966,
     "duracao": "2h 56m",
-    "gb": 2.6,
+    "gb": 6.5,
     "local": "TA-Coleção",
-    "codec": "x265",
+    "codec": "HEVC",
     "perfilCor": null,
     "presetElmedia": "B2 | S7 | C8 | G6 | H-2 | Sh1",
     "situacao": null,
     "sinopse": "A temporada de Fórmula 1 é marcada por intensas rivalidades, dramas pessoais e perigos nas pistas entre quatro pilotos que disputam o título mundial. Um épico do automobilismo vencedor de três Oscars que captura a essência e o glamour das corridas dos anos 60.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Corridas",
+    "colecaoTipo": "Coleção Corridas; Coleção Atualização",
     "ordem": "CO 01",
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Corridas",
         "raw": "Coleção Corridas"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "John Frankenheimer",
@@ -12685,7 +12669,7 @@ const filmes = [
     "genero": null,
     "origem": "colecoes",
     "colecaoTipo": "Coleção Corridas",
-    "ordem": "CO 02",
+    "ordem": "CO 03",
     "tags": [
       {
         "tipo": "Coleção",
@@ -12717,7 +12701,7 @@ const filmes = [
     "genero": null,
     "origem": "colecoes",
     "colecaoTipo": "Coleção Corridas",
-    "ordem": "CO 03",
+    "ordem": "CO 04",
     "tags": [
       {
         "tipo": "Coleção",
@@ -12749,7 +12733,7 @@ const filmes = [
     "genero": null,
     "origem": "colecoes",
     "colecaoTipo": "Coleção Adulto; Coleção Corridas",
-    "ordem": "CO 04",
+    "ordem": "CO 05",
     "tags": [
       {
         "tipo": "Aviso",
@@ -12786,7 +12770,7 @@ const filmes = [
     "genero": null,
     "origem": "colecoes",
     "colecaoTipo": "Coleção Corridas",
-    "ordem": "CO 05",
+    "ordem": "CO 06",
     "tags": [
       {
         "tipo": "Coleção",
@@ -12818,7 +12802,7 @@ const filmes = [
     "genero": null,
     "origem": "colecoes",
     "colecaoTipo": "Coleção Corridas",
-    "ordem": "CO 06",
+    "ordem": "CO 07",
     "tags": [
       {
         "tipo": "Coleção",
@@ -19303,15 +19287,9 @@ const filmes = [
     "sinopse": "Três dos maiores diretores do cinema americano — Woody Allen, Francis Ford Coppola e Martin Scorsese — comandam episódios que exploram as neuroses, paixões e excentricidades da vida em Nova York. Uma antologia vibrante que traduz a alma da metrópole através de conflitos amorosos, dramas artísticos e relações familiares hilárias.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Coleção Novo",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Novo",
-        "raw": "Coleção Novo"
-      }
-    ],
+    "tags": [],
     "diretor": "Francis Ford Coppola",
     "ator1": "Nick Nolte",
     "ator2": "Rosanna Arquette",
@@ -19320,6 +19298,80 @@ const filmes = [
     "ator5": "Steve Buscemi",
     "ator6": "Talia Shire",
     "nomeOriginal": "New York Stories"
+  },
+  {
+    "capa": "https://lh3.googleusercontent.com/d/1e_KaNMGrnpxfgTlP0UrueK9EHfuuRmqF",
+    "nome": "O Último Tiro Certo",
+    "ano": 2026,
+    "duracao": "01h 38m",
+    "gb": 2.1,
+    "local": "TR",
+    "codec": "x264",
+    "perfilCor": null,
+    "presetElmedia": "B1 | S-3 | C6 | G6 | H-1 | Sh1",
+    "situacao": null,
+    "sinopse": "O Navy SEAL Jake Harris volta à ação quando um ex-companheiro ameaça o mundo.",
+    "genero": "Ação",
+    "origem": "genero",
+    "colecaoTipo": "Franquia - Tiro Certo; Coleção Novo",
+    "ordem": "TC 03",
+    "tags": [
+      {
+        "tipo": "Franquia",
+        "nome": "Tiro Certo",
+        "raw": "Franquia - Tiro Certo"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Novo",
+        "raw": "Coleção Novo"
+      }
+    ],
+    "diretor": "James Nunn",
+    "ator1": "Scott Adkins",
+    "ator2": "Steven Cree",
+    "ator3": "Hannah Ware",
+    "ator4": "Dolph Lundgren",
+    "ator5": "Neil Linpow",
+    "ator6": null,
+    "nomeOriginal": "One Last Shot"
+  },
+  {
+    "capa": "https://lh3.googleusercontent.com/d/1jTWlWw7NMzr5HB9ZONEjgMneoI4n3uYF",
+    "nome": "As 24 Horas de Le Mans",
+    "ano": 1971,
+    "duracao": "1h 48m",
+    "gb": 5,
+    "local": "TA-Coleção",
+    "codec": "HEVC",
+    "perfilCor": null,
+    "presetElmedia": "B4 | S6 | C7 | G5 | H-1 | Sh1.2",
+    "situacao": null,
+    "sinopse": "Michael Delaney (Steve McQueen) é um americano que é piloto de corridas que retorna ao circuito de Le Mans, na França, determinado a vencer, a despeito de ter quase morrido lá, um ano atrás.",
+    "genero": null,
+    "origem": "colecoes",
+    "colecaoTipo": "Coleção Corridas; Coleção Novo",
+    "ordem": "CO 02",
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Corridas",
+        "raw": "Coleção Corridas"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Novo",
+        "raw": "Coleção Novo"
+      }
+    ],
+    "diretor": "Lee H. Katzin",
+    "ator1": "Steve McQueen",
+    "ator2": "Siegfried Rauch",
+    "ator3": "Elga Andersen",
+    "ator4": "Ronald Leigh-Hunt",
+    "ator5": "Fred Haltiner",
+    "ator6": "Luc Merenda",
+    "nomeOriginal": "Le Mans"
   }
 ];
 
