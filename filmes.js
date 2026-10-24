@@ -6,7 +6,7 @@ const filmes = [
     "ano": 1985,
     "duracao": "01:56:02",
     "gb": 21,
-    "local": "HD - King",
+    "local": "HD - TR",
     "codec": "AV1",
     "perfilCor": "HDR 4K",
     "presetElmedia": "B2 | S5 | C8 | G6 | H-1 | Sh1.5",
@@ -104,19 +104,24 @@ const filmes = [
     "gb": 7.7,
     "local": "King",
     "codec": "HEVC",
-    "perfilCor": "HDR",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B2 | S7 | C8 | G7 | H-3 | Sh1.5",
     "situacao": "F",
     "sinopse": "Rocky Balboa, um boxeador amador da Filadélfia que trabalha como cobrador, ganha a chance de sua vida ao ser escolhido para enfrentar o campeão mundial dos pesos-pesados, Apollo Creed, em um combate que desafia todas as probabilidades.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Rocky",
+    "colecaoTipo": "Franquia - Rocky; Coleção Atualização",
     "ordem": "RB 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Rocky",
         "raw": "Franquia - Rocky"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "John G. Avildsen",
@@ -261,22 +266,27 @@ const filmes = [
     "nome": "Amadeus",
     "ano": 1984,
     "duracao": "02:40:01",
-    "gb": 9.2,
+    "gb": 7,
     "local": "HDPrata",
     "codec": "HEVC",
-    "perfilCor": "HDR",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B2 | S10 | C9 | G9 | H0 | NR0.005 | Sh1.6",
     "situacao": "F",
     "sinopse": "Em Viena, o compositor da corte Antonio Salieri é consumido por uma inveja doentia ao testemunhar o talento divino de Wolfgang Amadeus Mozart, um gênio excêntrico e infantil. Determinado a destruir seu rival, Salieri inicia uma perigosa conspiração contra o próprio Deus que o ignorou.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": "Coleção Special Soundtrack",
+    "colecaoTipo": "Coleção Special Soundtrack; Coleção Atualização",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Special Soundtrack",
         "raw": "Coleção Special Soundtrack"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Milos Forman",
@@ -1987,22 +1997,27 @@ const filmes = [
     "nome": "Homem de Ferro",
     "ano": 2008,
     "duracao": "02:05:58",
-    "gb": 6.51,
-    "local": "HD",
-    "codec": "HEVC IMAX",
-    "perfilCor": "HDR",
+    "gb": 4,
+    "local": "King",
+    "codec": "HEVC",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B6 | S15 | C9 | G8 | H0 | Sh1.2",
     "situacao": "F",
     "sinopse": "O bilionário e gênio da tecnologia Tony Stark é sequestrado por terroristas e forçado a construir uma arma de destruição em massa. Em vez disso, ele cria uma armadura de alta tecnologia para fugir, iniciando sua jornada para se tornar um super-herói lendário.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": "Coleção HQ",
+    "colecaoTipo": "Coleção HQ; Coleção Atualização",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção HQ",
         "raw": "Coleção HQ"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Jon Favreau",
@@ -2235,22 +2250,27 @@ const filmes = [
     "nome": "Assassino a Preço Fixo",
     "ano": 2011,
     "duracao": "01:32:44",
-    "gb": 4.39,
+    "gb": 3.5,
     "local": "King",
     "codec": "HEVC",
-    "perfilCor": "HDR",
-    "presetElmedia": "B3 | S3 | C8 | G8 | H0 | Sh1.25",
+    "perfilCor": "HDR 4K",
+    "presetElmedia": "B3 | S2 | C8 | G10 | H0 | Sh1.25",
     "situacao": "F",
     "sinopse": "Arthur Bishop é um matador de elite meticuloso que faz seus assassinatos parecerem acidentes perfeitos. O isolamento de sua rotina fria é rompido quando ele decide treinar o filho de sua última vítima, ensinando os segredos mais sombrios da profissão.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": "Coleção Adulto",
+    "colecaoTipo": "Coleção Adulto; Coleção Atualização",
     "ordem": null,
     "tags": [
       {
         "tipo": "Aviso",
         "nome": "Coleção Adulto",
         "raw": "Coleção Adulto"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Simon West",
@@ -4014,7 +4034,7 @@ const filmes = [
     "nome": "A Verdade Nua e Crua",
     "ano": 2009,
     "duracao": "01:35:57",
-    "gb": 3.43,
+    "gb": 4.3,
     "local": "HD - TR",
     "codec": "x265",
     "perfilCor": null,
@@ -4023,13 +4043,18 @@ const filmes = [
     "sinopse": "Uma produtora de TV romântica e idealista é forçada a trabalhar com um apresentador cínico e machista que promete revelar a verdade sobre os relacionamentos. Ele se propõe a ajudá-la a conquistar o homem dos seus sonhos em um jogo provocante.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Coleção Adulto",
+    "colecaoTipo": "Coleção Adulto; Coleção Atualização",
     "ordem": null,
     "tags": [
       {
         "tipo": "Aviso",
         "nome": "Coleção Adulto",
         "raw": "Coleção Adulto"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Robert Luketic",
@@ -5533,15 +5558,9 @@ const filmes = [
     "sinopse": "Uma produtora de TV desiludida após um término doloroso cria uma teoria científica anônima e provocativa sobre o comportamento dos homens. Sua coluna se torna um sucesso absoluto, enquanto ela lida com uma atração inesperada por seu colega de quarto mulherengo.",
     "genero": "Romance",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Tony Goldwyn",
     "ator1": "Ashley Judd",
     "ator2": "Greg Kinnear",
@@ -6793,18 +6812,13 @@ const filmes = [
     "sinopse": "Um especialista da CIA lidera uma missão perigosa disfarçado de produtor de Hollywood para resgatar seis diplomatas americanos escondidos no Irã durante a crise dos reféns em 1979. Um suspense político tenso baseado em uma inacreditável história real.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Espionagem; Coleção Atualização",
+    "colecaoTipo": "Coleção Espionagem",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Espionagem",
         "raw": "Coleção Espionagem"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Ben Affleck",
@@ -7542,15 +7556,21 @@ const filmes = [
     "gb": 5.36,
     "local": "TR",
     "codec": "HEVC",
-    "perfilCor": null,
-    "presetElmedia": "B0 | S0 | C7 | G8 | H0 | Sh1",
-    "situacao": null,
+    "perfilCor": "HDR 4K",
+    "presetElmedia": "B5 | S3 | C10 | G11 | H-1 | Sh1.6",
+    "situacao": "F",
     "sinopse": "Uma cientista dedicada encontra transmissões de rádio misteriosas vindas do espaço profundo que provam a existência de vida extraterrestre inteligente. Ela precisa lutar contra o ceticismo do governo para liderar o projeto de construção da máquina enviada pelos alienígenas.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Robert Zemeckis",
     "ator1": "Jodie Foster",
     "ator2": "Matthew McConaughey",
@@ -7591,18 +7611,24 @@ const filmes = [
     "nome": "Deja Vu",
     "ano": 2006,
     "duracao": "02:06:45",
-    "gb": 5.2,
+    "gb": 9,
     "local": "TR",
     "codec": "HEVC",
-    "perfilCor": null,
-    "presetElmedia": "B0 | S-2 | C8 | G6 | H-3 | Sh1.2",
+    "perfilCor": "HDR 4K",
+    "presetElmedia": "B0 | S1 | C8 | G6 | H-2 | Sh1.3",
     "situacao": "F",
     "sinopse": "Um agente federal utiliza uma tecnologia experimental ultrassecreta de viagem no tempo para investigar o trágico bombardeio de uma balsa em Nova Orleans. Ele se apaixona por uma das vítimas e tenta desesperadamente alterar os eventos passados para salvá-la.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Tony Scott",
     "ator1": "Denzel Washington",
     "ator2": "Paula Patton",
@@ -7796,18 +7822,24 @@ const filmes = [
     "nome": "Na Hora da Zona Morta",
     "ano": 1983,
     "duracao": "01h 43m",
-    "gb": 4.6,
+    "gb": 4,
     "local": "TR",
     "codec": "HEVC",
-    "perfilCor": null,
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B0 | S-4 | C6 | G7 | H-1 | Sh1.2",
     "situacao": null,
     "sinopse": "Um professor acorda de um coma de cinco anos após um grave acidente e descobre que desenvolveu habilidades psíquicas de prever o futuro pelo toque. Ele enfrenta um dilema moral extremo ao prever que um político em ascensão causará um desastre global.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "David Cronenberg",
     "ator1": "Christopher Walken",
     "ator2": "Brooke Adams",
@@ -7841,7 +7873,7 @@ const filmes = [
     "ator4": "Michael Kitchen",
     "ator5": "Jean Marsh",
     "ator6": "John Woodvine",
-    "nomeOriginal": "The State Within"
+    "nomeOriginal": "Fatherland"
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1DXYuRe9Vuw_1Pl2g26sLt9PREYpaabNn",
@@ -8224,18 +8256,24 @@ const filmes = [
     "nome": "Sob o Domínio do Mal",
     "ano": 2004,
     "duracao": "02h 09m",
-    "gb": 5.6,
+    "gb": 5,
     "local": "TR",
     "codec": "HEVC",
-    "perfilCor": null,
-    "presetElmedia": "B5 | S3 | C9 | G9 | H0 | Sh1.4",
-    "situacao": null,
+    "perfilCor": "HDR 4K",
+    "presetElmedia": "B6 | S3 | C9 | G10 | H-1 | Sh1.5",
+    "situacao": "F",
     "sinopse": "Um veterano de guerra começa a ter memórias conflitantes e suspeita que ele e seu pelotão sofreram lavagem cerebral para servir a uma sinistra conspiração política. Um suspense paranoico sobre manipulação mental e poder corporativo.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Jonathan Demme",
     "ator1": "Denzel Washington",
     "ator2": "Meryl Streep",
@@ -8596,7 +8634,7 @@ const filmes = [
     "nome": "Thomas Crown - A Arte do Crime",
     "ano": 1999,
     "duracao": "01:53:17",
-    "gb": 3.82,
+    "gb": 6.7,
     "local": "HDPrata",
     "codec": "x265",
     "perfilCor": null,
@@ -8605,7 +8643,7 @@ const filmes = [
     "sinopse": "Um bilionário entediado e brilhante arquiteta o roubo perfeito de uma pintura inestimável de um museu de Nova York apenas pelo desafio intelectual. Seu plano encontra um obstáculo charmoso quando uma astuta investigadora de seguros começa a caçá-lo de perto.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": "Coleção Adulto; Coleção Desfalque",
+    "colecaoTipo": "Coleção Adulto; Coleção Desfalque; Coleção Atualização",
     "ordem": null,
     "tags": [
       {
@@ -8617,6 +8655,11 @@ const filmes = [
         "tipo": "Coleção",
         "nome": "Coleção Desfalque",
         "raw": "Coleção Desfalque"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "John McTiernan",
@@ -9414,18 +9457,13 @@ const filmes = [
     "sinopse": "Um grupo de cientistas é convidado para visitar um parque temático secreto habitado por dinossauros clonados a partir de DNA pré-histórico. Um colapso no sistema de segurança liberta os predadores, transformando a ilha em um teste extremo de sobrevivência.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Jurassic Park; Coleção Atualização",
+    "colecaoTipo": "Franquia - Jurassic Park",
     "ordem": "JP 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Jurassic Park",
         "raw": "Franquia - Jurassic Park"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Steven Spielberg",
@@ -9451,18 +9489,13 @@ const filmes = [
     "sinopse": "Quatro anos após o desastre no parque original, uma equipe de pesquisadores viaja até uma ilha secundária esquecida onde os dinossauros vivem livres e selvagens. Eles entram em conflito com mercenários que planejam capturar as criaturas para exibição pública.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Jurassic Park; Coleção Atualização",
+    "colecaoTipo": "Franquia - Jurassic Park",
     "ordem": "JP 02",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Jurassic Park",
         "raw": "Franquia - Jurassic Park"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Steven Spielberg",
@@ -9488,18 +9521,13 @@ const filmes = [
     "sinopse": "O paleontólogo Alan Grant é convencido por um casal de empresários ricos a guiá-los em um voo turístico sobre a infame ilha de dinossauros. O avião cai após um ataque aéreo, forçando o grupo a lutar contra novas espécies geneticamente modificadas.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Jurassic Park; Coleção Atualização",
+    "colecaoTipo": "Franquia - Jurassic Park",
     "ordem": "JP 03",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Jurassic Park",
         "raw": "Franquia - Jurassic Park"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Joe Johnston",
@@ -10141,18 +10169,13 @@ const filmes = [
     "sinopse": "Um ex-agente do FBI com dons psicológicos extraordinários sai da aposentadoria para caçar um serial killer meticuloso conhecido como a Fada do Dente. Para decifrar a mente do criminoso, ele é forçado a confrontar seu antigo captor, o brilhante Dr. Hannibal Lecter.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Silêncio dos Inocentes; Coleção Atualização",
+    "colecaoTipo": "Franquia - Silêncio dos Inocentes",
     "ordem": "SI 02",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Silêncio dos Inocentes",
         "raw": "Franquia - Silêncio dos Inocentes"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Brett Ratner",
@@ -19374,15 +19397,9 @@ const filmes = [
     "sinopse": "Um veterano da Guerra do Vietnã ficou cego, mas foi treinado na arte da espada pelos que o resgataram. Quando retorna aos Estados Unidos e descobre que o filho de um antigo amigo está nas garras da máfia, resolve agir para libertá-lo.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": "Coleção Novo",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Novo",
-        "raw": "Coleção Novo"
-      }
-    ],
+    "tags": [],
     "diretor": "Phillip Noyce",
     "ator1": "Rutger Hauer",
     "ator2": "Terry O'Quinn",
@@ -19406,15 +19423,9 @@ const filmes = [
     "sinopse": "O egiptólogo Daniel Jackson é convidado a trabalhar em uma base secreta e descobre a chave para se chegar a um outro mundo. O quê irá encontrar?",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": "Coleção Novo",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Novo",
-        "raw": "Coleção Novo"
-      }
-    ],
+    "tags": [],
     "diretor": "Roland Emmerich",
     "ator1": "James Spader",
     "ator2": "Kurt Russell",
