@@ -110,18 +110,13 @@ const filmes = [
     "sinopse": "Rocky Balboa, um boxeador amador da Filadélfia que trabalha como cobrador, ganha a chance de sua vida ao ser escolhido para enfrentar o campeão mundial dos pesos-pesados, Apollo Creed, em um combate que desafia todas as probabilidades.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Rocky; Coleção Atualização",
+    "colecaoTipo": "Franquia - Rocky",
     "ordem": "RB 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Rocky",
         "raw": "Franquia - Rocky"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "John G. Avildsen",
@@ -275,18 +270,13 @@ const filmes = [
     "sinopse": "Em Viena, o compositor da corte Antonio Salieri é consumido por uma inveja doentia ao testemunhar o talento divino de Wolfgang Amadeus Mozart, um gênio excêntrico e infantil. Determinado a destruir seu rival, Salieri inicia uma perigosa conspiração contra o próprio Deus que o ignorou.",
     "genero": "Clássicos",
     "origem": "genero",
-    "colecaoTipo": "Coleção Special Soundtrack; Coleção Atualização",
+    "colecaoTipo": "Coleção Special Soundtrack",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Special Soundtrack",
         "raw": "Coleção Special Soundtrack"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Milos Forman",
@@ -1933,22 +1923,27 @@ const filmes = [
     "nome": "Caça ao Terrorista",
     "ano": 1997,
     "duracao": "01:58:59",
-    "gb": 1.85,
+    "gb": 12.3,
     "local": "HDPrata",
-    "codec": "HEVC",
+    "codec": "H264",
     "perfilCor": null,
     "presetElmedia": "B1 | S4 | C6 | G5 | H1 | Sh1.25",
     "situacao": null,
     "sinopse": "Um oficial da Marinha americana descobre que possui uma semelhança física idêntica à do terrorista mais procurado do planeta, conhecido como Carlos, o Chacal. Ele é recrutado para uma missão clandestina extrema: assumir o lugar do criminoso e destruí-lo por dentro.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": "Coleção Espionagem",
+    "colecaoTipo": "Coleção Espionagem; Coleção Atualização",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Espionagem",
         "raw": "Coleção Espionagem"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "John Woo",
@@ -2006,18 +2001,13 @@ const filmes = [
     "sinopse": "O bilionário e gênio da tecnologia Tony Stark é sequestrado por terroristas e forçado a construir uma arma de destruição em massa. Em vez disso, ele cria uma armadura de alta tecnologia para fugir, iniciando sua jornada para se tornar um super-herói lendário.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": "Coleção HQ; Coleção Atualização",
+    "colecaoTipo": "Coleção HQ",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção HQ",
         "raw": "Coleção HQ"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Jon Favreau",
@@ -2074,19 +2064,24 @@ const filmes = [
     "gb": 6.2,
     "local": "King",
     "codec": "HEVC",
-    "perfilCor": "HDR",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B0 | S-2 | C6 | G9 | H+2 | Sh1",
     "situacao": "F",
     "sinopse": "Um dublê de Hollywood e piloto de fuga profissional vive no anonimato até se apaixonar por sua vizinha. Para proteger a moça e o filho dela de criminosos violentos, ele aceita um assalto perigoso que dá terrivelmente errado, liberando sua fúria oculta.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": "Coleção Submundo",
+    "colecaoTipo": "Coleção Submundo; Coleção Atualização",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Submundo",
         "raw": "Coleção Submundo"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Nicolas Winding Refn",
@@ -2259,18 +2254,13 @@ const filmes = [
     "sinopse": "Arthur Bishop é um matador de elite meticuloso que faz seus assassinatos parecerem acidentes perfeitos. O isolamento de sua rotina fria é rompido quando ele decide treinar o filho de sua última vítima, ensinando os segredos mais sombrios da profissão.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": "Coleção Adulto; Coleção Atualização",
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
     "tags": [
       {
         "tipo": "Aviso",
         "nome": "Coleção Adulto",
         "raw": "Coleção Adulto"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Simon West",
@@ -2579,18 +2569,24 @@ const filmes = [
     "nome": "John Wick",
     "ano": 2014,
     "duracao": "01:41:15",
-    "gb": 5.61,
+    "gb": 3.49,
     "local": "King",
-    "codec": "HEVC",
+    "codec": "AV1",
     "perfilCor": "HDR 4K",
     "presetElmedia": "B0 | S12 | C11 | G6 | H0 | Sh1.5",
     "situacao": "F",
     "sinopse": "Um ex-assassino de elite tenta viver em paz após a morte de sua esposa, mas tudo muda quando o filho de um mafioso rouba seu carro e mata seu cachorro. Ele abandona a aposentadoria e inicia uma caçada implacável que transforma o submundo do crime em um banho de sangue.",
     "genero": "Ação",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Chad Stahelski",
     "ator1": "Keanu Reeves",
     "ator2": "Michael Nyqvist",
@@ -2748,7 +2744,7 @@ const filmes = [
     "ano": 2013,
     "duracao": "2h 04m",
     "gb": 6.4,
-    "local": "King",
+    "local": "HDPrata",
     "codec": "HEVC",
     "perfilCor": "HDR 4K",
     "presetElmedia": "B-1 | S-3 | C8 | G5 | H-1 | Sh1.2",
@@ -3463,13 +3459,13 @@ const filmes = [
     "gb": 3.8,
     "local": "TR",
     "codec": "HEVC",
-    "perfilCor": "HDR 4K",
+    "perfilCor": "HDR",
     "presetElmedia": "B3 | S5 | C8 | G7 | H-3 | Sh1.6",
     "situacao": "F",
     "sinopse": "Após um atentado eliminar todos os agentes secretos britânicos, o incompetente e atrapalhado funcionário de escritório Johnny English se torna a única esperança do país para proteger as Joias da Coroa e salvar a nação de um magnata misterioso.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Johnny English; Coleção Sátira",
+    "colecaoTipo": "Franquia - Johnny English; Coleção Sátira; Coleção Atualização",
     "ordem": "JE 01",
     "tags": [
       {
@@ -3481,6 +3477,11 @@ const filmes = [
         "tipo": "Coleção",
         "nome": "Coleção Sátira",
         "raw": "Coleção Sátira"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Peter Howitt",
@@ -3497,16 +3498,16 @@ const filmes = [
     "nome": "O Retorno de Johnny English",
     "ano": 2011,
     "duracao": "01h 41m",
-    "gb": 2.7,
+    "gb": 3.6,
     "local": "TR",
     "codec": "x265",
     "perfilCor": null,
-    "presetElmedia": "B5 | S13 | C12 | G5 | H-3 | Sh1.5",
-    "situacao": null,
+    "presetElmedia": "B3 | S14 | C12 | G5 | H0 | Sh1.6",
+    "situacao": "F",
     "sinopse": "Desta vez, o espião mais incomum do MI7 precisa sair de seu exílio em um monastério tibetano para impedir uma conspiração internacional de assassinato contra o primeiro-ministro chinês, usando métodos absurdos e tecnologias de ponta.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Johnny English; Coleção Sátira",
+    "colecaoTipo": "Franquia - Johnny English; Coleção Sátira; Coleção Atualização",
     "ordem": "JE 02",
     "tags": [
       {
@@ -3518,6 +3519,11 @@ const filmes = [
         "tipo": "Coleção",
         "nome": "Coleção Sátira",
         "raw": "Coleção Sátira"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Oliver Parker",
@@ -3537,13 +3543,13 @@ const filmes = [
     "gb": 3.5,
     "local": "TR",
     "codec": "HEVC",
-    "perfilCor": "HDR",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B2 | S10 | C10 | G7 | H-1 | Sh1.5",
     "situacao": "F",
     "sinopse": "Um ataque cibernético massivo revela a identidade de todos os agentes infiltrados da Grã-Bretanha, forçando o veterano Johnny English a sair da aposentadoria para enfrentar hackers modernos usando suas táticas totalmente analógicas e caóticas.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Johnny English; Coleção Sátira",
+    "colecaoTipo": "Franquia - Johnny English; Coleção Sátira; Coleção Atualização",
     "ordem": "JE 03",
     "tags": [
       {
@@ -3555,6 +3561,11 @@ const filmes = [
         "tipo": "Coleção",
         "nome": "Coleção Sátira",
         "raw": "Coleção Sátira"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "David Kerr",
@@ -4043,18 +4054,13 @@ const filmes = [
     "sinopse": "Uma produtora de TV romântica e idealista é forçada a trabalhar com um apresentador cínico e machista que promete revelar a verdade sobre os relacionamentos. Ele se propõe a ajudá-la a conquistar o homem dos seus sonhos em um jogo provocante.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Coleção Adulto; Coleção Atualização",
+    "colecaoTipo": "Coleção Adulto",
     "ordem": null,
     "tags": [
       {
         "tipo": "Aviso",
         "nome": "Coleção Adulto",
         "raw": "Coleção Adulto"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Robert Luketic",
@@ -4855,22 +4861,27 @@ const filmes = [
     "nome": "Trovão Tropical",
     "ano": 2008,
     "duracao": "01:46:48",
-    "gb": 3.3,
+    "gb": 4.2,
     "local": "HDPrata",
     "codec": "HEVC",
-    "perfilCor": "HDR",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B5 | S17 | C8 | G6 | H-2 | Sh1",
     "situacao": null,
     "sinopse": "Atores egocêntricos gravam um filme de guerra de alto orçamento e acabam abandonados na selva por um diretor desesperado para obter realismo. Eles precisam agir como soldados de verdade para sobreviver quando batem de frente com guerrilheiros armados reais.",
     "genero": "Comédia",
     "origem": "genero",
-    "colecaoTipo": "Coleção Sátira",
+    "colecaoTipo": "Coleção Sátira; Coleção Atualização",
     "ordem": null,
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Sátira",
         "raw": "Coleção Sátira"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Ben Stiller",
@@ -6473,22 +6484,27 @@ const filmes = [
     "nome": "Alien, o 8º Passageiro",
     "ano": 1979,
     "duracao": "01:55:49",
-    "gb": 5.27,
+    "gb": 6,
     "local": "HD",
-    "codec": "HEVC",
-    "perfilCor": "HDR",
+    "codec": "AV1",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B0 | S-5 | C7 | G7 | H-3 | Sh1.2",
     "situacao": null,
     "sinopse": "A tripulação de uma nave comercial espacial responde a um sinal de socorro vindo de um planeta isolado e acaba trazendo a bordo uma forma de vida alienígena mortal. Começa um jogo claustrofóbico de sobrevivência contra um predador perfeito e implacável.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Alien",
+    "colecaoTipo": "Franquia - Alien; Coleção Atualização",
     "ordem": "AL 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Alien",
         "raw": "Franquia - Alien"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Ridley Scott",
@@ -6505,22 +6521,27 @@ const filmes = [
     "nome": "Prometheus",
     "ano": 2012,
     "duracao": "02:03:46",
-    "gb": 5.62,
+    "gb": 4.8,
     "local": "HD - TR",
-    "codec": "AV1",
-    "perfilCor": "HDR",
+    "codec": "HEVC",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B0 | S-5 | C7 | G7 | H-3 | Sh1.2",
     "situacao": null,
     "sinopse": "Uma equipe de cientistas viaja aos confins do universo seguindo pistas sobre a origem da humanidade na Terra. Ao chegarem ao destino, eles encontram uma civilização avançada com planos aterrorizantes que colocam em risco o futuro de nossa espécie.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Alien",
+    "colecaoTipo": "Franquia - Alien; Coleção Atualização",
     "ordem": "AL 02",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Alien",
         "raw": "Franquia - Alien"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Ridley Scott",
@@ -7562,15 +7583,9 @@ const filmes = [
     "sinopse": "Uma cientista dedicada encontra transmissões de rádio misteriosas vindas do espaço profundo que provam a existência de vida extraterrestre inteligente. Ela precisa lutar contra o ceticismo do governo para liderar o projeto de construção da máquina enviada pelos alienígenas.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Robert Zemeckis",
     "ator1": "Jodie Foster",
     "ator2": "Matthew McConaughey",
@@ -7620,15 +7635,9 @@ const filmes = [
     "sinopse": "Um agente federal utiliza uma tecnologia experimental ultrassecreta de viagem no tempo para investigar o trágico bombardeio de uma balsa em Nova Orleans. Ele se apaixona por uma das vítimas e tenta desesperadamente alterar os eventos passados para salvá-la.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Tony Scott",
     "ator1": "Denzel Washington",
     "ator2": "Paula Patton",
@@ -7831,15 +7840,9 @@ const filmes = [
     "sinopse": "Um professor acorda de um coma de cinco anos após um grave acidente e descobre que desenvolveu habilidades psíquicas de prever o futuro pelo toque. Ele enfrenta um dilema moral extremo ao prever que um político em ascensão causará um desastre global.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "David Cronenberg",
     "ator1": "Christopher Walken",
     "ator2": "Brooke Adams",
@@ -8265,15 +8268,9 @@ const filmes = [
     "sinopse": "Um veterano de guerra começa a ter memórias conflitantes e suspeita que ele e seu pelotão sofreram lavagem cerebral para servir a uma sinistra conspiração política. Um suspense paranoico sobre manipulação mental e poder corporativo.",
     "genero": "Suspense",
     "origem": "genero",
-    "colecaoTipo": "Coleção Atualização",
+    "colecaoTipo": null,
     "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
-      }
-    ],
+    "tags": [],
     "diretor": "Jonathan Demme",
     "ator1": "Denzel Washington",
     "ator2": "Meryl Streep",
@@ -8570,22 +8567,27 @@ const filmes = [
     "nome": "Sherlock Holmes",
     "ano": 2009,
     "duracao": "02:08:24",
-    "gb": 6.6,
+    "gb": 5.5,
     "local": "HD - Tmac",
     "codec": "HEVC",
-    "perfilCor": "HDR",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B3 | S4 | C8 | G7 | H0 | Sh1.2",
     "situacao": "F",
     "sinopse": "O lendário detetive usa sua lógica impecável, habilidades de combate e a ajuda de seu fiel parceiro Watson para prender um serial killer místico. Quando o criminoso parece retornar dos mortos, começa uma caçada eletrizante em Londres.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Sherlock",
+    "colecaoTipo": "Franquia - Sherlock; Coleção Atualização",
     "ordem": "SH 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Sherlock",
         "raw": "Franquia - Sherlock"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Guy Ritchie",
@@ -8605,19 +8607,24 @@ const filmes = [
     "gb": 4.6,
     "local": "HD - Tmac",
     "codec": "x265",
-    "perfilCor": "HDR",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B0 | S-4 | C6 | G6 | H-3 | Sh1",
     "situacao": null,
     "sinopse": "O detetive mais famoso do mundo enfrenta seu maior rival intelectuoso, o brilhante e perverso Professor Moriarty, em um tabuleiro de xadrez internacional. Uma disputa mortal que pode alterar o destino geopolítico de toda a Europa Ocidental.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Sherlock",
+    "colecaoTipo": "Franquia - Sherlock; Coleção Atualização",
     "ordem": "SH 02",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Sherlock",
         "raw": "Franquia - Sherlock"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Guy Ritchie",
@@ -8643,7 +8650,7 @@ const filmes = [
     "sinopse": "Um bilionário entediado e brilhante arquiteta o roubo perfeito de uma pintura inestimável de um museu de Nova York apenas pelo desafio intelectual. Seu plano encontra um obstáculo charmoso quando uma astuta investigadora de seguros começa a caçá-lo de perto.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": "Coleção Adulto; Coleção Desfalque; Coleção Atualização",
+    "colecaoTipo": "Coleção Adulto; Coleção Desfalque",
     "ordem": null,
     "tags": [
       {
@@ -8655,11 +8662,6 @@ const filmes = [
         "tipo": "Coleção",
         "nome": "Coleção Desfalque",
         "raw": "Coleção Desfalque"
-      },
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Atualização",
-        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "John McTiernan",
@@ -8676,16 +8678,16 @@ const filmes = [
     "nome": "Instinto Selvagem",
     "ano": 1992,
     "duracao": "02h 07m",
-    "gb": 1.9,
+    "gb": 7.8,
     "local": "TR",
     "codec": "HEVC",
-    "perfilCor": null,
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B0 | S0 | C7 | G8 | H0 | Sh1",
     "situacao": null,
     "sinopse": "Um detetive de polícia investiga o brutal assassinato de um astro do rock e se envolve com a principal suspeita, uma sedutora escritora de romances policiais. Ele entra em uma espiral de obsessão enquanto os crimes reais imitam os livros dela.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": "Coleção Noir; Coleção X-Cinema Cult",
+    "colecaoTipo": "Coleção Noir; Coleção X-Cinema Cult; Coleção Atualização",
     "ordem": null,
     "tags": [
       {
@@ -8697,6 +8699,11 @@ const filmes = [
         "tipo": "Coleção",
         "nome": "Coleção X-Cinema Cult",
         "raw": "Coleção X-Cinema Cult"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Paul Verhoeven",
@@ -10128,22 +10135,27 @@ const filmes = [
     "nome": "Hannibal, a Origem do Mal",
     "ano": 2007,
     "duracao": "02:01:00",
-    "gb": 1.6,
-    "local": "HD - TR",
-    "codec": "x265",
+    "gb": 9.3,
+    "local": "HD - King",
+    "codec": "H264",
     "perfilCor": null,
-    "presetElmedia": "B3 | S3 | C8 | G6 | H-1 | Sh1.2",
-    "situacao": null,
+    "presetElmedia": "B4 | S3 | C8 | G7 | H-1 | Sh1.6",
+    "situacao": "F",
     "sinopse": "Após testemunhar os horrores da Segunda Guerra Mundial e a morte brutal de sua irmã, o jovem Hannibal Lecter foge para a França. Consumido pelo ódio, ele inicia sua formação em medicina e dá os primeiros passos em sua jornada sádica de vingança contra os criminosos.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Silêncio dos Inocentes",
+    "colecaoTipo": "Franquia - Silêncio dos Inocentes; Coleção Atualização",
     "ordem": "SI 01",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Silêncio dos Inocentes",
         "raw": "Franquia - Silêncio dos Inocentes"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Peter Webber",
@@ -10192,16 +10204,16 @@ const filmes = [
     "nome": "O Silêncio dos Inocentes",
     "ano": 1991,
     "duracao": "01:58:47",
-    "gb": 6.88,
+    "gb": 4.6,
     "local": "HD - King",
     "codec": "HEVC",
-    "perfilCor": "HDR",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B1 | S-4 | C6 | G6 | H-2 | Sh1",
     "situacao": null,
     "sinopse": "Uma jovem e promissora agente em treinamento do FBI é escalada para entrevistar o perigoso psiquiatra canibal Hannibal Lecter em uma prisão de segurança máxima. Ela busca pistas para capturar um assassino em série que sequestra e esfolia mulheres.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Coleção Adulto; Franquia - Silêncio dos Inocentes",
+    "colecaoTipo": "Coleção Adulto; Franquia - Silêncio dos Inocentes; Coleção Atualização",
     "ordem": "SI 03",
     "tags": [
       {
@@ -10213,6 +10225,11 @@ const filmes = [
         "tipo": "Franquia",
         "nome": "Silêncio dos Inocentes",
         "raw": "Franquia - Silêncio dos Inocentes"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Jonathan Demme",
@@ -10462,13 +10479,18 @@ const filmes = [
     "sinopse": "Um roteirista de Hollywood viaja de férias para a França com sua noiva e descobre um portal mágico que o transporta misteriosamente para a Paris dos anos 1920 à meia-noite. Ele passa a conviver com seus maiores ídolos da literatura e da arte da era de ouro.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": "Franquia - Woody Allen",
+    "colecaoTipo": "Franquia - Woody Allen; Coleção Special Soundtrack",
     "ordem": "WA 06",
     "tags": [
       {
         "tipo": "Franquia",
         "nome": "Woody Allen",
         "raw": "Franquia - Woody Allen"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Special Soundtrack",
+        "raw": "Coleção Special Soundtrack"
       }
     ],
     "diretor": "Woody Allen",
@@ -10902,18 +10924,24 @@ const filmes = [
     "nome": "Truque de Mestre",
     "ano": 2013,
     "duracao": "01:55:19",
-    "gb": 2.2,
-    "local": "cdmaconstr",
-    "codec": "x265",
-    "perfilCor": "HDR",
+    "gb": 4.5,
+    "local": "Plenae",
+    "codec": "HEVC",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B5 | S17 | C8 | G6 | H-2 | Sh1",
     "situacao": null,
     "sinopse": "Um grupo de mágicos ilusionistas brilhantes realiza assaltos a bancos internacionais e distribui o dinheiro para o público durante os espetáculos. Um agente do FBI e uma investigadora da Interpol unem forças para descobrir o segredo dos truques.",
     "genero": "Cult-Favoritos",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Louis Leterrier",
     "ator1": "Jesse Eisenberg",
     "ator2": "Mark Ruffalo",
@@ -12289,22 +12317,27 @@ const filmes = [
     "nome": "Sully",
     "ano": 2016,
     "duracao": "1h 36m",
-    "gb": 4.2,
+    "gb": 3.5,
     "local": "TA",
     "codec": "HEVC",
-    "perfilCor": "HDR",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B0 | S-3 | C5 | G6 | H0 | Sh1",
     "situacao": null,
     "sinopse": "O comandante Chesley \"Sully\" Sullenberger realiza um pouso forçado milagroso com um avião comercial nas águas geladas do Rio Hudson após as turbinas serem destruídas por pássaros. Ele precisa defender suas decisões diante de uma rígida agência de aviação.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Catástrofe",
+    "colecaoTipo": "Coleção Catástrofe; Coleção Atualização",
     "ordem": "CA 11",
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Catástrofe",
         "raw": "Coleção Catástrofe"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "Clint Eastwood",
@@ -12711,22 +12744,27 @@ const filmes = [
     "nome": "Ford × Ferrari",
     "ano": 2019,
     "duracao": "2h 33m",
-    "gb": 5.6,
+    "gb": 6,
     "local": "TA",
     "codec": "HEVC",
-    "perfilCor": "HDR",
+    "perfilCor": "HDR 4K",
     "presetElmedia": "B0 | S12 | C11 | G6 | H0 | Sh1.5",
     "situacao": null,
     "sinopse": "O projetista automotivo Carroll Shelby e o destemido piloto britânico Ken Miles unem forças para construir um carro de corrida revolucionário para a Ford. Eles enfrentam a burocracia corporativa e as leis da física para derrotar o império da Ferrari em Le Mans.",
     "genero": null,
     "origem": "colecoes",
-    "colecaoTipo": "Coleção Corridas",
+    "colecaoTipo": "Coleção Corridas; Coleção Atualização",
     "ordem": "CO 04",
     "tags": [
       {
         "tipo": "Coleção",
         "nome": "Coleção Corridas",
         "raw": "Coleção Corridas"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
       }
     ],
     "diretor": "James Mangold",
@@ -15413,7 +15451,7 @@ const filmes = [
     "genero": null,
     "origem": "colecoes",
     "colecaoTipo": "Coleção Nouvelle Vague",
-    "ordem": "NV 03",
+    "ordem": "NV 04",
     "tags": [
       {
         "tipo": "Coleção",
@@ -16612,18 +16650,24 @@ const filmes = [
     "nome": "Febre de Juventude",
     "ano": 1978,
     "duracao": "1h 44m",
-    "gb": 1.7,
+    "gb": 6,
     "local": "TF",
-    "codec": "x265",
+    "codec": "HEVC",
     "perfilCor": null,
-    "presetElmedia": "B3 | S3 | C8 | G6 | H-1 | Sh1.2",
-    "situacao": null,
+    "presetElmedia": "B3 | S3 | C11 | G7 | H0 | Sh1.5",
+    "situacao": "F",
     "sinopse": "Uma comédia eletrizante ambientada no auge da Beatlemania em 1964. Seis adolescentes de Nova Jersey fazem de tudo para invadir Nova York e assistir à histórica primeira apresentação dos Beatles na TV americana, desencadeando confusões inesquecíveis.",
     "genero": "Filmes Família",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Atualização",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Atualização",
+        "raw": "Coleção Atualização"
+      }
+    ],
     "diretor": "Robert Zemeckis",
     "ator1": "Tim Matheson",
     "ator2": "Nancy Allen",
@@ -16631,7 +16675,7 @@ const filmes = [
     "ator4": "Tom Hulce",
     "ator5": "Mark Metcalf",
     "ator6": "Peter Riegert",
-    "nomeOriginal": "Swing Kids"
+    "nomeOriginal": "I Wanna Hold Your Hand"
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1lRD_3Ht-lY91H1SWCGmW6wgAXfmtDEw5",
@@ -19434,6 +19478,117 @@ const filmes = [
     "ator5": "Alexis Cruz",
     "ator6": "Mili Avital",
     "nomeOriginal": null
+  },
+  {
+    "capa": "https://lh3.googleusercontent.com/d/1kK4lvR1Ntb47eHB59GucXdxOhFqdUtxz",
+    "nome": "Ponte dos Espiões",
+    "ano": 2015,
+    "duracao": "02h 22m",
+    "gb": 5.8,
+    "local": "TA",
+    "codec": "HEVC",
+    "perfilCor": null,
+    "presetElmedia": "B-1 | S-3 | C8 | G5 | H-1 | Sh1.2",
+    "situacao": null,
+    "sinopse": "Em plena Guerra Fria, um advogado comum de seguros é lançado no epicentro da espionagem mundial ao aceitar uma missão quase impossível: negociar a troca de um piloto americano capturado pelos soviéticos. Caminhando por uma corda bamba de segredos de Estado e paranoia, ele transforma a burocracia jurídica em uma perigosa jogada de xadrez onde a empatia humana é sua única e mais arriscada arma.",
+    "genero": null,
+    "origem": "colecoes",
+    "colecaoTipo": "Coleção Espionagem; Coleção Novo",
+    "ordem": null,
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Espionagem",
+        "raw": "Coleção Espionagem"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Novo",
+        "raw": "Coleção Novo"
+      }
+    ],
+    "diretor": "Steven Spielberg",
+    "ator1": "Tom Hanks",
+    "ator2": "Mark Rylance",
+    "ator3": "Amy Ryan",
+    "ator4": "Alan Alda",
+    "ator5": "Sebastian Koch",
+    "ator6": "Austin Stowell",
+    "nomeOriginal": "Bridge of Spies"
+  },
+  {
+    "capa": "https://lh3.googleusercontent.com/d/1uzcxj6RSb5OJ4u5agkLryR6CTbHeN-Fq",
+    "nome": "Stalker",
+    "ano": 1979,
+    "duracao": "02h 42m",
+    "gb": 4.5,
+    "local": "TA",
+    "codec": "AV1",
+    "perfilCor": null,
+    "presetElmedia": "B0 | S-4 | C6 | G7 | H-1 | Sh1.2",
+    "situacao": null,
+    "sinopse": "Em um local desolado, um guia ilegal arrisca a vida para conduzir um escritor e um cientista pelas barreiras militares da Zona, um território misterioso envolvido em espiritualidade. O objetivo é alcançar um quarto oculto capaz de realizar o desejo mais íntimo de quem nele entra, numa jornada hipnotizante que testa os limites da própria alma humana em sua busca pelo divino.",
+    "genero": null,
+    "origem": "colecoes",
+    "colecaoTipo": "Coleção Intelectuais; Coleção Novo",
+    "ordem": null,
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Intelectuais",
+        "raw": "Coleção Intelectuais"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Novo",
+        "raw": "Coleção Novo"
+      }
+    ],
+    "diretor": "Andrei Tarkovsky",
+    "ator1": "Aleksandr Kajdanovsky",
+    "ator2": "Anatoly Solonitsyn",
+    "ator3": "Nikolai Grinko",
+    "ator4": "Alisa Freindlikh",
+    "ator5": "Natasha Abramova",
+    "ator6": "Faime Jurno",
+    "nomeOriginal": null
+  },
+  {
+    "capa": "https://lh3.googleusercontent.com/d/1-MyLTYla5Tik9yWrUXD5d-OP55aWV6nU",
+    "nome": "Cléo das 5 às 7, Duas Horas na Vida de Uma Mulher",
+    "ano": 1962,
+    "duracao": "01h 31m",
+    "gb": 4,
+    "local": "TA",
+    "codec": "HEVC",
+    "perfilCor": null,
+    "presetElmedia": "B2 | S0 | C6 | G3 | H0 | Sh1.5",
+    "situacao": null,
+    "sinopse": "Uma jovem cantora pop vaga pelas ruas de Paris nos anos 1960 enquanto aguarda ansiosa o resultado de um exame médico crucial para sua vida. Uma jornada existencial, visual e profundamente inspiradora, onde a iminência da morte lança a protagonista a abandonar a vaidade para finalmente enxergar a si mesma e a beleza efêmera do mundo real.",
+    "genero": null,
+    "origem": "colecoes",
+    "colecaoTipo": "Coleção Nouvelle Vague; Coleção Novo",
+    "ordem": "NV 03",
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Nouvelle Vague",
+        "raw": "Coleção Nouvelle Vague"
+      },
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Novo",
+        "raw": "Coleção Novo"
+      }
+    ],
+    "diretor": "Agnès Varda",
+    "ator1": "Corinne Marchand",
+    "ator2": "Antoine Bourseiller",
+    "ator3": "Dominique Davray",
+    "ator4": "Dorothée Blanck",
+    "ator5": "Michel Legrand",
+    "ator6": "José Luis de Vilallonga",
+    "nomeOriginal": "Cléo de 5 à 7"
   }
 ];
 
