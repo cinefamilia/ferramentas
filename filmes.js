@@ -9032,9 +9032,15 @@ const filmes = [
     "sinopse": "Os jovens estudantes Sherlock Holmes e John Watson se conhecem em um colégio interno britânico e se deparam com uma série de mortes bizarras. Juntos, eles investigam uma seita religiosa secreta que realiza sacrifícios humanos no coração de Londres.",
     "genero": "Policial",
     "origem": "genero",
-    "colecaoTipo": null,
+    "colecaoTipo": "Coleção Investigativa",
     "ordem": null,
-    "tags": [],
+    "tags": [
+      {
+        "tipo": "Coleção",
+        "nome": "Coleção Investigativa",
+        "raw": "Coleção Investigativa"
+      }
+    ],
     "diretor": "Barry Levinson",
     "ator1": "Nicholas Rowe",
     "ator2": "Alan Cox",
@@ -14615,38 +14621,6 @@ const filmes = [
     "ator5": "Carrie Coon",
     "ator6": "Kim Dickens",
     "nomeOriginal": "Gone Girl"
-  },
-  {
-    "capa": "https://lh3.googleusercontent.com/d/1tPSireH7Ia3NnhRskqknvCjUtQUe5jnb",
-    "nome": "O Enigma da Pirâmide",
-    "ano": 1985,
-    "duracao": "1h 49m",
-    "gb": 8.2,
-    "local": "TA",
-    "codec": "HEVC",
-    "perfilCor": null,
-    "presetElmedia": "B0 | S0 | C7 | G8 | H0 | Sh1",
-    "situacao": null,
-    "sinopse": "Os jovens estudantes Sherlock Holmes e John Watson se conhecem em um colégio interno britânico e se deparam com uma série de mortes bizarras. Juntos, eles investigam uma seita religiosa secreta que realiza sacrifícios humanos no coração de Londres.",
-    "genero": null,
-    "origem": "colecoes",
-    "colecaoTipo": "Coleção Investigativa",
-    "ordem": null,
-    "tags": [
-      {
-        "tipo": "Coleção",
-        "nome": "Coleção Investigativa",
-        "raw": "Coleção Investigativa"
-      }
-    ],
-    "diretor": "Barry Levinson",
-    "ator1": "Nicholas Rowe",
-    "ator2": "Alan Cox",
-    "ator3": "Sophie Ward",
-    "ator4": "Anthony Higgins",
-    "ator5": "Susan Fleetwood",
-    "ator6": "Freddie Jones",
-    "nomeOriginal": "Young Sherlock Holmes"
   },
   {
     "capa": "https://lh3.googleusercontent.com/d/1zWfJJJQJCTygNRe1BiI9PKjSQYshJhiJ",
